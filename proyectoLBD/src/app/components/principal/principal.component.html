@@ -1,0 +1,12 @@
+<div class="container-fluid" style="margin-top: 5px;">
+    <div class="row justify-content-between">
+        <div class="col-4">
+            <app-calendario [actividades]="actividades"></app-calendario>
+        </div>
+        <div class="col-8">
+            <div *ngFor="let actividad of actividades">
+                <app-actividad-card [actividad]="actividad"></app-actividad-card>
+            </div>
+        </div>
+    </div>
+</div>
