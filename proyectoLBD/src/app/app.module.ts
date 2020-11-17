@@ -10,6 +10,8 @@ import { PrincipalComponent } from './components/principal/principal.component';
 import { ActividadCardComponent } from './components/actividad-card/actividad-card.component';
 import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
 import { CalendarioComponent } from './components/calendario/calendario.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { CursosComponent } from './components/cursos/cursos.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { CalendarioComponent } from './components/calendario/calendario.componen
     PbarComponent,
     PrincipalComponent,
     ActividadCardComponent,
-    CalendarioComponent
+    CalendarioComponent,
+    NavbarComponent,
+    CursosComponent
   ],
   imports: [
     BrowserModule,
