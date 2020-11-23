@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
+//Modulos y componentes
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -12,6 +13,16 @@ import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWe
 import { CalendarioComponent } from './components/calendario/calendario.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CursosComponent } from './components/cursos/cursos.component';
+import { AlumnosComponent } from './components/alumnos/alumnos.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ToastrModule } from 'ngx-toastr';
+
+//Servicios
+import { AuthService } from './services/auth/auth.service';
+
+
+//Servicios
 
 @NgModule({
   declarations: [
@@ -22,15 +33,19 @@ import { CursosComponent } from './components/cursos/cursos.component';
     ActividadCardComponent,
     CalendarioComponent,
     NavbarComponent,
-    CursosComponent
+    CursosComponent,
+    AlumnosComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    ScheduleModule, RecurrenceEditorModule
+    ScheduleModule, RecurrenceEditorModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
-  providers: [DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService],
+  providers: [DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

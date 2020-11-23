@@ -2,9 +2,9 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <h1 class="page-title">Ingresar</h1>
-            <form [formGroup]="loginForm">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
-                    <label for="email">Correo o ID del usuario:</label>
+                    <label for="email">ID del usuario:</label>
                     <input type="email" class="form-control" formControlName="email">
                 </div>
 

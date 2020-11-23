@@ -1,0 +1,25 @@
+<div class="container-fluid" style="margin-top: 5px;">
+    <div class="row justify-content-between">
+        <div class="col-4">
+            <app-calendario [actividades]="actividades"></app-calendario>
+        </div>
+        <div class="col-8">
+            <table class="table table-bordered table-hover" style="border-radius: 10px">
+                <thead style="background-color: #942646; color: white;">
+                    <th>ID #</th>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let alumno of alumnos">
+                        <td>{{alumno.id}}</td>
+                        <td>{{alumno.name}}</td>
+                        <td>{{alumno.apellidoPat}}</td>
+                        <td>{{alumno.apellidoMat}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
