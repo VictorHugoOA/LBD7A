@@ -20,6 +20,7 @@ import { ToastrModule } from 'ngx-toastr';
 
 //Servicios
 import { AuthService } from './services/auth/auth.service';
+import { CursoCardComponent } from './components/curso-card/curso-card.component';
 
 
 //Servicios
@@ -35,7 +36,8 @@ import { AuthService } from './services/auth/auth.service';
     NavbarComponent,
     CursosComponent,
     AlumnosComponent,
-    PerfilComponent
+    PerfilComponent,
+    CursoCardComponent
   ],
   imports: [
     BrowserModule,

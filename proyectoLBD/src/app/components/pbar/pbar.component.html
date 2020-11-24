@@ -5,9 +5,11 @@
   </span>
   <span *ngIf="auth.userData == undefined; else ingresado" class="navbar-text">Usted no ha ingresado</span>
   <ng-template #ingresado>
-    <a routerLink="/perfil">
-      <span
-        class="navbar-text">{{auth.userData.nombre + " " + auth.userData.apellidoPat + " " + auth.userData.apellidoMat}}</span></a>
-        <span class="navbar-text"><i class="fas fa-sign-out-alt"></i></span>
+    <div>
+      <a routerLink="/perfil">
+        <span
+          class="navbar-text mr-4">{{auth.userData.nombre + " " + auth.userData.apellidoPat + " " + auth.userData.apellidoMat}}</span></a>
+      <a (click)="logOut()"><span class="navbar-text"><i class="fas fa-sign-out-alt"></i></span></a>
+    </div>
   </ng-template>
 </nav>

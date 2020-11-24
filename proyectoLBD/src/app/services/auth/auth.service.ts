@@ -25,7 +25,7 @@ export class AuthService {
   }
 
   login(user: string, password: string){
-    user = user.replace("/al/", "");
+    user = this.checkStudent(user);
 
     let userGet: any;
     if(userGet = this.usersStudent.find((val, index) =>{ return (val.id == user && val.password == password)}))
@@ -36,13 +36,15 @@ export class AuthService {
     }else{
       this.toastr.warning("Hubo un error en la contraseña y el usuario, por favro cheque que el usuario y la contraseña sean correctos", "Usuario y contraseña inválidos");
     }
-
-
   }
 
-  checkStudent(user: string)
+  checkStudent(user: string): string
   {
-
+    let result = user;
+    if(/\d{5}/.test(user) && result.length == 8){
+      result = user.substring(2);
+    }
+    return result;
   }
 
   signOut(){
