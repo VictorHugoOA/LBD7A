@@ -30,9 +30,12 @@ export class AuthService {
     let userGet: any;
     if(userGet = this.usersStudent.find((val, index) =>{ return (val.id == user && val.password == password)}))
     {
-      this.userData = {nombre: userGet.nombre, apellidoPat: userGet.apellidoPat, apellidoMat: userGet.apellidoMat, tipo: userGet.tipo};
+      this.userData = {id: userGet.id, nombre: userGet.nombre, apellidoPat: userGet.apellidoPat, apellidoMat: userGet.apellidoMat, tipo: userGet.tipo};
       sessionStorage.setItem("user", JSON.stringify(this.userData));
-      this.router.navigate(["/home"]);
+      if(this.userData.tipo == "Estudiante")
+        this.router.navigate(["/home"]);
+      else
+        this.router.navigate(['/homeTeacher']);
     }else{
       this.toastr.warning("Hubo un error en la contraseña y el usuario, por favro cheque que el usuario y la contraseña sean correctos", "Usuario y contraseña inválidos");
     }

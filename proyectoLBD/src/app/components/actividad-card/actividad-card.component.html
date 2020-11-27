@@ -1,10 +1,9 @@
 <div class="card" style="margin-top: 15px">
     <div class="card-body">
-        <i class="fab fa-wpforms" *ngIf="actividad.tipo == 0; else uploadForm"></i><ng-template #uploadForm><i class="far fa-file-alt"></i></ng-template> {{actividad.desc}}
-        <span><input type="checkbox" [checked]="actividad.entregada != null" onclick="return false;"></span>
+        <i class="far fa-file-alt"></i><a class="activity-link ph-2" routerLink="">{{actividad.desc}}</a>
         <p class="card-text">
             Fecha entrega:
-        <span>{{actividad.entrega | date}}</span>
+            <span>{{actividad.entrega | date}}</span>
         </p>
     </div>
 </div>

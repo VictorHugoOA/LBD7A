@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Activity } from 'src/app/services/actividad/actividades.service';
 
 @Component({
   selector: 'app-actividad-card',
@@ -7,19 +8,10 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ActividadCardComponent implements OnInit {
 
-  @Input() actividad: Activity
+  @Input() actividad: Activity;
   constructor() { }
 
   ngOnInit(): void {
   }
 
-}
-
-export class Activity{
-  id:number;
-  estado: number;
-  desc: string;
-  tipo: number;
-  entrega: Date;
-  entregada: Date;
 }

@@ -1,0 +1,23 @@
+<div class="container-fluid" style="margin-top: 5px;">
+  <div class="row justify-content-between">
+    <div class="col-4">
+      <app-calendario [actividades]="actividades"></app-calendario>
+    </div>
+    <div class="col-8">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">{{curso.nombre}}({{curso.grado}})</h4>
+          {{curso.profesor}} - {{curso.campo}}
+          <div *ngIf="auth.userData.tipo === 'Profesor'">
+            <button type="button" style="background-color: #942646;" class="btn btn-primary btn-lg btn-block" (click)="routerActivity()">Crear actividad</button>
+          </div>
+          <br />
+          <p class="card-text">
+          <div *ngFor="let actividad of actividades">
+            <app-actividad-card [actividad]="actividad"></app-actividad-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

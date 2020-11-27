@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { EventSettingsModel } from '@syncfusion/ej2-angular-schedule';
-import { Activity } from '../actividad-card/actividad-card.component';
+import { Activity } from 'src/app/services/actividad/actividades.service';
 
 @Component({
   selector: 'app-calendario',
