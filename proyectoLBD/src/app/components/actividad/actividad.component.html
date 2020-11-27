@@ -1,0 +1,30 @@
+<div class="container-fluid" style="margin-top: 5px;">
+  <div class="row justify-content-between">
+    <div class="col-4">
+      <app-calendario ></app-calendario>
+    </div>
+    <div class="col-8">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">{{actividad.desc}}</h4>
+          <p class="card-text">
+            Fecha límite: {{actividad.entrega | date}} | Fecha entrega: {{actividad.entregada | date}}
+          </p>
+          <p class="card-text">
+            <div *ngIf="">
+            Calificación: 
+          <div *ngIf="calificacion > 8; else medio">
+            <span class="text-success">{{calificacion}}</span>
+          </div>
+          <ng-template #medio>
+            <span *ngIf="calificacion > 6; else bajo" class="text-warning">{{calificacion}}</span>
+          </ng-template>
+          <ng-template #bajo>
+            <span class="text-danger">{{calificacion}}</span>
+          </ng-template>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
