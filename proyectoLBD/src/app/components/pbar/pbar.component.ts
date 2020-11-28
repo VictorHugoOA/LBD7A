@@ -15,10 +15,10 @@ export class PbarComponent implements OnInit {
   alumno: Observable<any>;
 
   constructor(private auth: AuthService, private al: AlumnosService, private router: Router) {
+    this.alumno = this.al.getAlumno(this.auth.userData.id).pipe(map(val => {return val[0]}));
   }
 
   ngOnInit(): void {
-    this.alumno = this.al.getAlumno(this.auth.userData.id).pipe(map(val => {return val[0]}));
   }
 
   logOut(){
