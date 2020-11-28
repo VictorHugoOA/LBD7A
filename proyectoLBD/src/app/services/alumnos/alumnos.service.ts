@@ -14,9 +14,8 @@ export class AlumnosService {
     return this.http.get(`http://localhost:3000/Alumno/${id}`);
   }
 
-  getAlumnoActividadesCurso(idAlumno: string, idCurso: string) {
-  }
-  
-  getAlumnoActividadesCursoEntregadas(idAlumno: string, idCurso: string) {
+  getAvanceAlumno(id: string)
+  {
+    return this.http.get(`http://localhost:3000/Avances/${id}`);
   }
 }

@@ -65,10 +65,14 @@
                         <div class="card-body">
                             Avances
                             <hr>
-                            <div *ngFor="let a of avance">
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
-                                        aria-valuemin="0" aria-valuemax="100"></div>
+                            <div *ngFor="let C of cursos; index as i">
+                                <div class="pt-2">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" [ngStyle]="{backgroundColor: '#942646', width: (avance[i] + '%')}"
+                                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                            <span>{{C.nombre}}</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

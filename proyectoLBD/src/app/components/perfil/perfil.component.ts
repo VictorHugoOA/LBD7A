@@ -32,8 +32,11 @@ export class PerfilComponent implements OnInit {
           for(var i = 0; i < data.length; ++i)
           {
             this.cursos.push(data[i]);
+            this.avance.push(0);
           }
-          console.log(this.cursos);
+          this.al.getAvanceAlumno(this.auth.userData.id).subscribe((av:any) => {
+            console.log(av);
+          })
           this.cd.detectChanges();
         })
 
