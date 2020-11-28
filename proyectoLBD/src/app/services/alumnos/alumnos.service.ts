@@ -17,9 +17,8 @@ export class AlumnosService {
   }
 
   getAlumnoActividadesCurso(idAlumno: string, idCurso: string) {
-    
-
   }
+  
   getAlumnoActividadesCursoEntregadas(idAlumno: string, idCurso: string) {
   }
 }

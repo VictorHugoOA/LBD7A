@@ -23,6 +23,7 @@ export class MateriaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
   }
 
 }

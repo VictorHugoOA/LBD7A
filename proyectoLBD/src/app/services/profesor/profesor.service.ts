@@ -12,4 +12,9 @@ export class ProfesorService {
   {
     return this.http.get(`http://localhost:3000/AlumnoProfesor/${idAlumno}`);
   }
+
+  getProfesor(id: string)
+  {
+    return this.http.get(`http://localhost:3000/`);
+  }
 }

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -29,14 +30,16 @@ export class AuthService {
 
   public userData: any;
 
-  constructor( private router: Router, private toastr: ToastrService) {
+  constructor( private router: Router, private toastr: ToastrService, private http: HttpClient) {
     this.userData = JSON.parse(sessionStorage.getItem("user"));
   }
 
-  
+
 
   login(user: string, password: string){
     let userGet: any;
+
+
     if(userGet = this.usersStudent.find((val, index) =>{ return (val.id == user && val.password == password)}))
     {
       this.userData = {id: userGet.id, nombre: userGet.nombre, apellidoPat: userGet.apellidoPat, apellidoMat: userGet.apellidoMat, tipo: userGet.tipo};
