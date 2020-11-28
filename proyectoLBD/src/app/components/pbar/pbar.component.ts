@@ -15,10 +15,18 @@ export class PbarComponent implements OnInit {
   alumno: Observable<any>;
 
   constructor(private auth: AuthService, private al: AlumnosService, private router: Router) {
+<<<<<<< Updated upstream
     this.alumno = this.al.getAlumno(this.auth.userData.id).pipe(map(val => {return val[0]}));
   }
 
   ngOnInit(): void {
+=======
+      this.alumno = this.al.getAlumno(this.auth.userData.id).pipe(map(val => {return val[0]}));
+  }
+
+  ngOnInit(): void {
+  
+>>>>>>> Stashed changes
   }
 
   logOut(){
