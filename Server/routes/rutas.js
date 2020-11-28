@@ -35,7 +35,7 @@ function createRouter(db) {
       }
     );
   });
-  //curso por ALUMNO 3
+  //curso por ALUMNO 3 3 tablas
   router.get('/cursosAlumno/:id', function (req, res) {
     const id =req.params.id
     db.query(
@@ -154,9 +154,9 @@ function createRouter(db) {
       }
     );
   });
-  //Materias que el profesor imparte 
+  //Materias que el profesor imparte 11 3 Tablas
   router.get('/MateriasProfesor/:idprof', function (req, res) {
-    const idprof =req.params.prof
+    const idprof =req.params.idprof
     db.query(
     'select * from materia  where id in (select id_materia from clases_de C left join grupo G on C.id_grupo= G.id where G.id_profesor=?)',
       [idprof],

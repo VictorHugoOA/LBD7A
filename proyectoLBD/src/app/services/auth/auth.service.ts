@@ -16,7 +16,16 @@ export class AuthService {
       apellidoMat: "Alvarez",
       password: "holaadios",
       tipo: "Estudiante"
-    }];
+    },
+    {
+      id: "235664",
+      nombre: "Nicole",
+      apellidoPat: "F",
+      apellidoMat: "S",
+      password: "a",
+      tipo: "Estudiante"
+    }
+  ];
 
   public userData: any;
 
@@ -34,7 +43,7 @@ export class AuthService {
       sessionStorage.setItem("user", JSON.stringify(this.userData));
       this.router.navigate(["/home"]);
     }else{
-      this.toastr.warning("Hubo un error en la contraseña y el usuario, por favro cheque que el usuario y la contraseña sean correctos", "Usuario y contraseña inválidos");
+      this.toastr.warning("Revise sus datos e intente de nuevo.", "Contraseña y/o Usuario incorrecto");
     }
   }
 
