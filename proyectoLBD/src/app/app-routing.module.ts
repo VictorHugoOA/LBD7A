@@ -14,7 +14,6 @@ import { CrearActividadComponent } from './components/crear-actividad/crear-acti
 
 const routes: Routes = [
   {path:'login', component: LoginComponent},
-  {path:'home', component:PrincipalComponent},
   {path:'curso', component: CursosComponent},
   {path:'alumnos/:id', component: AlumnosComponent},
   {path:'perfil', component: PerfilComponent},

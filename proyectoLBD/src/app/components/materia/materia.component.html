@@ -8,10 +8,11 @@
       <div *ngIf="curso | async" class="card">
         <div class="card-body">
           <h4 class="card-title">{{(curso | async)?.nombre}}</h4>
-          Aquí va el profesor - {{(curso | async)?.campo}}
+          {{(curso | async)?.campo}}
           <div *ngIf="auth.userData.tipo === 'Profesor'">
             <button type="button" style="background-color: #942646;" class="btn btn-primary btn-lg btn-block" (click)="routerActivity()">Crear actividad</button>
           </div>
+          <hr>
           <br />
           <p class="card-text">
           <div *ngFor="let actividad of actividades">
