@@ -1,20 +1,17 @@
 <nav class="navbar navbar-dark" style="background-color: #0c231e;">
   <span class="navbar-text">
     <img src="../../../assets/logo_chiquito.png" width="50px" height="50px">
-    <ng-template *ngIf="auth.userData != null; else login">
+    <ng-template *ngIf="alumno | async; else login">
       <a class="logo_link" routerLink="/home" style="color: #DBC9A7">Aula Virtual SEP</a>
     </ng-template>
     <ng-template #login>
       <a class="logo_link" routerLink="/login" style="color: #DBC9A7">Aula Virtual SEP</a>
     </ng-template>
   </span>
-  <span *ngIf="auth.userData == undefined; else ingresado" class="navbar-text">Usted no ha ingresado</span>
-  <ng-template #ingresado>
-    <div>
+    <div *ngIf="alumno | async">
       <a routerLink="/perfil">
         <span
-          class="navbar-text mr-4">{{auth.userData.nombre + " " + auth.userData.apellidoPat + " " + auth.userData.apellidoMat}}</span></a>
+          class="navbar-text mr-4">{{(alumno | async)?.nombre + " " + ((alumno | async))?.apellido_pat + " " + ((alumno | async))?.apellido_mat}}</span></a>
       <a (click)="logOut()"><span class="navbar-text"><i class="fas fa-sign-out-alt"></i></span></a>
     </div>
-  </ng-template>
 </nav>

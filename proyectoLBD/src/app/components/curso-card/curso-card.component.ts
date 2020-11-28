@@ -9,6 +9,7 @@ import { Curso } from 'src/app/services/cursos/cursos.service';
 export class CursoCardComponent implements OnInit {
 
   @Input() curso: any;
+  @Input() grupo: string;
   constructor() { }
 
   ngOnInit(): void {

@@ -5,10 +5,10 @@
             <app-calendario></app-calendario>
         </div>
         <div class="col-8">
-            <p class="h4">Profesor: {{info.nombre}} - Grupo: {{info.grado}}º-{{info.clase}}</p>
+            <p class="h4">Profesor: {{info.nombre}} {{info.apellido_pat}} {{info.apellido_mat}} - Grupo: {{info.grado}}º-{{info.clase}}</p>
             <div *ngIf="cursos">
                 <div *ngFor="let x of cursos">
-                    <app-curso-card [curso]="x"></app-curso-card>
+                    <app-curso-card [grupo]="info.id" [curso]="x"></app-curso-card>
                 </div>
             </div>
         </div>

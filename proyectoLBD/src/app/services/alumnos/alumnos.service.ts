@@ -11,14 +11,11 @@ export class AlumnosService {
   
 
   getAlumno(id: string) {
-    let result = {};
-    this.http.get(`localhost:3000/Alumno/${id}`).pipe((data: any) => {console.log(data); return data;}).subscribe((data:any) => result = data);
-    return result;
+    return this.http.get(`http://localhost:3000/Alumno/${id}`);
   }
 
-  getAlumnoActividadesCurso(idAlumno: string, idCurso: string) {
-  }
-  
-  getAlumnoActividadesCursoEntregadas(idAlumno: string, idCurso: string) {
+  getAvanceAlumno(id: string)
+  {
+    return this.http.get(`http://localhost:3000/Avances/${id}`);
   }
 }

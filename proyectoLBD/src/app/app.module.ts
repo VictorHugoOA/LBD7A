@@ -26,6 +26,7 @@ import { MateriaComponent } from './components/materia/materia.component';
 import { ActividadComponent } from './components/actividad/actividad.component';
 import { MaestroMateriasComponent } from './components/maestro-materias/maestro-materias.component';
 import { CrearActividadComponent } from './components/crear-actividad/crear-actividad.component';
+import { AlTutoriasSolicitarComponent } from './components/al-tutorias-solicitar/al-tutorias-solicitar.component';
 
 
 //Servicios
@@ -46,7 +47,8 @@ import { CrearActividadComponent } from './components/crear-actividad/crear-acti
     MateriaComponent,
     ActividadComponent,
     MaestroMateriasComponent,
-    CrearActividadComponent
+    CrearActividadComponent,
+    AlTutoriasSolicitarComponent
   ],
   imports: [
     BrowserModule,

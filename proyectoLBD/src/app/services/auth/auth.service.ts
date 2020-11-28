@@ -30,41 +30,61 @@ export class AuthService {
 
   public userData: any;
 
-  constructor( private router: Router, private toastr: ToastrService, private http: HttpClient) {
+  constructor(private router: Router, private toastr: ToastrService, private http: HttpClient) {
     this.userData = JSON.parse(sessionStorage.getItem("user"));
   }
 
 
-
-  login(user: string, password: string){
-    let userGet: any;
-
-
-    if(userGet = this.usersStudent.find((val, index) =>{ return (val.id == user && val.password == password)}))
-    {
-      this.userData = {id: userGet.id, nombre: userGet.nombre, apellidoPat: userGet.apellidoPat, apellidoMat: userGet.apellidoMat, tipo: userGet.tipo};
-      sessionStorage.setItem("user", JSON.stringify(this.userData));
-      if(this.userData.tipo == "Estudiante")
-        this.router.navigate(["/home"]);
-      else
-        this.router.navigate(['/homeTeacher']);
-    }else{
-      this.toastr.warning("Revise sus datos e intente de nuevo.", "Contraseña y/o Usuario incorrecto");
-    }
+  loginAlumno(user: string, password: string) {
+    return this.http.get(`http://localhost:3000/LoginA/${user}/${password}`);
   }
 
-  checkStudent(user: string): string
-  {
+  loginProfesor(user: string, password: string) {
+    return this.http.get(`http://localhost:3000/LoginP/${user}/${password}`);
+  }
+
+
+  login(user: string, password: string) {
+
+    if (user[0] == 'a') {
+      this.loginAlumno(user, password).subscribe((data: any) => {
+        if (data[0].length) {
+          this.userData = { id: data[0][0].id, tipo: "Estudiante" };
+          sessionStorage.setItem("user", JSON.stringify(this.userData));
+          this.router.navigate(['/home']);
+        } else {
+          this.toastr.warning("Revise sus datos e intente de nuevo.", "Contraseña y/o Usuario incorrecto");
+        }
+      },
+        err => this.toastr.error(err, "Error en el sistema"));
+    }
+    else {
+
+      this.loginProfesor(user, password).subscribe((data: any) => {
+        if (data[0].length) {
+          this.userData = { id: data[0][0].id, tipo: "Estudiante" };
+          sessionStorage.setItem("user", JSON.stringify(this.userData));
+          this.router.navigate(['/homeTeacher']);
+        } else {
+          this.toastr.warning("Revise sus datos e intente de nuevo.", "Contraseña y/o Usuario incorrecto");
+        }
+      },
+        err => this.toastr.error(err, "Error en el sistema"));
+
+    }
+
+  }
+
+  checkStudent(user: string): string {
     let result = user;
-    if(/\d{5}/.test(user) && result.length == 8){
+    if (/\d{5}/.test(user) && result.length == 8) {
       result = user.substring(2);
     }
     return result;
   }
 
-  signOut(){
+  signOut() {
     this.userData = null;
     sessionStorage.removeItem("user");
-    this.router.navigate(["/login"]);
   }
 }

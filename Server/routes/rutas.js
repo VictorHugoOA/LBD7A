@@ -24,7 +24,7 @@ function createRouter(db) {
   router.get('/Alumno/:id', function (req, res) {
     const id =req.params.id
     db.query(
-    'select * from Alumno where id=?',
+    'select alumno.id, alumno.nombre, alumno.apellido_pat, alumno.apellido_mat, grupo.grado, grupo.clase, alumno.sexo from alumno, grupo where alumno.id=? and grupo.id = alumno.id_grupo',
       id,
       (error, results) => {
         if (error) throw error;
@@ -187,7 +187,7 @@ function createRouter(db) {
     const idalumno =req.params.idalumno
     const cont=req.params.contrasena
     db.query(
-    'call login_alumno(?, ?)',
+    'call login_alumno(?, ?);',
       [idalumno,cont],
       (error, results) => {
         if (error) throw error;
@@ -216,7 +216,7 @@ function createRouter(db) {
   router.get('/Avances/:idalum', function (req, res) {
     const idalum =req.params.idalum
     db.query(
-    'call avances(?, @out); select @out;',
+    'call avances(?);',
       [idalum],
       (error, results) => {
         if (error) throw error;

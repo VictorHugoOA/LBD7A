@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { AlumnosService } from 'src/app/services/alumnos/alumnos.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Curso, CursosService } from 'src/app/services/cursos/cursos.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-perfil',
@@ -16,7 +17,7 @@ export class PerfilComponent implements OnInit {
   userObs: Observable<any>;
 
   c: Observable<any>;
-  cursos: any[];
+  cursos: any[] = [];
   avance: number[] = [];
 
   constructor(private auth: AuthService, private al: AlumnosService, private cur: CursosService, private cd: ChangeDetectorRef) { }
@@ -25,10 +26,17 @@ export class PerfilComponent implements OnInit {
     if(this.auth.userData.tipo == "Estudiante")
     {
 
-      this.user = this.al.getAlumno(this.auth.userData.id)
+      this.userObs = this.al.getAlumno(this.auth.userData.id).pipe(map(val => {return val[0]}))
 
-        this.cur.getCursosAlumno(this.auth.userData.id).subscribe((data) =>{
-          console.log(data);
+        this.cur.getCursosAlumno(this.auth.userData.id).subscribe((data:any[]) =>{
+          for(var i = 0; i < data.length; ++i)
+          {
+            this.cursos.push(data[i]);
+            this.avance.push(0);
+          }
+          this.al.getAvanceAlumno(this.auth.userData.id).subscribe((av:any) => {
+            console.log(av);
+          })
           this.cd.detectChanges();
         })
 
