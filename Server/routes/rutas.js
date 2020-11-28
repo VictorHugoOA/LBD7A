@@ -35,7 +35,7 @@ function createRouter(db) {
       }
     );
   });
-  //curso por ALUMNO 3 3 tablas
+  //curso por ALUMNO 3 (3 tablas)
   router.get('/cursosAlumno/:id', function (req, res) {
     const id =req.params.id
     db.query(
@@ -96,7 +96,7 @@ function createRouter(db) {
       }
     );
   });
-  //Actividades por grupo y materia pendiente 7
+  //Actividades por grupo y materia 7 (3 tablas)
   router.get('/ActividadesMateriaGrupo/:idgrup/:idmat', function (req, res) {
     const idgrup =req.params.idgrup
     const idmat =req.params.idmat
@@ -144,7 +144,7 @@ function createRouter(db) {
     const idprof =req.params.prof
     const idgrup =req.params.idgrup
     db.query(
-    'select * from alumno A left join grupo G on A.id_grupo=G.id where G.id_profesor= ? and G.id=?',
+    'select * from ListaAlumnos where id_profesor= ? and id_grupo=?',
       [idprof,idgrup],
       (error, results) => {
         if (error) throw error;
@@ -154,7 +154,7 @@ function createRouter(db) {
       }
     );
   });
-  //Materias que el profesor imparte 11 3 Tablas
+  //Materias que el profesor imparte 11 (3 Tablas)
   router.get('/MateriasProfesor/:idprof', function (req, res) {
     const idprof =req.params.idprof
     db.query(
@@ -168,7 +168,7 @@ function createRouter(db) {
       }
     );
   });
-  //Obtener el profesor y grupo del alumno 12
+  //Obtener el profesor y grupo del alumno 12 (3 Tablas)
   router.get('/AlumnoProfesor/:idalumno', function (req, res) {
     const idalumno =req.params.idalumno
     db.query(
@@ -182,12 +182,13 @@ function createRouter(db) {
       }
     );
   });
-
-  router.get('/LoginA/:idalumno', function (req, res) {
+  //Login Vista Alumno 13
+  router.get('/LoginA/:idalumno/:contrasena', function (req, res) {
     const idalumno =req.params.idalumno
+    const cont=req.params.contrasena
     db.query(
-    'select * from loginA where id=?',
-      [idalumno],
+    'call login_alumno(?, ?)',
+      [idalumno,cont],
       (error, results) => {
         if (error) throw error;
         res.send(results);
@@ -196,12 +197,13 @@ function createRouter(db) {
       }
     );
   });
-
-  router.get('/LoginP/:idprof', function (req, res) {
+  //Login Vista profesor 14
+  router.get('/LoginP/:idprof/:contrasena', function (req, res) {
     const idprof =req.params.idprof
+    const cont=req.params.contrasena
     db.query(
-    'select * from loginP where id=?',
-      [idprof],
+    'call login_profesor(?, ?);',
+      [idprof,cont],
       (error, results) => {
         if (error) throw error;
         res.send(results);
@@ -210,6 +212,21 @@ function createRouter(db) {
       }
     );
   });
+  //Avances
+  router.get('/Avances/:idalum', function (req, res) {
+    const idalum =req.params.idalum
+    db.query(
+    'call avances(?, @out); select @out;',
+      [idalum],
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);       
+      }
+    );
+  });
+  
   return router;
 }
 
