@@ -10,7 +10,7 @@ export class AuthService {
 
   usersStudent: any[] = [
     {
-      id: "240045",
+      id: "a000001",
       nombre: "Victor Hugo",
       apellidoPat: "Olivetti",
       apellidoMat: "Alvarez",
@@ -33,9 +33,9 @@ export class AuthService {
     this.userData = JSON.parse(sessionStorage.getItem("user"));
   }
 
-  login(user: string, password: string){
-    user = this.checkStudent(user);
+  
 
+  login(user: string, password: string){
     let userGet: any;
     if(userGet = this.usersStudent.find((val, index) =>{ return (val.id == user && val.password == password)}))
     {

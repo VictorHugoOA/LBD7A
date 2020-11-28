@@ -23,6 +23,11 @@ export class ActividadesService {
   {
 
   }
+
+  getActividadesPendientesAlumno()
+  {
+
+  }
 }
 
 

@@ -1,11 +1,15 @@
-<div class="container">
+<app-navbar></app-navbar>
+<div class="container-fluid">
     <div class="row justify-content-between">
         <div class="col-4">
             <app-calendario></app-calendario>
         </div>
         <div class="col-8">
-            <div *ngFor="let curso of cursos">
-                <app-curso-card [curso]="curso"></app-curso-card>
+            <p class="h4">Profesor: {{info.nombre}} - Grupo: {{info.grado}}º-{{info.clase}}</p>
+            <div *ngIf="cursos">
+                <div *ngFor="let x of cursos">
+                    <app-curso-card [curso]="x"></app-curso-card>
+                </div>
             </div>
         </div>
     </div>

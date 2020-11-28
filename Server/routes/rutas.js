@@ -158,8 +158,22 @@ function createRouter(db) {
   router.get('/MateriasProfesor/:idprof', function (req, res) {
     const idprof =req.params.idprof
     db.query(
-    'select * from materia  where id in (select id_materia from clases_de C left join grupo G on C.id_grupo= G.id where G.id_profesor=?)',
+    'select * from materia where id in (select id_materia from clases_de C left join grupo G on C.id_grupo= G.id where G.id_profesor=?)',
       [idprof],
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);       
+      }
+    );
+  });
+  //Obtener el profesor y grupo del alumno 12
+  router.get('/AlumnoProfesor/:idalumno', function (req, res) {
+    const idalumno =req.params.idalumno
+    db.query(
+    'select profesor.*, grupo.* from alumno, grupo, profesor where alumno.id = ? and alumno.id_grupo = grupo.id and grupo.id_profesor = profesor.id',
+      [idalumno],
       (error, results) => {
         if (error) throw error;
         res.send(results);
