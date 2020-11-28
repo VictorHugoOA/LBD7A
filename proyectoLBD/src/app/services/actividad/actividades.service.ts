@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,18 +6,10 @@ import { Injectable } from '@angular/core';
 })
 export class ActividadesService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getActividadesCurso(idCurso: string) {
-
-  }
-
-  getActividad(idActividad: string) {
-
-  }
-
-  getActividades(id: string){
-    
+  getActividadesGrupo(idCurso: string, idG: string) {
+    return this.http.get(`http://localhost:3000/ActividadesMateriaGrupo/${idG}/${idCurso}`);
   }
 
   crearActividad(actividad: any)
@@ -24,10 +17,6 @@ export class ActividadesService {
 
   }
 
-  getActividadesPendientesAlumno()
-  {
-
-  }
 }
 
 

@@ -51,7 +51,7 @@ export class AuthService {
         if (data[0].length) {
           this.userData = { id: data[0][0].id, tipo: "Estudiante" };
           sessionStorage.setItem("user", JSON.stringify(this.userData));
-          this.router.navigate(['/home']);
+          this.router.navigate(['/cursos']);
         } else {
           this.toastr.warning("Revise sus datos e intente de nuevo.", "Contraseña y/o Usuario incorrecto");
         }
