@@ -8,7 +8,8 @@ const connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : 'password',
-  database : 'aulavirtualsep'
+  database : 'aulavirtualsep',
+  port: '3306'
 });
 
 

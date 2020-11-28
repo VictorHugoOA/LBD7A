@@ -1,7 +1,6 @@
 import { prepareSyntheticPropertyName } from '@angular/compiler/src/render3/util';
 import { Component, OnInit } from '@angular/core';
 import { Activity } from 'src/app/services/actividad/actividades.service';
-import { Alumno } from 'src/app/services/alumnos/alumnos.service';
 
 @Component({
   selector: 'app-alumnos',
@@ -10,7 +9,7 @@ import { Alumno } from 'src/app/services/alumnos/alumnos.service';
 })
 export class AlumnosComponent implements OnInit {
 
-  alumnos: Alumno[] = [];
+  alumnos: any[] = [];
   constructor() { }
 
   ngOnInit(): void {

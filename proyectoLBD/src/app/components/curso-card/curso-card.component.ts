@@ -8,7 +8,7 @@ import { Curso } from 'src/app/services/cursos/cursos.service';
 })
 export class CursoCardComponent implements OnInit {
 
-  @Input() curso: Curso;
+  @Input() curso: any;
   constructor() { }
 
   ngOnInit(): void {

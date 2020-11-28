@@ -8,7 +8,7 @@
                 <div class="col-8">
                     <div class="card">
                         <div class="card-body">
-                            Perfil del usuario: {{auth.userData.nombre + " " + auth.userData.apellidoPat + " " + auth.userData.apellidoMat}}
+                            Perfil del usuario: {{((userObs | async))?.nombre + " " + ((userObs | async))?.apellidoPat + " " + ((userObs | async))?.apellidoMat}}
                             <div style="border-left: 1px solid #000; height: 100%; display: inline;">&nbsp;</div>
                             Aquí va una pinche imágen perrona
                         </div>
