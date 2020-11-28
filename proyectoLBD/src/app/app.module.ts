@@ -21,6 +21,10 @@ import { ToastrModule } from 'ngx-toastr';
 //Servicios
 import { AuthService } from './services/auth/auth.service';
 import { CursoCardComponent } from './components/curso-card/curso-card.component';
+import { MateriaComponent } from './components/materia/materia.component';
+import { ActividadComponent } from './components/actividad/actividad.component';
+import { MaestroMateriasComponent } from './components/maestro-materias/maestro-materias.component';
+import { CrearActividadComponent } from './components/crear-actividad/crear-actividad.component';
 
 
 //Servicios
@@ -37,7 +41,11 @@ import { CursoCardComponent } from './components/curso-card/curso-card.component
     CursosComponent,
     AlumnosComponent,
     PerfilComponent,
-    CursoCardComponent
+    CursoCardComponent,
+    MateriaComponent,
+    ActividadComponent,
+    MaestroMateriasComponent,
+    CrearActividadComponent
   ],
   imports: [
     BrowserModule,

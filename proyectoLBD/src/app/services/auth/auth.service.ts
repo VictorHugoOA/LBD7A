@@ -39,9 +39,12 @@ export class AuthService {
     let userGet: any;
     if(userGet = this.usersStudent.find((val, index) =>{ return (val.id == user && val.password == password)}))
     {
-      this.userData = {nombre: userGet.nombre, apellidoPat: userGet.apellidoPat, apellidoMat: userGet.apellidoMat, tipo: userGet.tipo};
+      this.userData = {id: userGet.id, nombre: userGet.nombre, apellidoPat: userGet.apellidoPat, apellidoMat: userGet.apellidoMat, tipo: userGet.tipo};
       sessionStorage.setItem("user", JSON.stringify(this.userData));
-      this.router.navigate(["/home"]);
+      if(this.userData.tipo == "Estudiante")
+        this.router.navigate(["/home"]);
+      else
+        this.router.navigate(['/homeTeacher']);
     }else{
       this.toastr.warning("Revise sus datos e intente de nuevo.", "Contraseña y/o Usuario incorrecto");
     }
