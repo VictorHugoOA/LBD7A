@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,18 +6,16 @@ import { Injectable } from '@angular/core';
 })
 export class AlumnosService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getAlumno() {
+  
 
+  getAlumno(id: string) {
+    return this.http.get(`http://localhost:3000/Alumno/${id}`);
   }
-  getAlumnoActividadesCurso(idAlumno: string, idCurso: string) {
 
+  getAvanceAlumno(id: string)
+  {
+    return this.http.get(`http://localhost:3000/Avances/${id}`);
   }
-  getAlumnoActividadesCursoEntregadas(idAlumno: string, idCurso: string) {
-  }
-}
-
-export class Alumno{
-
 }

@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div class="container-fluid">
     <div class="row justify-content-between">
         <div class="col-4 md-auto">
@@ -8,7 +9,8 @@
                 <div class="col-8">
                     <div class="card">
                         <div class="card-body">
-                            Perfil del usuario: {{auth.userData.nombre + " " + auth.userData.apellidoPat + " " + auth.userData.apellidoMat}}
+                            Perfil del usuario:
+                            {{((userObs | async))?.nombre + " " + ((userObs | async))?.apellido_pat + " " + ((userObs | async))?.apellido_mat}}
                             <div style="border-left: 1px solid #000; height: 100%; display: inline;">&nbsp;</div>
                             Aquí va una pinche imágen perrona
                         </div>
@@ -19,15 +21,23 @@
                 <div class="col-2">
                     <div class="card">
                         <div class="card-body">
-                            Este es el grado del usuario
+                            Grado: {{(userObs | async)?.grado}}
                         </div>
                     </div>
 
                 </div>
-                <div class="col-6">
+                <div class="col-2">
                     <div class="card">
                         <div class="card-body">
-                            Nombre de la institución del usuario
+                            Grupo: {{(userObs | async)?.clase}}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            Secretaria de educación pública
                         </div>
                     </div>
 
@@ -39,10 +49,12 @@
                         <div class="card-body">
                             Cursos
                             <hr>
-                            <div *ngFor="let curso of cursos">
-                                <p class="card-text">
-
-                                </p>
+                            <div *ngIf="cursos">
+                                <div *ngFor="let curso of cursos">
+                                    <p class="card-text">
+                                        {{curso.nombre}}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -53,11 +65,16 @@
                         <div class="card-body">
                             Avances
                             <hr>
-                            <div *ngFor="let a of avance">
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div>    
-                            </div>                          
+                            <div *ngFor="let C of cursos; index as i">
+                                <div class="pt-2">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" [ngStyle]="{backgroundColor: '#942646', width: (avance[i] + '%')}"
+                                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                            <span>{{C.nombre}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

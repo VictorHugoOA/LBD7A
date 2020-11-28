@@ -17,6 +17,7 @@ import { AlumnosComponent } from './components/alumnos/alumnos.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
 
 //Servicios
 import { AuthService } from './services/auth/auth.service';
@@ -25,6 +26,7 @@ import { MateriaComponent } from './components/materia/materia.component';
 import { ActividadComponent } from './components/actividad/actividad.component';
 import { MaestroMateriasComponent } from './components/maestro-materias/maestro-materias.component';
 import { CrearActividadComponent } from './components/crear-actividad/crear-actividad.component';
+import { AlTutoriasSolicitarComponent } from './components/al-tutorias-solicitar/al-tutorias-solicitar.component';
 
 
 //Servicios
@@ -45,7 +47,8 @@ import { CrearActividadComponent } from './components/crear-actividad/crear-acti
     MateriaComponent,
     ActividadComponent,
     MaestroMateriasComponent,
-    CrearActividadComponent
+    CrearActividadComponent,
+    AlTutoriasSolicitarComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,7 @@ import { CrearActividadComponent } from './components/crear-actividad/crear-acti
     ReactiveFormsModule,
     ScheduleModule, RecurrenceEditorModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     ToastrModule.forRoot()
   ],
   providers: [DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService, AuthService],
