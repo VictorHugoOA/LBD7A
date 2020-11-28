@@ -5,7 +5,7 @@ const express = require("express");
 
 function createRouter(db) {
   const router = express.Router();
-//info de materia 1
+  //info de materia 1
   router.get('/Materia/:id', function (req, res) {
     const id =req.params.id
     db.query(
@@ -183,6 +183,33 @@ function createRouter(db) {
     );
   });
 
+  router.get('/LoginA/:idalumno', function (req, res) {
+    const idalumno =req.params.idalumno
+    db.query(
+    'select * from loginA where id=?',
+      [idalumno],
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);       
+      }
+    );
+  });
+
+  router.get('/LoginP/:idprof', function (req, res) {
+    const idprof =req.params.idprof
+    db.query(
+    'select * from loginP where id=?',
+      [idprof],
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);       
+      }
+    );
+  });
   return router;
 }
 
