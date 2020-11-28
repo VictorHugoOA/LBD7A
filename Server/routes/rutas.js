@@ -24,7 +24,7 @@ function createRouter(db) {
   router.get('/Alumno/:id', function (req, res) {
     const id =req.params.id
     db.query(
-    'select * from Alumno where id=?',
+    'select * from alumno, grupo where id=? and grupo.id = alumno.id_grupo',
       id,
       (error, results) => {
         if (error) throw error;
@@ -187,7 +187,7 @@ function createRouter(db) {
     const idalumno =req.params.idalumno
     const cont=req.params.contrasena
     db.query(
-    'call login_alumno(?, ?)',
+    'call login_alumno(?, ?);',
       [idalumno,cont],
       (error, results) => {
         if (error) throw error;
