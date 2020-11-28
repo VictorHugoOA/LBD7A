@@ -50,7 +50,7 @@ function createRouter(db) {
       }
     );
   });
-  //Actividades mostradas por materia y alumno 4
+  //Actividades mostradas por materia y alumno 4 pendiente
   router.get('/AlumnoActividades/:idalum/:idmat', function (req, res) {
     const idalum =req.params.idalum
     const idmat =req.params.idmat
@@ -71,7 +71,7 @@ function createRouter(db) {
     const idalum =req.params.idalum
     const idmat =req.params.idmat
     db.query(
-    'select * from actividad Act left join realiza Rea on Act.id=Rea.id_actividad where id_alumno = ? and Act.id_materia =? and Act.estado ="Entregada"',
+    'select * from actividad Act left join realiza Rea on Act.id=Rea.id_actividad where id_alumno = ? and Act.id_materia =? and Act.estado ="1"',
       [idalum,idmat],
       (error, results) => {
         if (error) throw error;
@@ -141,7 +141,7 @@ function createRouter(db) {
   });
   //Lista de alumnos por grupo y profesor 10
   router.get('/GrupoAlumProfesor/:idprof/:idgrup', function (req, res) {
-    const idprof =req.params.prof
+    const idprof =req.params.idprof
     const idgrup =req.params.idgrup
     db.query(
     'select * from ListaAlumnos where id_profesor= ? and id_grupo=?',
@@ -212,7 +212,7 @@ function createRouter(db) {
       }
     );
   });
-  //Avances
+  //Avances 15
   router.get('/Avances/:idalum', function (req, res) {
     const idalum =req.params.idalum
     db.query(
@@ -226,7 +226,21 @@ function createRouter(db) {
       }
     );
   });
-  
+  //Actividades pendientes por alumno 16
+  router.get('/AlumnoActividadesPendientes/:idalum', function (req, res) {
+    const idalum =req.params.idalum 
+    db.query(
+    'select * from actividad Act left join realiza Rea on Act.id=Rea.id_actividad where Rea.id_alumno = ? and Act.estado=0 and Rea.estado_entrega =0',
+      [idalum],
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);
+        
+      }
+    );
+  });
   return router;
 }
 
