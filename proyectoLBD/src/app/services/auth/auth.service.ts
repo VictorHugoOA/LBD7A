@@ -31,7 +31,6 @@ export class AuthService {
   public userData: any;
 
   constructor(private router: Router, private toastr: ToastrService, private http: HttpClient) {
-    this.userData = JSON.parse(sessionStorage.getItem("user"));
   }
 
 
@@ -50,7 +49,6 @@ export class AuthService {
       this.loginAlumno(user, password).subscribe((data: any) => {
         if (data[0].length) {
           this.userData = { id: data[0][0].id, tipo: "Estudiante" };
-          sessionStorage.setItem("user", JSON.stringify(this.userData));
           this.router.navigate(['/cursos']);
         } else {
           this.toastr.warning("Revise sus datos e intente de nuevo.", "Contraseña y/o Usuario incorrecto");
@@ -63,7 +61,6 @@ export class AuthService {
       this.loginProfesor(user, password).subscribe((data: any) => {
         if (data[0].length) {
           this.userData = { id: data[0][0].id, tipo: "Estudiante" };
-          sessionStorage.setItem("user", JSON.stringify(this.userData));
           this.router.navigate(['/homeTeacher']);
         } else {
           this.toastr.warning("Revise sus datos e intente de nuevo.", "Contraseña y/o Usuario incorrecto");
@@ -75,16 +72,7 @@ export class AuthService {
 
   }
 
-  checkStudent(user: string): string {
-    let result = user;
-    if (/\d{5}/.test(user) && result.length == 8) {
-      result = user.substring(2);
-    }
-    return result;
-  }
-
   signOut() {
     this.userData = null;
-    sessionStorage.removeItem("user");
   }
 }

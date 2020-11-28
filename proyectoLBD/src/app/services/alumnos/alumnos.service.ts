@@ -8,8 +8,6 @@ export class AlumnosService {
 
   constructor(private http: HttpClient) { }
 
-  
-
   getAlumno(id: string) {
     return this.http.get(`http://localhost:3000/Alumno/${id}`);
   }
@@ -18,4 +16,5 @@ export class AlumnosService {
   {
     return this.http.get(`http://localhost:3000/Avances/${id}`);
   }
+
 }
