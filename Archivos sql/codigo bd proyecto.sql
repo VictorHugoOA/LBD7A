@@ -116,7 +116,7 @@ A.estado,A.retraso,A.id_materia from
 realiza R left join actividad A on R.id_actividad=A.id;
 create view LoginA as select id,contrasena from alumno;
 create view LoginP as select id,contrasena from profesor;
-create view listaalumnos as select A.* ,G.id_profesor from 
+create view listaalumnos as select A.id, A.nombre, A.apellido_pat, A.apellido_mat, A.id_grupo, G.id_profesor from 
 alumno A left join grupo G on A.id_grupo=G.id;
 create view grupoAl as select A.id, A.nombre, A.apellido_pat, A.apellido_mat, G.grado, G.clase from
 alumno A left join grupo G on A.id_grupo=G.id;
