@@ -120,6 +120,7 @@ create view listaalumnos as select A.* ,G.id_profesor from
 alumno A left join grupo G on A.id_grupo=G.id;
 create view grupoAl as select A.id, A.nombre, A.apellido_pat, A.apellido_mat, G.grado, G.clase from
 alumno A left join grupo G on A.id_grupo=G.id;
+
 /*Creación del procedimiento para login_alumno*/
 DELIMITER //
 create procedure aulavirtualsep.login_alumno (in userid varchar(10), in pass varchar(15))

@@ -1,11 +1,20 @@
 <nav style="background-color: #22584C" class="navbar navbar-expand-lg navbar-dark">
     <div style="background-color: #22584C" class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+        <!--HACER CONDICION DE INICIO PARA BRINDAR EL INICIO SI ES MAESTRO O ALUMNO-->
             <li class="nav-item active">
-                <a class="nav-link" href="#">Tutorías</a>
+                <a class="nav-link" href="/home">Inicio</a>
             </li>
-            <li class="nav-item">
+             <li class="nav-item active">
+                <a class="nav-link" href="/homeTeacher">Inicio</a>
+            </li>
+       
+            <li class="nav-item active">
                 <a class="nav-link" href="/cursos">Cursos</a>
+            </li>
+
+            <li class="nav-item ">
+                <a class="nav-link" href="#">Tutorías</a>
             </li>
         </ul>
         <div *ngIf="alumno | async">
