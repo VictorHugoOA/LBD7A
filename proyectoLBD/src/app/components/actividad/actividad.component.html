@@ -8,10 +8,18 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">{{actividad.titulo}}</h4>
+          <p class="card-text">{{actividad['descripción']}}</p>
           <p class="card-text">
-            Fecha límite: {{actividad.entrega | date}} | Fecha entrega: {{actividad.entregada | date}}
+            Fecha límite: {{actividad.fecha_limite | date}} | Fecha entrega: {{actividad.fecha_entrega | date}}
           </p>
+          <div *ngIf="!actividad.estado">
+            <div *ngIf="!actividad.estado_entrega; else editar">
+              <button style="background-color: #942646;" class="btn btn-primary btn-lg">Realizar Entrega</button>
+            </div>
+            <ng-template #editar><button style="background-color: #942646;" class="btn btn-primary btn-lg">Editar Entrega</button></ng-template>
+          </div>
           <p class="card-text">
+            
           <div *ngIf="auth.userData.tipo == 'Estudiante'">
             Calificación:
             <div *ngIf="actividad.calificacion > 8; else medio">
