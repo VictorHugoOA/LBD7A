@@ -118,6 +118,8 @@ create view LoginA as select id,contrasena from alumno;
 create view LoginP as select id,contrasena from profesor;
 create view listaalumnos as select A.* ,G.id_profesor from 
 alumno A left join grupo G on A.id_grupo=G.id;
+create view grupoAl as select A.id, A.nombre, A.apellido_pat, A.apellido_mat, G.grado, G.clase from
+alumno A left join grupo G on A.id_grupo=G.id;
 
 /*Creación del procedimiento para login_alumno*/
 DELIMITER //
@@ -155,4 +157,5 @@ DELIMITER ;
 
 /*Ejemplo para ejecutar el procedimiento para avances
 call avances("a000001", @out); select @out;*/
+
 
