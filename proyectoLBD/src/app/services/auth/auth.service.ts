@@ -8,32 +8,10 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AuthService {
 
-
-  usersStudent: any[] = [
-    {
-      id: "a000001",
-      nombre: "Victor Hugo",
-      apellidoPat: "Olivetti",
-      apellidoMat: "Alvarez",
-      password: "holaadios",
-      tipo: "Estudiante"
-    },
-    {
-      id: "235664",
-      nombre: "Nicole",
-      apellidoPat: "F",
-      apellidoMat: "S",
-      password: "a",
-      tipo: "Estudiante"
-    }
-  ];
-
-  public userData: any;
+  public userData: any = {};
 
   constructor(private router: Router, private toastr: ToastrService, private http: HttpClient) {
   }
-
-
   loginAlumno(user: string, password: string) {
     return this.http.get(`http://localhost:3000/LoginA/${user}/${password}`);
   }
@@ -49,7 +27,7 @@ export class AuthService {
       this.loginAlumno(user, password).subscribe((data: any) => {
         if (data[0].length) {
           this.userData = { id: data[0][0].id, tipo: "Estudiante" };
-          this.router.navigate(['/cursos']);
+          this.router.navigate(['/home']);
         } else {
           this.toastr.warning("Revise sus datos e intente de nuevo.", "Contraseña y/o Usuario incorrecto");
         }
@@ -60,7 +38,7 @@ export class AuthService {
 
       this.loginProfesor(user, password).subscribe((data: any) => {
         if (data[0].length) {
-          this.userData = { id: data[0][0].id, tipo: "Estudiante" };
+          this.userData = { id: data[0][0].id, tipo: "Profesor" };
           this.router.navigate(['/homeTeacher']);
         } else {
           this.toastr.warning("Revise sus datos e intente de nuevo.", "Contraseña y/o Usuario incorrecto");

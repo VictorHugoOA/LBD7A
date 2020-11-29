@@ -8,10 +8,5 @@
       <a class="logo_link" routerLink="/login" style="color: #DBC9A7">Aula Virtual SEP</a>
     </ng-template>
   </span>
-    <div *ngIf="alumno | async">
-      <a routerLink="/perfil">
-        <span
-          class="navbar-text mr-4">{{(alumno | async)?.nombre + " " + ((alumno | async))?.apellido_pat + " " + ((alumno | async))?.apellido_mat}}</span></a>
-      <a (click)="logOut()"><span class="navbar-text"><i class="fas fa-sign-out-alt"></i></span></a>
-    </div>
+  <a href="" class="nav-link disabled" style="color: white">{{now | date:'medium':'mx'}}</a>
 </nav>
