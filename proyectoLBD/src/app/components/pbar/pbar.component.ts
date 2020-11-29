@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Observable} from 'rxjs';
 import { AlumnosService } from 'src/app/services/alumnos/alumnos.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -14,16 +14,13 @@ export class PbarComponent implements OnInit {
 
   alumno: Observable<any>;
 
-  constructor(private auth: AuthService, private al: AlumnosService, private router: Router) {
-    this.alumno = this.al.getAlumno(this.auth.userData.id).pipe(map(val => {return val[0]}));
+  public now: Date = new Date()
+
+  constructor(private auth: AuthService, private al: AlumnosService, private router: Router, private cd: ChangeDetectorRef) {
+    setInterval(() => {this.now = new Date()}, 1)
   }
 
   ngOnInit(): void {
-  }
-
-  logOut(){
-    this.auth.signOut();
-    this.router.navigate(['/login'])
   }
 
 }
