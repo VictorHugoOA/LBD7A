@@ -241,6 +241,23 @@ function createRouter(db) {
       }
     );
   });
+  //actividad alumno
+  router.get('/AlumnoActividad/:idalum/:idact', function (req, res) {
+    const idalum =req.params.idalum
+    const idact =req.params.idact
+    db.query(
+    'select * from actividad Act left join realiza Rea on Act.id=Rea.id_actividad where id_alumno = ? and Act.id =?',
+      [idalum,idact],
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);
+        
+      }
+    );
+  });
+  
   return router;
 }
 
