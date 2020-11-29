@@ -9,9 +9,10 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class ActividadComponent implements OnInit {
 
-  actividad: any;
-  calificacion: number;
-  constructor() { }
+  actividad: any ={};
+  constructor(public auth: AuthService) {
+
+  }
 
   ngOnInit(): void {
   }

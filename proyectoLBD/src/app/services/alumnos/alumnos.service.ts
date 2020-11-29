@@ -17,4 +17,14 @@ export class AlumnosService {
   {
     return this.http.get(`http://localhost:3000/Avances/${id}`);
   }
+
+  getPendientes(id: string){
+    return this.http.get(`http://localhost:3000/AlumnoActividadesPendientes/${id}`);
+  }
+
+  getActividadAlumno(idAlumno: string, idActividad: string)
+  {
+    return this.http.get(`http://localhost:3000/`);
+  }
+
 }

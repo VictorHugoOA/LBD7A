@@ -287,6 +287,18 @@ Values
 ("a000059","Samir","Ayala","Saldivar","g-12","M","c000059"),
 ("a000060","Ibrahim","Garcia","Zavala","g-12","M","c000060");
 
+insert into actividad (id, titulo,  descripción, id_materia, fecha_limite, hora_limite, retraso) 
+values (1, "Actividad de prueba 1", "Esto es una sola actividad para probar como se verá todo lo demás" ,"m-002", '2021-4-4', 0,  0);
+
+insert into actividad (id, titulo,  descripción, id_materia, fecha_limite, hora_limite, retraso) 
+values (2, "Actividad de prueba 2", "Esto es una sola actividad para probar como se verá todo lo demás" ,"m-002", '2021-4-4', 0,  0);
+
+insert into realiza (id_alumno, id_actividad)
+values ("a000036", 1);
+
+insert into realiza (id_alumno, id_actividad)
+values ("a000036", 2);
+
 
 
 

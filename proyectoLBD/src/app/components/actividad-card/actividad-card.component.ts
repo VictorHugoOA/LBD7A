@@ -8,7 +8,7 @@ import { Activity } from 'src/app/services/actividad/actividades.service';
 })
 export class ActividadCardComponent implements OnInit {
 
-  @Input() actividad: Activity;
+  @Input() actividad: any;
   constructor() { }
 
   ngOnInit(): void {

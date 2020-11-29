@@ -28,6 +28,7 @@ z
       this.loginAlumno(user, password).subscribe((data: any) => {
         if (data[0].length) {
           this.userData = { id: data[0][0].id, tipo: "Estudiante" };
+          sessionStorage.setItem("user", JSON.stringify(this.userData));
           this.router.navigate(['/home']);
         } else {
           this.toastr.warning("Revise sus datos e intente de nuevo.", "Contraseña y/o Usuario incorrecto");
@@ -40,6 +41,7 @@ z
       this.loginProfesor(user, password).subscribe((data: any) => {
         if (data[0].length) {
           this.userData = { id: data[0][0].id, tipo: "Profesor" };
+          sessionStorage.setItem("user", JSON.stringify(this.userData));
           this.router.navigate(['/homeTeacher']);
         } else {
           this.toastr.warning("Revise sus datos e intente de nuevo.", "Contraseña y/o Usuario incorrecto");
