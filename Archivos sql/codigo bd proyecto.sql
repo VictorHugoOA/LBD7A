@@ -111,7 +111,8 @@ create table imparte(
 );
 
 /*vistas*/
-create view alumnosact as select R.*, A.*from
+create view alumnosact as select R.*, A.titulo, A.fecha_limite, A.hora_limite, A.descripción,
+A.estado,A.retraso,A.id_materia from
 realiza R left join actividad A on R.id_actividad=A.id;
 create view LoginA as select id,contrasena from alumno;
 create view LoginP as select id,contrasena from profesor;
