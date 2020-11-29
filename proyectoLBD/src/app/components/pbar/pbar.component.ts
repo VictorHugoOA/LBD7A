@@ -16,7 +16,7 @@ export class PbarComponent implements OnInit {
 
   public now: Date = new Date()
 
-  constructor(private auth: AuthService, private al: AlumnosService, private router: Router, private cd: ChangeDetectorRef) {
+  constructor(private auth: AuthService, private router: Router, private cd: ChangeDetectorRef) {
     setInterval(() => {this.now = new Date()}, 1)
   }
 
