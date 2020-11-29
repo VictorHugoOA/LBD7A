@@ -16,8 +16,7 @@ export class PrincipalComponent implements OnInit {
   alumno: any;
 
   constructor(private auth: AuthService, private al: AlumnosService) {
-    this.al.getAlumno(this.auth.userData.id).subscribe((data:any)=>console.log(data));
-   }
+  }
 
   ngOnInit(): void {
   }
