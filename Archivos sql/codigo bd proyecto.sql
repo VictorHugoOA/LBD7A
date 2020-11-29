@@ -140,13 +140,15 @@ call login_profesor("p000001", "c000001");*/
 
 /*Creación de procedimiento para los avances de los alumnos*/
 DELIMITER //
-create procedure aulavirtualsep.avances (in id varchar(10), out total float)
+create procedure aulavirtualsep.avances (in id varchar(10))
 begin
 	declare a float default 0;
     declare b float default 0;
+    declare total float default 0;
 	set a = (select count(id_actividad) from realiza where id_alumno = id group by(id_alumno));
     set b = (select count(id_actividad) from realiza where id_alumno = id and fecha_entrega is not null group by(id_alumno));
 	set total = @a/@b;
+    select total;
 end//
 DELIMITER ;
 

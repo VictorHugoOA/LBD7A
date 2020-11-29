@@ -26,7 +26,7 @@ export class PerfilComponent implements OnInit {
     if(this.auth.userData.tipo == "Estudiante")
     {
 
-      this.userObs = this.al.getAlumno(this.auth.userData.id).pipe(map(val => {return val[0]}))
+      this.userObs = this.al.getAlumno(this.auth.userData.id);
 
         this.cur.getCursosAlumno(this.auth.userData.id).subscribe((data:any[]) =>{
           for(var i = 0; i < data.length; ++i)
