@@ -1,6 +1,6 @@
 <div class="card" style="margin-top: 15px">
     <div class="card-body">
-        <i class="far fa-file-alt"></i><a class="activity-link ph-2" routerLink="">{{actividad.titulo}}</a>
+        <i class="far fa-file-alt"></i><a class="activity-link ph-2" routerLink="/actividad/{{alumno}}/{{actividad.id}}">{{actividad.titulo}}</a>
         <p class="card-text">
             Fecha entrega:
             <span>{{actividad.fecha_limite | date}}</span>

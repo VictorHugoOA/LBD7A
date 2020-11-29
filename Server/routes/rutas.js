@@ -246,7 +246,7 @@ function createRouter(db) {
     const idalum =req.params.idalum
     const idact =req.params.idact
     db.query(
-    'select * from alumnosact where id_alumno = ? and Act.id =?',
+    'select * from alumnosact where id_alumno = ? and id_actividad =?',
       [idalum,idact],
       (error, results) => {
         if (error) throw error;

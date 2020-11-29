@@ -16,7 +16,7 @@
           <br />
           <p class="card-text">
           <div *ngFor="let actividad of actividades">
-            <app-actividad-card [actividad]="actividad"></app-actividad-card>
+            <app-actividad-card [alumno]="auth.userData.id" [actividad]="actividad"></app-actividad-card>
           </div>
         </div>
       </div>

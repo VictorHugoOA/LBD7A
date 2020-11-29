@@ -24,7 +24,7 @@ export class AlumnosService {
 
   getActividadAlumno(idAlumno: string, idActividad: string)
   {
-    return this.http.get(`http://localhost:3000/`);
+    return this.http.get(`http://localhost:3000/AlumnoActividad/${idAlumno}/${idActividad}`).pipe(map((data:any) => {return data[0]}));
   }
 
 }

@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'cursos', component: CursosComponent},
   {path: 'home', component: PrincipalComponent},
   {path: 'curso/:idg/:idm', component: MateriaComponent},
-  {path: 'actividad/:id', component: ActividadComponent},
+  {path: 'actividad/:ida/:idm', component: ActividadComponent},
   {path: 'homeTeacher', component: MaestroMateriasComponent},
   {path: 'crear/:id', component: CrearActividadComponent},
   {path:'**', component: LoginComponent}

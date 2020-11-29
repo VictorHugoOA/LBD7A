@@ -21,6 +21,8 @@ export class CursosComponent implements OnInit {
 
   info: any;
 
+  
+
   ngOnInit(): void {
     
     this.curso.getCursosAlumno(this.auth.userData.id).subscribe((data:any[]) => {
