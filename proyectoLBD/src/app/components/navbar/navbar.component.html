@@ -1,7 +1,9 @@
-<nav style="background-color: #22584C" class="navbar navbar-expand-lg navbar-dark">
-    <div style="background-color: #22584C" class="collapse navbar-collapse" id="navbarSupportedContent">
+<nav  class="navbar navbar-expand-lg navbar-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div  class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto">
-        <!--HACER CONDICION DE INICIO PARA BRINDAR EL INICIO SI ES MAESTRO O ALUMNO-->
             <div *ngIf="auth.userData.tipo == 'Estudiante'; else profe">
                 <li class="nav-item active">
                     <a class="nav-link" href="/home">Inicio</a>
