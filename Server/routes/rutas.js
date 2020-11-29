@@ -24,7 +24,7 @@ function createRouter(db) {
   router.get('/Alumno/:id', function (req, res) {
     const id =req.params.id
     db.query(
-    'select alumno.id, alumno.nombre, alumno.apellido_pat, alumno.apellido_mat, grupo.grado, grupo.clase, alumno.sexo from alumno, grupo where alumno.id=? and grupo.id = alumno.id_grupo',
+    'select * from grupoal where id=? ',
       id,
       (error, results) => {
         if (error) throw error;
@@ -50,12 +50,12 @@ function createRouter(db) {
       }
     );
   });
-  //Actividades mostradas por materia y alumno 4 pendiente
+  //Actividades mostradas por materia y alumno 4 
   router.get('/AlumnoActividades/:idalum/:idmat', function (req, res) {
     const idalum =req.params.idalum
     const idmat =req.params.idmat
     db.query(
-    'select * from actividad Act left join realiza Rea on Act.id=Rea.id_actividad where id_alumno = ? and Act.id_materia =?',
+    'select * from alumnosact where id_alumno = ? and id_materia =?',
       [idalum,idmat],
       (error, results) => {
         if (error) throw error;
@@ -212,7 +212,7 @@ function createRouter(db) {
       }
     );
   });
-  //Avances 15-
+  //Avances 15- pendiente
   router.get('/Avances/:idalum', function (req, res) {
     const idalum =req.params.idalum
     db.query(
@@ -230,7 +230,7 @@ function createRouter(db) {
   router.get('/AlumnoActividadesPendientes/:idalum', function (req, res) {
     const idalum =req.params.idalum 
     db.query(
-    'select * from actividad Act left join realiza Rea on Act.id=Rea.id_actividad where Rea.id_alumno = ? and Act.estado=0 and Rea.estado_entrega =0',
+    'select * from alumnosact where id_alumno = ? and estado=0 and estado_entrega=0',
       [idalum],
       (error, results) => {
         if (error) throw error;
@@ -241,7 +241,7 @@ function createRouter(db) {
       }
     );
   });
-  //actividad alumno
+  //actividad alumno 17
   router.get('/AlumnoActividad/:idalum/:idact', function (req, res) {
     const idalum =req.params.idalum
     const idact =req.params.idact
