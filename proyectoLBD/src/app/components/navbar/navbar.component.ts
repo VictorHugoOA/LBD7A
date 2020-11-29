@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
 
   alumno: Observable<any>;
 
-  constructor(private auth: AuthService, private router: Router, private al: AlumnosService) { 
+  constructor(public auth: AuthService, private router: Router, private al: AlumnosService) { 
   }
 
   ngOnInit(): void {
