@@ -1,2 +1,2 @@
 # proyectoCaminitoDeLaEscuela
- Proyecto para la Matera de Lenguajes de Bases de datos
+ Proyecto para la Materia de Lenguajes de Bases de datos
