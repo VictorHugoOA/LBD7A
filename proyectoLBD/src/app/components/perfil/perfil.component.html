@@ -5,11 +5,11 @@
             <app-calendario></app-calendario>
         </div>
         <div class="col-8 md-auto">
-            <div class="row justify-content-start">
+            <div class="row justify-content-start mt-5">
                 <div class="col-8">
                     <div class="card">
                         <div class="card-body">
-                            Perfil del usuario:
+                            Usuario: 
                             {{((userObs | async))?.nombre + " " + ((userObs | async))?.apellido_pat + " " + ((userObs | async))?.apellido_mat}}
                             <div style="border-left: 1px solid #000; height: 100%; display: inline;">&nbsp;</div>
                             Aquí va una pinche imágen perrona
