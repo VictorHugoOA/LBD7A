@@ -4,29 +4,50 @@
   </button>
     <div  class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto">
-            <div *ngIf="auth.userData.tipo == 'Estudiante'; else profe">
-                <li class="nav-item active">
+          
+                <li class="nav-item active" *ngIf="auth.userData.tipo == 'Estudiante'">
                     <a class="nav-link" href="/home">Inicio</a>
                 </li>
-            </div>
-            <ng-template #profe>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/homeTeacher">Inicio</a>
+                <li class="nav-item active" *ngIf="auth.userData.tipo == 'Estudiante'">
+                    <a class="nav-link" href="/cursos">Cursos</a>
                 </li>
-            </ng-template>
-       
-            <li class="nav-item active">
-                <a class="nav-link" href="/cursos">Cursos</a>
-            </li>
-
-            <li class="nav-item ">
-                <a class="nav-link" href="#">Tutorías</a>
-            </li>
+                <li class="nav-item" *ngIf="auth.userData.tipo == 'Estudiante'">
+                    <a class="nav-link" href="#">Tutorías</a>
+                </li>
+                <li class="nav-item" *ngIf="auth.userData.tipo == 'Estudiante'">
+                    <a class="nav-link" href="#">Libros</a>
+                </li>
+           
+                <li class="nav-item active"  *ngIf="auth.userData.tipo =='Profesor'">
+                    <a class="nav-link" href="/homeTeacher">Inicio</a> 
+                </li>
+                <li class="nav-item active"  *ngIf="auth.userData.tipo =='Profesor'">
+                    <a class="nav-link" href=#>Materias</a> 
+                </li>
+                <li class="nav-item active"  *ngIf="auth.userData.tipo =='Profesor'">
+                    <a class="nav-link" href=#>Actividades</a> 
+                </li>
+                <li class="nav-item active"  *ngIf="auth.userData.tipo =='Profesor'">
+                    <a class="nav-link" href=#>Grupos</a> 
+                </li>
+                <li class="nav-item"*ngIf="auth.userData.tipo =='Profesor'">
+                    <a class="nav-link" href="#">Tutorías</a>
+                </li>
+                <li class="nav-item"*ngIf="auth.userData.tipo =='Profesor'">
+                    <a class="nav-link" href="#">Libros</a>
+                </li>
+     
         </ul>
         <div *ngIf="alumno | async">
             <a routerLink="/perfil">
               <span
                 class="navbar-text mr-4">{{(alumno | async)?.nombre + " " + ((alumno | async))?.apellido_pat + " " + ((alumno | async))?.apellido_mat}}</span></a>
+                <a (click)="logOut()"><span class="navbar-text"><i class="fas fa-sign-out-alt"></i></span></a>
+          </div>
+        <div *ngIf="profesor | async">
+            <a routerLink="/perfil">
+              <span
+                class="navbar-text mr-4">{{(profesor | async)?.nombre + " " + ((profesor | async))?.apellido_pat + " " + ((profesor | async))?.apellido_mat}}</span></a>
                 <a (click)="logOut()"><span class="navbar-text"><i class="fas fa-sign-out-alt"></i></span></a>
           </div>
     </div>
