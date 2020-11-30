@@ -115,7 +115,7 @@ function createRouter(db) {
     const idgrup = req.params.idgrup
     const idmat = req.params.idmat
     db.query(
-      'select id as id_actividad, titulo, fecha_limite, hora_limite, descripción, estado, retraso, id_materia from actividad where id in(select id_actividad from AlumnosAct AA left join Alumno A on AA.id_alumno= A.id where A.id_grupo = ? and AA.id_materia=?)',
+      'select * from actividad where id in(select id_actividad from AlumnosAct AA left join Alumno A on AA.id_alumno= A.id where A.id_grupo = ? and AA.id_materia=?)',
       [idgrup, idmat],
       (error, results) => {
         if (error) throw error;

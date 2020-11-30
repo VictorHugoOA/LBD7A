@@ -15,7 +15,7 @@
           <h4 class="card-title">{{actividad.titulo}}</h4>
           <p class="card-text">{{actividad['descripción']}}</p>
           <p class="card-text">
-            Fecha límite: {{actividad.fecha_limite | date}} | Fecha entrega: {{actividad.fecha_entrega | date}}
+            Fecha límite: {{actividad.fecha_limite | date}} {{actividad.hora_limite}} | Fecha entrega: {{actividad.fecha_entrega | date}}
           </p>
           <div *ngIf="!actividad.estado">
             <div *ngIf="!actividad.estado_entrega; else editar">
