@@ -168,7 +168,7 @@ function createRouter(db) {
       }
     );
   });
-  //Obtener el profesor y grupo del alumno 12 (3 Tablas)-
+  //Obtener el profesor y grupo del alumno 13 (3 Tablas)
   router.get('/AlumnoProfesor/:idalumno', function (req, res) {
     const idalumno =req.params.idalumno
     db.query(
@@ -182,7 +182,7 @@ function createRouter(db) {
       }
     );
   });
-  //Login Vista Alumno 13-
+  //Login Vista Alumno 14
   router.get('/LoginA/:idalumno/:contrasena', function (req, res) {
     const idalumno =req.params.idalumno
     const cont=req.params.contrasena
@@ -197,7 +197,7 @@ function createRouter(db) {
       }
     );
   });
-  //Login Vista profesor 14-
+  //Login Vista profesor 15
   router.get('/LoginP/:idprof/:contrasena', function (req, res) {
     const idprof =req.params.idprof
     const cont=req.params.contrasena
@@ -212,7 +212,7 @@ function createRouter(db) {
       }
     );
   });
-  //Avances 15- pendiente
+  //Avances 16
   router.get('/Avances/:idalum', function (req, res) {
     const idalum =req.params.idalum
     db.query(
@@ -226,7 +226,7 @@ function createRouter(db) {
       }
     );
   });
-  //Actividades pendientes por alumno 16-
+  //Actividades pendientes por alumno 17
   router.get('/AlumnoActividadesPendientes/:idalum', function (req, res) {
     const idalum =req.params.idalum 
     db.query(
