@@ -1,26 +1,52 @@
-<nav style="background-color: #22584C" class="navbar navbar-expand-lg navbar-dark">
-    <div style="background-color: #22584C" class="collapse navbar-collapse" id="navbarSupportedContent">
+<nav  class="navbar navbar-expand-lg navbar-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div  class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto">
-        <!--HACER CONDICION DE INICIO PARA BRINDAR EL INICIO SI ES MAESTRO O ALUMNO-->
-            <li class="nav-item active">
-                <a class="nav-link" href="/home">Inicio</a>
-            </li>
-             <li class="nav-item active">
-                <a class="nav-link" href="/homeTeacher">Inicio</a>
-            </li>
-       
-            <li class="nav-item active">
-                <a class="nav-link" href="/cursos">Cursos</a>
-            </li>
-
-            <li class="nav-item ">
-                <a class="nav-link" href="#">Tutorías</a>
-            </li>
+          
+                <li class="nav-item active" *ngIf="auth.userData.tipo == 'Estudiante'">
+                    <a class="nav-link" href="/home">Inicio</a>
+                </li>
+                <li class="nav-item active" *ngIf="auth.userData.tipo == 'Estudiante'">
+                    <a class="nav-link" href="/cursos">Cursos</a>
+                </li>
+                <li class="nav-item" *ngIf="auth.userData.tipo == 'Estudiante'">
+                    <a class="nav-link" href="#">Tutorías</a>
+                </li>
+                <li class="nav-item" *ngIf="auth.userData.tipo == 'Estudiante'">
+                    <a class="nav-link" href="#">Libros</a>
+                </li>
+           
+                <li class="nav-item active"  *ngIf="auth.userData.tipo =='Profesor'">
+                    <a class="nav-link" href="/homeTeacher">Inicio</a> 
+                </li>
+                <li class="nav-item active"  *ngIf="auth.userData.tipo =='Profesor'">
+                    <a class="nav-link" href=#>Materias</a> 
+                </li>
+                <li class="nav-item active"  *ngIf="auth.userData.tipo =='Profesor'">
+                    <a class="nav-link" href=#>Actividades</a> 
+                </li>
+                <li class="nav-item active"  *ngIf="auth.userData.tipo =='Profesor'">
+                    <a class="nav-link" href=#>Grupos</a> 
+                </li>
+                <li class="nav-item"*ngIf="auth.userData.tipo =='Profesor'">
+                    <a class="nav-link" href="#">Tutorías</a>
+                </li>
+                <li class="nav-item"*ngIf="auth.userData.tipo =='Profesor'">
+                    <a class="nav-link" href="#">Libros</a>
+                </li>
         </ul>
         <div *ngIf="alumno | async">
             <a routerLink="/perfil">
               <span
                 class="navbar-text mr-4">{{(alumno | async)?.nombre + " " + ((alumno | async))?.apellido_pat + " " + ((alumno | async))?.apellido_mat}}</span></a>
+                <a (click)="logOut()"><span class="navbar-text"><i class="fas fa-sign-out-alt"></i></span></a>
+          </div>
+        <div *ngIf="profesor | async">
+            <a routerLink="/perfil">
+              <span
+                class="navbar-text mr-4">{{(profesor | async)?.nombre + " " + ((profesor | async))?.apellido_pat + " " + ((profesor | async))?.apellido_mat}}</span></a>
                 <a (click)="logOut()"><span class="navbar-text"><i class="fas fa-sign-out-alt"></i></span></a>
           </div>
     </div>

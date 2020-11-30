@@ -7,31 +7,62 @@
     <div class="col-8">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">{{actividad.titulo}}</h4>
-          <p class="card-text">{{actividad['descripción']}}</p>
-          <p class="card-text">
-            Fecha límite: {{actividad.fecha_limite | date}} | Fecha entrega: {{actividad.fecha_entrega | date}}
-          </p>
+
+          <table class="table table-borderless">
+            <thead>
+              <tr>
+                <th scope="col">
+                  <h4 class="card-title">{{actividad.titulo}}</h4>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="2">
+                  <p class="card-text">{{actividad['descripción']}}</p>
+                </td>
+              </tr>
+              <tr>
+                <td>Fecha Límite:</td>
+                <td>Fecha Entrega:</td>
+                <td>Calificación:</td>
+              </tr>
+              <tr>
+                <td>
+                  {{actividad.fecha_limite | date}} {{actividad.hora_limite}}
+                </td>
+                <td>
+                  
+                    <p *ngIf="!actividad.estado_entrega; else entregada" class="alert alert-danger">No Entregada</p>
+                    <ng-template #entregada>
+                      <p class="alert alert-success">{{actividad.fecha_entrega | date}} {{actividad.hora_entrega}}</p>
+                    </ng-template>
+                </td>
+                <td>
+                  <p *ngIf="!actividad.estado_entrega; else calificada" class="alert alert-danger">No calificada</p>
+                  <ng-template #calificada>
+                    <p *ngIf="actividad.calificacion > 8; else medio" class="alert alert-success">{{actividad.calificada}}</p>
+                  </ng-template>
+                    <ng-template #medio>
+                      <p *ngIf="actividad.calificacion > 6; else bajo" class="alert alert-warning">{{actividad.calificada}}</p>
+                    </ng-template>
+                    <ng-template #bajo>
+                      <p class="alert alert-danger">{{actividad.calificada}}</p>
+                    </ng-template>
+                  
+                </td>
+              </tr>
+            </tbody>
+          </table>
           <div *ngIf="!actividad.estado">
             <div *ngIf="!actividad.estado_entrega; else editar">
-              <button style="background-color: #942646;" class="btn btn-primary btn-lg">Realizar Entrega</button>
+              <a style="background-color: #942646;" class="btn btn-primary btn-lg"
+                routerLink="/entrega/{{a}}/{{act}}">Realizar Entrega</a>
             </div>
-            <ng-template #editar><button style="background-color: #942646;" class="btn btn-primary btn-lg">Editar Entrega</button></ng-template>
+            <ng-template #editar><a style="background-color: #942646;" class="btn btn-primary btn-lg"
+                routerLink="/editar/{{a}}/{{act}}">Editar Entrega</a></ng-template>
           </div>
-          <p class="card-text">
-            
-          <div *ngIf="auth.userData.tipo == 'Estudiante'">
-            Calificación:
-            <div *ngIf="actividad.calificacion > 8; else medio">
-              <span class="text-success">{{actividad.calificacion}}</span>
-            </div>
-            <ng-template #medio>
-              <span *ngIf="actividad.calificacion > 6; else bajo" class="text-warning">{{actividad.calificacion}}</span>
-            </ng-template>
-            <ng-template #bajo>
-              <span class="text-danger">{{actividad.calificacion}}</span>
-            </ng-template>
-          </div>
+
         </div>
       </div>
     </div>

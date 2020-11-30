@@ -11,7 +11,13 @@ import { AuthService } from '../../services/auth/auth.service'
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
-  constructor(private fb: FormBuilder, private auth: AuthService) { }
+  constructor(private fb: FormBuilder, private auth: AuthService) {
+    if(this.auth.userData)
+    {
+      this.auth.userData = null;
+      sessionStorage.removeItem("user");
+    }
+  }
 
   ngOnInit(): void {
     this.initForm()

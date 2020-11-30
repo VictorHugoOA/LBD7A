@@ -11,15 +11,15 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class PrincipalComponent implements OnInit {
 
-  actividades: Activity[] = [];
+  actividades: any[] = [];
 
   alumno: any;
 
   constructor(public auth: AuthService, private al: AlumnosService) {
     this.al.getPendientes(this.auth.userData.id).subscribe((data:any[]) => {
+      console.log(data);
       for(var i = 0; i < data.length; i++){
         this.actividades.push(data[i]);
-        console.log(data[i]);
       }
     });
   }

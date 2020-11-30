@@ -79,6 +79,7 @@ create table realiza
 create table libro (
 	id varchar(10) not null,
     año int not null,
+	archivo text,
     editorial varchar(50) not null,
     título varchar(50) not null,
     id_materia varchar(10) not null,
@@ -109,17 +110,39 @@ create table imparte(
     foreign key(id_tutoría) references tutoría(id),
     foreign key(id_profesor) references profesor(id)
 );
+create table tarea
+(
+	id numeric(10) not null,
+	id_alumno varchar(10) not null,
+    id_actividad numeric(10) not null,
+    archivo text,
+    primary key(id),
+    foreign key(id_alumno) references alumno(id),
+    foreign key(id_actividad) references actividad(id)
+);
 
+create table Material
+(
+	id numeric(10) not null,
+	id_alumno varchar(10) not null,
+    id_actividad numeric(10) not null,
+    archivo text,
+    primary key(id),
+    foreign key(id_alumno) references alumno(id),
+    foreign key(id_actividad) references actividad(id)
+);
 /*vistas*/
 create view alumnosact as select R.*, A.titulo, A.fecha_limite, A.hora_limite, A.descripción,
 A.estado,A.retraso,A.id_materia from
 realiza R left join actividad A on R.id_actividad=A.id;
 create view LoginA as select id,contrasena from alumno;
 create view LoginP as select id,contrasena from profesor;
-create view listaalumnos as select A.* ,G.id_profesor from 
+create view listaalumnos as select A.id, A.nombre, A.apellido_pat, A.apellido_mat, A.id_grupo, G.id_profesor from 
 alumno A left join grupo G on A.id_grupo=G.id;
 create view grupoAl as select A.id, A.nombre, A.apellido_pat, A.apellido_mat, G.grado, G.clase from
 alumno A left join grupo G on A.id_grupo=G.id;
+create view grupoMat as select C.id_materia, G.id, G.id profesor from
+clases_de C left join grupo G on C.id_grupo=G.id;
 
 /*Creación del procedimiento para login_alumno*/
 DELIMITER //
@@ -157,4 +180,5 @@ DELIMITER ;
 
 /*Ejemplo para ejecutar el procedimiento para avances
 call avances("a000001", @out); select @out;*/
+
 

@@ -296,9 +296,10 @@ values (2, "Actividad de prueba 2", "Esto es una sola actividad para probar como
 insert into realiza (id_alumno, id_actividad)
 values ("a000036", 1);
 
+update realiza set estado_entrega = 1 where id_actividad = 1;
+
 insert into realiza (id_alumno, id_actividad)
 values ("a000036", 2);
-
 
 
 

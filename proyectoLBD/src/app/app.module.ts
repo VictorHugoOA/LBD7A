@@ -27,6 +27,9 @@ import { ActividadComponent } from './components/actividad/actividad.component';
 import { MaestroMateriasComponent } from './components/maestro-materias/maestro-materias.component';
 import { CrearActividadComponent } from './components/crear-actividad/crear-actividad.component';
 import { AlTutoriasSolicitarComponent } from './components/al-tutorias-solicitar/al-tutorias-solicitar.component';
+import { EntregaComponent } from './components/entrega/entrega.component';
+import { FileUploadModule } from 'ng2-file-upload';
+import { EditarComponent } from './components/editar/editar.component';
 
 
 //Servicios
@@ -48,7 +51,9 @@ import { AlTutoriasSolicitarComponent } from './components/al-tutorias-solicitar
     ActividadComponent,
     MaestroMateriasComponent,
     CrearActividadComponent,
-    AlTutoriasSolicitarComponent
+    AlTutoriasSolicitarComponent,
+    EntregaComponent,
+    EditarComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +62,8 @@ import { AlTutoriasSolicitarComponent } from './components/al-tutorias-solicitar
     ScheduleModule, RecurrenceEditorModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    FileUploadModule
   ],
   providers: [DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService, AuthService],
   bootstrap: [AppComponent]
