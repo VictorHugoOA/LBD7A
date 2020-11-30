@@ -17,6 +17,11 @@ export class ActividadesService {
 
   }
 
+  borrarArchivoActividad(nameUp: string)
+  {
+    return this.http.get(`http://localhost:3000/delete/${nameUp}`);
+  }
+
 }
 
 

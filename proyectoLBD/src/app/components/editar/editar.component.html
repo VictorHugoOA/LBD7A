@@ -1,0 +1,49 @@
+
+<app-navbar></app-navbar>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="row card">
+                <div class="col-sm-12">
+                    <h4>Selecciona archivos para cargar</h4>
+                    <hr>
+                    <div id="fileSelector">
+                        <input type="file" name="fileUpload" id="fileUpload" multiple ng2FileSelect
+                            [uploader]="uploader">
+                    </div>
+                </div>
+                <div>
+                    <div class="row uploadList mb-0 pb-0" *ngFor="let item of uploader.queue; index as i">
+                        <div class="col-sm-4">{{item.file.name}}</div>
+                        <div class="col-sm-4">
+                            <div class="progress">
+                                <div class="progress-bar" style="background-color: #942646;"
+                                    [ngStyle]="{width: item.progress+'%'}" aria-valuemin="0" aria-valuemax="100"
+                                    [attr.aria-valuenow]="item.progress">
+                                    <span style="color: white;">{{item.progress}}%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <button class="btn btn-dark" *ngIf="item.progress < 100" (click)="item.upload()">Subir archivo</button>
+                            <button class="btn btn-danger" (click)="deleteFile(item, i)">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="row card">
+                <div class="col-12">
+                    <h4>Archivos de actividad para borrar</h4>
+                    <hr>
+                </div>
+                <button style="background-color: #942646;" class="btn btn-primary mt-4" routerLink="/entrega/{{a}}/{{act}}" (click)="regresar()">Entregar</button>
+            </div>
+        </div>
+    </div>
+</div>

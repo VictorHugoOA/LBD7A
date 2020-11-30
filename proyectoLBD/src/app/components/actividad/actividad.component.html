@@ -7,6 +7,11 @@
     <div class="col-8">
       <div class="card">
         <div class="card-body">
+
+          <table class="table table-borderless">
+
+          </table>
+
           <h4 class="card-title">{{actividad.titulo}}</h4>
           <p class="card-text">{{actividad['descripción']}}</p>
           <p class="card-text">
@@ -14,9 +19,9 @@
           </p>
           <div *ngIf="!actividad.estado">
             <div *ngIf="!actividad.estado_entrega; else editar">
-              <button style="background-color: #942646;" class="btn btn-primary btn-lg">Realizar Entrega</button>
+              <a style="background-color: #942646;" class="btn btn-primary btn-lg" routerLink="/entrega/{{a}}/{{act}}">Realizar Entrega</a>
             </div>
-            <ng-template #editar><button style="background-color: #942646;" class="btn btn-primary btn-lg">Editar Entrega</button></ng-template>
+            <ng-template #editar><a style="background-color: #942646;" class="btn btn-primary btn-lg" routerLink="/editar/{{a}}/{{act}}">Editar Entrega</a></ng-template>
           </div>
           <p class="card-text">
             
