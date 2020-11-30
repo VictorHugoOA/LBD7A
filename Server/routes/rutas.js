@@ -144,7 +144,7 @@ function createRouter(db) {
   router.get('/Actividad/:idact', function (req, res) {
     const idact = req.params.idact
     db.query(
-      'select * from actividad Act where id= ?',
+      'select * from actividad where id= ?',
       [idact],
       (error, results) => {
         if (error) throw error;
