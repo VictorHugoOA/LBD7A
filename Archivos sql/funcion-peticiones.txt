@@ -1,0 +1,9 @@
+getActividadesGrupo: http://localhost:3000/ActividadesMateriaGrupo/
+borrarArchivoActividad: http://localhost:3000/delete/
+getAlumno: http://localhost:3000/Alumno/
+getAvanceAlumno: http://localhost:3000/Avances/
+getActividadAlumno: http://localhost:3000/AlumnoActividad/
+getCursosAlumno: http://localhost:3000/cursosAlumno/
+getCurso: http://localhost:3000/Materia/
+getAlumnoGrupoProfesor: http://localhost:3000/AlumnoProfesor/
+getProfesor: http://localhost:3000/Profesor/

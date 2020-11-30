@@ -79,6 +79,7 @@ create table realiza
 create table libro (
 	id varchar(10) not null,
     año int not null,
+	archivo text,
     editorial varchar(50) not null,
     título varchar(50) not null,
     id_materia varchar(10) not null,
@@ -109,7 +110,27 @@ create table imparte(
     foreign key(id_tutoría) references tutoría(id),
     foreign key(id_profesor) references profesor(id)
 );
+create table tarea
+(
+	id numeric(10) not null,
+	id_alumno varchar(10) not null,
+    id_actividad numeric(10) not null,
+    archivo text,
+    primary key(id),
+    foreign key(id_alumno) references alumno(id),
+    foreign key(id_actividad) references actividad(id)
+);
 
+create table Material
+(
+	id numeric(10) not null,
+	id_alumno varchar(10) not null,
+    id_actividad numeric(10) not null,
+    archivo text,
+    primary key(id),
+    foreign key(id_alumno) references alumno(id),
+    foreign key(id_actividad) references actividad(id)
+);
 /*vistas*/
 create view alumnosact as select R.*, A.titulo, A.fecha_limite, A.hora_limite, A.descripción,
 A.estado,A.retraso,A.id_materia from
