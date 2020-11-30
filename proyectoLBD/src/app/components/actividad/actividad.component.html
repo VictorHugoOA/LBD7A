@@ -17,14 +17,6 @@
           <p class="card-text">
             Fecha límite: {{actividad.fecha_limite | date}} {{actividad.hora_limite}} | Fecha entrega: {{actividad.fecha_entrega | date}}
           </p>
-          <div *ngIf="!actividad.estado">
-            <div *ngIf="!actividad.estado_entrega; else editar">
-              <a style="background-color: #942646;" class="btn btn-primary btn-lg" routerLink="/entrega/{{a}}/{{act}}">Realizar Entrega</a>
-            </div>
-            <ng-template #editar><a style="background-color: #942646;" class="btn btn-primary btn-lg" routerLink="/editar/{{a}}/{{act}}">Editar Entrega</a></ng-template>
-          </div>
-          <p class="card-text">
-            
           <div *ngIf="auth.userData.tipo == 'Estudiante'">
             Calificación:
             <div *ngIf="actividad.calificacion > 8; else medio">
@@ -37,6 +29,15 @@
               <span class="text-danger">{{actividad.calificacion}}</span>
             </ng-template>
           </div>
+          <br>
+          <div *ngIf="!actividad.estado">
+            <div *ngIf="!actividad.estado_entrega; else editar">
+              <a style="background-color: #942646;" class="btn btn-primary btn-lg" routerLink="/entrega/{{a}}/{{act}}">Realizar Entrega</a>
+            </div>
+            <ng-template #editar><a style="background-color: #942646;" class="btn btn-primary btn-lg" routerLink="/editar/{{a}}/{{act}}">Editar Entrega</a></ng-template>
+          </div>
+          <p class="card-text">
+       
         </div>
       </div>
     </div>
