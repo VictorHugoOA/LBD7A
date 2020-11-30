@@ -14,10 +14,10 @@ export class ActividadCardComponent implements OnInit {
 
   constructor(private al: AlumnosService) {
 
-
   }
 
   ngOnInit(): void {
+    console.log(this.actividad);
   }
 
 }
