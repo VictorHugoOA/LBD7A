@@ -17,7 +17,7 @@ Values ("p000001", "Leslie Daniela", "Reyes", "Belmares", "leslieDReyesB@outlook
 insert into grupo (id, grado, clase, id_profesor)
 values
 ("g-1", 1, "A", "p000001"),
-("g-2", 2, "A", "p000001"),
+("g-2", 2, "A", "p000002"),
 ("g-3", 3, "A", "p000003"),
 ("g-4", 4, "A", "p000004"),
 ("g-5", 5, "A", "p000005"),
@@ -296,10 +296,11 @@ values (2, "Actividad de prueba 2", "Esto es una sola actividad para probar como
 insert into realiza (id_alumno, id_actividad)
 values ("a000036", 1);
 
-update realiza set estado_entrega = 1 where id_actividad = 1;
+update actividad set estado= 1 where id = 1;
 
 insert into realiza (id_alumno, id_actividad)
-values ("a000036", 2);
+values ("a000036", 2),
+ ("a000037", 2);
 
 
-
+select * from actividad where id in(select distinct id_actividad from alumnosact where id_alumno in(select id from alumno where id_grupo =(select id from grupo where id_profesor="p000008")) and estado=0);

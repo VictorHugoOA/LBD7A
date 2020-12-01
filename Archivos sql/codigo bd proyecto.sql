@@ -132,9 +132,9 @@ create table Material
     foreign key(id_actividad) references actividad(id)
 );
 /*vistas*/
+
 create view alumnosact as select R.*, A.titulo, A.fecha_limite, A.hora_limite, A.descripción,
-A.estado,A.retraso,A.id_materia from
-realiza R left join actividad A on R.id_actividad=A.id;
+A.estado,A.retraso,A.id_materia from realiza R left join actividad A on R.id_actividad=A.id;
 create view LoginA as select id,contrasena from alumno;
 create view LoginP as select id,contrasena from profesor;
 create view listaalumnos as select A.id, A.nombre, A.apellido_pat, A.apellido_mat, A.id_grupo, G.id_profesor from 

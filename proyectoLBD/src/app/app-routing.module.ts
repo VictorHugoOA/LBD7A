@@ -12,6 +12,7 @@ import { PrincipalComponent } from './components/principal/principal.component';
 import { CrearActividadComponent } from './components/crear-actividad/crear-actividad.component';
 import { EntregaComponent } from './components/entrega/entrega.component';
 import { EditarComponent } from './components/editar/editar.component';
+import { InicioprofComponent } from './components/inicioprof/inicioprof.component';
 
 
 const routes: Routes = [
@@ -23,7 +24,7 @@ const routes: Routes = [
   {path: 'home', component: PrincipalComponent},
   {path: 'curso/:idg/:idm', component: MateriaComponent},
   {path: 'actividad/:ida/:idm', component: ActividadComponent},
-  {path: 'homeTeacher', component: MaestroMateriasComponent},
+  {path: 'homeTeacher', component: InicioprofComponent},
   {path: 'crear/:id', component: CrearActividadComponent},
   {path: 'entrega/:ida/:idm', component: EntregaComponent},
   {path: 'editar/:ida/:idm', component: EditarComponent},
