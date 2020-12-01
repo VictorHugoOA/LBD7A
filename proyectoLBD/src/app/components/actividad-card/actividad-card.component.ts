@@ -25,7 +25,6 @@ export class ActividadCardComponent implements OnInit {
     this.prof.getgrupoProfesor(this.usuario.id).subscribe((data:any[]) => {
       console.log(data);
         this.grupo=data;
-    
     });
   
   }
