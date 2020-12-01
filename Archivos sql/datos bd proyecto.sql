@@ -303,4 +303,4 @@ values ("a000036", 2),
  ("a000037", 2);
 
 
-select * from actividad where id in(select distinct id_actividad from alumnosact where id_alumno in(select id from alumno where id_grupo =(select id from grupo where id_profesor="p000008")) and estado=0);
+select distinct* from actividad where id in(select distinct id_actividad from alumnosact where id_alumno in(select id from alumno where id_grupo =(select id from grupo where id_profesor="p000008")) and estado=0);

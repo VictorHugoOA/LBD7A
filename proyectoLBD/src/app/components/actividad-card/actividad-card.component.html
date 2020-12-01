@@ -1,9 +1,19 @@
 <div class="card" style="margin-top: 15px">
-    <div class="card-body">
-        <i class="far fa-file-alt"></i><a class="activity-link ph-2" routerLink="/actividad/{{alumno}}/{{actividad.id_actividad}}">{{actividad.titulo}}</a>
+    <div class="card-body"*ngIf="usuario.tipo =='Estudiante'">
+        <i class="far fa-file-alt"></i><a class="activity-link ph-2" routerLink="/actividad/{{usuario.id}}/{{actividad.id_actividad}}"> {{actividad.titulo}}</a>
         <p class="card-text">
             Fecha entrega:
             <span>{{actividad.fecha_limite | date}}</span>
         </p>
     </div>
+    <div class="card-body"*ngIf="usuario.tipo =='Profesor'">
+        <i class="far fa-file-alt"></i><a class="activity-link ph-2" routerLink=#> {{actividad.titulo}}</a>
+        <p class="card-text">
+            Fecha entrega:
+            <span>{{actividad.fecha_limite | date}}</span>
+            Grupo:
+            <span>{{grupo.grado}}°{{ grupo.clase}}</span>
+        </p>
+    </div>
+
 </div>

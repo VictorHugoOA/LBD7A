@@ -158,7 +158,7 @@ function createRouter(db) {
   router.get('/GrupoProfesor/:idprof', function (req, res) {
     const idprof = req.params.idprof
     db.query(
-      'select grado,clase from grupo where id_profesor= ?',
+      'select * from grupo where id_profesor= ?',
       [idprof],
       (error, results) => {
         if (error) throw error;
@@ -286,11 +286,11 @@ function createRouter(db) {
       }
     );
   });
- //Actividades dadas por el profesor aun abiertas(3 tablas)
+ //Actividades dadas por el profesor aun abiertas 19(3 tablas)
   router.get('/ProfesorActividadesAbiertas/:idprof', function (req, res) {
     const idprof = req.params.idprof
     db.query(
-      'select * from alumnosact where id_alumno in(select id from alumno where id_grupo =(select id from grupo where id_profesor=?)) and estado=0;',
+      'select distinct titulo,id_actividad,fecha_limite from alumnosact where id_alumno in(select id from alumno where id_grupo =(select id from grupo where id_profesor=?)) and estado=0;',
       [idprof],
       (error, results) => {
         if (error) throw error;

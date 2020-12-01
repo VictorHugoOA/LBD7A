@@ -6,8 +6,9 @@
         </div>
         <div class="col-8">
             <div *ngFor="let actividad of actividades">
-                <app-actividad-card [usuario]="auth.userData.id" [actividad]="actividad"></app-actividad-card>
+                <app-actividad-card [usuario]="auth.userData" [actividad]="actividad"></app-actividad-card>
             </div>
         </div>
     </div>
 </div>
+
