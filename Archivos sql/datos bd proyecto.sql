@@ -3,7 +3,7 @@ use aulavirtualsep;
 insert into profesor (id, nombre, apellido_pat, apellido_mat, correo, teléfono, sexo,contrasena)
 Values ("p000001", "Leslie Daniela", "Reyes", "Belmares", "leslieDReyesB@outlook.com", 4491547895, "F","c000001"),
 ("p000002", "Maria Susana", "Morales", "Gonzales", "MSusana_14@gmail.com", 4491215486, "F","c000002"),
-("p000003", "Luis Fernando", "Ambriz", "Salazar", "LuisFAS_147@gmail.com", 4491212570, "M","c000003"),
+("p000003", "Juanito", "Arcoiris", "Pistolas", "JohnRainbows@gmail.com", 4491212570, "M","c000003"),
 ("p000004", "Carlos", "Avila", "Carmona", "CarlosCarmona15687@gmail.com", 4494125476, "M","c000004"),
 ("p000005", "Grace", "Valladolid", "Fiesco", "GracieVFedu@gmail.com", 4491195463, "F","c000005"),
 ("p000006", "Joaquin", "Cruz", "Llamas", "JoaquinLlamasoficial_001@outlook.com", 4651192159, "M","c000006"),
