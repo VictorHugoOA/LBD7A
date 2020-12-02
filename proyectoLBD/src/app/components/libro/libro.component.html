@@ -1,0 +1,34 @@
+<app-navbar></app-navbar>
+<div class="container-fluid" style="margin-top: 5px;">
+    <div class="row justify-content-between">
+        <div class="col-4">
+            <app-calendario></app-calendario>
+        </div>
+        <div class="col-md-8 col-sm-8 col-lg-8 col-8 container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-8 mx-auto">
+                    <p class="h1">Grado: "{{(datos | async)?.grado}}" - Grupo: {{(datos | async)?.clase}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mx-auto col-sm-8 col-lg-8 col-md-8 card-columns">
+                    <div class="card" *ngFor="let libro of libros">
+                        <div class="card-body">
+                            <h4 class="card-title">{{libro['título']}}</h4>
+                            <p class="card-text">{{libro.campo}}</p>
+                            <p class="card-text">
+                                {{libro.editorial}}: Año {{libro['año']}}
+                            </p>
+                            <div *ngIf="libro.archivo; else nohay">
+                                <a [href]="libro.archivo" target="_blank" style="background-color: #942646;" class="btn btn-block btn-primary">Ir al libro</a>
+                            </div>
+                            <ng-template #nohay>
+                                <p class="btn btn-danger btn-block">No hay libro</p>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

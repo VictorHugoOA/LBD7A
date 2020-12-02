@@ -28,4 +28,8 @@ export class ProfesorService {
   getAlumnos(id:string){
     return this.http.get(`http://localhost:3000/GrupoAlumProfesor/${id}`);
   }
+
+  getLibrosProfesor(id: string){
+    return this.http.get(`http://localhost:3000/LibrosProfesor/${id}`);
+  }
 }

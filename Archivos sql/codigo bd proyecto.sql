@@ -96,7 +96,6 @@ create table tutoría(
     primary key(id)
 );
 
-
 create table pide(
 	id_tutoría int not null,
 	id_alumno varchar(10) not null,
@@ -125,7 +124,6 @@ create table tarea
     foreign key(id_actividad) references actividad(id)
 );
 
-
 create table Material
 (
 	id int not null auto_increment,
@@ -136,6 +134,7 @@ create table Material
     foreign key(id_alumno) references alumno(id),
     foreign key(id_actividad) references actividad(id)
 );
+
 /*vistas*/
 
 create view alumnosact as select R.*, A.titulo, A.fecha_limite, A.hora_limite, A.descripción,
@@ -146,7 +145,7 @@ create view listaalumnos as select A.id, A.nombre, A.apellido_pat, A.apellido_ma
 alumno A left join grupo G on A.id_grupo=G.id;
 create view grupoAl as select A.id, A.nombre, A.apellido_pat, A.apellido_mat, G.grado, G.clase from
 alumno A left join grupo G on A.id_grupo=G.id;
-create view grupoMat as select C.id_materia, G.id, G.id profesor from
+create view grupoMat as select C.id_materia, G.id, G.id_profesor from
 clases_de C left join grupo G on C.id_grupo=G.id;
 create view LibroMat as select L.título, M.nombre from
 libro L left join materia M on L.id_Materia=M.id;
@@ -184,13 +183,9 @@ begin
     select total;
 end//
 DELIMITER ;
-insert into tarea (id_alumno, id_actividad, archivo) values ("a000036", 1, "hola");
-delete from tarea where archivo = "hola";
 
-select * from realiza;
-
-select * from tarea;
-
+select * from grupoMat;
+select * from libro where id_materia in (select id_materia from grupoMat where id_profesor = "p000001");
 
 /*Ejemplo para ejecutar el procedimiento para avances
 call avances("a000001", @out); select @out;*/

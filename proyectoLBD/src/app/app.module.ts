@@ -33,6 +33,7 @@ import { EditarComponent } from './components/editar/editar.component';
 import { EditarActividadComponent } from './components/editar-actividad/editar-actividad.component';
 import { InicioprofComponent } from './components/inicioprof/inicioprof.component';
 import { GrupoComponent } from './components/grupo/grupo.component';
+import { LibroComponent } from './components/libro/libro.component';
 
 
 //Servicios
@@ -59,7 +60,8 @@ import { GrupoComponent } from './components/grupo/grupo.component';
     EditarComponent,
     InicioprofComponent,
     EditarActividadComponent,
-    GrupoComponent
+    GrupoComponent,
+    LibroComponent
   ],
   imports: [
     BrowserModule,
