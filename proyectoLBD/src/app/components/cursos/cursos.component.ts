@@ -24,7 +24,7 @@ export class CursosComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.auth.userData.tipo);
-    if(this.auth.userData.tipo = "Estudiante"){
+    if(this.auth.userData.tipo == "Estudiante"){
     this.curso.getCursosAlumno(this.auth.userData.id).subscribe((data:any[]) => {
       for(var i = 0; i < data.length; ++i)
       {
@@ -35,7 +35,7 @@ export class CursosComponent implements OnInit {
     this.profesor.getAlumnoGrupoProfesor(this.auth.userData.id).subscribe((data: any) => this.info = data[0]);
 
   }
-  if(this.auth.userData.tipo = "Profesor"){
+  if(this.auth.userData.tipo =="Profesor"){
     console.log("profesor");
     this.curso.getCursosProfesor(this.auth.userData.id).subscribe((data:any[]) => {
       for(var i = 0; i < data.length; ++i)
