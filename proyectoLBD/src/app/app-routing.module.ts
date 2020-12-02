@@ -13,6 +13,7 @@ import { CrearActividadComponent } from './components/crear-actividad/crear-acti
 import { EntregaComponent } from './components/entrega/entrega.component';
 import { EditarComponent } from './components/editar/editar.component';
 import { InicioprofComponent } from './components/inicioprof/inicioprof.component';
+import { EditarActividadComponent } from './components/editar-actividad/editar-actividad.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path: 'crear/:id', component: CrearActividadComponent},
   {path: 'entrega/:ida/:idm', component: EntregaComponent},
   {path: 'editar/:ida/:idm', component: EditarComponent},
+  {path: 'editaractividad/:ida', component: EditarActividadComponent},
   {path:'**', component: LoginComponent}
 ];
 

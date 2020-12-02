@@ -30,6 +30,7 @@ import { AlTutoriasSolicitarComponent } from './components/al-tutorias-solicitar
 import { EntregaComponent } from './components/entrega/entrega.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { EditarComponent } from './components/editar/editar.component';
+import { EditarActividadComponent } from './components/editar-actividad/editar-actividad.component';
 import { InicioprofComponent } from './components/inicioprof/inicioprof.component';
 
 
@@ -55,7 +56,8 @@ import { InicioprofComponent } from './components/inicioprof/inicioprof.componen
     AlTutoriasSolicitarComponent,
     EntregaComponent,
     EditarComponent,
-    InicioprofComponent
+    InicioprofComponent,
+    EditarActividadComponent
   ],
   imports: [
     BrowserModule,

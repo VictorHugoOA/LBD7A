@@ -30,7 +30,6 @@ export class CrearActividadComponent implements OnInit {
     {
       if(this.actividadForm.get('fechaLim').value > new Date())
       {
-        this
       }
     }
   }
