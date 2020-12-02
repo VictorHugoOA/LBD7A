@@ -1,0 +1,137 @@
+<app-navbar></app-navbar>
+<div class="container-fluid">
+    <div class="row justify-content-between">
+        <div class="col-4 md-auto">
+            <app-calendario></app-calendario>
+        </div>
+        <div class="col-8 md-auto" *ngIf="tipo =='Estudiante'">
+            <div class="row justify-content-start mt-5">
+                <div class="col-8">
+                    <div class="card">
+                        <div class="card-body">
+                            Usuario: 
+                            {{((userObs | async))?.nombre + " " + ((userObs | async))?.apellido_pat + " " + ((userObs | async))?.apellido_mat}}
+                            <div style="border-left: 1px solid #000; height: 100%; display: inline;">&nbsp;</div>
+                                 <img  src="../../../assets/img/usuario.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-start mt-5">
+                <div class="col-2">
+                    <div class="card">
+                        <div class="card-body">
+                            Grado: {{(userObs | async)?.grado}}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-2">
+                    <div class="card">
+                        <div class="card-body">
+                            Grupo: {{(userObs | async)?.clase}}
+                        </div>
+                    </div>
+
+                </div>
+        
+            </div>
+            <div class="row justify-content-start my-5">
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            Cursos
+                            <hr>
+                            <div *ngIf="cursos">
+                                <div *ngFor="let curso of cursos">
+                                    <p class="card-text">
+                                        {{curso.nombre}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            Avances
+                            <hr>
+                            <div *ngFor="let C of cursos; index as i">
+                                <div class="pt-2">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" [ngStyle]="{backgroundColor: '#942646', width: (avance[i] + '%')}"
+                                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                            <span>{{C.nombre}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-8 md-auto" *ngIf="tipo =='Profesor'">
+            <div class="row justify-content-start mt-5">
+                <div class="col-8">
+                    <div class="card">
+                        <div class="card-body">
+                            Usuario: 
+                            {{((userObs | async))?.nombre + " " + ((userObs | async))?.apellido_pat + " " + ((userObs | async))?.apellido_mat}}
+                            <div style="border-left: 1px solid #000; height: 100%; display: inline;">&nbsp;</div>
+                                 <img  src="../../../assets/img/usuario.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-start mt-5">
+                <div class="col-2">
+                    <div class="card">
+                        <div class="card-body">
+                            Grado: {{((grupoObs | async))?.grado}}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-2">
+                    <div class="card">
+                        <div class="card-body">
+                            Grupo: {{((grupoObs | async))?.clase}}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            Email: {{((userObs | async))?.correo}}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row justify-content-start my-5">
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            Cursos
+                            <hr>
+                            <div *ngIf="cursos">
+                                <div *ngFor="let curso of cursos">
+                                    <p class="card-text">
+                                        {{curso.nombre}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>

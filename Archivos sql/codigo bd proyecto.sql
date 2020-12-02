@@ -184,8 +184,6 @@ begin
 end//
 DELIMITER ;
 
-select * from grupoMat;
-select * from libro where id_materia in (select id_materia from grupoMat where id_profesor = "p000001");
 
 /*Ejemplo para ejecutar el procedimiento para avances
 call avances("a000001", @out); select @out;*/

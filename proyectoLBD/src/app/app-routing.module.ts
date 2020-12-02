@@ -16,6 +16,7 @@ import { InicioprofComponent } from './components/inicioprof/inicioprof.componen
 import { EditarActividadComponent } from './components/editar-actividad/editar-actividad.component';
 import { GrupoComponent } from './components/grupo/grupo.component';
 import { LibroComponent } from './components/libro/libro.component';
+import { PerfilOtroComponent } from './components/perfil-otro/perfil-otro.component';
 
 
 const routes: Routes = [
@@ -33,7 +34,8 @@ const routes: Routes = [
   {path: 'editar/:ida/:idm', component: EditarComponent},
   {path: 'editaractividad/:ida', component: EditarActividadComponent},
   {path: 'grupo', component: GrupoComponent},
-  {path: 'libro/:id', component: LibroComponent},
+  {path: 'libro', component: LibroComponent},
+  {path: 'profile/:id/:tipo', component: PerfilOtroComponent},
   {path:'**', component: LoginComponent}
 ];
 

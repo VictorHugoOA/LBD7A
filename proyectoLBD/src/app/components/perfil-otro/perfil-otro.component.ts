@@ -1,21 +1,17 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AlumnosService } from 'src/app/services/alumnos/alumnos.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { Curso, CursosService } from 'src/app/services/cursos/cursos.service';
-import { map } from 'rxjs/operators';
+import { CursosService } from 'src/app/services/cursos/cursos.service';
 import { ProfesorService } from 'src/app/services/profesor/profesor.service';
-import { ActivatedRoute, Router, NavigationEnd, ParamMap } from '@angular/router';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
-  selector: 'app-perfil',
-  templateUrl: './perfil.component.html',
-  styleUrls: ['./perfil.component.css']
+  selector: 'app-perfil-otro',
+  templateUrl: './perfil-otro.component.html',
+  styleUrls: ['./perfil-otro.component.css']
 })
-export class PerfilComponent implements OnInit {
-
-
+export class PerfilOtroComponent implements OnInit {
   user: any;
   userObs: Observable<any>;
   grupoObs: Observable<any>;
@@ -78,7 +74,4 @@ export class PerfilComponent implements OnInit {
   ngDestroy()
   {
   }
-
-
-
 }
