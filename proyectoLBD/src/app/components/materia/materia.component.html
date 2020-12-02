@@ -9,9 +9,22 @@
         <div class="card-body">
           <h4 class="card-title">{{(curso | async)?.nombre}}</h4>
           {{(curso | async)?.campo}}
-          <div *ngIf="auth.userData.tipo === 'Profesor'">
-            <button type="button" style="background-color: #942646;" class="btn btn-primary btn-lg btn-block" (click)="routerActivity()">Crear actividad</button>
+          <div *ngIf="auth.userData.tipo === 'Profesor'; else alumno">
+            <div class="row justify-content-between">
+              <div class="col-8">
+                <button type="button" style="background-color: #942646;" class="btn btn-primary"
+                  (click)="routerActivity()">Crear actividad</button>
+                <a style="background-color: #942646;" class="btn btn-primary ml-5" routerLink="">Añadir Archivo</a>
+              </div>
+            </div>
           </div>
+          <ng-template #alumno>
+            <div class="row justify-content-between">
+              <div class="col-8">
+                <a style="background-color: #942646;" class="btn btn-primary" routerLink="">Ver calificaciones</a>
+              </div>
+            </div>
+          </ng-template>
           <hr>
           <br />
           <p class="card-text">
