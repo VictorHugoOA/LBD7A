@@ -24,7 +24,8 @@
             </thead>
             <tbody>
               <tr *ngFor="let alumno of alumnos">
-                <td>{{alumno.id}}</td>
+                <td><a routerLink="/perfil/{{alumno.id}}/Estudiante">
+                <span class="navbar-text mr-4">{{alumno.id}}</span></a></td>
                 <td>{{alumno.nombre}}</td>
                 <td>{{alumno.apellido_pat}}</td>
                 <td>{{alumno.apellido_mat}}</td>

@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Curso, CursosService } from 'src/app/services/cursos/cursos.service';
 import { ProfesorService } from 'src/app/services/profesor/profesor.service';
@@ -12,6 +13,8 @@ import { ProfesorService } from 'src/app/services/profesor/profesor.service';
 export class CursosComponent implements OnInit {
 
   usuario:any;
+ 
+  grupoObs: Observable<any>;
   cursos: any[] = [];
   info: any;
   constructor(private router: Router, private auth: AuthService, private curso: CursosService, private profesor: ProfesorService) {
@@ -44,7 +47,7 @@ export class CursosComponent implements OnInit {
         this.cursos.push(data[i]);
       }
     });
-    this.profesor.getgrupoProfesor(this.auth.userData.id).subscribe((data: any) => this.info = data[0]);
+    this.grupoObs = this.profesor.getgrupoProfesor(this.auth.userData.id);
   }
 
   }

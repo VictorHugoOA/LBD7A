@@ -4,7 +4,7 @@
         <div class="col-4 md-auto">
             <app-calendario></app-calendario>
         </div>
-        <div class="col-8 md-auto" *ngIf="usuario.tipo =='Estudiante'">
+        <div class="col-8 md-auto" *ngIf="tipo =='Estudiante'">
             <div class="row justify-content-start mt-5">
                 <div class="col-8">
                     <div class="card">
@@ -34,14 +34,7 @@
                     </div>
 
                 </div>
-                <div class="col-4">
-                    <div class="card">
-                        <div class="card-body">
-                            Email: {{((userObs | async))?.correo}}
-                        </div>
-                    </div>
-
-                </div>
+        
             </div>
             <div class="row justify-content-start my-5">
                 <div class="col-4">
@@ -81,7 +74,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-8 md-auto" *ngIf="usuario.tipo =='Profesor'">
+        <div class="col-8 md-auto" *ngIf="tipo =='Profesor'">
             <div class="row justify-content-start mt-5">
                 <div class="col-8">
                     <div class="card">

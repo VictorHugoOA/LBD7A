@@ -159,7 +159,7 @@ function createRouter(db) {
   router.get('/GrupoProfesor/:idprof', function (req, res) {
     const idprof = req.params.idprof
     db.query(
-      'select grado,clase from grupo where id_profesor= ?',
+      'select id,grado,clase from grupo where id_profesor= ?',
       [idprof],
       (error, results) => {
         if (error) throw error;
