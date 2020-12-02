@@ -4,6 +4,7 @@ const express = require("express");
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const moment = require('moment');
 
 
 const store = multer.diskStorage({
@@ -286,7 +287,7 @@ function createRouter(db) {
       }
     );
   });
- //Actividades dadas por el profesor aun abiertas 19(3 tablas)
+  //Actividades dadas por el profesor aun abiertas 19(3 tablas)
   router.get('/ProfesorActividadesAbiertas/:idprof', function (req, res) {
     const idprof = req.params.idprof
     db.query(
@@ -301,8 +302,43 @@ function createRouter(db) {
       }
     );
   });
- 
- 
+  //Realizar entrega 20
+  router.get('/entregar/:idAlumno/:idactividad', function(req, res){
+    const alumno = req.params.idAlumno;
+    const actividad = req.params.idactividad;
+    console.log(moment().format('YYYY-MM-DD'));
+      db.query(
+        'update realiza set fecha_entrega = ?, hora_entrega = ?, estado_entrega = 1 where id_alumno = ? and id_actividad = ?',
+        [moment().format('YYYY-MM-DD'),moment().format('HH:mm:ss'), alumno, actividad],
+        (error, results) => {
+          if (error) throw error;
+          res.send(results);
+  
+          console.log(results);
+  
+        }
+      );
+  })
+
+  //Obtener archivos de la actividad.
+  router.get('/obtener/:idAlumno/:idActividad', function(req, res){
+    const alumno = req.params.idAlumno;
+    const actividad = req.params.idActividad;
+    console.log(moment().format('YYYY-MM-DD'));
+      db.query(
+        'select * from tarea where id_alumno = ? and id_actividad = ?',
+        [alumno, actividad],
+        (error, results) => {
+          if (error) throw error;
+          res.send(results);
+  
+          console.log(results);
+  
+        }
+      );
+  })
+
+
   //Las fuciones para guardar archivos y obtener archivos
   //Guardar archivos 
   router.post('/upload', function (req, res, next) {
@@ -311,9 +347,27 @@ function createRouter(db) {
         return res.status(501).json({ error: err });
       }
       //Aquí ira todo para guardar en la bd
+
       return res.json({ originalname: req.file.originalname, uploadname: req.file.filename });
     });
   });
+
+  router.get('/guardartarea/:idalumno/:idactividad/:ar', function (req, res, next) {
+    const actividad = req.params.idactividad
+    const alumno = req.params.idalumno
+    const ar = req.params.ar;
+    db.query(
+      'insert into tarea (id_alumno, id_actividad, archivo) values (?, ?, ?);',
+      [alumno, actividad, ar],
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);
+
+      }
+    );
+  })
 
   //Obtener archivos
   router.get('/getfile/:file', function (req, res, next) {
@@ -325,12 +379,26 @@ function createRouter(db) {
   router.get('/delete/:file', function (req, res, next) {
     let fil = "";
     fil = path.join(__dirname, '../uploads') + '/' + req.params.file;
-    try{
+    try {
       fs.unlinkSync(fil);
+
+      db.query(
+        'delete from tarea where archivo = ?',
+        [req.params.file],
+        (error, results) => {
+          if (error) throw error;
+          res.send(results);
+
+          console.log(results);
+
+        }
+      );
+
+
       return res.status(200);
-    } catch(err){
+    } catch (err) {
       console.error(err);
-      return res.status(200).json({error: "El archivo no existe"});
+      return res.status(200).json({ error: "El archivo no existe" });
     }
   });
 

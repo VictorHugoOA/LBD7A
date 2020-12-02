@@ -52,7 +52,7 @@ create table clases_de(
 );
 
 create table actividad(
-	id numeric(10) not null,
+	id  int not null auto_increment,
     titulo varchar(30) not null,
     fecha_limite date not null,
     hora_limite time not null,
@@ -67,7 +67,7 @@ create table actividad(
 create table realiza
 (
 	id_alumno varchar(10) not null,
-    id_actividad numeric(10) not null,
+    id_actividad int not null,
     fecha_entrega date,
     hora_entrega time,
     calificacion float,
@@ -76,6 +76,7 @@ create table realiza
     foreign key(id_alumno) references alumno(id),
     foreign key(id_actividad) references actividad(id)
 );
+
 
 create table libro (
 	id varchar(10) not null,
@@ -89,14 +90,15 @@ create table libro (
 );
 
 create table tutoría(
-	id varchar(10) not null,
+	id int not null auto_increment,
     titulo varchar(30) not null,
     descripción text not null,
     primary key(id)
 );
 
+
 create table pide(
-	id_tutoría varchar(10) not null,
+	id_tutoría int not null,
 	id_alumno varchar(10) not null,
 	fecha date not null,
     primary key(id_tutoría, id_alumno),
@@ -104,8 +106,9 @@ create table pide(
     foreign key(id_alumno) references alumno(id)
 );
 
+
 create table imparte(
-	id_tutoría varchar(10) not null,
+	id_tutoría int not null,
     id_profesor varchar(10),
     primary key(id_tutoría, id_profesor),
     foreign key(id_tutoría) references tutoría(id),
@@ -113,20 +116,21 @@ create table imparte(
 );
 create table tarea
 (
-	id numeric(10) not null,
+	id int not null auto_increment,
 	id_alumno varchar(10) not null,
-    id_actividad numeric(10) not null,
+    id_actividad int not null,
     archivo text,
     primary key(id),
     foreign key(id_alumno) references alumno(id),
     foreign key(id_actividad) references actividad(id)
 );
 
+
 create table Material
 (
-	id numeric(10) not null,
+	id int not null auto_increment,
 	id_alumno varchar(10) not null,
-    id_actividad numeric(10) not null,
+    id_actividad int not null,
     archivo text,
     primary key(id),
     foreign key(id_alumno) references alumno(id),
@@ -178,6 +182,13 @@ begin
     select total;
 end//
 DELIMITER ;
+insert into tarea (id_alumno, id_actividad, archivo) values ("a000036", 1, "hola");
+delete from tarea where archivo = "hola";
+
+select * from realiza;
+
+select * from tarea;
+
 
 /*Ejemplo para ejecutar el procedimiento para avances
 call avances("a000001", @out); select @out;*/

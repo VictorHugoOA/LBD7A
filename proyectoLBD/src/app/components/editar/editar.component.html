@@ -40,6 +40,16 @@
                     <h4>Archivos de actividad para borrar</h4>
                     <hr>
                 </div>
+                <div>
+                    <div class="row justify-content-around" *ngFor="let archivo of archivos; index as i">
+                        <div class="col-sm-6">
+                            {{archivo.archivo}}
+                        </div>
+                        <div class="col-sm-6">
+                            <button class="btn btn-danger" (click)="eliminar(archivo.archivo, i)">Borrar</button>
+                        </div>
+                    </div>
+                </div>
                 <button style="background-color: #942646;" class="btn btn-primary mt-4" routerLink="/entrega/{{a}}/{{act}}" (click)="regresar()">Entregar</button>
             </div>
         </div>

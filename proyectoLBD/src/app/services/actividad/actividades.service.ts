@@ -19,9 +19,25 @@ export class ActividadesService {
     }));
   }
 
+  realizarEntrega(idAl: string, idAct: string)
+  {
+    return this.http.get(`http://localhost:3000/entregar/${idAl}/${idAct}`);
+  }
+
   crearActividad(actividad: any)
   {
 
+  }
+
+  obtenerArchivosActividadAlumno(idAlumno: string, idActividad: string)
+  {
+    return this.http.get(`http://localhost:3000/obtener/${idAlumno}/${idActividad}`).pipe(map((data: any[]) => {
+      var newD: any[] = [];
+      for (var i = 0; i < data.length; ++i) {
+        newD.push(data[i]);
+      }
+      return newD;
+    }));
   }
 
   getActividad(idActividad: String)
@@ -32,6 +48,11 @@ export class ActividadesService {
   borrarArchivoActividad(nameUp: string)
   {
     return this.http.get(`http://localhost:3000/delete/${nameUp}`);
+  }
+
+  añadirArchivoActividad(idAlumno: string, idActividad: string, archivo:string)
+  {
+    return this.http.get(`http://localhost:3000/guardartarea/${idAlumno}/${idActividad}/${archivo}`);
   }
 
 }
