@@ -13,6 +13,7 @@ create table profesor(
     primary key(id)
 );
 
+
 create table grupo(
 	id varchar(10) not null,
     grado int not null,

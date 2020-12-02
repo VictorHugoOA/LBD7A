@@ -24,10 +24,13 @@ export class ActividadComponent implements OnInit {
     this.act = this.aRouter.snapshot.params.idm;
     this.a = this.aRouter.snapshot.params.ida;
 
-    this.al.getActividadAlumno(this.a, this.act).subscribe((data:any)=> {
-      this.actividad = data;
-      console.log()
-    });
+    if(this.auth.userData.tipo == "Estudiante")
+    {
+      this.al.getActividadAlumno(this.a, this.act).subscribe((data:any)=> {
+        this.actividad = data;
+        console.log()
+      });
+    }
   }
 
   ngOnInit(): void {
