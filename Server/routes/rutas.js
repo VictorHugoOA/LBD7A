@@ -20,7 +20,7 @@ const upload = multer({ storage: store }).single('file');
 
 function createRouter(db) {
   const router = express.Router();
-  //info prof 1 en uso
+  //info prof 1
   router.get('/Profesor/:id', function (req, res) {
     const id = req.params.id
     db.query(
@@ -35,7 +35,7 @@ function createRouter(db) {
       }
     );
   });
-  //info de materia 2 en uso
+  //info de materia 2
   router.get('/Materia/:id', function (req, res) {
     const id = req.params.id
     db.query(
@@ -50,7 +50,7 @@ function createRouter(db) {
       }
     );
   });
-  //info del alumno 3 en uso
+  //info del alumno 3
   router.get('/Alumno/:id', function (req, res) {
     const id = req.params.id
     db.query(
@@ -65,7 +65,7 @@ function createRouter(db) {
       }
     );
   });
-  //curso por ALUMNO 4 (3 tablas) en uso
+  //curso por ALUMNO 4 (3 tablas)
   router.get('/cursosAlumno/:id', function (req, res) {
     const id = req.params.id
     db.query(
@@ -96,7 +96,7 @@ function createRouter(db) {
       }
     );
   });
-  //Actividades entregadas por materia y alumno 6 cambiar
+  //Actividades entregadas por materia y alumno 6
   router.get('/AlumnoActividadesEntregadas/:idalum/:idmat', function (req, res) {
     const idalum = req.params.idalum
     const idmat = req.params.idmat
@@ -126,7 +126,7 @@ function createRouter(db) {
       }
     );
   });
-  //Actividades por grupo y materia 8 (3 tablas) en uso
+  //Actividades por grupo y materia 8 (3 tablas)
   router.get('/ActividadesMateriaGrupo/:idgrup/:idmat', function (req, res) {
     const idgrup = req.params.idgrup
     const idmat = req.params.idmat
@@ -155,11 +155,11 @@ function createRouter(db) {
       }
     );
   });
-  //Grupos por profesor 10 en uso
+  //Grupos por profesor 10
   router.get('/GrupoProfesor/:idprof', function (req, res) {
     const idprof = req.params.idprof
     db.query(
-      'select grado,clase from grupo where id_profesor= ?',
+      'select * from grupo where id_profesor= ?',
       [idprof],
       (error, results) => {
         if (error) throw error;
@@ -169,12 +169,12 @@ function createRouter(db) {
       }
     );
   });
-  //Lista de alumnos por profesor 11 en uso
-  router.get('/GrupoAlumProfesor/:idprof', function (req, res) {
+  //Lista de alumnos por grupo y profesor 11
+  router.get('/GrupoAlumProfesor/:idprof/:idgrup', function (req, res) {
     const idprof = req.params.idprof
     const idgrup = req.params.idgrup
     db.query(
-      'select * from ListaAlumnos where id_profesor= ? ',
+      'select * from ListaAlumnos where id_profesor= ? and id_grupo=?',
       [idprof, idgrup],
       (error, results) => {
         if (error) throw error;
@@ -184,7 +184,7 @@ function createRouter(db) {
       }
     );
   });
-  //Materias que el profesor imparte 12 (3 Tablas) en uso
+  //Materias que el profesor imparte 12 (3 Tablas)
   router.get('/MateriasProfesor/:idprof', function (req, res) {
     const idprof = req.params.idprof
     db.query(
@@ -198,7 +198,7 @@ function createRouter(db) {
       }
     );
   });
-  //Obtener el profesor y grupo del alumno 13 (3 Tablas) en uso
+  //Obtener el profesor y grupo del alumno 13 (3 Tablas)-
   router.get('/AlumnoProfesor/:idalumno', function (req, res) {
     const idalumno = req.params.idalumno
     db.query(
@@ -212,7 +212,7 @@ function createRouter(db) {
       }
     );
   });
-  //Login Vista Alumno 14 en uso
+  //Login Vista Alumno 14-
   router.get('/LoginA/:idalumno/:contrasena', function (req, res) {
     const idalumno = req.params.idalumno
     const cont = req.params.contrasena
@@ -227,7 +227,7 @@ function createRouter(db) {
       }
     );
   });
-  //Login Vista profesor 15 en uso
+  //Login Vista profesor 15-
   router.get('/LoginP/:idprof/:contrasena', function (req, res) {
     const idprof = req.params.idprof
     const cont = req.params.contrasena
@@ -242,7 +242,7 @@ function createRouter(db) {
       }
     );
   });
-  //Avances 16 en uso
+  //Avances 16- pendiente
   router.get('/Avances/:idalum', function (req, res) {
     const idalum = req.params.idalum
     db.query(
@@ -256,7 +256,7 @@ function createRouter(db) {
       }
     );
   });
-  //Actividades pendientes por alumno 17 en uso
+  //Actividades pendientes por alumno 17-
   router.get('/AlumnoActividadesPendientes/:idalum', function (req, res) {
     const idalum = req.params.idalum
     db.query(
@@ -271,7 +271,7 @@ function createRouter(db) {
       }
     );
   });
-  //actividad alumno 18 en uso
+  //actividad alumno 18
   router.get('/AlumnoActividad/:idalum/:idact', function (req, res) {
     const idalum = req.params.idalum
     const idact = req.params.idact
@@ -287,11 +287,7 @@ function createRouter(db) {
       }
     );
   });
-<<<<<<< Updated upstream
   //Actividades dadas por el profesor aun abiertas 19(3 tablas)
-=======
- //Actividades dadas por el profesor aun abiertas 19(3 tablas) en uso
->>>>>>> Stashed changes
   router.get('/ProfesorActividadesAbiertas/:idprof', function (req, res) {
     const idprof = req.params.idprof
     db.query(

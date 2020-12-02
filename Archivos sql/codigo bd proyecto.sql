@@ -148,8 +148,6 @@ create view grupoAl as select A.id, A.nombre, A.apellido_pat, A.apellido_mat, G.
 alumno A left join grupo G on A.id_grupo=G.id;
 create view grupoMat as select C.id_materia, G.id, G.id profesor from
 clases_de C left join grupo G on C.id_grupo=G.id;
-create view LibroMat as select L.título, M.nombre from
-libro L left join materia M on L.id_Materia=M.id;
 
 /*Creación del procedimiento para login_alumno*/
 DELIMITER //

@@ -14,7 +14,6 @@ import { EntregaComponent } from './components/entrega/entrega.component';
 import { EditarComponent } from './components/editar/editar.component';
 import { InicioprofComponent } from './components/inicioprof/inicioprof.component';
 import { EditarActividadComponent } from './components/editar-actividad/editar-actividad.component';
-import { GrupoComponent } from './components/grupo/grupo.component';
 
 
 const routes: Routes = [
@@ -31,7 +30,6 @@ const routes: Routes = [
   {path: 'entrega/:ida/:idm', component: EntregaComponent},
   {path: 'editar/:ida/:idm', component: EditarComponent},
   {path: 'editaractividad/:ida', component: EditarActividadComponent},
-  {path: 'grupo', component: GrupoComponent},
   {path:'**', component: LoginComponent}
 ];
 

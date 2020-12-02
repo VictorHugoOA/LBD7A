@@ -4,7 +4,6 @@ import { AlumnosService } from 'src/app/services/alumnos/alumnos.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Curso, CursosService } from 'src/app/services/cursos/cursos.service';
 import { map } from 'rxjs/operators';
-import { ProfesorService } from 'src/app/services/profesor/profesor.service';
 
 @Component({
   selector: 'app-perfil',
@@ -16,16 +15,12 @@ export class PerfilComponent implements OnInit {
 
   user: any;
   userObs: Observable<any>;
-  grupoObs: Observable<any>;
 
   c: Observable<any>;
   cursos: any[] = [];
   avance: number[] = [];
-  usuario: any;
 
-  constructor(private auth: AuthService,private prof: ProfesorService , private al: AlumnosService, private cur: CursosService, private cd: ChangeDetectorRef) {
-    this.usuario=this.auth.userData;
-   }
+  constructor(private auth: AuthService, private al: AlumnosService, private cur: CursosService, private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     if(this.auth.userData.tipo == "Estudiante")
@@ -46,23 +41,6 @@ export class PerfilComponent implements OnInit {
         })
 
     }
-    if(this.auth.userData.tipo == "Profesor")
-    {
-
-      this.userObs = this.prof.getProfesor(this.auth.userData.id);
-      this.grupoObs = this.prof.getgrupoProfesor(this.auth.userData.id);
-      
-
-        this.cur.getCursosProfesor(this.auth.userData.id).subscribe((data:any[]) =>{
-          for(var i = 0; i < data.length; ++i)
-          {
-            this.cursos.push(data[i]);
-          }
-         
-        });
-
-    }
-
   }
 
 }
