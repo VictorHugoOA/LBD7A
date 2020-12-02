@@ -301,8 +301,10 @@ function createRouter(db) {
       }
     );
   });
+ 
+ 
   //Las fuciones para guardar archivos y obtener archivos
-  //Guardar archivos
+  //Guardar archivos 
   router.post('/upload', function (req, res, next) {
     upload(req, res, function (err) {
       if (err) {

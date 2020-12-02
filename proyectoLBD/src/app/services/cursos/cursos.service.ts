@@ -18,13 +18,10 @@ export class CursosService {
     return this.http.get(`http://localhost:3000/Materia/${idCurso}`).pipe(map((data:any)=> {console.log(data); return data[0];}));
   }
 
-  getAlumnosCurso(id: string)
-  {
-    
-  }
 
   getCursosProfesor(id: string)
   {
+    return this.http.get(`http://localhost:3000/MateriasProfesor/${id}`);
     
   }
 

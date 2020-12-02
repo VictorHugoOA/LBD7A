@@ -24,5 +24,5 @@ export class ProfesorService {
   {
     return this.http.get(`http://localhost:3000/ProfesorActividadesAbiertas/${id}`);
   }
-
+  
 }
