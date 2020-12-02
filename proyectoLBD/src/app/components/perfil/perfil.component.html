@@ -4,7 +4,7 @@
         <div class="col-4 md-auto">
             <app-calendario></app-calendario>
         </div>
-        <div class="col-8 md-auto">
+        <div class="col-8 md-auto" *ngIf="usuario.tipo =='Estudiante'">
             <div class="row justify-content-start mt-5">
                 <div class="col-8">
                     <div class="card">
@@ -37,7 +37,7 @@
                 <div class="col-4">
                     <div class="card">
                         <div class="card-body">
-                            Secretaria de educación pública
+                            Email: {{((userObs | async))?.correo}}
                         </div>
                     </div>
 
@@ -79,6 +79,65 @@
                     </div>
 
                 </div>
+            </div>
+        </div>
+        <div class="col-8 md-auto" *ngIf="usuario.tipo =='Profesor'">
+            <div class="row justify-content-start mt-5">
+                <div class="col-8">
+                    <div class="card">
+                        <div class="card-body">
+                            Usuario: 
+                            {{((userObs | async))?.nombre + " " + ((userObs | async))?.apellido_pat + " " + ((userObs | async))?.apellido_mat}}
+                            <div style="border-left: 1px solid #000; height: 100%; display: inline;">&nbsp;</div>
+                                 <img  src="../../../assets/img/usuario.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-start mt-5">
+                <div class="col-2">
+                    <div class="card">
+                        <div class="card-body">
+                            Grado: {{((grupoObs | async))?.grado}}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-2">
+                    <div class="card">
+                        <div class="card-body">
+                            Grupo: {{((grupoObs | async))?.clase}}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            Email: {{((userObs | async))?.correo}}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row justify-content-start my-5">
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            Cursos
+                            <hr>
+                            <div *ngIf="cursos">
+                                <div *ngFor="let curso of cursos">
+                                    <p class="card-text">
+                                        {{curso.nombre}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+               
             </div>
         </div>
     </div>
