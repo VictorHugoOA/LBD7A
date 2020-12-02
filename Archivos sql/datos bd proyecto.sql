@@ -300,3 +300,5 @@ update actividad set estado= 1 where id = 1;
 insert into realiza (id_alumno, id_actividad)
 values ("a000036", 2),
  ("a000037", 2);
+ 
+
