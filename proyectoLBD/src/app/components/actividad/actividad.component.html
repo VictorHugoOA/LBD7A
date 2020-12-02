@@ -54,6 +54,7 @@
               </tr>
             </tbody>
           </table>
+          <div *ngIf="auth.userData.tipo == 'Estudiante'">
           <div *ngIf="!actividad.estado">
             <div *ngIf="!actividad.estado_entrega; else editar">
               <a style="background-color: #942646;" class="btn btn-primary btn-lg"
@@ -62,7 +63,7 @@
             <ng-template #editar><a style="background-color: #942646;" class="btn btn-primary btn-lg"
                 routerLink="/editar/{{a}}/{{act}}">Editar Entrega</a></ng-template>
           </div>
-
+        </div>
         </div>
       </div>
     </div>

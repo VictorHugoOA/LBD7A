@@ -24,6 +24,11 @@ export class ActividadesService {
 
   }
 
+  getActividad(idActividad: String)
+  {
+    return this.http.get(`http://localhost:3000/Actividad/${idActividad}`).pipe(map((data:any[]) => {return data[0];}));
+  }
+
   borrarArchivoActividad(nameUp: string)
   {
     return this.http.get(`http://localhost:3000/delete/${nameUp}`);

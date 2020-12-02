@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Activity } from 'src/app/services/actividad/actividades.service';
+import { ActividadesService, Activity } from 'src/app/services/actividad/actividades.service';
 import { AlumnosService } from 'src/app/services/alumnos/alumnos.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
@@ -19,7 +19,7 @@ export class ActividadComponent implements OnInit {
   now: Date = new Date();
 
   actividad: any = {};
-  constructor(public auth: AuthService, private al: AlumnosService, private aRouter: ActivatedRoute) {
+  constructor(public auth: AuthService, private al: AlumnosService, private aRouter: ActivatedRoute, private acti: ActividadesService) {
 
     this.act = this.aRouter.snapshot.params.idm;
     this.a = this.aRouter.snapshot.params.ida;
@@ -28,7 +28,11 @@ export class ActividadComponent implements OnInit {
     {
       this.al.getActividadAlumno(this.a, this.act).subscribe((data:any)=> {
         this.actividad = data;
-        console.log()
+      });
+    }
+    if(this.auth.userData.tipo == "Profesor"){
+      this.acti.getActividad(this.act).subscribe((data: any) => {
+        this.actividad = data;
       });
     }
   }

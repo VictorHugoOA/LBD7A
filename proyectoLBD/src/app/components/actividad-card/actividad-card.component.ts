@@ -20,9 +20,6 @@ export class ActividadCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.usuario);
-    console.log(this.actividad);
-  
   
   }
 
