@@ -39,7 +39,7 @@
                     </ng-template>
                 </td>
                 <td>
-                  <p *ngIf="!actividad.estado_entrega; else calificada" class="alert alert-danger">No calificada</p>
+                  <p *ngIf="!actividad.calificacion else calificada" class="alert alert-danger">No calificada</p>
                   <ng-template #calificada>
                     <p *ngIf="actividad.calificacion > 8; else medio" class="alert alert-success">{{actividad.calificada}}</p>
                   </ng-template>
