@@ -336,7 +336,7 @@ function createRouter(db) {
   router.get('/LibrosProfesor/:id', function(req, res){
     const profesor = req.params.id;
     db.query(
-      'select * from libro where id_materia in (select id_materia from grupoMat where id_profesor = ?);',
+      'select * from libro where id_materia in (select id_materia from grupoMat where profesor = ?);',
       [profesor],
       (error, results) => {
         if (error) throw error;
