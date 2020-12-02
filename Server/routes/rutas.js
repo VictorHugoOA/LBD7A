@@ -287,11 +287,7 @@ function createRouter(db) {
       }
     );
   });
-<<<<<<< Updated upstream
-  //Actividades dadas por el profesor aun abiertas 19(3 tablas)
-=======
  //Actividades dadas por el profesor aun abiertas 19(3 tablas) en uso
->>>>>>> Stashed changes
   router.get('/ProfesorActividadesAbiertas/:idprof', function (req, res) {
     const idprof = req.params.idprof
     db.query(
