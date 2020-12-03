@@ -1,35 +1,47 @@
 <app-navbar></app-navbar>
 <div class="container-fluid" style="margin-top: 5px;">
-    <form [formGroup]="editarForm"></form>
-    <div class="row justify-content-between">
-        <div class="col-4">
-            <app-calendario></app-calendario>
-        </div>
-        <div class="col-8 card">
-            <h4 class="Card-title">Editar actividad</h4>
-            <div class="form-group">
-                <label for="text">Título de la actividad:</label>
-                <input type="text" class="form-control" name="" id="">
+    <form *ngIf="actividadForm" [formGroup]="actividadForm" (ngSubmit)="onSubmit()">
+        <div class="row justify-content-between">
+            <div class="col-4">
+                <app-calendario></app-calendario>
             </div>
-            <div class="form-inline justify-content-around">
-                <div class="form-group mx-auto">
-                    <label for="date">Fecha límite:</label>
-                    <input type="date" class="form-control" formControlName="fechaLim">
+            <div class="col-8 card">
+                <h4 class="Card-title">Crear actividad</h4>
+                <div class="form-group">
+                    <label for="text">Título de la actividad:</label>
+                    <input type="text" class="form-control" formControlName="titulo">
                 </div>
-                <div class="form-group mx-auto">
-                    <label for="time">Hora límite:</label>
-                    <input type="time" class="form-control" formControlName="horaLim">
+                <div class="form-inline justify-content-around">
+                    <div class="form-group mx-auto">
+                        <label for="date">Fecha límite:</label>
+                        <input type="date" class="form-control" formControlName="fechaLim">
+                    </div>
+                    <div class="form-group mx-auto">
+                        <label for="time">Hora límite:</label>
+                        <input type="time" class="form-control" formControlName="horaLim">
+                    </div>
+                    <div class="form-group mx-auto">
+                        <label>Habilitar retraso: </label>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="retraso" value="si" formControlName="retraso"> Si
+                            </label>
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="retraso" value="no" formControlName="retraso"> No
+                            </label>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label for="textarea">Descripción:</label>
-                <textarea cols="30" rows="10" class="form-control" formControlName="descripción"></textarea>
+                <div class="form-group">
+                    <label for="textarea">Descripción:</label>
+                    <textarea cols="30" rows="10" class="form-control" formControlName="descripcion"></textarea>
+                </div>
+                <button type="submit" style="background-color: #942646; color: white;" [disabled]="!actividadForm.valid"
+                    class="btn btn-block btn-lg">Editar actividad</button>
             </div>
-
         </div>
-    </div>
-    
+    </form>
     <div class="row justify-content-center mt-4">
         <div class="col-4"></div>
         <div class="col-8">
@@ -62,20 +74,27 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row justify-content-center mt-5">
-        <div class="col-4"></div>
-        <div class="col-8">
-            <div class="row card">
-                <div class="col-12">
-                    <h4>Archivos de actividad para borrar</h4>
-                    <hr>
+            <div class="row justify-content-center mt-5">
+                <div class="col-8">
+                    <div class="row card justify-content-center">
+                        <div class="col-12 mx-auto mt-3">
+                            <h4>Archivos de actividad para borrar</h4>
+                            <hr>
+                        </div>
+                        <div>
+                            <div class="row justify-content-around ml-5" *ngFor="let archivo of archivos; index as i">
+                                <div class="col-sm-6 mx-auto">
+                                    {{archivo.archivo}}
+                                </div>
+                                <div class="col-sm-6 mx-auto">
+                                    <button class="btn btn-danger" (click)="eliminar(archivo.archivo, i)">Borrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <button type="submit" style="background-color: #942646; color: white;" [disabled]="!editarForm.valid"
-                    class="btn btn-block btn-lg">Editar actividad</button>
             </div>
         </div>
+        
     </div>
-    <form [formGroup]="editarForm"></form>
 </div>

@@ -402,6 +402,26 @@ function createRouter(db) {
       }
     );
   });
+    //Actualizar datos actividad
+    router.post('/EditarActividad', function(req, res){
+      const id = req.body.id;
+      const titulo = req.body.titulo;
+      const fecha = req.body.fecha;
+      const desc = req.body.desc;
+      const hora = req.body.hora;
+      const retraso = req.body.retraso;
+      db.query(
+        'update actividad set titulo = ?, fecha_limite = ?, descripción = ?, hora_limite = ?, retraso = ? where id = ?',
+        [titulo, fecha, desc, hora, retraso, id],
+        (error, results) => {
+          if (error) throw error;
+          res.send(results);
+  
+          console.log(results);
+  
+        }
+      );
+    });
 
   router.get('/BorrarActividad/:id', function(req, res){
     const id = req.params.id;
@@ -430,7 +450,19 @@ function createRouter(db) {
       }
     );
 
+  });
+
+  router.get('/obtenerMateriales/:id', function(req, res){
+    const id = req.params.id;
+    db.query('select * from Material where id_actividad = ?',
+    [id],
+    (error, results) => {
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
   })
+
 
   //Las fuciones para guardar archivos y obtener archivos
   //Guardar archivos 

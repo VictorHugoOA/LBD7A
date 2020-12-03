@@ -51,6 +51,11 @@ export class ActividadesService {
     }));
   }
 
+  editarActividad(idAct: string, titulo: string, fecha: string, descripcion: string, hora: string, retraso: number)
+  {
+    return this.http.post('http://localhost:3000/EditarActividad', {id: idAct, titulo: titulo, fecha: fecha, desc: descripcion, hora: hora, retraso: retraso});
+  }
+
   almacenarArchivoMaterial(idAct: string, archivo: string){
     return this.http.get(`http://localhost:3000/guardarmaterial/${idAct}/${archivo}`);
   }
@@ -75,6 +80,10 @@ export class ActividadesService {
     return this.http.get(`http://localhost:3000/guardartarea/${idAlumno}/${idActividad}/${archivo}`);
   }
 
+  getActividadMaterial(id: string)
+  {
+      return this.http.get(`http://localhost:3000/obtenerMateriales/${id}`);
+  }
 
   getactividadesAlumno(idalum:string, idmat: string){
     return this.http.get(`http://localhost:3000/AlumnoActividades/${idalum}/${idmat}`);

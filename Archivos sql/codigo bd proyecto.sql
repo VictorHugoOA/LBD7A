@@ -53,7 +53,7 @@ create table clases_de(
 
 create table actividad(
 	id  int not null auto_increment,
-    titulo varchar(30) not null,
+    titulo text not null,
     fecha_limite date not null,
     hora_limite time not null,
     descripción text not null,
@@ -192,7 +192,6 @@ begin
 end//
 DELIMITER ;
 
-select * from listaalumnos where id_profesor = "p000001";
 
 DELIMITER //
 create procedure aulavirtualsep.actividad_alumnos(in id_act int, in titulo text, in fecha date, in descri text, in hora time, in retraso int, in id_prof varchar(10))
@@ -227,5 +226,3 @@ DELIMITER ;
 
 /*Ejemplo para ejecutar el procedimiento para avances
 call avances("a000001", @out); select @out;*/
-
-
