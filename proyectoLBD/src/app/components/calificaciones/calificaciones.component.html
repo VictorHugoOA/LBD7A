@@ -27,8 +27,8 @@
                 <td><a routerLink="/actividad/{{usuario}}/{{act.id_actividad}}">
                     <span class="navbar-text mr-4">{{act.titulo}}</span></a></td>
                 <td *ngIf="act.estado_entrega== 0"> No entregada</td>
-                <td *ngIf="act.calificacion ==null">No calificada</td>
                 <td *ngIf="act.estado_entrega== 1"> Entregada</td>
+                <td *ngIf="act.calificacion ==null">No calificada</td>
                 <td *ngIf="act.calificacion !=null">{{act.calificacion}}</td>
               </tr>
         
