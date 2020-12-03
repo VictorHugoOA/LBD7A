@@ -13,18 +13,13 @@ import { CrearActividadComponent } from './components/crear-actividad/crear-acti
 import { EntregaComponent } from './components/entrega/entrega.component';
 import { EditarComponent } from './components/editar/editar.component';
 import { InicioprofComponent } from './components/inicioprof/inicioprof.component';
-<<<<<<< Updated upstream
-=======
 import { EditarActividadComponent } from './components/editar-actividad/editar-actividad.component';
 import { GrupoComponent } from './components/grupo/grupo.component';
 import { LibroComponent } from './components/libro/libro.component';
 import { PerfilOtroComponent } from './components/perfil-otro/perfil-otro.component';
 import { CalificacionesComponent } from './components/calificaciones/calificaciones.component';
 import { ArchivosComponent } from './components/archivos/archivos.component';
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
 
 
 const routes: Routes = [
@@ -40,15 +35,12 @@ const routes: Routes = [
   {path: 'crear/:id', component: CrearActividadComponent},
   {path: 'entrega/:ida/:idm', component: EntregaComponent},
   {path: 'editar/:ida/:idm', component: EditarComponent},
-<<<<<<< Updated upstream
-=======
   {path: 'editaractividad/:ida', component: EditarActividadComponent},
   {path: 'grupo', component: GrupoComponent},
   {path: 'libro', component: LibroComponent},
   {path: 'calificaciones/:idm', component: CalificacionesComponent},
   {path: 'archivo/:idm', component: ArchivosComponent},
   {path: 'profile/:id/:tipo', component: PerfilOtroComponent},
->>>>>>> Stashed changes
   {path:'**', component: LoginComponent}
 ];
 
