@@ -27,7 +27,9 @@ export class MateriaComponent implements OnInit {
 
   routerActivity()
   {
-    this.router.navigate([`/crear/${this.materia}`])
+    this.act.crearActividad(this.materia).subscribe((data: any) => {
+      this.router.navigate([`/crear/${this.materia}/${data.id}`]);
+    });
   }
  
   ngOnInit(): void {

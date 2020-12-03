@@ -333,7 +333,7 @@ function createRouter(db) {
 
   })
 
-  router.get('/LibrosProfesor/:id', function(req, res){
+  router.get('/LibrosProfesor/:id', function (req, res) {
     const profesor = req.params.id;
     db.query(
       'select * from libro where id_materia in (select id_materia from grupoMat where id_profesor = ?);',
@@ -362,18 +362,14 @@ function createRouter(db) {
     );
   })
 
+  //Crea una plantilla para las actividades.
+  router.get('/crearactividad/:mat', function (req, res) {
 
-  router.get('/crearactividad/:tit/:fecha/:hora/:retraso/:desc/:mat', function(req, res){
-    const tit = req.params.tit;
-    const fecha = req.params.fecha;
-    const hora = req.params.hora;
-    const retraso = req.params.retraso;
-    const desc = req.params.desc;
     const mat = req.params.mat;
 
     db.query(
-      'call actividad_alumno(?,?,?,?,?,?)',
-      [tit, fecha, hora, retraso, desc, mat],
+      'call actividad_template(?)',
+      [mat],
       (error, results) => {
         if (error) throw error;
         res.send(results);
@@ -385,6 +381,45 @@ function createRouter(db) {
 
   })
 
+  //Actualizar datos actividad
+  router.post('/ActualizarActividad', function(req, res){
+    const id = req.body.id;
+    const titulo = req.body.titulo;
+    const fecha = req.body.fecha;
+    const desc = req.body.desc;
+    const hora = req.body.hora;
+    const retraso = req.body.retraso;
+    const profesor = req.body.idprof
+    db.query(
+      'call actividad_alumnos(?,?,?,?,?,?,?)',
+      [id, titulo, fecha, desc, hora, retraso, profesor],
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);
+
+      }
+    );
+  });
+
+  //Guarda en los materiales en la actividad.
+  router.get('/guardarmaterial/:id/:ar', function (req, res) {
+    const act = req.params.id;
+    const archivo = req.params.ar;
+    db.query(
+      'insert into Material(id_actividad, archivo) values(?, ?);',
+      [act, archivo],
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);
+
+      }
+    );
+
+  })
 
   //Las fuciones para guardar archivos y obtener archivos
   //Guardar archivos 
@@ -416,21 +451,6 @@ function createRouter(db) {
     );
   })
 
-  router.get('/guardaractividad/:ar', function(req, res){
-    const archivo = req.params.ar;
-    db.query(
-      'insert into Material (archivo) values (?);',
-      [archivo],
-      (error, results) => {
-        if (error) throw error;
-        res.send(results);
-
-        console.log(results);
-
-      }
-    );
-  })
-
   //Obtener archivos
   router.get('/getfile/:file', function (req, res, next) {
     let fil = ""
@@ -438,6 +458,7 @@ function createRouter(db) {
     res.sendFile(fil);
   });
 
+  //Borrar tarea.
   router.get('/delete/:file', function (req, res, next) {
     let fil = "";
     fil = path.join(__dirname, '../uploads') + '/' + req.params.file;
@@ -457,6 +478,31 @@ function createRouter(db) {
       );
 
 
+      return res.status(200);
+    } catch (err) {
+      console.error(err);
+      return res.status(200).json({ error: "El archivo no existe" });
+    }
+  });
+
+  //Borrar material.
+  router.get('/borrarMaterial/:file', function (req, res, next) {
+    let fil = "";
+    fil = path.join(__dirname, '../uploads') + '/' + req.params.file;
+    try {
+      fs.unlinkSync(fil);
+
+      db.query(
+        'delete from Material where archivo = ?',
+        [req.params.file],
+        (error, results) => {
+          if (error) throw error;
+          res.send(results);
+
+          console.log(results);
+
+        }
+      );
       return res.status(200);
     } catch (err) {
       console.error(err);

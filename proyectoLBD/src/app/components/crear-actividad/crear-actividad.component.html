@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <div class="container-fluid" style="margin-top: 5px;">
-    <form [formGroup]="actividadForm" (ngSubmit)="onSubmit()">
+    <form *ngIf="actividadForm" [formGroup]="actividadForm" (ngSubmit)="onSubmit()">
         <div class="row justify-content-between">
             <div class="col-4">
                 <app-calendario></app-calendario>
@@ -23,11 +23,11 @@
                     <div class="form-group mx-auto">
                         <label>Habilitar retraso: </label>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                            <label class="btn btn-secondary active">
-                                <input type="radio" name="options" id="option1" value="si" autocomplete="off" formControlName="retraso" checked> Si
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="retraso" value="si" formControlName="retraso"> Si
                             </label>
                             <label class="btn btn-secondary">
-                                <input type="radio" name="options" id="option2" value="no" autocomplete="off" formControlName="retraso"> No
+                                <input type="radio" name="retraso" value="no" formControlName="retraso"> No
                             </label>
                         </div>
                     </div>
@@ -35,11 +35,45 @@
 
                 <div class="form-group">
                     <label for="textarea">Descripción:</label>
-                    <textarea cols="30" rows="10" class="form-control" formControlName="descripción"></textarea>
+                    <textarea cols="30" rows="10" class="form-control" formControlName="descripcion"></textarea>
                 </div>
                 <button type="submit" style="background-color: #942646; color: white;" [disabled]="!actividadForm.valid"
                     class="btn btn-block btn-lg">Crear actividad</button>
             </div>
         </div>
     </form>
+    <div class="row justify-content-center mt-4">
+        <div class="col-4"></div>
+        <div class="col-8">
+            <div class="row card justify-content-center">
+                <div class="col-sm-12">
+                    <h4>Selecciona archivos para cargar</h4>
+                    <hr>
+                    <div id="fileSelector">
+                        <input type="file" name="fileUpload" id="fileUpload" multiple ng2FileSelect
+                            [uploader]="uploader">
+                    </div>
+                </div>
+                <div>
+                    <div class="row uploadList justify-content-around" *ngFor="let item of uploader.queue; index as i">
+                        <div class="col-sm-4">{{item.file.name}}</div>
+                        <div class="col-sm-4">
+                            <div class="progress">
+                                <div class="progress-bar" style="background-color: #942646;"
+                                    [ngStyle]="{width: item.progress+'%'}" aria-valuemin="0" aria-valuemax="100"
+                                    [attr.aria-valuenow]="item.progress">
+                                    <span style="color: white;">{{item.progress}}%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <button class="btn btn-dark" *ngIf="item.progress < 100" (click)="item.upload()">Subir
+                                archivo</button>
+                            <button class="btn btn-danger" (click)="deleteFile(item, i)">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

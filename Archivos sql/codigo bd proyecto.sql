@@ -134,6 +134,13 @@ create table Material
     foreign key(id_actividad) references actividad(id)
 );
 
+insert into Material(id_actividad, archivo) values(1, "HOla");
+
+select * from Material;
+delete from Material where id = 4;
+
+select * from actividad;
+
 /*vistas*/
 create view alumnosact as select R.*, A.titulo, A.fecha_limite, A.hora_limite, A.descripción,
 A.estado,A.retraso,A.id_materia from realiza R left join actividad A on R.id_actividad=A.id;
@@ -182,14 +189,39 @@ end//
 DELIMITER ;
 
 DELIMITER //
-create procedure aulavirtualsep.actividad_alumno (in titulo varchar(30), in fecha date, in hora time, in retraso int, in descripcion text, in materia varchar(10))
+create procedure aulavirtualsep.actividad_template (in materia varchar(10))
 begin
 	declare tempID int;
-	insert into actividad (titulo, fecha_limite, hora_limite, descripción, retraso, id_materia) values ( titulo, fecha, hora, descripcion, retraso, materia);
+	insert into actividad (titulo, fecha_limite, hora_limite, descripción, retraso, id_materia) values ( "Título por defecto", curdate(), curtime(), "Descripción por defecto", 0, materia);
     set tempID = last_insert_id();
     select * from actividad where id = tempID;
 end//
 DELIMITER ;
+
+select * from listaalumnos where id_profesor = "p000001";
+
+DELIMITER //
+create procedure aulavirtualsep.actividad_alumnos(in id_act int, in titulo text, in fecha date, in descri text, in hora time, in retraso int, in id_profesor varchar(10))
+begin
+	declare idAl varchar(10);
+    declare done int default 0;
+	declare cursor_i cursor for select id from listaalumnos where id_profesor = id_profesor;
+    declare continue handler for not found set done = 1;
+	update actividad set titulo = titulo, fecha_limite=fecha, hora_limite=hora, descripción = descri, retraso = retraso where id = id_act;
+    open cursor_i;
+    alumnos: LOOP
+		fetch cursor_i into idAl;
+        if done then
+			leave alumnos;
+		end if;
+		insert into realiza(id_alumno, id_actividad) values(idAl, id_act);
+	end loop alumnos;
+    close cursor_i;
+end//
+DELIMITER ;
+select * from actividad;
+
+delete from actividad where id = 11;
 
 /*Ejemplo para ejecutar el procedimiento para avances
 call avances("a000001", @out); select @out;*/
