@@ -41,6 +41,9 @@ export class ActividadesService {
     
   }
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
 
