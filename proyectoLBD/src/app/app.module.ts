@@ -41,6 +41,7 @@ import { PerfilOtroComponent } from './components/perfil-otro/perfil-otro.compon
 import { CalificacionesComponent } from './components/calificaciones/calificaciones.component';
 import { ArchivosComponent } from './components/archivos/archivos.component';
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -49,6 +50,8 @@ import { GrupoComponent } from './components/grupo/grupo.component';
 import { LibroComponent } from './components/libro/libro.component';
 import { PerfilOtroComponent } from './components/perfil-otro/perfil-otro.component';
 >>>>>>> master
+=======
+>>>>>>> Stashed changes
 
 
 //Servicios
@@ -83,6 +86,7 @@ import { PerfilOtroComponent } from './components/perfil-otro/perfil-otro.compon
     EditarActividadComponent,
     GrupoComponent,
     LibroComponent,
+<<<<<<< Updated upstream
 <<<<<<< HEAD
     PerfilOtroComponent,
     CalificacionesComponent,
@@ -94,6 +98,11 @@ import { PerfilOtroComponent } from './components/perfil-otro/perfil-otro.compon
 =======
     PerfilOtroComponent
 >>>>>>> master
+=======
+    PerfilOtroComponent,
+    CalificacionesComponent,
+    ArchivosComponent
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,

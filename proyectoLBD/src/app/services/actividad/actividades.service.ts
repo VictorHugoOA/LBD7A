@@ -64,18 +64,24 @@ export class ActividadesService {
     return this.http.get(`http://localhost:3000/guardartarea/${idAlumno}/${idActividad}/${archivo}`);
   }
 
+<<<<<<< Updated upstream
 <<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
   getactividadesAlumno(idalum:string, idmat: string){
     return this.http.get(`http://localhost:3000/AlumnoActividades/${idalum}/${idmat}`);
     
   }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
 >>>>>>> master
+=======
+>>>>>>> Stashed changes
 }
 
 
