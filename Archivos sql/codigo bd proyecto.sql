@@ -190,6 +190,7 @@ end//
 DELIMITER ;
 
 
+
 DELIMITER //
 create procedure aulavirtualsep.actividad_alumnos(in id_act int, in titulo text, in fecha date, in descri text, in hora time, in retraso int, in id_prof varchar(10))
 begin

@@ -58,6 +58,11 @@
               </tr>
             </tbody>
           </table>
+          <div class="col-12 pb-5">
+              <ul class="list-group" *ngFor="let archivo of archivos">
+                <li class="list-group-item"><a href="http://localhost:3000/getfile/{{archivo.archivo}}" target="_blank">{{archivo.archivo}}</a></li>
+              </ul>
+          </div>
           <div *ngIf="auth.userData.tipo == 'Estudiante'">
           <div *ngIf="!actividad.estado">
             <div *ngIf="!actividad.estado_entrega; else editar">
