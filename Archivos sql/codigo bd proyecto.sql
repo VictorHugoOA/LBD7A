@@ -70,7 +70,7 @@ create table realiza
     id_actividad int not null,
     fecha_entrega date,
     hora_entrega time,
-    calificacion float default 0,
+    calificacion float ,
 	estado_entrega int default 0,
     primary key(id_alumno, id_actividad),
     foreign key(id_alumno) references alumno(id),
@@ -192,7 +192,6 @@ begin
 end//
 DELIMITER ;
 
-select * from listaalumnos where id_profesor = "p000001";
 
 DELIMITER //
 create procedure aulavirtualsep.actividad_alumnos(in id_act int, in titulo text, in fecha date, in descri text, in hora time, in retraso int, in id_prof varchar(10))
@@ -212,8 +211,6 @@ begin
 	end loop alumnos;
     close cursor_i;
 end//
-DELIMITER ;
-
 
 DELIMITER //
 create trigger tr_del_actividad before delete on actividad
@@ -223,9 +220,5 @@ begin
 	delete from realiza where id_actividad = old.id;
 end//
 DELIMITER ;
-
-
-/*Ejemplo para ejecutar el procedimiento para avances
-call avances("a000001", @out); select @out;*/
 
 
