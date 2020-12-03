@@ -32,26 +32,14 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { EditarComponent } from './components/editar/editar.component';
 import { EditarActividadComponent } from './components/editar-actividad/editar-actividad.component';
 import { InicioprofComponent } from './components/inicioprof/inicioprof.component';
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
 import { GrupoComponent } from './components/grupo/grupo.component';
 import { LibroComponent } from './components/libro/libro.component';
 import { PerfilOtroComponent } from './components/perfil-otro/perfil-otro.component';
 import { CalificacionesComponent } from './components/calificaciones/calificaciones.component';
 import { ArchivosComponent } from './components/archivos/archivos.component';
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
-import { GrupoComponent } from './components/grupo/grupo.component';
-import { LibroComponent } from './components/libro/libro.component';
-import { PerfilOtroComponent } from './components/perfil-otro/perfil-otro.component';
->>>>>>> master
-=======
->>>>>>> Stashed changes
+
+
+
 
 
 //Servicios
@@ -76,33 +64,16 @@ import { PerfilOtroComponent } from './components/perfil-otro/perfil-otro.compon
     AlTutoriasSolicitarComponent,
     EntregaComponent,
     EditarComponent,
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-    InicioprofComponent
-=======
-=======
->>>>>>> master
     InicioprofComponent,
     EditarActividadComponent,
     GrupoComponent,
     LibroComponent,
-<<<<<<< Updated upstream
-<<<<<<< HEAD
     PerfilOtroComponent,
     CalificacionesComponent,
-    ArchivosComponent
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
+    ArchivosComponent,
     PerfilOtroComponent
->>>>>>> master
-=======
-    PerfilOtroComponent,
-    CalificacionesComponent,
-    ArchivosComponent
->>>>>>> Stashed changes
+
+
   ],
   imports: [
     BrowserModule,

@@ -19,10 +19,7 @@ import { LibroComponent } from './components/libro/libro.component';
 import { PerfilOtroComponent } from './components/perfil-otro/perfil-otro.component';
 import { CalificacionesComponent } from './components/calificaciones/calificaciones.component';
 import { ArchivosComponent } from './components/archivos/archivos.component';
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
 
 
 const routes: Routes = [
