@@ -18,7 +18,7 @@ import { GrupoComponent } from './components/grupo/grupo.component';
 import { LibroComponent } from './components/libro/libro.component';
 import { PerfilOtroComponent } from './components/perfil-otro/perfil-otro.component';
 import { CalificacionesComponent } from './components/calificaciones/calificaciones.component';
-import { ArchivosComponent } from './components/archivos/archivos.component';
+import { ArchivoComponent } from './components/archivo/archivo.component';
 
 
 
@@ -39,8 +39,8 @@ const routes: Routes = [
   {path: 'grupo', component: GrupoComponent},
   {path: 'libro', component: LibroComponent},
   {path: 'calificaciones/:idm', component: CalificacionesComponent},
-  {path: 'archivo/:idm', component: ArchivosComponent},
   {path: 'profile/:id/:tipo', component: PerfilOtroComponent},
+  {path: 'archivos/:idm/:idp', component: ArchivoComponent},
   {path:'**', component: LoginComponent}
 ];
 

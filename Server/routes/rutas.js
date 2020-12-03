@@ -112,7 +112,7 @@ function createRouter(db) {
       }
     );
   });
-  //Actividades por materia 7
+  //Actividades por materia 7 checar
   router.get('/ActividadesMateria/:idmat', function (req, res) {
     const idmat = req.params.idmat
     db.query(
@@ -141,7 +141,7 @@ function createRouter(db) {
       }
     );
   });
-  //info de Actividad 9
+  //info de Actividad 9 checar
   router.get('/Actividad/:idact', function (req, res) {
     const idact = req.params.idact
     db.query(
@@ -302,7 +302,7 @@ function createRouter(db) {
       }
     );
   });
-  //Realizar entrega 20
+  //Realizar entrega 20 en uso
   router.get('/entregar/:idAlumno/:idactividad', function (req, res) {
     const alumno = req.params.idAlumno;
     const actividad = req.params.idactividad;
@@ -319,7 +319,7 @@ function createRouter(db) {
     );
   })
 
-  //Obtener libros de las materias del alumno (4 Tablas)
+  //Obtener libros de las materias del alumno (4 Tablas) 21 en uso
   router.get('/LibrosAlumno/:id', function (req, res) {
     const alumno = req.params.id;
     db.query(
@@ -332,7 +332,7 @@ function createRouter(db) {
       });
 
   })
-
+ //Obtener libros del profesor 22 en uso
   router.get('/LibrosProfesor/:id', function (req, res) {
     const profesor = req.params.id;
     db.query(
@@ -345,7 +345,7 @@ function createRouter(db) {
       });
   })
 
-  //Obtener archivos de la actividad.
+  //Obtener archivos de la actividad. 23 en uso
   router.get('/obtener/:idAlumno/:idActividad', function (req, res) {
     const alumno = req.params.idAlumno;
     const actividad = req.params.idActividad;
@@ -362,7 +362,7 @@ function createRouter(db) {
     );
   })
 
-  //Crea una plantilla para las actividades.
+  //Crea una plantilla para las actividades 24 en uso
   router.get('/crearactividad/:mat', function (req, res) {
 
     const mat = req.params.mat;
@@ -381,7 +381,7 @@ function createRouter(db) {
 
   })
 
-  //Actualizar datos actividad
+  //Actualizar datos actividad 25 en uso
   router.post('/ActualizarActividad', function(req, res){
     const id = req.body.id;
     const titulo = req.body.titulo;
@@ -434,7 +434,7 @@ function createRouter(db) {
     })
   })
 
-  //Guarda en los materiales en la actividad.
+  //Guarda en los materiales en la actividad 27 en uso
   router.get('/guardarmaterial/:id/:ar', function (req, res) {
     const act = req.params.id;
     const archivo = req.params.ar;
@@ -462,8 +462,22 @@ function createRouter(db) {
       console.log(results);
     })
   })
+  //Profesor por grupo 28 en uso
+  router.get('/ProfesorGrupo/:idgrup', function (req, res) {
+    const idgrup = req.params.idgrup
+    db.query(
+      'select * from profesor where id in(select id_profesor from grupomat where id=?)',
+      [idgrup],
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
 
 
+        console.log(results);
+      }
+    );
+  });
+  
   //Las fuciones para guardar archivos y obtener archivos
   //Guardar archivos 
   router.post('/upload', function (req, res, next) {

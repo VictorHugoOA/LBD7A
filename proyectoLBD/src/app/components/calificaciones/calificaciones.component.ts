@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ActividadesService } from 'src/app/services/actividad/actividades.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { ArchivosComponent } from '../archivos/archivos.component';
+
 
 
 @Component({

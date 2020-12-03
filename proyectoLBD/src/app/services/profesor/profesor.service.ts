@@ -20,6 +20,9 @@ export class ProfesorService {
   getgrupoProfesor(id:string){
     return this.http.get(`http://localhost:3000/GrupoProfesor/${id}`).pipe(map(val => {return val[0]}));
   }
+  getProfesorGrupo(id:string){
+    return this.http.get(`http://localhost:3000/ProfesorGrupo/${id}`).pipe(map(val => {return val[0]}));
+  }
   getActividadesAbiertas(id: string)
   {
     return this.http.get(`http://localhost:3000/ProfesorActividadesAbiertas/${id}`);

@@ -70,7 +70,7 @@ create table realiza
     id_actividad int not null,
     fecha_entrega date,
     hora_entrega time,
-    calificacion float default 0,
+    calificacion float ,
 	estado_entrega int default 0,
     primary key(id_alumno, id_actividad),
     foreign key(id_alumno) references alumno(id),
@@ -164,9 +164,6 @@ begin
 end//
 DELIMITER ;
 
-/*Ejemplos para ejecutar los procedimientos para el login
-call login_alumno("a000001", "c000003");
-call login_profesor("p000001", "c000001");*/
 
 /*Creación de procedimiento para los avances de los alumnos*/
 DELIMITER //
@@ -211,8 +208,6 @@ begin
 	end loop alumnos;
     close cursor_i;
 end//
-DELIMITER ;
-
 
 DELIMITER //
 create trigger tr_del_actividad before delete on actividad

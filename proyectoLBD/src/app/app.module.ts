@@ -36,7 +36,8 @@ import { GrupoComponent } from './components/grupo/grupo.component';
 import { LibroComponent } from './components/libro/libro.component';
 import { PerfilOtroComponent } from './components/perfil-otro/perfil-otro.component';
 import { CalificacionesComponent } from './components/calificaciones/calificaciones.component';
-import { ArchivosComponent } from './components/archivos/archivos.component';
+import { ArchivoComponent } from './components/archivo/archivo.component';
+import { ArchivoCardComponent } from './components/archivo-card/archivo-card.component';
 
 
 
@@ -70,8 +71,9 @@ import { ArchivosComponent } from './components/archivos/archivos.component';
     LibroComponent,
     PerfilOtroComponent,
     CalificacionesComponent,
-    ArchivosComponent,
-    PerfilOtroComponent
+    PerfilOtroComponent,
+    ArchivoComponent,
+    ArchivoCardComponent
 
   ],
   imports: [
