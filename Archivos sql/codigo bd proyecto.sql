@@ -134,12 +134,6 @@ create table Material
     foreign key(id_actividad) references actividad(id)
 );
 
-insert into Material(id_actividad, archivo) values(1, "HOla");
-
-select * from Material;
-delete from Material where id = 4;
-
-select * from actividad;
 
 /*vistas*/
 create view alumnosact as select R.*, A.titulo, A.fecha_limite, A.hora_limite, A.descripción,
@@ -219,11 +213,6 @@ begin
     close cursor_i;
 end//
 DELIMITER ;
-select * from actividad;
-select id from listaalumnos where id_profesor = "p000001";
-delete from actividad where id = 11;
-
-select * from realiza;
 
 
 DELIMITER //
@@ -234,10 +223,6 @@ begin
 	delete from realiza where id_actividad = old.id;
 end//
 DELIMITER ;
-
-delete from actividad where id = 16;
-select * from realiza;
-
 
 
 /*Ejemplo para ejecutar el procedimiento para avances
