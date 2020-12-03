@@ -124,6 +124,16 @@ create table tarea
     foreign key(id_alumno) references alumno(id),
     foreign key(id_actividad) references actividad(id)
 );
+create table Recurso
+(
+	id int not null auto_increment,
+    id_materia varchar(10) not null,
+    id_profesor varchar(10) not null,
+    archivo text,
+    primary key(id),
+    foreign key(id_materia) references materia(id),
+	foreign key(id_profesor) references profesor(id)
+);
 
 create table Material
 (
