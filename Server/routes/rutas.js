@@ -1,5 +1,5 @@
 
-const { response } = require("express");
+const { response, Router } = require("express");
 const express = require("express");
 const multer = require('multer');
 const path = require('path');
@@ -402,6 +402,17 @@ function createRouter(db) {
       }
     );
   });
+
+  router.get('/BorrarActividad/:id', function(req, res){
+    const id = req.params.id;
+    db.query('delete from actividad where id = ?',
+     [id],
+    (error, results) => {
+      if (error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+  })
 
   //Guarda en los materiales en la actividad.
   router.get('/guardarmaterial/:id/:ar', function (req, res) {

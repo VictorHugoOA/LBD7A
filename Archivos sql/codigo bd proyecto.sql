@@ -201,11 +201,11 @@ DELIMITER ;
 select * from listaalumnos where id_profesor = "p000001";
 
 DELIMITER //
-create procedure aulavirtualsep.actividad_alumnos(in id_act int, in titulo text, in fecha date, in descri text, in hora time, in retraso int, in id_profesor varchar(10))
+create procedure aulavirtualsep.actividad_alumnos(in id_act int, in titulo text, in fecha date, in descri text, in hora time, in retraso int, in id_prof varchar(10))
 begin
 	declare idAl varchar(10);
     declare done int default 0;
-	declare cursor_i cursor for select id from listaalumnos where id_profesor = id_profesor;
+	declare cursor_i cursor for select id from listaalumnos where id_profesor = id_prof;
     declare continue handler for not found set done = 1;
 	update actividad set titulo = titulo, fecha_limite=fecha, hora_limite=hora, descripción = descri, retraso = retraso where id = id_act;
     open cursor_i;
@@ -220,8 +220,25 @@ begin
 end//
 DELIMITER ;
 select * from actividad;
-
+select id from listaalumnos where id_profesor = "p000001";
 delete from actividad where id = 11;
+
+select * from realiza;
+
+
+DELIMITER //
+create trigger tr_del_actividad before delete on actividad
+for each row
+begin
+	delete from Material where id_actividad = old.id;
+	delete from realiza where id_actividad = old.id;
+end//
+DELIMITER ;
+
+delete from actividad where id = 16;
+select * from realiza;
+
+
 
 /*Ejemplo para ejecutar el procedimiento para avances
 call avances("a000001", @out); select @out;*/

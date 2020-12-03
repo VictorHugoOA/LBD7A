@@ -24,6 +24,12 @@ export class ActividadesService {
     return this.http.get(`http://localhost:3000/entregar/${idAl}/${idAct}`);
   }
 
+  borrarActividad(idAct: string)
+  {
+    console.log(idAct);
+    return this.http.get(`http://localhost:3000/BorrarActividad/${idAct}`);
+  }
+
   crearActividad(mat: string)
   {
     return this.http.get(`http://localhost:3000/crearactividad/${mat}`).pipe(map((data: any[]) => {return data[0][0];}));
