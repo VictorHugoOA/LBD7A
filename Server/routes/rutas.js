@@ -1,5 +1,5 @@
 
-const { response } = require("express");
+const { response, Router } = require("express");
 const express = require("express");
 const multer = require('multer');
 const path = require('path');
@@ -112,7 +112,7 @@ function createRouter(db) {
       }
     );
   });
-  //Actividades por materia 7
+  //Actividades por materia 7 checar
   router.get('/ActividadesMateria/:idmat', function (req, res) {
     const idmat = req.params.idmat
     db.query(
@@ -141,7 +141,7 @@ function createRouter(db) {
       }
     );
   });
-  //info de Actividad 9
+  //info de Actividad 9 checar
   router.get('/Actividad/:idact', function (req, res) {
     const idact = req.params.idact
     db.query(
@@ -302,7 +302,7 @@ function createRouter(db) {
       }
     );
   });
-  //Realizar entrega 20
+  //Realizar entrega 20 en uso
   router.get('/entregar/:idAlumno/:idactividad', function (req, res) {
     const alumno = req.params.idAlumno;
     const actividad = req.params.idactividad;
@@ -319,7 +319,7 @@ function createRouter(db) {
     );
   })
 
-  //Obtener libros de las materias del alumno (4 Tablas)
+  //Obtener libros de las materias del alumno (4 Tablas) 21 en uso
   router.get('/LibrosAlumno/:id', function (req, res) {
     const alumno = req.params.id;
     db.query(
@@ -332,8 +332,8 @@ function createRouter(db) {
       });
 
   })
-
-  router.get('/LibrosProfesor/:id', function(req, res){
+ //Obtener libros del profesor 22 en uso
+  router.get('/LibrosProfesor/:id', function (req, res) {
     const profesor = req.params.id;
     db.query(
       'select * from libro where id_materia in (select id_materia from grupoMat where id_profesor = ?);',
@@ -345,7 +345,7 @@ function createRouter(db) {
       });
   })
 
-  //Obtener archivos de la actividad.
+  //Obtener archivos de la actividad. 23 en uso
   router.get('/obtener/:idAlumno/:idActividad', function (req, res) {
     const alumno = req.params.idAlumno;
     const actividad = req.params.idActividad;
@@ -362,18 +362,14 @@ function createRouter(db) {
     );
   })
 
+  //Crea una plantilla para las actividades 24 en uso
+  router.get('/crearactividad/:mat', function (req, res) {
 
-  router.get('/crearactividad/:tit/:fecha/:hora/:retraso/:desc/:mat', function(req, res){
-    const tit = req.params.tit;
-    const fecha = req.params.fecha;
-    const hora = req.params.hora;
-    const retraso = req.params.retraso;
-    const desc = req.params.desc;
     const mat = req.params.mat;
 
     db.query(
-      'call actividad_alumno(?,?,?,?,?,?)',
-      [tit, fecha, hora, retraso, desc, mat],
+      'call actividad_template(?)',
+      [mat],
       (error, results) => {
         if (error) throw error;
         res.send(results);
@@ -385,7 +381,103 @@ function createRouter(db) {
 
   })
 
+  //Actualizar datos actividad 25 en uso
+  router.post('/ActualizarActividad', function(req, res){
+    const id = req.body.id;
+    const titulo = req.body.titulo;
+    const fecha = req.body.fecha;
+    const desc = req.body.desc;
+    const hora = req.body.hora;
+    const retraso = req.body.retraso;
+    const profesor = req.body.idprof
+    db.query(
+      'call actividad_alumnos(?,?,?,?,?,?,?)',
+      [id, titulo, fecha, desc, hora, retraso, profesor],
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
 
+        console.log(results);
+
+      }
+    );
+  });
+    //Actualizar datos actividad
+    router.post('/EditarActividad', function(req, res){
+      const id = req.body.id;
+      const titulo = req.body.titulo;
+      const fecha = req.body.fecha;
+      const desc = req.body.desc;
+      const hora = req.body.hora;
+      const retraso = req.body.retraso;
+      db.query(
+        'update actividad set titulo = ?, fecha_limite = ?, descripción = ?, hora_limite = ?, retraso = ? where id = ?',
+        [titulo, fecha, desc, hora, retraso, id],
+        (error, results) => {
+          if (error) throw error;
+          res.send(results);
+  
+          console.log(results);
+  
+        }
+      );
+    });
+
+  router.get('/BorrarActividad/:id', function(req, res){
+    const id = req.params.id;
+    db.query('delete from actividad where id = ?',
+     [id],
+    (error, results) => {
+      if (error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+  })
+
+  //Guarda en los materiales en la actividad 27 en uso
+  router.get('/guardarmaterial/:id/:ar', function (req, res) {
+    const act = req.params.id;
+    const archivo = req.params.ar;
+    db.query(
+      'insert into Material(id_actividad, archivo) values(?, ?);',
+      [act, archivo],
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);
+
+      }
+    );
+
+  });
+
+  router.get('/obtenerMateriales/:id', function(req, res){
+    const id = req.params.id;
+    db.query('select * from Material where id_actividad = ?',
+    [id],
+    (error, results) => {
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+  })
+  //Profesor por grupo 28 en uso
+  router.get('/ProfesorGrupo/:idgrup', function (req, res) {
+    const idgrup = req.params.idgrup
+    db.query(
+      'select * from profesor where id in(select id_profesor from grupomat where id=?)',
+      [idgrup],
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+
+        console.log(results);
+      }
+    );
+  });
+  
   //Las fuciones para guardar archivos y obtener archivos
   //Guardar archivos 
   router.post('/upload', function (req, res, next) {
@@ -416,21 +508,6 @@ function createRouter(db) {
     );
   })
 
-  router.get('/guardaractividad/:ar', function(req, res){
-    const archivo = req.params.ar;
-    db.query(
-      'insert into Material (archivo) values (?);',
-      [archivo],
-      (error, results) => {
-        if (error) throw error;
-        res.send(results);
-
-        console.log(results);
-
-      }
-    );
-  })
-
   //Obtener archivos
   router.get('/getfile/:file', function (req, res, next) {
     let fil = ""
@@ -438,6 +515,7 @@ function createRouter(db) {
     res.sendFile(fil);
   });
 
+  //Borrar tarea.
   router.get('/delete/:file', function (req, res, next) {
     let fil = "";
     fil = path.join(__dirname, '../uploads') + '/' + req.params.file;
@@ -457,6 +535,31 @@ function createRouter(db) {
       );
 
 
+      return res.status(200);
+    } catch (err) {
+      console.error(err);
+      return res.status(200).json({ error: "El archivo no existe" });
+    }
+  });
+
+  //Borrar material.
+  router.get('/borrarMaterial/:file', function (req, res, next) {
+    let fil = "";
+    fil = path.join(__dirname, '../uploads') + '/' + req.params.file;
+    try {
+      fs.unlinkSync(fil);
+
+      db.query(
+        'delete from Material where archivo = ?',
+        [req.params.file],
+        (error, results) => {
+          if (error) throw error;
+          res.send(results);
+
+          console.log(results);
+
+        }
+      );
       return res.status(200);
     } catch (err) {
       console.error(err);

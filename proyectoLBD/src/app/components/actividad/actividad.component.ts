@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ActividadesService, Activity } from 'src/app/services/actividad/actividades.service';
 import { AlumnosService } from 'src/app/services/alumnos/alumnos.service';
@@ -19,7 +19,8 @@ export class ActividadComponent implements OnInit {
   now: Date = new Date();
 
   actividad: any = {};
-  constructor(public auth: AuthService, private al: AlumnosService, private aRouter: ActivatedRoute, private acti: ActividadesService) {
+  constructor(public auth: AuthService, private al: AlumnosService, private aRouter: ActivatedRoute, private acti: ActividadesService, private router: Router) {
+
 
     this.act = this.aRouter.snapshot.params.idm;
     this.a = this.aRouter.snapshot.params.ida;

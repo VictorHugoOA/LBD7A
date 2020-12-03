@@ -14,6 +14,7 @@
                 <th scope="col">
                   <h4 class="card-title">{{actividad.titulo}}</h4>
                 </th>
+                <th *ngIf="this.auth.userData.tipo === 'Profesor'"><a style="background-color: #942646;" class="btn btn-primary" routerLink="/editaractividad/{{this.act}}">Editar actividad</a></th>
               </tr>
             </thead>
             <tbody>

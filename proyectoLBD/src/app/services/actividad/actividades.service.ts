@@ -24,9 +24,20 @@ export class ActividadesService {
     return this.http.get(`http://localhost:3000/entregar/${idAl}/${idAct}`);
   }
 
-  crearActividad(titulo: string, fecha: string, hora: string, retraso: number, desc: string, mat: string)
+  borrarActividad(idAct: string)
   {
-    return this.http.get(`http://localhost:3000/${titulo}/${fecha}/${hora}/${retraso}/${desc}/${mat}`);
+    console.log(idAct);
+    return this.http.get(`http://localhost:3000/BorrarActividad/${idAct}`);
+  }
+
+  crearActividad(mat: string)
+  {
+    return this.http.get(`http://localhost:3000/crearactividad/${mat}`).pipe(map((data: any[]) => {return data[0][0];}));
+  }
+
+  actualizarActividad(idAct: string, titulo: string, fecha: string, descripcion: string, hora: string, retraso: number, idProf: string)
+  {
+    return this.http.post('http://localhost:3000/ActualizarActividad', {id: idAct, titulo: titulo, fecha: fecha, desc: descripcion, hora: hora, retraso: retraso, idprof: idProf});
   }
 
   obtenerArchivosActividadAlumno(idAlumno: string, idActividad: string)
@@ -40,8 +51,13 @@ export class ActividadesService {
     }));
   }
 
-  almacenarArchivoActividad(id: string){
+  editarActividad(idAct: string, titulo: string, fecha: string, descripcion: string, hora: string, retraso: number)
+  {
+    return this.http.post('http://localhost:3000/EditarActividad', {id: idAct, titulo: titulo, fecha: fecha, desc: descripcion, hora: hora, retraso: retraso});
+  }
 
+  almacenarArchivoMaterial(idAct: string, archivo: string){
+    return this.http.get(`http://localhost:3000/guardarmaterial/${idAct}/${archivo}`);
   }
 
   getActividad(idActividad: String)
@@ -54,12 +70,20 @@ export class ActividadesService {
     return this.http.get(`http://localhost:3000/delete/${nameUp}`);
   }
 
+  borrarArchivoMaterial(nameUp: string)
+  {
+    return this.http.get(`http://localhost:3000/borrarMaterial/${nameUp}`);
+  }
 
   añadirArchivoActividad(idAlumno: string, idActividad: string, archivo:string)
   {
     return this.http.get(`http://localhost:3000/guardartarea/${idAlumno}/${idActividad}/${archivo}`);
   }
 
+  getActividadMaterial(id: string)
+  {
+      return this.http.get(`http://localhost:3000/obtenerMateriales/${id}`);
+  }
 
   getactividadesAlumno(idalum:string, idmat: string){
     return this.http.get(`http://localhost:3000/AlumnoActividades/${idalum}/${idmat}`);
