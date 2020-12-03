@@ -19,6 +19,7 @@ export class ActividadComponent implements OnInit {
   now: Date = new Date();
 
   actividad: any = {};
+  archivos: any[] = [];
   constructor(public auth: AuthService, private al: AlumnosService, private aRouter: ActivatedRoute, private acti: ActividadesService, private router: Router) {
 
 
@@ -36,6 +37,14 @@ export class ActividadComponent implements OnInit {
         this.actividad = data;
       });
     }
+
+    this.acti.getActividadMaterial(this.act).subscribe((data: any[]) =>{
+      for(var i = 0; i < data.length; ++i)
+      {
+        this.archivos.push(data[i]);
+      }
+    })
+
   }
 
   ngOnInit(): void {
