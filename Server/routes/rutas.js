@@ -4,6 +4,7 @@ const express = require("express");
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const moment = require('moment');
 
 
 const store = multer.diskStorage({
@@ -19,7 +20,7 @@ const upload = multer({ storage: store }).single('file');
 
 function createRouter(db) {
   const router = express.Router();
-  //info prof 1
+  //info prof 1 en uso
   router.get('/Profesor/:id', function (req, res) {
     const id = req.params.id
     db.query(
@@ -34,7 +35,7 @@ function createRouter(db) {
       }
     );
   });
-  //info de materia 2
+  //info de materia 2 en uso
   router.get('/Materia/:id', function (req, res) {
     const id = req.params.id
     db.query(
@@ -49,7 +50,7 @@ function createRouter(db) {
       }
     );
   });
-  //info del alumno 3
+  //info del alumno 3 en uso
   router.get('/Alumno/:id', function (req, res) {
     const id = req.params.id
     db.query(
@@ -64,7 +65,7 @@ function createRouter(db) {
       }
     );
   });
-  //curso por ALUMNO 4 (3 tablas)
+  //curso por ALUMNO 4 (3 tablas) en uso
   router.get('/cursosAlumno/:id', function (req, res) {
     const id = req.params.id
     db.query(
@@ -95,7 +96,7 @@ function createRouter(db) {
       }
     );
   });
-  //Actividades entregadas por materia y alumno 6
+  //Actividades entregadas por materia y alumno 6 cambiar
   router.get('/AlumnoActividadesEntregadas/:idalum/:idmat', function (req, res) {
     const idalum = req.params.idalum
     const idmat = req.params.idmat
@@ -125,7 +126,7 @@ function createRouter(db) {
       }
     );
   });
-  //Actividades por grupo y materia 8 (3 tablas)
+  //Actividades por grupo y materia 8 (3 tablas) en uso
   router.get('/ActividadesMateriaGrupo/:idgrup/:idmat', function (req, res) {
     const idgrup = req.params.idgrup
     const idmat = req.params.idmat
@@ -154,11 +155,11 @@ function createRouter(db) {
       }
     );
   });
-  //Grupos por profesor 10
+  //Grupos por profesor 10 en uso
   router.get('/GrupoProfesor/:idprof', function (req, res) {
     const idprof = req.params.idprof
     db.query(
-      'select * from grupo where id_profesor= ?',
+      'select id,grado,clase from grupo where id_profesor= ?',
       [idprof],
       (error, results) => {
         if (error) throw error;
@@ -168,12 +169,12 @@ function createRouter(db) {
       }
     );
   });
-  //Lista de alumnos por grupo y profesor 11
-  router.get('/GrupoAlumProfesor/:idprof/:idgrup', function (req, res) {
+  //Lista de alumnos por profesor 11 en uso
+  router.get('/GrupoAlumProfesor/:idprof', function (req, res) {
     const idprof = req.params.idprof
     const idgrup = req.params.idgrup
     db.query(
-      'select * from ListaAlumnos where id_profesor= ? and id_grupo=?',
+      'select * from ListaAlumnos where id_profesor= ? ',
       [idprof, idgrup],
       (error, results) => {
         if (error) throw error;
@@ -183,7 +184,7 @@ function createRouter(db) {
       }
     );
   });
-  //Materias que el profesor imparte 12 (3 Tablas)
+  //Materias que el profesor imparte 12 (3 Tablas) en uso
   router.get('/MateriasProfesor/:idprof', function (req, res) {
     const idprof = req.params.idprof
     db.query(
@@ -197,7 +198,7 @@ function createRouter(db) {
       }
     );
   });
-  //Obtener el profesor y grupo del alumno 13 (3 Tablas)-
+  //Obtener el profesor y grupo del alumno 13 (3 Tablas) en uso
   router.get('/AlumnoProfesor/:idalumno', function (req, res) {
     const idalumno = req.params.idalumno
     db.query(
@@ -211,7 +212,7 @@ function createRouter(db) {
       }
     );
   });
-  //Login Vista Alumno 14-
+  //Login Vista Alumno 14 en uso
   router.get('/LoginA/:idalumno/:contrasena', function (req, res) {
     const idalumno = req.params.idalumno
     const cont = req.params.contrasena
@@ -226,7 +227,7 @@ function createRouter(db) {
       }
     );
   });
-  //Login Vista profesor 15-
+  //Login Vista profesor 15 en uso
   router.get('/LoginP/:idprof/:contrasena', function (req, res) {
     const idprof = req.params.idprof
     const cont = req.params.contrasena
@@ -241,7 +242,7 @@ function createRouter(db) {
       }
     );
   });
-  //Avances 16- pendiente
+  //Avances 16 en uso
   router.get('/Avances/:idalum', function (req, res) {
     const idalum = req.params.idalum
     db.query(
@@ -255,7 +256,7 @@ function createRouter(db) {
       }
     );
   });
-  //Actividades pendientes por alumno 17-
+  //Actividades pendientes por alumno 17 en uso
   router.get('/AlumnoActividadesPendientes/:idalum', function (req, res) {
     const idalum = req.params.idalum
     db.query(
@@ -270,7 +271,7 @@ function createRouter(db) {
       }
     );
   });
-  //actividad alumno 18
+  //actividad alumno 18 en uso
   router.get('/AlumnoActividad/:idalum/:idact', function (req, res) {
     const idalum = req.params.idalum
     const idact = req.params.idact
@@ -286,7 +287,7 @@ function createRouter(db) {
       }
     );
   });
- //Actividades dadas por el profesor aun abiertas 19(3 tablas)
+  //Actividades dadas por el profesor aun abiertas 19(3 tablas) en uso
   router.get('/ProfesorActividadesAbiertas/:idprof', function (req, res) {
     const idprof = req.params.idprof
     db.query(
@@ -301,17 +302,134 @@ function createRouter(db) {
       }
     );
   });
+  //Realizar entrega 20
+  router.get('/entregar/:idAlumno/:idactividad', function (req, res) {
+    const alumno = req.params.idAlumno;
+    const actividad = req.params.idactividad;
+    db.query(
+      'update realiza set fecha_entrega = ?, hora_entrega = ?, estado_entrega = 1 where id_alumno = ? and id_actividad = ?',
+      [moment().format('YYYY-MM-DD'), moment().format('HH:mm:ss'), alumno, actividad],
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);
+
+      }
+    );
+  })
+
+  //Obtener libros de las materias del alumno (4 Tablas)
+  router.get('/LibrosAlumno/:id', function (req, res) {
+    const alumno = req.params.id;
+    db.query(
+      'select * from materia inner join libro on materia.id = libro.id_materia where materia.id in (select id_materia from clases_de inner join grupo on clases_de.id_grupo = grupo.id where grupo.id = (select id_grupo from alumno where id = ?));',
+      [alumno],
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+        console.log(results);
+      });
+
+  })
+
+  router.get('/LibrosProfesor/:id', function(req, res){
+    const profesor = req.params.id;
+    db.query(
+      'select * from libro where id_materia in (select id_materia from grupoMat where id_profesor = ?);',
+      [profesor],
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+        console.log(results);
+      });
+  })
+
+  //Obtener archivos de la actividad.
+  router.get('/obtener/:idAlumno/:idActividad', function (req, res) {
+    const alumno = req.params.idAlumno;
+    const actividad = req.params.idActividad;
+    db.query(
+      'select * from tarea where id_alumno = ? and id_actividad = ?',
+      [alumno, actividad],
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);
+
+      }
+    );
+  })
+
+
+  router.get('/crearactividad/:tit/:fecha/:hora/:retraso/:desc/:mat', function(req, res){
+    const tit = req.params.tit;
+    const fecha = req.params.fecha;
+    const hora = req.params.hora;
+    const retraso = req.params.retraso;
+    const desc = req.params.desc;
+    const mat = req.params.mat;
+
+    db.query(
+      'call actividad_alumno(?,?,?,?,?,?)',
+      [tit, fecha, hora, retraso, desc, mat],
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);
+
+      }
+    );
+
+  })
+
+
   //Las fuciones para guardar archivos y obtener archivos
-  //Guardar archivos
+  //Guardar archivos 
   router.post('/upload', function (req, res, next) {
     upload(req, res, function (err) {
       if (err) {
         return res.status(501).json({ error: err });
       }
       //Aquí ira todo para guardar en la bd
+
       return res.json({ originalname: req.file.originalname, uploadname: req.file.filename });
     });
   });
+
+  router.get('/guardartarea/:idalumno/:idactividad/:ar', function (req, res, next) {
+    const actividad = req.params.idactividad
+    const alumno = req.params.idalumno
+    const ar = req.params.ar;
+    db.query(
+      'insert into tarea (id_alumno, id_actividad, archivo) values (?, ?, ?);',
+      [alumno, actividad, ar],
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);
+
+      }
+    );
+  })
+
+  router.get('/guardaractividad/:ar', function(req, res){
+    const archivo = req.params.ar;
+    db.query(
+      'insert into Material (archivo) values (?);',
+      [archivo],
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);
+
+      }
+    );
+  })
 
   //Obtener archivos
   router.get('/getfile/:file', function (req, res, next) {
@@ -323,12 +441,26 @@ function createRouter(db) {
   router.get('/delete/:file', function (req, res, next) {
     let fil = "";
     fil = path.join(__dirname, '../uploads') + '/' + req.params.file;
-    try{
+    try {
       fs.unlinkSync(fil);
+
+      db.query(
+        'delete from tarea where archivo = ?',
+        [req.params.file],
+        (error, results) => {
+          if (error) throw error;
+          res.send(results);
+
+          console.log(results);
+
+        }
+      );
+
+
       return res.status(200);
-    } catch(err){
+    } catch (err) {
       console.error(err);
-      return res.status(200).json({error: "El archivo no existe"});
+      return res.status(200).json({ error: "El archivo no existe" });
     }
   });
 

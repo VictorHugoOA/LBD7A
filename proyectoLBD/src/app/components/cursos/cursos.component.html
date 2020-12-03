@@ -4,13 +4,21 @@
         <div class="col-4">
             <app-calendario></app-calendario>
         </div>
-        <div class="col-8">
-            <p class="h4">Profesor: {{info.nombre}} {{info.apellido_pat}} {{info.apellido_mat}} - Grupo: {{info.grado}}º-{{info.clase}}</p>
+        <div class="col-8" *ngIf="usuario.tipo =='Estudiante'">
+            <a class="h4" routerLink="/profile/{{info.id_profesor}}/Profesor">Profesor: {{info.nombre}} {{info.apellido_pat}} {{info.apellido_mat}} - Grupo: {{info.grado}}º-{{info.clase}}</a>
             <div *ngIf="cursos">
                 <div *ngFor="let x of cursos">
                     <app-curso-card [grupo]="info.id" [curso]="x"></app-curso-card>
                 </div>
             </div>
+        </div>
+
+         <div class="col-8" *ngIf="usuario.tipo =='Profesor'">
+                <div *ngIf="cursos">
+                    <div *ngFor="let x of cursos">
+                        <app-curso-card [grupo]="(grupoObs | async)?.id" [curso]="x"></app-curso-card>
+                    </div>
+                </div>
         </div>
     </div>
 </div>

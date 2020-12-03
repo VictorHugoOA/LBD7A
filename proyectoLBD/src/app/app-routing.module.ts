@@ -26,7 +26,7 @@ const routes: Routes = [
   {path:'login', component: LoginComponent},
   {path:'curso', component: CursosComponent},
   {path:'alumnos/:id', component: AlumnosComponent},
-  {path:'perfil', component: PerfilComponent},
+  {path:'perfil/:id/:tipo', component: PerfilComponent},
   {path: 'cursos', component: CursosComponent},
   {path: 'home', component: PrincipalComponent},
   {path: 'curso/:idg/:idm', component: MateriaComponent},

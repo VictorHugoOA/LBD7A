@@ -7,12 +7,12 @@
         </p>
     </div>
     <div class="card-body"*ngIf="usuario.tipo =='Profesor'">
-        <i class="far fa-file-alt"></i><a class="activity-link ph-2" routerLink=#> {{actividad.titulo}}</a>
+        <i class="far fa-file-alt"></i><a class="activity-link ph-2" routerLink="/actividad/{{usuario.id}}/{{actividad.id_actividad}}"> {{actividad.titulo}}</a>
         <p class="card-text">
             Fecha entrega:
             <span>{{actividad.fecha_limite | date}}</span>
-            Grupo:
-            <span>{{grupo.grado}}°{{ grupo.clase}}</span>
+        
+
         </p>
     </div>
 

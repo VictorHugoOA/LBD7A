@@ -19,9 +19,34 @@ export class ActividadesService {
     }));
   }
 
-  crearActividad(actividad: any)
+  realizarEntrega(idAl: string, idAct: string)
   {
+    return this.http.get(`http://localhost:3000/entregar/${idAl}/${idAct}`);
+  }
 
+  crearActividad(titulo: string, fecha: string, hora: string, retraso: number, desc: string, mat: string)
+  {
+    return this.http.get(`http://localhost:3000/${titulo}/${fecha}/${hora}/${retraso}/${desc}/${mat}`);
+  }
+
+  obtenerArchivosActividadAlumno(idAlumno: string, idActividad: string)
+  {
+    return this.http.get(`http://localhost:3000/obtener/${idAlumno}/${idActividad}`).pipe(map((data: any[]) => {
+      var newD: any[] = [];
+      for (var i = 0; i < data.length; ++i) {
+        newD.push(data[i]);
+      }
+      return newD;
+    }));
+  }
+
+  almacenarArchivoActividad(id: string){
+
+  }
+
+  getActividad(idActividad: String)
+  {
+    return this.http.get(`http://localhost:3000/Actividad/${idActividad}`).pipe(map((data:any[]) => {return data[0];}));
   }
 
   borrarArchivoActividad(nameUp: string)
@@ -29,13 +54,17 @@ export class ActividadesService {
     return this.http.get(`http://localhost:3000/delete/${nameUp}`);
   }
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
+=======
+>>>>>>> master
   añadirArchivoActividad(idAlumno: string, idActividad: string, archivo:string)
   {
     return this.http.get(`http://localhost:3000/guardartarea/${idAlumno}/${idActividad}/${archivo}`);
   }
 
+<<<<<<< HEAD
   getactividadesAlumno(idalum:string, idmat: string){
     return this.http.get(`http://localhost:3000/AlumnoActividades/${idalum}/${idmat}`);
     
@@ -45,6 +74,8 @@ export class ActividadesService {
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> master
 }
 
 

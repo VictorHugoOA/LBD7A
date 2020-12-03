@@ -13,20 +13,13 @@ export class ActividadCardComponent implements OnInit {
   @Input() actividad: any;
   @Input() usuario: any;
 
-  grupo:any[];
+  grupo:any;
 
   constructor(private al: AlumnosService, private prof: ProfesorService) {
     
   }
 
   ngOnInit(): void {
-    console.log(this.usuario);
-    console.log(this.actividad);
-    this.prof.getgrupoProfesor(this.usuario.id).subscribe((data:any[]) => {
-      console.log(data);
-        this.grupo=data;
-    
-    });
   
   }
 

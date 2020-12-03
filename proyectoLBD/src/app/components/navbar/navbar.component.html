@@ -15,36 +15,33 @@
                     <a class="nav-link" href="#">Tutorías</a>
                 </li>
                 <li class="nav-item" *ngIf="auth.userData.tipo == 'Estudiante'">
-                    <a class="nav-link" href="#">Libros</a>
+                    <a class="nav-link" routerLink="/libro">Libros</a>
                 </li>
            
                 <li class="nav-item active"  *ngIf="auth.userData.tipo =='Profesor'">
                     <a class="nav-link" href="/homeTeacher">Inicio</a> 
                 </li>
                 <li class="nav-item active"  *ngIf="auth.userData.tipo =='Profesor'">
-                    <a class="nav-link" href=#>Materias</a> 
+                    <a class="nav-link" href="/cursos">Materias</a> 
                 </li>
                 <li class="nav-item active"  *ngIf="auth.userData.tipo =='Profesor'">
-                    <a class="nav-link" href=#>Actividades</a> 
-                </li>
-                <li class="nav-item active"  *ngIf="auth.userData.tipo =='Profesor'">
-                    <a class="nav-link" href=#>Grupos</a> 
+                    <a class="nav-link" href="/grupo">Grupo</a> 
                 </li>
                 <li class="nav-item"*ngIf="auth.userData.tipo =='Profesor'">
                     <a class="nav-link" href="#">Tutorías</a>
                 </li>
                 <li class="nav-item"*ngIf="auth.userData.tipo =='Profesor'">
-                    <a class="nav-link" href="#">Libros</a>
+                    <a class="nav-link"  routerLink="/libro">Libros</a>
                 </li>
         </ul>
         <div *ngIf="auth.userData.tipo == 'Estudiante'">
-            <a routerLink="/perfil">
+            <a routerLink="/perfil/{{(alumno | async)?.id}}/Estudiante">
               <span
                 class="navbar-text mr-4">{{(alumno | async)?.nombre + " " + ((alumno | async))?.apellido_pat + " " + ((alumno | async))?.apellido_mat}}</span></a>
                 <a (click)="logOut()"><span class="navbar-text"><i class="fas fa-sign-out-alt"></i></span></a>
           </div>
         <div *ngIf="auth.userData.tipo =='Profesor'">
-            <a routerLink="/perfil">
+            <a routerLink="/perfil/{{(profesor | async)?.id}}/Profesor">
               <span
                 class="navbar-text mr-4">{{(profesor | async)?.nombre + " " + ((profesor | async))?.apellido_pat + " " + ((profesor | async))?.apellido_mat}}</span></a>
                 <a (click)="logOut()"><span class="navbar-text"><i class="fas fa-sign-out-alt"></i></span></a>

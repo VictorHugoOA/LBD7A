@@ -25,4 +25,9 @@ export class AlumnosService {
     return this.http.get(`http://localhost:3000/AlumnoActividad/${idAlumno}/${idActividad}`).pipe(map((data: any) => { return data[0] }));
   }
 
+  getLibrosMaterias(id: string)
+  {
+    return this.http.get(`http://localhost:3000/LibrosAlumno/${id}`);
+  }
+
 }

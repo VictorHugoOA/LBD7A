@@ -39,7 +39,10 @@
                     </ng-template>
                 </td>
                 <td>
-                  <p *ngIf="!actividad.estado_entrega; else calificada" class="alert alert-danger">No calificada</p>
+                  <p *ngIf="!actividad.estado_entrega; else esperar" class="alert alert-danger">No calificada</p>
+                  <ng-template #esperar>
+                    <p *ngIf="!actividad.calificacion else calificada" class="alert alert-danger">Esperando calificación</p>
+                  </ng-template>
                   <ng-template #calificada>
                     <p *ngIf="actividad.calificacion > 8; else medio" class="alert alert-success">{{actividad.calificada}}</p>
                   </ng-template>
@@ -54,6 +57,7 @@
               </tr>
             </tbody>
           </table>
+          <div *ngIf="auth.userData.tipo == 'Estudiante'">
           <div *ngIf="!actividad.estado">
             <div *ngIf="!actividad.estado_entrega; else editar">
               <a style="background-color: #942646;" class="btn btn-primary btn-lg"
@@ -62,7 +66,7 @@
             <ng-template #editar><a style="background-color: #942646;" class="btn btn-primary btn-lg"
                 routerLink="/editar/{{a}}/{{act}}">Editar Entrega</a></ng-template>
           </div>
-
+        </div>
         </div>
       </div>
     </div>
