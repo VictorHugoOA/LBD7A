@@ -73,7 +73,6 @@ import { ArchivosComponent } from './components/archivos/archivos.component';
     ArchivosComponent,
     PerfilOtroComponent
 
-
   ],
   imports: [
     BrowserModule,
