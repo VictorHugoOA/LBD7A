@@ -31,6 +31,14 @@ import { EntregaComponent } from './components/entrega/entrega.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { EditarComponent } from './components/editar/editar.component';
 import { InicioprofComponent } from './components/inicioprof/inicioprof.component';
+<<<<<<< Updated upstream
+=======
+import { GrupoComponent } from './components/grupo/grupo.component';
+import { LibroComponent } from './components/libro/libro.component';
+import { PerfilOtroComponent } from './components/perfil-otro/perfil-otro.component';
+import { CalificacionesComponent } from './components/calificaciones/calificaciones.component';
+import { ArchivosComponent } from './components/archivos/archivos.component';
+>>>>>>> Stashed changes
 
 
 //Servicios
@@ -55,7 +63,17 @@ import { InicioprofComponent } from './components/inicioprof/inicioprof.componen
     AlTutoriasSolicitarComponent,
     EntregaComponent,
     EditarComponent,
+<<<<<<< Updated upstream
     InicioprofComponent
+=======
+    InicioprofComponent,
+    EditarActividadComponent,
+    GrupoComponent,
+    LibroComponent,
+    PerfilOtroComponent,
+    CalificacionesComponent,
+    ArchivosComponent
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,

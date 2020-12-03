@@ -79,7 +79,7 @@ function createRouter(db) {
       }
     );
   });
-  //Actividades mostradas por materia y alumno 5
+  //Actividades mostradas por materia y alumno 5 en uso 
   router.get('/AlumnoActividades/:idalum/:idmat', function (req, res) {
     const idalum = req.params.idalum
     const idmat = req.params.idmat

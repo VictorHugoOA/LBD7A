@@ -69,7 +69,7 @@ create table realiza
     id_actividad numeric(10) not null,
     fecha_entrega date,
     hora_entrega time,
-    calificacion float,
+    calificacion float default 0,
 	estado_entrega int default 0,
     primary key(id_alumno, id_actividad),
     foreign key(id_alumno) references alumno(id),

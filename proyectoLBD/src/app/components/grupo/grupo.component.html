@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+<div class="container-fluid" style="margin-top: 5px;">
+  <div class="row justify-content-between">
+    <div class="col-4">
+      <app-calendario></app-calendario>
+    </div>
+    <div class="col-8">
+      <div class="card">
+        <div class="card-body">
+
+          <table class="table ">
+            <thead>
+              <tr>
+                <th scope="col">
+                  <h4 class="card-title"> Lista de alumnos</h4>
+                </th>
+              </tr>
+              <tr id="encabezado">
+                  <td>ID</td>
+                  <td>Nombre</td>
+                  <td>Apellido Paterno</td>
+                  <td>Apellido Materno</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let alumno of alumnos">
+                <td><a routerLink="/profile/{{alumno.id}}/Estudiante">
+                <span class="navbar-text mr-4">{{alumno.id}}</span></a></td>
+                <td>{{alumno.nombre}}</td>
+                <td>{{alumno.apellido_pat}}</td>
+                <td>{{alumno.apellido_mat}}</td>
+              </tr>
+        
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

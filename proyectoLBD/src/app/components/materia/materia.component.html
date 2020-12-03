@@ -12,6 +12,17 @@
           <div *ngIf="auth.userData.tipo === 'Profesor'">
             <button type="button" style="background-color: #942646;" class="btn btn-primary btn-lg btn-block" (click)="routerActivity()">Crear actividad</button>
           </div>
+<<<<<<< Updated upstream
+=======
+          <ng-template #alumno>
+            <div class="row justify-content-between">
+              <div class="col-8">
+                <a style="background-color: #942646; margin: 15px;" class="btn btn-primary" routerLink="">Ver recursos de apoyo</a>
+                <a style="background-color: #942646;" class="btn btn-primary" routerLink="/calificaciones/{{materia}}">Ver calificaciones</a>
+              </div>
+            </div>
+          </ng-template>
+>>>>>>> Stashed changes
           <hr>
           <br />
           <p class="card-text">

@@ -29,7 +29,7 @@ export class MateriaComponent implements OnInit {
   {
     this.router.navigate([`/crear/${this.materia}`])
   }
-
+ 
   ngOnInit(): void {
     this.curso = this.c.getCurso(this.materia);
     this.act.getActividadesGrupo(this.materia, this.grupo).subscribe((data: any[]) => {

@@ -29,6 +29,19 @@ export class ActividadesService {
     return this.http.get(`http://localhost:3000/delete/${nameUp}`);
   }
 
+<<<<<<< Updated upstream
+=======
+  añadirArchivoActividad(idAlumno: string, idActividad: string, archivo:string)
+  {
+    return this.http.get(`http://localhost:3000/guardartarea/${idAlumno}/${idActividad}/${archivo}`);
+  }
+
+  getactividadesAlumno(idalum:string, idmat: string){
+    return this.http.get(`http://localhost:3000/AlumnoActividades/${idalum}/${idmat}`);
+    
+  }
+
+>>>>>>> Stashed changes
 }
 
 
