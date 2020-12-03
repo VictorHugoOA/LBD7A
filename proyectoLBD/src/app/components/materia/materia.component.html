@@ -15,6 +15,7 @@
                 <button type="button" style="background-color: #942646;" class="btn btn-primary"
                   (click)="routerActivity()">Crear actividad</button>
                 <a style="background-color: #942646;" class="btn btn-primary ml-5" routerLink="">Añadir Archivo</a>
+                <a style="background-color: #942646; margin: 10px;" class="btn btn-primary" routerLink="/archivos/{{materia}}/{{auth.userData.id}}">Ver recursos de apoyo</a>
               </div>
             </div>
           </div>
@@ -22,20 +23,14 @@
           <ng-template #alumno>
             <div class="row justify-content-between">
               <div class="col-8">
-                <a style="background-color: #942646; margin: 15px;" class="btn btn-primary" routerLink="">Ver recursos de apoyo</a>
+                <a style="background-color: #942646; margin: 10px;" class="btn btn-primary" routerLink="/archivos/{{materia}}/{{(prof | async)?.id}}">Ver recursos de apoyo</a>
                 <a style="background-color: #942646;" class="btn btn-primary" routerLink="/calificaciones/{{materia}}">Ver calificaciones</a>
+                
               </div>
             </div>
           </ng-template>
 
-          <ng-template #alumno>
-            <div class="row justify-content-between">
-              <div class="col-8">
-                <a style="background-color: #942646; margin: 15px;" class="btn btn-primary" routerLink="">Ver recursos de apoyo</a>
-                <a style="background-color: #942646;" class="btn btn-primary" routerLink="/calificaciones/{{materia}}">Ver calificaciones</a>
-              </div>
-            </div>
-          </ng-template>
+  
 
           <hr>
           <br />

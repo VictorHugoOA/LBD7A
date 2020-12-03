@@ -14,7 +14,7 @@ const uri = 'http://localhost:3000/upload';
 export class EditarActividadComponent implements OnInit {
 
 
-  id: number;
+  id: any;
   uploader:FileUploader = new FileUploader({url: uri});
 
   editarForm: FormGroup;
@@ -24,7 +24,7 @@ export class EditarActividadComponent implements OnInit {
   attachmentList: any = [];
 
   bandera: boolean = false;
-
+  actividad:any;
   constructor(private fb: FormBuilder, private aRouter: ActivatedRoute, private acts: ActividadesService) {
     this.id = this.aRouter.snapshot.params.ida;
 
@@ -34,11 +34,13 @@ export class EditarActividadComponent implements OnInit {
 
   ngOnInit(): void {
 
+   this.actividad= this.acts.getActividad(this.id);
+
     this.editarForm = this.fb.group({
-      titulo: ['', Validators.required],
-      fechaLim: ['', Validators.required],
-      horaLim: ['15:30', Validators.required],
-      desc: ['', Validators.required],
+      titulo: [`${this.actividad.titulo}`, Validators.required],
+      fechaLim: [`${this.actividad.fecha_limite}`, Validators.required],
+      horaLim: [`${this.actividad.hora_limite}`, Validators.required],
+      desc: [`${this.actividad['descripción']}`, Validators.required],
       estado: ['', Validators.required],
       retraso: ['', Validators.required]
     })

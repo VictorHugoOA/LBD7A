@@ -164,9 +164,6 @@ begin
 end//
 DELIMITER ;
 
-/*Ejemplos para ejecutar los procedimientos para el login
-call login_alumno("a000001", "c000003");
-call login_profesor("p000001", "c000001");*/
 
 /*Creación de procedimiento para los avances de los alumnos*/
 DELIMITER //

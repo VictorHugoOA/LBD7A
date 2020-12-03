@@ -431,7 +431,20 @@ function createRouter(db) {
     );
 
   })
+  //Profesor por grupo 28 en uso
+  router.get('/ProfesorGrupo/:idgrup', function (req, res) {
+    const idgrup = req.params.idgrup
+    db.query(
+      'select * from profesor where id in(select id_profesor from grupomat where id=?)',
+      [idgrup],
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
 
+        console.log(results);
+      }
+    );
+  });
   
   //Las fuciones para guardar archivos y obtener archivos
   //Guardar archivos 
