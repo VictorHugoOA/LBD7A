@@ -113,6 +113,7 @@ create table imparte(
     foreign key(id_tutoría) references tutoría(id),
     foreign key(id_profesor) references profesor(id)
 );
+
 create table tarea
 (
 	id int not null auto_increment,
@@ -127,16 +128,13 @@ create table tarea
 create table Material
 (
 	id int not null auto_increment,
-	id_alumno varchar(10) not null,
-    id_actividad int not null,
+    id_actividad int,
     archivo text,
     primary key(id),
-    foreign key(id_alumno) references alumno(id),
     foreign key(id_actividad) references actividad(id)
 );
 
 /*vistas*/
-
 create view alumnosact as select R.*, A.titulo, A.fecha_limite, A.hora_limite, A.descripción,
 A.estado,A.retraso,A.id_materia from realiza R left join actividad A on R.id_actividad=A.id;
 create view LoginA as select id,contrasena from alumno;
@@ -183,6 +181,15 @@ begin
 end//
 DELIMITER ;
 
+DELIMITER //
+create procedure aulavirtualsep.actividad_alumno (in titulo varchar(30), in fecha date, in hora time, in retraso int, in descripcion text, in materia varchar(10))
+begin
+	declare tempID int;
+	insert into actividad (titulo, fecha_limite, hora_limite, descripción, retraso, id_materia) values ( titulo, fecha, hora, descripcion, retraso, materia);
+    set tempID = last_insert_id();
+    select * from actividad where id = tempID;
+end//
+DELIMITER ;
 
 /*Ejemplo para ejecutar el procedimiento para avances
 call avances("a000001", @out); select @out;*/

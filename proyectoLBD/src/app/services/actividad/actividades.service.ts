@@ -24,9 +24,9 @@ export class ActividadesService {
     return this.http.get(`http://localhost:3000/entregar/${idAl}/${idAct}`);
   }
 
-  crearActividad(actividad: any)
+  crearActividad(titulo: string, fecha: string, hora: string, retraso: number, desc: string, mat: string)
   {
-
+    return this.http.get(`http://localhost:3000/${titulo}/${fecha}/${hora}/${retraso}/${desc}/${mat}`);
   }
 
   obtenerArchivosActividadAlumno(idAlumno: string, idActividad: string)
@@ -38,6 +38,10 @@ export class ActividadesService {
       }
       return newD;
     }));
+  }
+
+  almacenarArchivoActividad(id: string){
+
   }
 
   getActividad(idActividad: String)

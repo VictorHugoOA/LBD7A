@@ -349,7 +349,6 @@ function createRouter(db) {
   router.get('/obtener/:idAlumno/:idActividad', function (req, res) {
     const alumno = req.params.idAlumno;
     const actividad = req.params.idActividad;
-    console.log(moment().format('YYYY-MM-DD'));
     db.query(
       'select * from tarea where id_alumno = ? and id_actividad = ?',
       [alumno, actividad],
@@ -361,6 +360,29 @@ function createRouter(db) {
 
       }
     );
+  })
+
+
+  router.get('/crearactividad/:tit/:fecha/:hora/:retraso/:desc/:mat', function(req, res){
+    const tit = req.params.tit;
+    const fecha = req.params.fecha;
+    const hora = req.params.hora;
+    const retraso = req.params.retraso;
+    const desc = req.params.desc;
+    const mat = req.params.mat;
+
+    db.query(
+      'call actividad_alumno(?,?,?,?,?,?)',
+      [tit, fecha, hora, retraso, desc, mat],
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);
+
+      }
+    );
+
   })
 
 
@@ -384,6 +406,21 @@ function createRouter(db) {
     db.query(
       'insert into tarea (id_alumno, id_actividad, archivo) values (?, ?, ?);',
       [alumno, actividad, ar],
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);
+
+      }
+    );
+  })
+
+  router.get('/guardaractividad/:ar', function(req, res){
+    const archivo = req.params.ar;
+    db.query(
+      'insert into Material (archivo) values (?);',
+      [archivo],
       (error, results) => {
         if (error) throw error;
         res.send(results);

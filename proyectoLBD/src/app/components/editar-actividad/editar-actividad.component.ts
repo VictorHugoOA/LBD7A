@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FileUploader } from 'ng2-file-upload';
 import { ActividadesService } from 'src/app/services/actividad/actividades.service';
 
-const uri = 'http://localhost:3000/uploads';
+const uri = 'http://localhost:3000/upload';
 
 @Component({
   selector: 'app-editar-actividad',
