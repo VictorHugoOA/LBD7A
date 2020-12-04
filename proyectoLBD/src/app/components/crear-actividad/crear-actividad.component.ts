@@ -75,8 +75,10 @@ export class CrearActividadComponent implements OnInit {
         this.actividadForm.get('fechaLim').value,
         this.actividadForm.get('descripcion').value,
         this.actividadForm.get('horaLim').value, retraso, this.auth.userData.id).subscribe((data: any) => {
-          this.r.navigate(['/cursos']);
+         
+        this.r.navigate([`/curso/${this.grupo}/${this.materia}`]);
         });
+       
     }
   }
 

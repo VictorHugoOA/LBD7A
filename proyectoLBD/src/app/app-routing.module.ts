@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'curso/:idg/:idm', component: MateriaComponent },
   { path: 'actividad/:ida/:idm', component: ActividadComponent },
   { path: 'homeTeacher', component: InicioprofComponent },
-  { path: 'crear/:id:/:ida', component: CrearActividadComponent },
+  { path: 'crear/:id/:ida/:idg', component: CrearActividadComponent },
   { path: 'entrega/:ida/:idm', component: EntregaComponent },
   { path: 'editar/:ida/:idm', component: EditarComponent },
   { path: 'editaractividad/:ida', component: EditarActividadComponent },
