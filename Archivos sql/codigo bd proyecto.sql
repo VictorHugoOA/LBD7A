@@ -71,12 +71,12 @@ create table realiza
     fecha_entrega date,
     hora_entrega time,
     calificacion float ,
+    comentario text,
 	estado_entrega int default 0,
     primary key(id_alumno, id_actividad),
     foreign key(id_alumno) references alumno(id),
     foreign key(id_actividad) references actividad(id)
 );
-
 
 create table libro (
 	id varchar(10) not null,

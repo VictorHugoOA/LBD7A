@@ -1,0 +1,7 @@
+button{
+    background-color: #942646;
+}
+button :disabled,
+button[disabled]{
+    background-color: #942646;
+}

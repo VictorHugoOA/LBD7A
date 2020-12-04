@@ -94,6 +94,11 @@ export class ActividadesService {
     
   }
 
+  getAlumnosEntrega(id: string)
+  {
+    return this.http.get(`http://localhost:3000/ListaAlumnosActividad/${id}`);
+  }
+
 }
 
 

@@ -39,7 +39,7 @@
                       <p class="alert alert-success">{{actividad.fecha_entrega | date}} {{actividad.hora_entrega}}</p>
                     </ng-template>
                 </td>
-                <ng-template #entregas><td><a href="" class="card-link">{{numEntregas}}</a></td></ng-template>
+                <ng-template #entregas><td><a routerLink="/listaentrega/{{this.act}}" class="card-link">{{numEntregas}}</a></td></ng-template>
                 <td  *ngIf="this.auth.userData.tipo == 'Estudiante'">
                   <p *ngIf="!actividad.estado_entrega; else esperar" class="alert alert-danger">No calificada</p>
                   <ng-template #esperar>

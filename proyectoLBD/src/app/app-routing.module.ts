@@ -19,29 +19,31 @@ import { LibroComponent } from './components/libro/libro.component';
 import { PerfilOtroComponent } from './components/perfil-otro/perfil-otro.component';
 import { CalificacionesComponent } from './components/calificaciones/calificaciones.component';
 import { ArchivoComponent } from './components/archivo/archivo.component';
+import { CalificarComponent } from './components/calificar/calificar.component';
 
 
 
 const routes: Routes = [
-  {path:'login', component: LoginComponent},
-  {path:'curso', component: CursosComponent},
-  {path:'alumnos/:id', component: AlumnosComponent},
-  {path:'perfil/:id/:tipo', component: PerfilComponent},
-  {path: 'cursos', component: CursosComponent},
-  {path: 'home', component: PrincipalComponent},
-  {path: 'curso/:idg/:idm', component: MateriaComponent},
-  {path: 'actividad/:ida/:idm', component: ActividadComponent},
-  {path: 'homeTeacher', component: InicioprofComponent},
-  {path: 'crear/:id:/:ida', component: CrearActividadComponent},
-  {path: 'entrega/:ida/:idm', component: EntregaComponent},
-  {path: 'editar/:ida/:idm', component: EditarComponent},
-  {path: 'editaractividad/:ida', component: EditarActividadComponent},
-  {path: 'grupo', component: GrupoComponent},
-  {path: 'libro', component: LibroComponent},
-  {path: 'calificaciones/:idm', component: CalificacionesComponent},
-  {path: 'profile/:id/:tipo', component: PerfilOtroComponent},
-  {path: 'archivos/:idm/:idp', component: ArchivoComponent},
-  {path:'**', component: LoginComponent}
+  { path: 'login', component: LoginComponent },
+  { path: 'curso', component: CursosComponent },
+  { path: 'listaentrega/:id', component: AlumnosComponent },
+  { path: 'perfil/:id/:tipo', component: PerfilComponent },
+  { path: 'cursos', component: CursosComponent },
+  { path: 'home', component: PrincipalComponent },
+  { path: 'curso/:idg/:idm', component: MateriaComponent },
+  { path: 'actividad/:ida/:idm', component: ActividadComponent },
+  { path: 'homeTeacher', component: InicioprofComponent },
+  { path: 'crear/:id:/:ida', component: CrearActividadComponent },
+  { path: 'entrega/:ida/:idm', component: EntregaComponent },
+  { path: 'editar/:ida/:idm', component: EditarComponent },
+  { path: 'editaractividad/:ida', component: EditarActividadComponent },
+  { path: 'grupo', component: GrupoComponent },
+  { path: 'libro', component: LibroComponent },
+  { path: 'calificaciones/:idm', component: CalificacionesComponent },
+  { path: 'profile/:id/:tipo', component: PerfilOtroComponent },
+  { path: 'archivos/:idm/:idp', component: ArchivoComponent },
+  {path: 'calificar/:idAct/:idAl', component: CalificarComponent},
+  { path: '**', component: LoginComponent }
 ];
 
 @NgModule({

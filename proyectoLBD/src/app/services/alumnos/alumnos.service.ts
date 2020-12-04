@@ -25,6 +25,11 @@ export class AlumnosService {
     return this.http.get(`http://localhost:3000/AlumnoActividad/${idAlumno}/${idActividad}`).pipe(map((data: any) => { return data[0] }));
   }
 
+  setCalificacion(idAlumno: string, idActividad: string, calificacion: number, comentario: string)
+  {
+    return this.http.post('http://localhost:3000/calificar', {idAl: idAlumno, idAct: idActividad, calificacion: calificacion, comentario: comentario});
+  }
+
   getLibrosMaterias(id: string)
   {
     return this.http.get(`http://localhost:3000/LibrosAlumno/${id}`);
