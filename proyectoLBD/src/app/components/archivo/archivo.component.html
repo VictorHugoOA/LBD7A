@@ -13,7 +13,8 @@
             <div class="row justify-content-between">
               <div class="col-8">
                 <a style="background-color: #942646; margin: 10px;" class="btn btn-primary" routerLink="/curso/{{(grupo | async)?.id}}/{{materia}}">Volver</a>
-                <a style="background-color: #942646;" class="btn btn-primary" routerLink="/calificaciones/{{materia}}">Ver calificaciones</a>
+                <a style="background-color: #942646;" class="btn btn-primary" *ngIf="auth.userData.tipo =='Estudiante'"
+                routerLink="/calificaciones/{{materia}}">Ver calificaciones</a>
                 
               </div>
             </div>
@@ -21,9 +22,9 @@
           <hr>
           <br />
           <p class="card-text">
-          <!--<div *ngFor="let actividad of actividades">
-            <app-actividad-card [usuario]="auth.userData" [actividad]="actividad"></app-actividad-card>
-          </div>-->
+          <div *ngFor="let rec of archivos">
+            <app-archivo-card [usuario]="auth.userData" [archivo]="rec"></app-archivo-card>
+          </div>
         </div>
       </div>
     </div>

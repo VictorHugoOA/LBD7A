@@ -344,7 +344,6 @@ function createRouter(db) {
         console.log(results);
       });
   })
-
   //Obtener archivos de la actividad. 23 en uso
   router.get('/obtener/:idAlumno/:idActividad', function (req, res) {
     const alumno = req.params.idAlumno;
@@ -361,7 +360,6 @@ function createRouter(db) {
       }
     );
   })
-
   //Crea una plantilla para las actividades 24 en uso
   router.get('/crearactividad/:mat', function (req, res) {
 
@@ -380,7 +378,6 @@ function createRouter(db) {
     );
 
   })
-
   //Actualizar datos actividad 25 en uso
   router.post('/ActualizarActividad', function(req, res){
     const id = req.body.id;
@@ -402,8 +399,8 @@ function createRouter(db) {
       }
     );
   });
-    //Actualizar datos actividad
-    router.post('/EditarActividad', function(req, res){
+  //Actualizar datos actividad 26 en uso
+  router.post('/EditarActividad', function(req, res){
       const id = req.body.id;
       const titulo = req.body.titulo;
       const fecha = req.body.fecha;
@@ -422,7 +419,7 @@ function createRouter(db) {
         }
       );
     });
-
+  //Borrar actividad 27 en uso
   router.get('/BorrarActividad/:id', function(req, res){
     const id = req.params.id;
     db.query('delete from actividad where id = ?',
@@ -433,8 +430,7 @@ function createRouter(db) {
       console.log(results);
     })
   })
-
-  //Guarda en los materiales en la actividad 27 en uso
+  //Guarda en los materiales en la actividad 28 en uso
   router.get('/guardarmaterial/:id/:ar', function (req, res) {
     const act = req.params.id;
     const archivo = req.params.ar;
@@ -451,7 +447,7 @@ function createRouter(db) {
     );
 
   });
-
+  //Obtener material por actividad 29 en uso
   router.get('/obtenerMateriales/:id', function(req, res){
     const id = req.params.id;
     db.query('select * from Material where id_actividad = ?',
@@ -462,7 +458,7 @@ function createRouter(db) {
       console.log(results);
     })
   })
-  //Profesor por grupo 28 en uso
+  //Profesor por grupo 30 en uso
   router.get('/ProfesorGrupo/:idgrup', function (req, res) {
     const idgrup = req.params.idgrup
     db.query(
@@ -477,7 +473,20 @@ function createRouter(db) {
       }
     );
   });
-  
+  //Mostrar los recursos de una materia
+  router.get('/obtenerRecursos/:idmat/:prof', function(req, res){
+    const idmat = req.params.idmat;
+    const idprof = req.params.prof;
+    db.query('select * from recurso where id_materia = ? and id_profesor= ?',
+    [idmat,idprof],
+    (error, results) => {
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+  })
+
+
   //Las fuciones para guardar archivos y obtener archivos
   //Guardar archivos 
   router.post('/upload', function (req, res, next) {
@@ -507,14 +516,12 @@ function createRouter(db) {
       }
     );
   })
-
   //Obtener archivos
   router.get('/getfile/:file', function (req, res, next) {
     let fil = ""
     fil = path.join(__dirname, '../uploads') + '/' + req.params.file;
     res.sendFile(fil);
   });
-
   //Borrar tarea.
   router.get('/delete/:file', function (req, res, next) {
     let fil = "";
@@ -541,7 +548,6 @@ function createRouter(db) {
       return res.status(200).json({ error: "El archivo no existe" });
     }
   });
-
   //Borrar material.
   router.get('/borrarMaterial/:file', function (req, res, next) {
     let fil = "";
