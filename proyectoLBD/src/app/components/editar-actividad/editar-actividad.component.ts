@@ -39,7 +39,8 @@ export class EditarActividadComponent implements OnInit {
         fechaLim: [`${f}`, [Validators.required]],
         descripcion: [`${this.actividad['descripción']}`, [Validators.required]],
         horaLim: [`${this.actividad.hora_limite}`, Validators.required],
-        retraso: ['', Validators.required]
+        retraso: ['', Validators.required],
+        cerrar: ['', Validators.required]
       });
     });
 
@@ -72,6 +73,7 @@ export class EditarActividadComponent implements OnInit {
 
   onSubmit() {
     let retraso = 0;
+    let cerrar = 0;
     if (this.actividadForm.valid) {
       if (this.actividadForm.get('retraso').value == 'si') {
         retraso = 1;
@@ -79,11 +81,18 @@ export class EditarActividadComponent implements OnInit {
       else {
         retraso = 0;
       }
+      if(this.actividadForm.get('cerrar').value == 'si')
+      {
+        cerrar = 1;
+      }
+      else{
+        cerrar = 0;
+      }
       this.activity.editarActividad(this.idAct,
         this.actividadForm.get('titulo').value,
         this.actividadForm.get('fechaLim').value,
         this.actividadForm.get('descripcion').value,
-        this.actividadForm.get('horaLim').value, retraso).subscribe((data: any) => {
+        this.actividadForm.get('horaLim').value, retraso, cerrar).subscribe((data: any) => {
           this.r.navigate(['/cursos']);
         });
     }

@@ -51,9 +51,9 @@ export class ActividadesService {
     }));
   }
 
-  editarActividad(idAct: string, titulo: string, fecha: string, descripcion: string, hora: string, retraso: number)
+  editarActividad(idAct: string, titulo: string, fecha: string, descripcion: string, hora: string, retraso: number, estado: number)
   {
-    return this.http.post('http://localhost:3000/EditarActividad', {id: idAct, titulo: titulo, fecha: fecha, desc: descripcion, hora: hora, retraso: retraso});
+    return this.http.post('http://localhost:3000/EditarActividad', {id: idAct, titulo: titulo, fecha: fecha, desc: descripcion, hora: hora, retraso: retraso, estado: estado});
   }
 
   almacenarArchivoMaterial(idAct: string, archivo: string){

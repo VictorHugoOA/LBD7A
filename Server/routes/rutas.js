@@ -410,9 +410,10 @@ function createRouter(db) {
       const desc = req.body.desc;
       const hora = req.body.hora;
       const retraso = req.body.retraso;
+      const estado = req.body.estado;
       db.query(
-        'update actividad set titulo = ?, fecha_limite = ?, descripción = ?, hora_limite = ?, retraso = ? where id = ?',
-        [titulo, fecha, desc, hora, retraso, id],
+        'update actividad set titulo = ?, fecha_limite = ?, descripción = ?, hora_limite = ?, retraso = ?, estado = ? where id = ?',
+        [titulo, fecha, desc, hora, retraso, estado, id],
         (error, results) => {
           if (error) throw error;
           res.send(results);
