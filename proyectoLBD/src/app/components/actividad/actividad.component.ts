@@ -20,6 +20,7 @@ export class ActividadComponent implements OnInit {
 
   actividad: any = {};
   archivos: any[] = [];
+  numEntregas: number = 0;
   constructor(public auth: AuthService, private al: AlumnosService, private aRouter: ActivatedRoute, private acti: ActividadesService, private router: Router) {
 
 
@@ -36,6 +37,7 @@ export class ActividadComponent implements OnInit {
       this.acti.getActividad(this.act).subscribe((data: any) => {
         this.actividad = data;
       });
+      this.acti.obtenerNumEntregas(this.act).subscribe((data: number) => {this.numEntregas = data});
     }
 
     this.acti.getActividadMaterial(this.act).subscribe((data: any[]) =>{

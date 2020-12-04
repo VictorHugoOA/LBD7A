@@ -448,6 +448,18 @@ function createRouter(db) {
     );
 
   });
+
+  router.get('/ObtenerNumEntregas/:id', function(req, res){
+    const id = req.params.id;
+    db.query('select count(*) from realiza where id_actividad = 1 and estado_entrega != 0;',
+    [id],
+    (error, results) =>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+  })
+
   //Obtener material por actividad 29 en uso
   router.get('/obtenerMateriales/:id', function(req, res){
     const id = req.params.id;

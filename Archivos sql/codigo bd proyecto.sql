@@ -144,6 +144,7 @@ create table Material
     foreign key(id_actividad) references actividad(id)
 );
 
+select * from realiza where id_actividad = 1 and estado_entrega != 0;
 
 /*vistas*/
 create view alumnosact as select R.*, A.titulo, A.fecha_limite, A.hora_limite, A.descripción,
