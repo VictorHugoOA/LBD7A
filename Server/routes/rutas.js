@@ -509,6 +509,20 @@ function createRouter(db) {
       console.log(results);
     })
   })
+  //Guardar recurso 33
+  router.post('/almacenarRecurso', function(req, res){
+    const idProf = req.body.idProf;
+    const idMat = req.body.idMat;
+    const archivo = req.body.archivo;
+    const titulo = req.body.titulo;
+    db.query('insert into Recurso (titulo, id_materia, id_profesor, archivo) values(?, ?, ?, ?);',
+    [titulo, idMat, idProf, archivo],
+    (error, results) =>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+  });
 
   router.post('/calificar', function(req, res){
     const idAl = req.body.idAl;

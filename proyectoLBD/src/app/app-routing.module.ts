@@ -20,6 +20,7 @@ import { PerfilOtroComponent } from './components/perfil-otro/perfil-otro.compon
 import { CalificacionesComponent } from './components/calificaciones/calificaciones.component';
 import { ArchivoComponent } from './components/archivo/archivo.component';
 import { CalificarComponent } from './components/calificar/calificar.component';
+import { AgregararchComponent } from './components/agregararch/agregararch.component';
 
 
 
@@ -42,7 +43,8 @@ const routes: Routes = [
   { path: 'calificaciones/:idm', component: CalificacionesComponent },
   { path: 'profile/:id/:tipo', component: PerfilOtroComponent },
   { path: 'archivos/:idm/:idp', component: ArchivoComponent },
-  {path: 'calificar/:idAct/:idAl', component: CalificarComponent},
+  { path: 'calificar/:idAct/:idAl', component: CalificarComponent },
+  {path: 'añadirarchivos/:idMat/:idGrupo', component: AgregararchComponent},
   { path: '**', component: LoginComponent }
 ];
 

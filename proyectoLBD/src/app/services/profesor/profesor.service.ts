@@ -35,4 +35,10 @@ export class ProfesorService {
   getLibrosProfesor(id: string){
     return this.http.get(`http://localhost:3000/LibrosProfesor/${id}`);
   }
+
+  almacenarRecurso(idProf: string, idMat: string, archivo: string, titulo: string)
+  {
+    return this.http.post('http://localhost:3000/almacenarRecurso', {idProf: idProf, idMat: idMat, archivo: archivo, titulo: titulo});
+  }
+
 }
