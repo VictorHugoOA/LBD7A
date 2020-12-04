@@ -474,12 +474,23 @@ function createRouter(db) {
       }
     );
   });
-  //Mostrar los recursos de una materia
+  //Mostrar los recursos de una materia 31 en uso
   router.get('/obtenerRecursos/:idmat/:prof', function(req, res){
     const idmat = req.params.idmat;
     const idprof = req.params.prof;
     db.query('select * from recurso where id_materia = ? and id_profesor= ?',
     [idmat,idprof],
+    (error, results) => {
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+  })
+  //Borrar archivo 32 en uso
+  router.get('/borrarRecursos/:id', function(req, res){
+    const id = req.params.id;
+    db.query('delete from recurso where id= ?',
+    [id],
     (error, results) => {
       if(error) throw error;
       res.send(results);

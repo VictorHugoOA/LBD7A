@@ -31,7 +31,7 @@ export class MateriaComponent implements OnInit {
   routerActivity()
   {
     this.act.crearActividad(this.materia).subscribe((data: any) => {
-      this.router.navigate([`/crear/${this.materia}/${data.id}`]);
+      this.router.navigate([`/crear/${this.materia}/${data.id}/${this.grupo}`]);
     });
   }
  

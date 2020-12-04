@@ -29,6 +29,11 @@ export class CursosService {
     return this.http.get(`http://localhost:3000/obtenerRecursos/${idmat}/${idprof}`);
     
   }
+  borrarRecurso(id: string)
+  {
+    return this.http.get(`http://localhost:3000/borrarRecursos/${id}`);
+    
+  }
 
 }
 

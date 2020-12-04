@@ -127,6 +127,7 @@ create table tarea
 create table Recurso
 (
 	id int not null auto_increment,
+    titulo varchar(10) not null,
     id_materia varchar(10) not null,
     id_profesor varchar(10) not null,
     archivo text,

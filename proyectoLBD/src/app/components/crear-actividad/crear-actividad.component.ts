@@ -14,8 +14,10 @@ const uri = 'http://localhost:3000/upload';
   styleUrls: ['./crear-actividad.component.css']
 })
 export class CrearActividadComponent implements OnInit {
+  grupo: any;
 
   constructor(private fb: FormBuilder, private router: ActivatedRoute, private activity: ActividadesService, private r: Router, private auth: AuthService) {
+    this.grupo = this.router.snapshot.params.idg;
     this.materia = this.router.snapshot.params.id;
     this.idAct = this.router.snapshot.params.ida;
     this.activity.getActividad(this.idAct).subscribe((data: any) => {

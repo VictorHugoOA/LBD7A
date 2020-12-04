@@ -286,6 +286,8 @@ Values
 ("a000059","Samir","Ayala","Saldivar","g-12","M","c000059"),
 ("a000060","Ibrahim","Garcia","Zavala","g-12","M","c000060");
 
-
- 
+insert into recurso (titulo, id_materia, id_profesor, archivo)
+Values ("titulo1","m-003","p000003", "F"),
+ ("titulo2","m-001","p000001", "F")
+;
 

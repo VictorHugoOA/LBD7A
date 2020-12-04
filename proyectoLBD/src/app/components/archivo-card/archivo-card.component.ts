@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ActividadesService } from 'src/app/services/actividad/actividades.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { CursosService } from 'src/app/services/cursos/cursos.service';
 
 @Component({
   selector: 'app-archivo-card',
@@ -14,9 +14,9 @@ export class ArchivoCardComponent implements OnInit {
   @Input() archivo: any;
   @Input() usuario: any;
 
-  grupo:any;
 
-  constructor(private act: ActividadesService, private router: Router, public auth: AuthService) {
+
+  constructor(private curso: CursosService, private router: Router, public auth: AuthService) {
     
   }
 
@@ -25,12 +25,13 @@ export class ArchivoCardComponent implements OnInit {
   }
 
   
- /* borrar()
+  borrar()
   {
-    this.act.borrarActividad(this.actividad.id_actividad).subscribe((data: any)=>{
+    this.curso.borrarRecurso(this.archivo.id).subscribe((data: any)=>{
       console.log(data);
       this.router.navigate(['/cursos']);
+     
     });
-  }*/
+  }
 
 }

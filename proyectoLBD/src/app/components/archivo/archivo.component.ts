@@ -17,8 +17,10 @@ export class ArchivoComponent implements OnInit {
   archivos: any[] = [];  
   prof: string;
   materia: string;
+  usuario: any;
   constructor(public auth: AuthService, private router: Router, private aRouter: ActivatedRoute, private c: CursosService, private act: ActividadesService, private profesor:ProfesorService
     ) {
+      this.usuario= this.auth.userData;
     this.prof = this.aRouter.snapshot.params.idp;
     this.materia = this.aRouter.snapshot.params.idm;
 
@@ -37,5 +39,6 @@ export class ArchivoComponent implements OnInit {
     });
   
   }
+ 
 
 }
