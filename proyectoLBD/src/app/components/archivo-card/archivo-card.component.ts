@@ -14,7 +14,8 @@ export class ArchivoCardComponent implements OnInit {
   @Input() archivo: any;
   @Input() usuario: any;
 
-
+  @Input() materia: any;
+  @Input() grupo: any;
 
   constructor(private curso: CursosService, private router: Router, public auth: AuthService) {
     
@@ -29,8 +30,7 @@ export class ArchivoCardComponent implements OnInit {
   {
     this.curso.borrarRecurso(this.archivo.id).subscribe((data: any)=>{
       console.log(data);
-      this.router.navigate(['/cursos']);
-     
+      this.router.navigate([`/curso/${this.grupo}/${this.materia}`]);
     });
   }
 

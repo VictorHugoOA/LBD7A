@@ -3,7 +3,7 @@
         <i class="far fa-file-alt"></i><a href="http://localhost:3000/getfile/{{archivo.archivo}}" target="_blank">  {{archivo.titulo}}</a>
     </div>
     <div class="card-body"*ngIf="usuario.tipo =='Profesor'">
-        <i class="far fa-file-alt"></i><a href="http://localhost:3000/getfile/{{archivo.archivo}}" target="_blank">{{archivo.titulo}}</a>
+        <i class="far fa-file-alt"></i><a href="http://localhost:3000/getfile/{{archivo.archivo}}" target="_blank">  {{archivo.titulo}}</a>
         <button *ngIf="usuario.tipo == 'Profesor'" style="background-color: #942646;" class="btn btn-primary" (click)="borrar()" >Borrar recurso</button>
     </div>
 

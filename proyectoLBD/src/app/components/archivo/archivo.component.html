@@ -21,7 +21,7 @@
           <br />
           <p class="card-text">
           <div *ngFor="let rec of archivos">
-            <app-archivo-card [usuario]="auth.userData" [archivo]="rec"></app-archivo-card>
+            <app-archivo-card [materia]="materia" [grupo]="(grupo | async)?.id"  [usuario]="auth.userData" [archivo]="rec"></app-archivo-card>
           </div>
         </div>
       </div>
