@@ -39,6 +39,7 @@ import { CalificacionesComponent } from './components/calificaciones/calificacio
 import { ArchivoComponent } from './components/archivo/archivo.component';
 import { ArchivoCardComponent } from './components/archivo-card/archivo-card.component';
 import { AgregararchComponent } from './components/agregararch/agregararch.component';
+import { CalificarComponent } from './components/calificar/calificar.component';
 
 
 
@@ -75,7 +76,8 @@ import { AgregararchComponent } from './components/agregararch/agregararch.compo
     PerfilOtroComponent,
     ArchivoComponent,
     ArchivoCardComponent,
-    AgregararchComponent
+    AgregararchComponent,
+    CalificarComponent
 
   ],
   imports: [

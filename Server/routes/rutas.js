@@ -448,7 +448,19 @@ function createRouter(db) {
     );
 
   });
-  //Obtener material por actividad 29 en uso
+  //Obtener el numero de entregas para una activida 29
+  router.get('/ObtenerNumEntregas/:id', function(req, res){
+    const id = req.params.id;
+    db.query('select count(*) from realiza where id_actividad = 1 and estado_entrega != 0;',
+    [id],
+    (error, results) =>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+  })
+
+  //Obtener material por actividad 30 en uso
   router.get('/obtenerMateriales/:id', function(req, res){
     const id = req.params.id;
     db.query('select * from Material where id_actividad = ?',
@@ -459,7 +471,7 @@ function createRouter(db) {
       console.log(results);
     })
   })
-  //Profesor por grupo 30 en uso
+  //Profesor por grupo 31 en uso
   router.get('/ProfesorGrupo/:idgrup', function (req, res) {
     const idgrup = req.params.idgrup
     db.query(
@@ -498,6 +510,31 @@ function createRouter(db) {
     })
   })
 
+  router.post('/calificar', function(req, res){
+    const idAl = req.body.idAl;
+    const idAct = req.body.idAct;
+    const cal = req.body.calificacion;
+    const comentario = req.body.comentario;
+    db.query('update realiza set calificacion = ?, comentario = ? where id_alumno = ? and id_actividad = ?',
+    [cal, comentario, idAl, idAct],
+    (error, results)=>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+  })
+
+  //Mostrar la lista de los alumnos que hacen uan actividad.
+  router.get('/ListaAlumnosActividad/:id', function(req, res){
+    const id = req.params.id;
+    db.query('select * from alumnosact left join alumno on alumnosact.id_alumno = alumno.id where id_actividad = ?;',
+    [id],
+    (error, results) =>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+  })
 
   //Las fuciones para guardar archivos y obtener archivos
   //Guardar archivos 

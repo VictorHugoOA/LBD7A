@@ -60,6 +60,10 @@ export class ActividadesService {
     return this.http.get(`http://localhost:3000/guardarmaterial/${idAct}/${archivo}`);
   }
 
+  obtenerNumEntregas(id: string){
+    return this.http.get(`http://localhost:3000/ObtenerNumEntregas/${id}`).pipe(map((data: any) => {return data[0]['count(*)']}));
+  }
+
   getActividad(idActividad: String)
   {
     return this.http.get(`http://localhost:3000/Actividad/${idActividad}`).pipe(map((data:any[]) => {return data[0];}));
@@ -88,6 +92,11 @@ export class ActividadesService {
   getactividadesAlumno(idalum:string, idmat: string){
     return this.http.get(`http://localhost:3000/AlumnoActividades/${idalum}/${idmat}`);
     
+  }
+
+  getAlumnosEntrega(id: string)
+  {
+    return this.http.get(`http://localhost:3000/ListaAlumnosActividad/${id}`);
   }
 
 }

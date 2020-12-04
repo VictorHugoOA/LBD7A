@@ -8,16 +8,18 @@
             <table class="table table-bordered table-hover" style="border-radius: 10px">
                 <thead style="background-color: #942646; color: white;">
                     <th>ID #</th>
-                    <th>Nombre</th>
-                    <th>Apellido Paterno</th>
-                    <th>Apellido Materno</th>
+                    <th>Nombre completo</th>
+                    <th>Entrego:</th>
+                    <th>Calificación:</th>
                 </thead>
                 <tbody>
                     <tr *ngFor="let alumno of alumnos">
                         <td>{{alumno.id}}</td>
-                        <td>{{alumno.name}}</td>
-                        <td>{{alumno.apellidoPat}}</td>
-                        <td>{{alumno.apellidoMat}}</td>
+                        <td>{{alumno.nombre}} {{alumno.apellido_pat}} {{alumno.apellido_mat}}</td>
+                        <td *ngIf="alumno.estado_entrega; else noentrego" class="alert alert-success"><a  class="alert-success" routerLink="/calificar/{{this.actividad}}/{{alumno.id}}">Entrego</a></td>
+                        <ng-template #noentrego><td class="alert alert-danger"><a class="alert-danger" routerLink="/calificar/{{this.actividad}}/{{alumno.id}}">No entrego</a></td></ng-template>
+                        <td *ngIf="alumno.calificacion; else nocalificada">{{alumno.calificacion}}</td>
+                        <ng-template #nocalificada><td class="alert alert-danger">No calificada</td></ng-template>
                     </tr>
                 </tbody>
             </table>
