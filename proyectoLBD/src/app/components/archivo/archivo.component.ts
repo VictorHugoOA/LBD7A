@@ -29,6 +29,12 @@ export class ArchivoComponent implements OnInit {
   ngOnInit(): void {
     this.grupo = this.profesor.getgrupoProfesor(this.prof);
     this.curso = this.c.getCurso(this.materia);
+    this.c.getRecursosProfesor(this.materia,this.prof).subscribe((data: any[])=> {
+      for(var i = 0; i < data.length; ++i)
+      {
+        this.archivos.push(data[i]);
+      }
+    });
   
   }
 

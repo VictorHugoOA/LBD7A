@@ -24,6 +24,11 @@ export class CursosService {
     return this.http.get(`http://localhost:3000/MateriasProfesor/${id}`);
     
   }
+  getRecursosProfesor(idmat: string, idprof: string)
+  {
+    return this.http.get(`http://localhost:3000/obtenerRecursos/${idmat}/${idprof}`);
+    
+  }
 
 }
 

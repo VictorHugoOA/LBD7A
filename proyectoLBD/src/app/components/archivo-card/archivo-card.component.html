@@ -1,1 +1,11 @@
-<p>archivo-card works!</p>
+<div class="card" style="margin-top: 15px">
+    <div class="card-body"*ngIf="usuario.tipo =='Estudiante'">
+        <i class="far fa-file-alt"></i><a class="activity-link ph-2"> archivo</a>
+
+    </div>
+    <div class="card-body"*ngIf="usuario.tipo =='Profesor'">
+        <i class="far fa-file-alt"></i><a class="activity-link ph-2" > archivo</a>
+        <button *ngIf="usuario.tipo == 'Profesor'" style="background-color: #942646;" class="btn btn-primary" >Borrar recurso</button>
+    </div>
+
+</div>

@@ -14,8 +14,6 @@ export class ActividadCardComponent implements OnInit {
   @Input() actividad: any;
   @Input() usuario: any;
 
-  grupo:any;
-
   constructor(private act: ActividadesService, private router: Router, public auth: AuthService) {
     
   }
