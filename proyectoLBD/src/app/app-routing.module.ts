@@ -27,6 +27,7 @@ import { AlTutoriasSolicitarComponent } from './components/al-tutorias-solicitar
 import { ResponderComponent } from './components/responder/responder.component';
 import { CrearArchivoTutoriaComponent } from './components/crear-archivo-tutoria/crear-archivo-tutoria.component';
 import { ArchivosTutoriaComponent } from './components/archivos-tutoria/archivos-tutoria.component';
+import { CrudComponent } from './components/crud/crud.component';
 
 
 
@@ -56,8 +57,9 @@ const routes: Routes = [
   { path: 'revisarTutoria/:id', component: ProfeTutoriaComponent },
   { path: 'responder/:id', component: ResponderComponent },
   { path: 'archivoTutoria/:id', component: CrearArchivoTutoriaComponent },
-  {path: 'materialTutoria/:id', component: ArchivosTutoriaComponent},
-  { path: '**', component: LoginComponent }
+  { path: 'materialTutoria/:id', component: ArchivosTutoriaComponent },
+  {path: 'admin', component: CrudComponent},
+  { path: '**', component: LoginComponent },
 ];
 
 @NgModule({

@@ -1,0 +1,71 @@
+
+
+<form [formGroup]="AltaMateria">
+
+    <div class="form-group">
+      <label for="InputID">ID</label>
+      <input type="text" class="form-control" id="InputID" placeholder="Ingresa ID">
+    </div>
+    
+    <div class="form-group">
+        <label for="InputGrado">Nombre</label>
+        <input type="text" class="form-control" id="InputGrado" placeholder="Ingresa Grado">
+      </div>
+
+      <div class="form-group">
+        <label for="InputClase">Campo</label>
+        <input type="text" class="form-control" id="InputClase" placeholder="Ingresa Clase">
+      </div>
+
+
+
+
+      
+
+      <button type="submit" class="btn btn-primary mb-2">Ingresar Datos</button>
+  </form>
+
+  <form [formGroup]="BajaMateria">
+      <label for="DeleteID">Ingrese ID del profesor a eliminar</label>
+      <li  id="DeleteID"></li>
+      <button type="submit" class="btn btn-warning">Eliminar</button>
+  </form>
+
+  <form [formGroup]="MostrarMateria">
+  <div class="container">
+    <div class="card">
+        <div class="card-header">
+            
+            <div class="card-body">
+              <label for="InputIDProf">Ingrese el ID del profesor</label>
+              <input type="text"id="InputIDProf" placeholder="Ingrese ID">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Campo</th>
+                            
+
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="text center">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            
+                            <td>   
+                                <button class="btn btn-warning">Editar</button>
+                                <button class="btn btn-warning" style="margin-left: 10px;">Eliminar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
