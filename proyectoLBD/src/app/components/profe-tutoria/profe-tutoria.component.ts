@@ -21,8 +21,7 @@ export class ProfeTutoriaComponent implements OnInit {
   constructor(private aRouter: ActivatedRoute, public auth: AuthService, private al: AlumnosService, private profesor: ProfesorService) {
     this.idTuto = this.aRouter.snapshot.params.id;
       this.al.getTutoria(this.idTuto).subscribe((data: any) =>{
-        this.tutoria = data;
-        if(this.tutoria.id_profesor)
+          this.tutoria = data;
           this.profe = this.profesor.getProfesor(this.tutoria.id_profesor);
       })
     

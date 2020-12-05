@@ -5,20 +5,31 @@
       <app-calendario></app-calendario>
     </div>
     <div class="col-8 container-fluid">
-        <p class="h3">Tutorías</p>
-        <div class="row" *ngIf="this.auth.userData.tipo == 'Estudiante'">
-            <div class="col-8">
-                <a routerLink="/solicitarTutoria" style="background-color: #942646; " class="btn btn-primary btn-lg btn-block">Solicitar Tutoría</a>
-                <p class="h4 pt-5">Revisión tutorías solicitadas</p>
-            </div>
+      <div class="row" *ngIf="this.auth.userData.tipo == 'Estudiante'">
+        <p class="h2">Solicitar tutorías:</p>
+        <div class="col-8">
+          <a routerLink="/solicitarTutoria" style="background-color: #942646; "
+            class="btn btn-primary btn-lg btn-block">Solicitar Tutoría</a>
+          <hr>
+          <p class="h4 pt-5">Revisión tutorías solicitadas</p>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="list-group" *ngFor="let tutoria of tutorias">
-                    <a routerLink="/revisarTutoria/{{tutoria.id}}" class="list-group-item list-group-item-action">Preguntado por {{tutoria.nombre}} {{tutoria.apellido_pat}} {{tutoria.apellido_mat}}: {{tutoria.pregunta}}</a>
-                </div>
-            </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <p class="h3">Tutorías respondidas:</p>
+          <div class="list-group" *ngFor="let respondido of respondidas">
+            <a routerLink="/revisarTutoria/{{respondido.id}}" class="list-group-item list-group-item-action">Preguntado por
+              {{respondido.nombre}} {{respondido.apellido_pat}} {{respondido.apellido_mat}}: {{respondido.pregunta}} <span class="alert alert-success">Respondida</span></a>
+          </div>
         </div>
+        <div class="col-12">
+          <p class="h3">Tutorías: </p>
+          <div class="list-group" *ngFor="let tutoria of tutorias">
+            <a routerLink="/revisarTutoria/{{tutoria.id}}" class="list-group-item list-group-item-action">Preguntado por
+              {{tutoria.nombre}} {{tutoria.apellido_pat}} {{tutoria.apellido_mat}}: {{tutoria.pregunta}}<span class="alert alert-warning">Sin responder</span></a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

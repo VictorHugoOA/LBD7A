@@ -12,6 +12,7 @@ import { ProfesorService } from 'src/app/services/profesor/profesor.service';
 export class AlTutoriasSolicitarComponent implements OnInit {
 
   tutorias: any[] = [];
+  respondidas: any[] = [];
   constructor(public auth: AuthService, private al: AlumnosService, private profesor: ProfesorService) { }
 
   ngOnInit(): void {
@@ -20,13 +21,25 @@ export class AlTutoriasSolicitarComponent implements OnInit {
         for (var i = 0; i < data.length; ++i) {
           this.tutorias.push(data[i]);
         }
-        console.log(this.tutorias);
-      })
+      });
+      this.al.getTutoriasRespondidas(this.auth.userData.id).subscribe((data: any[]) =>{
+        console.log(data);
+        for(var i = 0; i < data.length; ++i)
+        {
+          this.respondidas.push(data[i]);
+        }
+      });
     }
     else if (this.auth.userData.tipo == 'Profesor') {
       this.profesor.getProfeTutorias(this.auth.userData.id).subscribe((data: any[]) => {
         for (var i = 0; i < data.length; ++i) {
           this.tutorias.push(data[i]);
+        }
+      });
+      this.profesor.getTutoriasRespondidas(this.auth.userData.id).subscribe((data: any[]) =>{
+        for(var i = 0; i < data.length; ++i)
+        {
+          this.respondidas.push(data[i]);
         }
       })
     }

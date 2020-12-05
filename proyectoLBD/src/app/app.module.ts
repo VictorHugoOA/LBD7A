@@ -45,6 +45,11 @@ import { CrearTutoriaProfesorComponent } from './components/crear-tutoria-profes
 import { CrearArchivoTutoriaComponent } from './components/crear-archivo-tutoria/crear-archivo-tutoria.component';
 import { ResponderComponent } from './components/responder/responder.component';
 import { ArchivosTutoriaComponent } from './components/archivos-tutoria/archivos-tutoria.component';
+import { CrudComponent } from './components/crud/crud.component';
+import { CrudAlumnoComponent } from './components/crud/crud-alumno/crud-alumno.component';
+import { CrudMateriaComponent } from './components/crud/crud-materia/crud-materia.component';
+import { CrudProfesorComponent } from './components/crud/crud-profesor/crud-profesor.component';
+import { CrudGrupoComponent } from './components/crud/crud-grupo/crud-grupo.component';
 
 
 
@@ -87,7 +92,12 @@ import { ArchivosTutoriaComponent } from './components/archivos-tutoria/archivos
     CrearTutoriaProfesorComponent,
     CrearArchivoTutoriaComponent,
     ResponderComponent,
-    ArchivosTutoriaComponent
+    ArchivosTutoriaComponent,
+    CrudComponent,
+    CrudAlumnoComponent,
+    CrudMateriaComponent,
+    CrudProfesorComponent,
+    CrudGrupoComponent
 
   ],
   imports: [
