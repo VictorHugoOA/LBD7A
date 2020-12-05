@@ -54,4 +54,9 @@ export class AlumnosService {
     return this.http.post('http://localhost:3000/actualizarTutoria', {id: id, idProf: idProf, respuesta: respuesta});
   }
 
+  getTutoriasRespondidas(id: string)
+  {
+    return this.http.get(`http://localhost:3000/tutoriasRespondidas/${id}`);
+  }
+
 }

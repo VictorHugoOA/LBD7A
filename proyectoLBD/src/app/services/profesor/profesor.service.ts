@@ -67,4 +67,9 @@ export class ProfesorService {
     return this.http.get(`http://localhost:3000/archivosTutoria/${id}`);
   }
 
+  getTutoriasRespondidas(id: string)
+  {
+    return this.http.get(`http://localhost:3000/tutoriasRespondidasProf/${id}`);
+  }
+
 }

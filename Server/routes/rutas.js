@@ -336,7 +336,7 @@ function createRouter(db) {
   router.get('/LibrosProfesor/:id', function (req, res) {
     const profesor = req.params.id;
     db.query(
-      'select * from libro where id_materia in (select id_materia from grupoMat where id_profesor = ?);',
+      'select * from libro where id_materia in (select clases_de.id_materia from grupo left join clases_de on grupo.id = clases_de.id_grupo where id_profesor = ?);',
       [profesor],
       (error, results) => {
         if (error) throw error;
@@ -406,6 +406,8 @@ function createRouter(db) {
       const fecha = req.body.fecha;
       const desc = req.body.desc;
       const hora = req.body.hora;
+
+
       const retraso = req.body.retraso;
       const estado = req.body.estado;
       db.query(
@@ -537,9 +539,10 @@ function createRouter(db) {
       console.log(results);
     })
   })
+  //3 tablas(Tutorias de los profes)
   router.get('/tutoriaProfe/:idProf', function(req, res){
     const idProf = req.params.idProf;
-    db.query('select * from tutoría where id_alumno in (select alumno.id from alumno inner join grupo on alumno.id_grupo = grupo.id where grupo.id_profesor = ?);', 
+    db.query('select * from tutoría where id_alumno in (select alumno.id from alumno inner join grupo on alumno.id_grupo = grupo.id where grupo.id_profesor = ?) and tutoría.id_profesor is null;', 
     [idProf],
     (error, results) =>{
       if(error) throw error;
@@ -563,7 +566,7 @@ function createRouter(db) {
 
   router.get('/tutoriasAlumno/:id', function(req, res){
     const idAl = req.params.id;
-    db.query('select tutoría.*, alumno.nombre, alumno.apellido_pat, alumno.apellido_mat from tutoría left join alumno on tutoría.id_alumno = alumno.id where tutoría.id_alumno = ?',
+    db.query('select tutoría.*, alumno.nombre, alumno.apellido_pat, alumno.apellido_mat from tutoría left join alumno on tutoría.id_alumno = alumno.id where tutoría.id_alumno = ? and tutoría.id_profesor is null',
     [idAl],
     (error, results) =>{
       if(error) throw error;
@@ -571,6 +574,29 @@ function createRouter(db) {
       console.log(results);
     })
   })
+
+  router.get('/tutoriasRespondidas/:id', function(req, res){
+    const idAl = req.params.id;
+    db.query('select A.apellido_pat, A.nombre, A.apellido_mat, T.*, P.nombre as nomProf, P.apellido_pat as patProf, P.apellido_mat as matProf from tutoría T, profesor P, Alumno A where T.id_alumno = ? and T.id_alumno = A.id and P.id = T.id_profesor;',
+    [idAl],
+    (error, results) =>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+  });
+
+  router.get('/tutoriasRespondidasProf/:id', function(req, res){
+    const idAl = req.params.id;
+    db.query('select A.apellido_pat, A.nombre, A.apellido_mat, T.*, P.nombre as nomProf, P.apellido_pat as patProf, P.apellido_mat as matProf from tutoría T, profesor P, Alumno A where T.id_profesor = ? and T.id_alumno = A.id and P.id = T.id_profesor;',
+    [idAl],
+    (error, results) =>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+  });
+
 
   router.get('/tutoria/:id', function(req, res){
     const id = req.params.id;
