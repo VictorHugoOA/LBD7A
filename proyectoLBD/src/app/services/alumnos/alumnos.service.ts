@@ -34,5 +34,24 @@ export class AlumnosService {
   {
     return this.http.get(`http://localhost:3000/LibrosAlumno/${id}`);
   }
+  getTutorias(id: string)
+  {
+    return this.http.get(`http://localhost:3000/tutoriasAlumno/${id}`);
+  }
+
+  crearAlumnoTutoria(idAl: string, pregunta: string)
+  {
+    return this.http.post('http://localhost:3000/crearTutoria', {idAl: idAl, pregunta: pregunta});
+  }
+
+  getTutoria(id: string)
+  {
+    return this.http.get(`http://localhost:3000/tutoria/${id}`).pipe(map((data: any[]) => {return data[0];}));
+  }
+
+  actualizarTutoria(id: string, idProf: string, respuesta: string)
+  {
+    return this.http.post('http://localhost:3000/actualizarTutoria', {id: id, idProf: idProf, respuesta: respuesta});
+  }
 
 }

@@ -21,6 +21,12 @@ import { CalificacionesComponent } from './components/calificaciones/calificacio
 import { ArchivoComponent } from './components/archivo/archivo.component';
 import { CalificarComponent } from './components/calificar/calificar.component';
 import { AgregararchComponent } from './components/agregararch/agregararch.component';
+import { ProfeTutoriaComponent } from './components/profe-tutoria/profe-tutoria.component';
+import { CrearTutoriaProfesorComponent } from './components/crear-tutoria-profesor/crear-tutoria-profesor.component';
+import { AlTutoriasSolicitarComponent } from './components/al-tutorias-solicitar/al-tutorias-solicitar.component';
+import { ResponderComponent } from './components/responder/responder.component';
+import { CrearArchivoTutoriaComponent } from './components/crear-archivo-tutoria/crear-archivo-tutoria.component';
+import { ArchivosTutoriaComponent } from './components/archivos-tutoria/archivos-tutoria.component';
 
 
 
@@ -44,7 +50,13 @@ const routes: Routes = [
   { path: 'profile/:id/:tipo', component: PerfilOtroComponent },
   { path: 'archivos/:idm/:idp', component: ArchivoComponent },
   { path: 'calificar/:idAct/:idAl', component: CalificarComponent },
-  {path: 'añadirarchivos/:idMat/:idGrupo', component: AgregararchComponent},
+  { path: 'añadirarchivos/:idMat/:idGrupo', component: AgregararchComponent },
+  { path: 'tutoria', component: AlTutoriasSolicitarComponent },
+  { path: 'solicitarTutoria', component: CrearTutoriaProfesorComponent },
+  { path: 'revisarTutoria/:id', component: ProfeTutoriaComponent },
+  { path: 'responder/:id', component: ResponderComponent },
+  { path: 'archivoTutoria/:id', component: CrearArchivoTutoriaComponent },
+  {path: 'materialTutoria/:id', component: ArchivosTutoriaComponent},
   { path: '**', component: LoginComponent }
 ];
 

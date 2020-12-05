@@ -12,7 +12,7 @@
                     <a class="nav-link" href="/cursos">Cursos</a>
                 </li>
                 <li class="nav-item" *ngIf="auth.userData.tipo == 'Estudiante'">
-                    <a class="nav-link" href="#">Tutorías</a>
+                    <a class="nav-link" routerLink="/tutoria">Tutorías</a>
                 </li>
                 <li class="nav-item" *ngIf="auth.userData.tipo == 'Estudiante'">
                     <a class="nav-link" routerLink="/libro">Libros</a>
@@ -28,7 +28,7 @@
                     <a class="nav-link" href="/grupo">Grupo</a> 
                 </li>
                 <li class="nav-item"*ngIf="auth.userData.tipo =='Profesor'">
-                    <a class="nav-link" href="#">Tutorías</a>
+                    <a class="nav-link" routerLink="/tutoria">Tutorías</a>
                 </li>
                 <li class="nav-item"*ngIf="auth.userData.tipo =='Profesor'">
                     <a class="nav-link"  routerLink="/libro">Libros</a>

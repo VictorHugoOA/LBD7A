@@ -39,7 +39,6 @@ export class AgregararchComponent implements OnInit {
 
   guardar() {
     this.uploader.queue[this.uploader.queue.length - 1].upload();
-
   }
 
   deleteFile() {

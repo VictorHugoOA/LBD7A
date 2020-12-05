@@ -1,0 +1,20 @@
+<app-navbar></app-navbar>
+<div class="container-fluid" style="margin-top: 5px;">
+    <div class="row justify-content-between">
+        <div class="col-4">
+            <app-calendario></app-calendario>
+        </div>
+        <div class="col-8">
+            <p class="h3">{{tutoria.pregunta}}</p>
+            <form [formGroup]="tutoriaForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="respuesta">Respuesta: </label>
+                    <textarea class="form-control" formControlName="respuesta" name="respuesta" id="respuesta" cols="30" rows="10"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="!tutoriaForm.valid">Responder tutoría</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

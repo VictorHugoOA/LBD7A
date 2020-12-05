@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { dataBinding } from '@syncfusion/ej2-angular-schedule';
+import { AlumnosService } from 'src/app/services/alumnos/alumnos.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { ProfesorService } from 'src/app/services/profesor/profesor.service';
 
 @Component({
   selector: 'app-al-tutorias-solicitar',
@@ -7,9 +11,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlTutoriasSolicitarComponent implements OnInit {
 
-  constructor() { }
+  tutorias: any[] = [];
+  constructor(public auth: AuthService, private al: AlumnosService, private profesor: ProfesorService) { }
 
   ngOnInit(): void {
+    if (this.auth.userData.tipo == 'Estudiante') {
+      this.al.getTutorias(this.auth.userData.id).subscribe((data: any[]) => {
+        for (var i = 0; i < data.length; ++i) {
+          this.tutorias.push(data[i]);
+        }
+      })
+    }
+    else if (this.auth.userData.tipo == 'Profesor') {
+      this.profesor.getProfeTutorias(this.auth.userData.id).subscribe((data: any[]) => {
+        for (var i = 0; i < data.length; ++i) {
+          this.tutorias.push(data[i]);
+        }
+      })
+    }
   }
 
 }

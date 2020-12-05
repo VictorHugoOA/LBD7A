@@ -1,1 +1,24 @@
-<p>al-tutorias-solicitar works!</p>
+<app-navbar></app-navbar>
+<div class="container-fluid" style="margin-top: 5px;">
+  <div class="row justify-content-between">
+    <div class="col-4">
+      <app-calendario></app-calendario>
+    </div>
+    <div class="col-8 container-fluid">
+        <p class="h3">Tutorías</p>
+        <div class="row" *ngIf="this.auth.userData.tipo == 'Estudiante'">
+            <div class="col-8">
+                <a routerLink="/solicitarTutoria" style="background-color: #942646; " class="btn btn-primary btn-lg btn-block">Solicitar Tutoría</a>
+                <p class="h4 pt-5">Revisión tutorías solicitadas</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="list-group" *ngFor="let tutoria of tutorias">
+                    <a routerLink="/revisarTutoria/{{tutoria.id}}" class="list-group-item list-group-item-action">{{tutoria.pregunta}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

@@ -40,6 +40,11 @@ import { ArchivoComponent } from './components/archivo/archivo.component';
 import { ArchivoCardComponent } from './components/archivo-card/archivo-card.component';
 import { AgregararchComponent } from './components/agregararch/agregararch.component';
 import { CalificarComponent } from './components/calificar/calificar.component';
+import { ProfeTutoriaComponent } from './components/profe-tutoria/profe-tutoria.component';
+import { CrearTutoriaProfesorComponent } from './components/crear-tutoria-profesor/crear-tutoria-profesor.component';
+import { CrearArchivoTutoriaComponent } from './components/crear-archivo-tutoria/crear-archivo-tutoria.component';
+import { ResponderComponent } from './components/responder/responder.component';
+import { ArchivosTutoriaComponent } from './components/archivos-tutoria/archivos-tutoria.component';
 
 
 
@@ -77,7 +82,12 @@ import { CalificarComponent } from './components/calificar/calificar.component';
     ArchivoComponent,
     ArchivoCardComponent,
     AgregararchComponent,
-    CalificarComponent
+    CalificarComponent,
+    ProfeTutoriaComponent,
+    CrearTutoriaProfesorComponent,
+    CrearArchivoTutoriaComponent,
+    ResponderComponent,
+    ArchivosTutoriaComponent
 
   ],
   imports: [

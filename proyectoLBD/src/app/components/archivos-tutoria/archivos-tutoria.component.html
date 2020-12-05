@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+<div class="container-fluid" style="margin-top: 5px;">
+  <div class="row justify-content-between">
+    <div class="col-4">
+      <app-calendario></app-calendario>
+    </div>
+    <div class="col-8">
+      <div *ngIf="tutoria | async" class="card">
+        <div class="card-body">
+          <h4 class="card-title">{{(tutoria | async)?.pregunta}}</h4>
+            <div class="row justify-content-between">
+              <div class="col-8">
+                <a style="background-color: #942646; margin: 10px;" class="btn btn-primary" routerLink="/revisarTutoria/{{this.idTuto}}">Volver</a>
+              </div>
+            </div>
+
+          <hr>
+          <br />
+          <div class="list-group" *ngFor="let rec of archivos">
+            <a class="list-group-item list-group-item-action" target="_blank" href="http://localhost:3000/getfile/{{rec.archivo}}">{{rec.archivo}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

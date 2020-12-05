@@ -537,6 +537,98 @@ function createRouter(db) {
       console.log(results);
     })
   })
+  router.get('/tutoriaProfe/:idProf', function(req, res){
+    const idProf = req.params.idProf;
+    db.query('select * from tutoría where id_alumno in (select alumno.id from alumno inner join grupo on alumno.id_grupo = grupo.id where grupo.id_profesor = ?);', 
+    [idProf],
+    (error, results) =>{
+      if(error) throw error;
+
+      res.send(results);
+      console.log(results);
+    })
+  })
+
+  router.post('/crearTutoria', function(req, res){
+    const idAl = req.body.idAl;
+    const pregunta = req.body.pregunta;
+    db.query('insert into tutoría(pregunta, id_alumno) values(?, ?);',
+    [pregunta, idAl],
+    (error, results) =>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+  });
+
+  router.get('/tutoriasAlumno/:id', function(req, res){
+    const idAl = req.params.id;
+    db.query('select * from tutoría where id_alumno = ?',
+    [idAl],
+    (error, results) =>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+  })
+
+  router.get('/tutoria/:id', function(req, res){
+    const id = req.params.id;
+    db.query('select * from tutoría where id = ?',
+    [id],
+    (error, results) =>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    });
+  })
+
+  router.post('/actualizarTutoria', function(req, res){
+    const id = req.body.id;
+    const respuesta = req.body.respuesta;
+    const idProf = req.body.idProf;
+    db.query('update tutoría set id_profesor = ?, respuesta = ? where id= ?',
+    [idProf, respuesta, id], (error, results) =>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+
+    });
+  })
+
+  router.post('/guardarArchivoTutoria', function(req, res){
+    const idTuto = req.body.id;
+    const archivo = req.body.archivo;
+    db.query('insert into MaterialTutoria (id_tutoria, archivo) values(?,?);',
+    [idTuto, archivo],
+    (error, results)=>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+  })
+
+  router.post('/borrarArchivoTutoria', function(req, res){
+    const archivo = req.body.archivo;
+    db.query('delete from MaterialTutoria where archivo = ?',
+    [archivo],
+    (error, results)=>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+  })
+
+  router.get('/archivosTutoria/:id', function(req, res){
+    const id = req.params.id;
+    db.query('select * from MaterialTutoria where id_tutoria = ?;',
+    [id],
+    (error, results) =>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+  })
 
   //Mostrar la lista de los alumnos que hacen uan actividad.
   router.get('/ListaAlumnosActividad/:id', function(req, res){

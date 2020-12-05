@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+<div class="container-fluid" style="margin-top: 5px;">
+  <div class="row justify-content-between">
+    <div class="col-4">
+      <app-calendario [actividades]="actividades"></app-calendario>
+    </div>
+    <div class="col-8">
+      <div *ngIf="tutoria" class="card">
+        <div class="card-body">
+          <h4 class="card-title">{{tutoria.pregunta}}</h4>
+          <div *ngIf="auth.userData.tipo === 'Profesor'; else alumno">
+            <div class="row justify-content-between">
+              <div class="col-8">
+                <a *ngIf="!tutoria.id_profesor" style="background-color: #942646;" class="btn btn-primary ml-5" routerLink="/responder/{{idTuto}}">Responder tutoría</a>
+                <a style="background-color: #942646; margin: 10px;" class="btn btn-primary" routerLink="/materialTutoria/{{idTuto}}">Ver recursos de apoyo</a>
+              </div>
+            </div>
+          </div>
+
+          <ng-template #alumno>
+            <div class="row justify-content-between">
+              <div class="col-8">
+                <a style="background-color: #942646; margin: 10px;" class="btn btn-primary" routerLink="/materialTutoria/{{idTuto}}">Ver recursos de apoyo</a>                
+              </div>
+            </div>
+          </ng-template>
+          <hr>
+          <br />
+          <p *ngIf="tutoria.respuesta; else norevisada" class="card-text">
+            {{tutoria.respuesta}}
+          </p>
+          <ng-template #norevisada> <p class="card-text"><span class="alert alert-danger">Tu pregunta aún no ha sido contestada por ningún maestro</span></p> </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

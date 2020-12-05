@@ -91,20 +91,14 @@ create table libro (
 
 create table tutoría(
 	id int not null auto_increment,
-    titulo varchar(30) not null,
-    descripción text not null,
-    primary key(id)
-);
-
-create table pide(
-	id_tutoría int not null,
-	id_alumno varchar(10) not null,
-	fecha date not null,
-    primary key(id_tutoría, id_alumno),
-    foreign key(id_tutoría) references tutoría(id),
+    id_profesor varchar(10),
+    id_alumno varchar(10) not null,
+    pregunta text not null,
+    respuesta text,
+    primary key(id),
+    foreign key(id_profesor) references profesor(id),
     foreign key(id_alumno) references alumno(id)
 );
-
 
 create table imparte(
 	id_tutoría int not null,
@@ -145,7 +139,13 @@ create table Material
     foreign key(id_actividad) references actividad(id)
 );
 
-select * from realiza where id_actividad = 1 and estado_entrega != 0;
+create table MaterialTutoria(
+	id int not null auto_increment,
+    id_tutoria int not null,
+    archivo text not null,
+    primary key(id),
+    foreign key(id_tutoria) references tutoría(id)
+);
 
 /*vistas*/
 create view alumnosact as select R.*, A.titulo, A.fecha_limite, A.hora_limite, A.descripción,
@@ -202,23 +202,41 @@ end//
 DELIMITER ;
 
 
-
 DELIMITER //
 create procedure aulavirtualsep.actividad_alumnos(in id_act int, in titulo text, in fecha date, in descri text, in hora time, in retraso int, in id_prof varchar(10))
 begin
+	/*Variable de la tupla*/
 	declare idAl varchar(10);
-    declare done int default 0;
+    
+    /*Declarar cursor*/
 	declare cursor_i cursor for select id from listaalumnos where id_profesor = id_prof;
+    
+    /*Declarar variable de paro*/
+    declare done int default 0;
+    
+    /*Condición de paro para el cursor*/
     declare continue handler for not found set done = 1;
-	update actividad set titulo = titulo, fecha_limite=fecha, hora_limite=hora, descripción = descri, retraso = retraso where id = id_act;
+    
+    update actividad set titulo = titulo, fecha_limite=fecha, hora_limite=hora, descripción = descri, retraso = retraso where id = id_act;
+    
+	/*abrimos nuestro cursor*/
     open cursor_i;
+    
+    /*Iniciamos nuestro ciclo*/
     alumnos: LOOP
+		/*obtenemos los datos de la tupla de nuestro cursor*/
 		fetch cursor_i into idAl;
+        
+        /*checamos si nuestra condición de paro ya se ejecuto*/
         if done then
 			leave alumnos;
 		end if;
+        
+        /*Instrucciones del ciclo*/
 		insert into realiza(id_alumno, id_actividad) values(idAl, id_act);
-	end loop alumnos;
+        /*Cerramos ciclo*/
+	end loop alumnos;    
+    /*Cerramos cursor*/
     close cursor_i;
 end//
 
@@ -231,6 +249,7 @@ begin
 end//
 DELIMITER ;
 
+select * from tutoría where id_alumno in (select alumno.id from alumno inner join grupo on alumno.id_grupo = grupo.id where grupo.id_profesor = ?);
 
 /*Ejemplo para ejecutar el procedimiento para avances
 call avances("a000001", @out); select @out;*/

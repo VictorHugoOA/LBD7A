@@ -41,4 +41,30 @@ export class ProfesorService {
     return this.http.post('http://localhost:3000/almacenarRecurso', {idProf: idProf, idMat: idMat, archivo: archivo, titulo: titulo});
   }
 
+  getProfeTutorias(idProf: string)
+  {
+    return this.http.get(`http://localhost:3000/tutoriaProfe/${idProf}`);
+  }
+
+  crearProfeTutoria(idProf: string, titulo: string, desc: string)
+  {
+    return this.http.post('http://localhost:3000/crearTutoria', {idProf: idProf, titulo: titulo, desc: desc});
+  }
+
+
+  almacenarTutoriaArchivo(idTuto: string, archivo: string)
+  {
+    return this.http.post('http://localhost:3000/guardarArchivoTutoria', {id: idTuto, archivo: archivo});
+  }
+
+  borrarTutoriaArchivo(archivo: string)
+  {
+    return this.http.post('http://localhost:3000/borrarArchivoTutoria', {archivo: archivo});
+  }
+
+  getArchivosTutoria(id: string)
+  {
+    return this.http.get(`http://localhost:3000/archivosTutoria/${id}`);
+  }
+
 }
