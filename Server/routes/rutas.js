@@ -552,8 +552,8 @@ function createRouter(db) {
   router.post('/crearTutoria', function(req, res){
     const idAl = req.body.idAl;
     const pregunta = req.body.pregunta;
-    db.query('insert into tutoría(pregunta, id_alumno) values(?, ?);',
-    [pregunta, idAl],
+    db.query('insert into tutoría(pregunta, id_alumno, fecha) values(?, ?, ?);',
+    [pregunta, idAl, moment().format("YYYY-MM-DD")],
     (error, results) =>{
       if(error) throw error;
       res.send(results);
@@ -563,7 +563,7 @@ function createRouter(db) {
 
   router.get('/tutoriasAlumno/:id', function(req, res){
     const idAl = req.params.id;
-    db.query('select * from tutoría where id_alumno = ?',
+    db.query('select tutoría.*, alumno.nombre, alumno.apellido_pat, alumno.apellido_mat from tutoría left join alumno on tutoría.id_alumno = alumno.id where tutoría.id_alumno = ?',
     [idAl],
     (error, results) =>{
       if(error) throw error;
@@ -574,7 +574,7 @@ function createRouter(db) {
 
   router.get('/tutoria/:id', function(req, res){
     const id = req.params.id;
-    db.query('select * from tutoría where id = ?',
+    db.query('select tutoría.*, alumno.nombre, alumno.apellido_pat, alumno.apellido_mat from tutoría left join alumno on tutoría.id_alumno = alumno.id where tutoría.id = ?',
     [id],
     (error, results) =>{
       if(error) throw error;

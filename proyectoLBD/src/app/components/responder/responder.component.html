@@ -6,6 +6,7 @@
         </div>
         <div class="col-8">
             <p class="h3">{{tutoria.pregunta}}</p>
+            <p class="card-text">{{tutoria.id_alumno}}: {{tutoria.nombre}} {{tutoria.apellido_pat}} {{tutoria.apellido_mat}}. | Fecha: {{tutoria.fecha | date}}</p>
             <form [formGroup]="tutoriaForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label for="respuesta">Respuesta: </label>

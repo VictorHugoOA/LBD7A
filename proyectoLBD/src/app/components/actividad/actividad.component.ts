@@ -31,6 +31,7 @@ export class ActividadComponent implements OnInit {
     {
       this.al.getActividadAlumno(this.a, this.act).subscribe((data:any)=> {
         this.actividad = data;
+        console.log(this.actividad);
       });
     }
     if(this.auth.userData.tipo == "Profesor"){

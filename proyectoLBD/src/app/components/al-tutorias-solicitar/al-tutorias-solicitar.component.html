@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="list-group" *ngFor="let tutoria of tutorias">
-                    <a routerLink="/revisarTutoria/{{tutoria.id}}" class="list-group-item list-group-item-action">{{tutoria.pregunta}}</a>
+                    <a routerLink="/revisarTutoria/{{tutoria.id}}" class="list-group-item list-group-item-action">Preguntado por {{tutoria.nombre}} {{tutoria.apellido_pat}} {{tutoria.apellido_mat}}: {{tutoria.pregunta}}</a>
                 </div>
             </div>
         </div>

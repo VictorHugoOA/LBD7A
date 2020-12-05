@@ -9,7 +9,7 @@
             <form [formGroup]="tutoriaForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label for="titulo">Pregunta: </label>
-                    <input type="text" name="titulo" id="titulo" class="form-control" placeholder="Título de la tutoría" formControlName="pregunta">
+                    <textarea type="text" name="titulo" id="titulo" class="form-control" rows="10" placeholder="Título de la tutoría" formControlName="pregunta"></textarea>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="!tutoriaForm.valid">Solicitar tutoría</button>

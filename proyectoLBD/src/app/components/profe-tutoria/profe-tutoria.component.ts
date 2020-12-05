@@ -16,13 +16,14 @@ export class ProfeTutoriaComponent implements OnInit {
   idTuto: string;
   actividades: Activity[] = [];
   tutoria: any;
-
+  profe: Observable<any>;
 
   constructor(private aRouter: ActivatedRoute, public auth: AuthService, private al: AlumnosService, private profesor: ProfesorService) {
     this.idTuto = this.aRouter.snapshot.params.id;
       this.al.getTutoria(this.idTuto).subscribe((data: any) =>{
-        console.log(data);
         this.tutoria = data;
+        if(this.tutoria.id_profesor)
+          this.profe = this.profesor.getProfesor(this.tutoria.id_profesor);
       })
     
   }

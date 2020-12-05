@@ -7,7 +7,8 @@
     <div class="col-8">
       <div *ngIf="tutoria" class="card">
         <div class="card-body">
-          <h4 class="card-title">{{tutoria.pregunta}}</h4>
+          <h4 class="card-title">Pregunta: {{tutoria.pregunta}}</h4>
+          {{tutoria.id_alumno}}:  {{tutoria.nombre}} {{tutoria.apellido_pat}} {{tutoria.apellido_mat}}. | Fecha: {{tutoria.fecha | date}}
           <div *ngIf="auth.userData.tipo === 'Profesor'; else alumno">
             <div class="row justify-content-between">
               <div class="col-8">
@@ -27,6 +28,9 @@
           <hr>
           <br />
           <p *ngIf="tutoria.respuesta; else norevisada" class="card-text">
+            <span class="h4">Respuesta por parte de: {{(profe | async)?.nombre}} {{(profe | async)?.apellido_pat}} {{(profe | async)?.apellido_mat}}</span>
+            <br>
+            <br>
             {{tutoria.respuesta}}
           </p>
           <ng-template #norevisada> <p class="card-text"><span class="alert alert-danger">Tu pregunta aún no ha sido contestada por ningún maestro</span></p> </ng-template>

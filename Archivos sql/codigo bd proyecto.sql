@@ -95,6 +95,7 @@ create table tutoría(
     id_alumno varchar(10) not null,
     pregunta text not null,
     respuesta text,
+    fecha date not null,
     primary key(id),
     foreign key(id_profesor) references profesor(id),
     foreign key(id_alumno) references alumno(id)

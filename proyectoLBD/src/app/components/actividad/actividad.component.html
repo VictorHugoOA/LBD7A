@@ -14,7 +14,8 @@
                 <th scope="col">
                   <h4 class="card-title">{{actividad.titulo}}</h4>
                 </th>
-                <th *ngIf="this.auth.userData.tipo === 'Profesor'"><a style="background-color: #942646;" class="btn btn-primary" routerLink="/editaractividad/{{this.act}}">Editar actividad</a></th>
+                <th *ngIf="this.auth.userData.tipo === 'Profesor'"><a style="background-color: #942646;"
+                    class="btn btn-primary" routerLink="/editaractividad/{{this.act}}">Editar actividad</a></th>
               </tr>
             </thead>
             <tbody>
@@ -26,54 +27,71 @@
               <tr>
                 <td>Fecha Límite:</td>
                 <td *ngIf="this.auth.userData.tipo == 'Estudiante'; else profe">Fecha Entrega:</td>
-                <ng-template #profe><td>Número de entregas:</td></ng-template>
-                <td  *ngIf="this.auth.userData.tipo == 'Estudiante'">Calificación:</td>
+                <ng-template #profe>
+                  <td>Número de entregas:</td>
+                </ng-template>
+                <td *ngIf="this.auth.userData.tipo == 'Estudiante'">Calificación:</td>
               </tr>
               <tr>
                 <td>
                   {{actividad.fecha_limite | date}} {{actividad.hora_limite}}
                 </td>
-                <td  *ngIf="this.auth.userData.tipo == 'Estudiante'; else entregas">
-                    <p *ngIf="!actividad.estado_entrega; else entregada" class="alert alert-danger">No Entregada</p>
-                    <ng-template #entregada>
-                      <p class="alert alert-success">{{actividad.fecha_entrega | date}} {{actividad.hora_entrega}}</p>
-                    </ng-template>
+                <td *ngIf="this.auth.userData.tipo == 'Estudiante'; else entregas">
+                  <p *ngIf="!actividad.estado_entrega; else entregada" class="alert alert-danger">No Entregada</p>
+                  <ng-template #entregada>
+                    <p class="alert alert-success">{{actividad.fecha_entrega | date}} {{actividad.hora_entrega}}</p>
+                  </ng-template>
                 </td>
-                <ng-template #entregas><td><a routerLink="/listaentrega/{{this.act}}" class="card-link">{{numEntregas}}</a></td></ng-template>
-                <td  *ngIf="this.auth.userData.tipo == 'Estudiante'">
-                  <p *ngIf="!actividad.estado_entrega; else esperar" class="alert alert-danger">No calificada</p>
+                <ng-template #entregas>
+                  <td><a routerLink="/listaentrega/{{this.act}}" class="card-link">{{numEntregas}}</a></td>
+                </ng-template>
+                <td *ngIf="this.auth.userData.tipo == 'Estudiante'">
+                  <p *ngIf="(!actividad.estado_entrega && !actividad.calificacion); else esperar"
+                    class="alert alert-danger">No calificada</p>
                   <ng-template #esperar>
-                    <p *ngIf="!actividad.calificacion else calificada" class="alert alert-danger">Esperando calificación</p>
+                    <p *ngIf="!actividad.calificacion else calificada" class="alert alert-danger">Esperando calificación
+                    </p>
                   </ng-template>
                   <ng-template #calificada>
-                    <p *ngIf="actividad.calificacion > 8; else medio" class="alert alert-success">{{actividad.calificada}}</p>
+                    <p *ngIf="actividad.calificacion > 8; else medio" class="alert alert-success">
+                      {{actividad.calificacion | number: '1.2-2'}}</p>
                   </ng-template>
-                    <ng-template #medio>
-                      <p *ngIf="actividad.calificacion > 6; else bajo" class="alert alert-warning">{{actividad.calificada}}</p>
-                    </ng-template>
-                    <ng-template #bajo>
-                      <p class="alert alert-danger">{{actividad.calificada}}</p>
-                    </ng-template>
-                  
+                  <ng-template #medio>
+                    <p *ngIf="actividad.calificacion > 6; else bajo" class="alert alert-warning">
+                      {{actividad.calificacion | number: '1.2-2'}}</p>
+                  </ng-template>
+                  <ng-template #bajo>
+                    <p class="alert alert-danger">{{actividad.calificacion | number: '1.2-2'}}</p>
+                  </ng-template>
+
                 </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <p><strong>Comentario del profesor:</strong></p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">{{actividad.comentario}}</td>
               </tr>
             </tbody>
           </table>
           <div class="col-12 pb-5">
-              <ul class="list-group" *ngFor="let archivo of archivos">
-                <li class="list-group-item"><a href="http://localhost:3000/getfile/{{archivo.archivo}}" target="_blank">{{archivo.archivo}}</a></li>
-              </ul>
+            <ul class="list-group" *ngFor="let archivo of archivos">
+              <li class="list-group-item"><a href="http://localhost:3000/getfile/{{archivo.archivo}}"
+                  target="_blank">{{archivo.archivo}}</a></li>
+            </ul>
           </div>
           <div *ngIf="auth.userData.tipo == 'Estudiante'">
-          <div *ngIf="!actividad.estado">
-            <div *ngIf="!actividad.estado_entrega; else editar">
-              <a style="background-color: #942646;" class="btn btn-primary btn-lg"
-                routerLink="/entrega/{{a}}/{{act}}">Realizar Entrega</a>
+            <div *ngIf="!actividad.estado">
+              <div *ngIf="!actividad.estado_entrega; else editar">
+                <a style="background-color: #942646;" class="btn btn-primary btn-lg"
+                  routerLink="/entrega/{{a}}/{{act}}">Realizar Entrega</a>
+              </div>
+              <ng-template #editar><a style="background-color: #942646;" class="btn btn-primary btn-lg"
+                  routerLink="/editar/{{a}}/{{act}}">Editar Entrega</a></ng-template>
             </div>
-            <ng-template #editar><a style="background-color: #942646;" class="btn btn-primary btn-lg"
-                routerLink="/editar/{{a}}/{{act}}">Editar Entrega</a></ng-template>
           </div>
-        </div>
         </div>
       </div>
     </div>

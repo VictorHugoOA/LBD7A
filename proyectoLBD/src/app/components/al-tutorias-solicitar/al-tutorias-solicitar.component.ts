@@ -20,6 +20,7 @@ export class AlTutoriasSolicitarComponent implements OnInit {
         for (var i = 0; i < data.length; ++i) {
           this.tutorias.push(data[i]);
         }
+        console.log(this.tutorias);
       })
     }
     else if (this.auth.userData.tipo == 'Profesor') {
