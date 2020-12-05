@@ -1,78 +1,33 @@
-
 <form [formGroup]="AltaProfesor">
-    <div class="form-group">
-      <label for="InputNombre">Nombre</label>
-      <input type="text" class="form-control" id="InputNombre" placeholder="Ingresa nombre">
-    </div>
-    
-    <div class="form-group">
-        <label for="InputApellidoPat">Apellido Paterno</label>
-        <input type="text" class="form-control" id="InputApellidoPat" placeholder="Ingresa apellido paterno">
-      </div>
+  <div class="form-group">
+    <label for="InputNombre">Nombre</label>
+    <input type="text" class="form-control" id="InputNombre" placeholder="Ingresa nombre">
+  </div>
 
-      <div class="form-group">
-        <label for="InputApellidoMat">Apellido Materno</label>
-        <input type="text" class="form-control" id="InputApellidoMat" placeholder="Ingresa apellido materno">
-      </div>
+  <div class="form-group">
+    <label for="InputApellidoPat">Apellido Paterno</label>
+    <input type="text" class="form-control" id="InputApellidoPat" placeholder="Ingresa apellido paterno">
+  </div>
 
-      <div class="form-group">
-        <label for="InputSexo">Sexo</label>
-        <input type="text" class="form-control" id="InputSexo" placeholder="Ingresa Sexo">
-      </div>
+  <div class="form-group">
+    <label for="InputApellidoMat">Apellido Materno</label>
+    <input type="text" class="form-control" id="InputApellidoMat" placeholder="Ingresa apellido materno">
+  </div>
+
+  <div class="form-group">
+    <label for="InputSexo">Sexo</label>
+    <input class="form-control" list="sexo">
+    <datalist id="sexo">
+      <option value="F">
+      <option value="M">
+    </datalist>
+  </div>
 
 
-      <div class="form-group">
-        <label for="InputPassword">Contraseña</label>
-        <input type="password" class="form-control" id="InputPassword" placeholder="Ingresa Contraseña">
-      </div>
+  <div class="form-group">
+    <label for="InputPassword">Contraseña</label>
+    <input type="password" class="form-control" id="InputPassword" placeholder="Ingresa Contraseña">
+  </div>
 
-      <button type="submit" class="btn btn-primary mb-2">Ingresar Datos</button>
-  </form>
-
-  <form [formGroup]="BajaProfesor">
-      <label for="DeleteID">Ingrese ID del profesor a eliminar</label>
-      <li  id="DeleteID"></li>
-      <button type="submit" class="btn btn-warning">Eliminar</button>
-  </form>
-
-  <form [formGroup]="">
-  <div class="container">
-    <div class="card">
-        <div class="card-header">
-            
-            <div class="card-body">
-              <label for="InputIDProf">Ingrese el ID del profesor</label>
-              <input type="text"id="InputIDProf" placeholder="Ingrese ID">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Apellido Paterno</th>
-                            <th>Apellido Materno</th>
-                            <th>ID de Grupo</th>
-                            <th>Sexo</th>
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="text center">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            
-                            <td>   
-                                <button class="btn btn-warning">Editar</button>
-                                <button class="btn btn-warning" style="margin-left: 10px;">Eliminar</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
+  <button type="submit" class="btn btn-primary mb-2">Ingresar Datos</button>
 </form>
