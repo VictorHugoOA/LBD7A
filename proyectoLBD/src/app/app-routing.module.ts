@@ -58,7 +58,7 @@ const routes: Routes = [
   { path: 'responder/:id', component: ResponderComponent },
   { path: 'archivoTutoria/:id', component: CrearArchivoTutoriaComponent },
   { path: 'materialTutoria/:id', component: ArchivosTutoriaComponent },
-  {path: 'admin', component: CrudComponent},
+  { path: 'admin', component: CrudComponent },
   { path: '**', component: LoginComponent },
 ];
 

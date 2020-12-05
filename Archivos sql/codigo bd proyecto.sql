@@ -109,7 +109,6 @@ create table imparte(
     foreign key(id_profesor) references profesor(id)
 );
 
-select * from alumnosact;
 
 create table tarea
 (
@@ -162,11 +161,6 @@ alumno A left join grupo G on A.id_grupo=G.id;
 create view grupoMat as select C.id_materia, G.id, G.id_profesor from
 clases_de C left join grupo G on C.id_grupo=G.id;
 
-select A.apellido_pat, A.nombre, A.apellido_mat, T.*, P.nombre as nomProf, P.apellido_pat as patProf, P.apellido_mat as matProf from tutoría T, profesor P, Alumno A where T.id_alumno = "a000001" and T.id_alumno = A.id and P.id = T.id_profesor;
-
-select * from tutoría;
-
-select * from tutoría where id_alumno in (select alumno.id from alumno inner join grupo on alumno.id_grupo = grupo.id where grupo.id_profesor = "p000001") and id_profesor is null;
 
 /*Creación del procedimiento para login_alumno*/
 DELIMITER //

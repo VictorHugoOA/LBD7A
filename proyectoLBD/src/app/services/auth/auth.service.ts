@@ -24,7 +24,13 @@ z
 
   login(user: string, password: string) {
 
-    if (user[0] == 'a') {
+    if(user == "admin" && password == "admin")
+    {
+      this.userData = {id: "admin", tipo: "Administrador"};
+      sessionStorage.setItem("user", JSON.stringify(this.userData));
+      this.router.navigate(['/admin']);
+    }
+    else if (user[0] == 'a') {
       this.loginAlumno(user, password).subscribe((data: any) => {
         if (data[0].length) {
           this.userData = { id: data[0][0].id, tipo: "Estudiante" };
