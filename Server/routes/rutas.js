@@ -332,7 +332,7 @@ function createRouter(db) {
       });
 
   })
- //Obtener libros del profesor 22 en uso
+ //Obtener libros del profesor 22 en uso (3 tablas)
   router.get('/LibrosProfesor/:id', function (req, res) {
     const profesor = req.params.id;
     db.query(
@@ -539,7 +539,7 @@ function createRouter(db) {
       console.log(results);
     })
   })
-  //3 tablas(Tutorias de los profes)
+  //Tutorías de los profesores(3 Tablas)
   router.get('/tutoriaProfe/:idProf', function(req, res){
     const idProf = req.params.idProf;
     db.query('select * from tutoría where id_alumno in (select alumno.id from alumno inner join grupo on alumno.id_grupo = grupo.id where grupo.id_profesor = ?) and tutoría.id_profesor is null;', 
@@ -575,6 +575,7 @@ function createRouter(db) {
     })
   })
 
+  //Tutorias respondidas del alumno (3 Tablas)
   router.get('/tutoriasRespondidas/:id', function(req, res){
     const idAl = req.params.id;
     db.query('select A.apellido_pat, A.nombre, A.apellido_mat, T.*, P.nombre as nomProf, P.apellido_pat as patProf, P.apellido_mat as matProf from tutoría T, profesor P, Alumno A where T.id_alumno = ? and T.id_alumno = A.id and P.id = T.id_profesor;',
@@ -586,6 +587,7 @@ function createRouter(db) {
     })
   });
 
+  //Tutorias respondidas del profe (3 Tablas)
   router.get('/tutoriasRespondidasProf/:id', function(req, res){
     const idAl = req.params.id;
     db.query('select A.apellido_pat, A.nombre, A.apellido_mat, T.*, P.nombre as nomProf, P.apellido_pat as patProf, P.apellido_mat as matProf from tutoría T, profesor P, Alumno A where T.id_profesor = ? and T.id_alumno = A.id and P.id = T.id_profesor;',
