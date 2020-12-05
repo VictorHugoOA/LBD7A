@@ -201,18 +201,17 @@ begin
 end//
 DELIMITER ;
 
-
 DELIMITER //
 create procedure aulavirtualsep.actividad_alumnos(in id_act int, in titulo text, in fecha date, in descri text, in hora time, in retraso int, in id_prof varchar(10))
 begin
 	/*Variable de la tupla*/
 	declare idAl varchar(10);
     
+	/*Declarar variable de paro*/
+    declare done int default 0;
+    
     /*Declarar cursor*/
 	declare cursor_i cursor for select id from listaalumnos where id_profesor = id_prof;
-    
-    /*Declarar variable de paro*/
-    declare done int default 0;
     
     /*Condición de paro para el cursor*/
     declare continue handler for not found set done = 1;
@@ -249,7 +248,6 @@ begin
 end//
 DELIMITER ;
 
-select * from tutoría where id_alumno in (select alumno.id from alumno inner join grupo on alumno.id_grupo = grupo.id where grupo.id_profesor = ?);
 
 /*Ejemplo para ejecutar el procedimiento para avances
 call avances("a000001", @out); select @out;*/
