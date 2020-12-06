@@ -72,4 +72,11 @@ export class ProfesorService {
     return this.http.get(`http://localhost:3000/tutoriasRespondidasProf/${id}`);
   }
 
+  AllProfesores()
+  {
+    return this.http.get(`http://localhost:3000/Profesores`);
+  }
+  AllGrupos(){
+    return this.http.get(`http://localhost:3000/Grupos`);
+  }
 }

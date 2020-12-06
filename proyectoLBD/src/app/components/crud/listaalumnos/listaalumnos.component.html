@@ -1,15 +1,15 @@
 <app-navbar></app-navbar>
 <div class="container-fluid" style="margin-top: 5px;">
   <div class="row justify-content-between">
-    <div class="col-10">
+    <div class="col-12">
       <div class="card">
-        <div class="card-body">
+        <div class="card-body  table-responsive">
 
           <table class="table ">
             <thead>
               <tr>
                 <th scope="col">
-                  <h4 class="card-title"> Lista de alumnos</h4>
+                  <h4 class="card-title"> Alumnos</h4>
                 </th>
               </tr>
               <tr id="encabezado">
@@ -17,15 +17,23 @@
                   <td>Nombre</td>
                   <td>Apellido Paterno</td>
                   <td>Apellido Materno</td>
+                  <td>Sexo</td>
+                  <td>ID grupo</td>
+                  <td>Grado</td>
+                  <td>Clase</td>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let alumno of alumnos">
 
-                <td><a routerLink="/profile/{{alumno.id}}/Estudiante"><span class="navbar-text mr-4">{{alumno.id}}</span></a></td>
+                <td>{{alumno.id}}</td>
                 <td>{{alumno.nombre}}</td>
                 <td>{{alumno.apellido_pat}}</td>
                 <td>{{alumno.apellido_mat}}</td>
+                <td>{{alumno.sexo}}</td>
+                <td>{{alumno.id_grupo}}</td>
+                <td>{{alumno.grado}}</td>
+                <td>{{alumno.clase}}</td>
               </tr>
         
             </tbody>

@@ -1,1 +1,42 @@
-<p>listagrupos works!</p>
+<app-navbar></app-navbar>
+<div class="container-fluid" style="margin-top: 5px;">
+  <div class="row justify-content-between">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body  table-responsive">
+
+          <table class="table ">
+            <thead>
+              <tr>
+                <th scope="col">
+                  <h4 class="card-title">Grupos</h4>
+                </th>
+              </tr>
+              <tr id="encabezado">
+                  <td>ID</td>
+                  <td>Grado</td>
+                  <td>Clase</td>
+                  <td>Generación</td>
+                  <td>ID Profesor</td>
+                  <td>Nombre</td>
+                  <td>Apellido Paterno</td>
+                  <td>Apellido Materno</td>
+            
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let grupo of grupos">
+
+                <td>{{grupo.id}}</td>
+                <td>{{grupo.grado}}</td>
+                <td>{{grupo.clase}}</td>
+                <td>{{grupo.generacion}}</td>
+              </tr>
+        
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

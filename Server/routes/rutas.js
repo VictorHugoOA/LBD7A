@@ -20,6 +20,72 @@ const upload = multer({ storage: store }).single('file');
 
 function createRouter(db) {
   const router = express.Router();
+  //Profesores
+  router.get('/Profesores', function (req, res) {
+    db.query(
+      'Select * from profesores',
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);
+
+      }
+    );
+  });
+  //Alumnos
+  router.get('/Alumnos', function (req, res) {
+    db.query(
+      'Select * from alumnos',
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);
+
+      }
+    );
+  });
+  //Materias
+  router.get('/Materias', function (req, res) {
+    db.query(
+      'Select * from alumno',
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);
+
+      }
+    );
+  });
+  //Grupos
+  router.get('/Grupos', function (req, res) {
+  db.query(
+    'Select * from grupo',
+    (error, results) => {
+      if (error) throw error;
+      res.send(results);
+
+      console.log(results);
+
+    }
+  );
+});
+  //Libros
+  router.get('/Libros', function (req, res) {
+    db.query(
+      'Select * from libro',
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);
+
+      }
+    );
+  });
+
   //info prof 1 en uso
   router.get('/Profesor/:id', function (req, res) {
     const id = req.params.id
@@ -648,30 +714,6 @@ function createRouter(db) {
     db.query('select * from MaterialTutoria where id_tutoria = ?;',
     [id],
     (error, results) =>{
-      if(error) throw error;
-      res.send(results);
-      console.log(results);
-    })
-  });
-
-  router.get('/todosProfesores', function(req, res)
-  {
-    db.query('select * from profesor', [], (error, results) => {
-      if(error) throw error;
-      res.send(results);
-      console.log(results);
-    })
-  })
-
-  //Consultas para el CRUD
-  //Altas
-  router.post('/insertarGrupo', function(req, res){
-    const id = req.body.id;
-    const grado = req.body.grado;
-    const clase = req.body.clase;
-    const profesor = req.body.profesor;
-    db.query('insert into grupo (id, grado, clase, id_profesor) values(?,?,?,?);',
-    [id, grado, clase, profesor], (error, results) =>{
       if(error) throw error;
       res.send(results);
       console.log(results);

@@ -1,6 +1,6 @@
 use aulavirtualsep;
 
-insert into profesor (id, nombre, apellido_pat, apellido_mat, correo, teléfono, sexo,contrasena)
+insert into profesor (id, nombre, apellido_pat, apellido_mat, correo, telefono, sexo,contrasena)
 Values ("p000001", "Pancho", "Pantera", "Pistolas", "ElPantera@outlook.com", 4491547895, "M","c000001"),
 ("p000002", "Maria Susana", "Morales", "Gonzales", "MSusana_14@gmail.com", 4491215486, "F","c000002"),
 ("p000003", "Armando", "Casas", "Arcoiris", "JohnRainbows@gmail.com", 4491212570, "M","c000003"),
@@ -309,7 +309,6 @@ begin
 
 end//
 DELIMITER ;
-
 
 /*
 insert into recurso (titulo, id_materia, id_profesor, archivo)
