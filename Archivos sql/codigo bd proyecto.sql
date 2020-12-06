@@ -92,7 +92,6 @@ create table libro (
     foreign key(id_materia) references materia(id)
 );
 
-select * from libro;
 
 create table tutoría(
 	id int not null auto_increment,
