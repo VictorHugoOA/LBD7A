@@ -760,7 +760,141 @@ function createRouter(db) {
     const materno = req.body.materno;
     const sexo = req.body.sexo;
     const password = req.body.password;
-    //db.query('');
+    const grupo = req.body.grupo;
+    db.query('update alumno set nombre = ?, apellido_pat = ?, apellido_mat = ?, sexo = ?, contrasena = ?, id_grupo = ? where id = ?', 
+    [nombre, paterno, materno, sexo, password, grupo, id],
+    (error, results) =>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    });
+  })
+
+  //Update profesor
+  router.post('/modificarProfesor', function(req, res){
+    const id = req.body.id;
+    const nombre = req.body.nombre;
+    const paterno = req.body.paterno;
+    const materno = req.body.materno;
+    const telefono = req.body.telefono;
+    const correo = req.body.correo;
+    const sexo = req.body.sexo;
+    const password = req.body.contra;
+    db.query('update profesor set nombre = ?, apellido_pat = ?, apellido_mat = ?, correo = ?, telefono = ?, sexo = ?, contrasena = ? where id = ?',
+    [nombre, paterno, materno, correo, telefono, sexo, password, id],
+    (error, results) =>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+  })
+
+  //Update materias
+  router.post('/modificarMateria', function(req, res){
+    const id = req.body.id;
+    const nivel = req.body.nivel;
+    const nombre = req.body.nombre;
+    const campo = req.body.campo;
+    db.query('update materia set nivel = ?, nombre = ?, campo = ? where id = ?',
+    [nivel, nombre, campo, id],
+    (error, results) =>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+  })
+
+  //Update Grupo
+  router.post('/modificarGrupo', function(req, res){
+    const id = req.body.id;
+    const grado = req.body.grado;
+    const clase = req.body.clase;
+    const profesor = req.body.profesor;
+    const cicloIn = req.body.cicloIn;
+    const cicloFin = req.body.cicloFin;
+    db.query('update grupo set grado = ?, clase = ?, ciclo_inicio = ?, ciclo_final = ?,  id_profesor = ? where id = ?',
+    [grado, clase, cicloIn, cicloFin, profesor, id],
+    (error, results) =>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+  });
+
+  //Update libro
+  router.post('/modificarLibro', function(req, res){
+    const id = req.body.id;
+    const titulo = req.body.titulo;
+    const year = req.body.year;
+    const editorial = req.body.editorial;
+    const materia = req.body.materia;
+    const archivo = req.body.archivo;
+    db.query('update libro set título = ?, año = ?, editorial = ?, id_materia = ?, archivo = ? where id = ?',
+    [titulo, year, editorial, materia, archivo, id],
+    (error, results)=>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+
+  })
+
+  //Consultas para dar de baja
+  //Eliminar profesor
+  router.get('/borrarProfesor/:id', function(req, res)
+  {
+    const id = req.params.id;
+    db.query('delete from profesor where id = ?',
+    [id],
+    (error, results) =>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+  })
+  router.get('/borrarMateria/:id', function(req, res)
+  {
+    const id = req.params.id;
+    db.query('delete from materia where id = ?',
+    [id],
+    (error, results) =>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+  })
+  router.get('/borrarGrupo/:id', function(req, res)
+  {
+    const id = req.params.id;
+    db.query('delete from grupo where id = ?',
+    [id],
+    (error, results) =>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+  })
+  router.get('/borrarAlumno/:id', function(req, res)
+  {
+    const id = req.params.id;
+    db.query('delete from alumno where id = ?',
+    [id],
+    (error, results) =>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+  })
+  router.get('/borrarLibro/:id', function(req, res)
+  {
+    const id = req.params.id;
+    db.query('delete from libro where id = ?',
+    [id],
+    (error, results) =>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
   })
 
   // Mostrar Profesores

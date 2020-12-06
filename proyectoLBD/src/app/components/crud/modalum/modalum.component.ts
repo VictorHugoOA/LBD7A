@@ -26,7 +26,9 @@ export class ModalumComponent implements OnInit {
 
   buscar(id:string){
     this.alumno = this.crud.getAlumno(id);
-    console.log(this.alumno);
+    this.alumno.subscribe((data: any) =>{
+      this.modAlumno.setValue({id: data.id, nombre: data.nombre, paterno: data.apellido_pat, materno: data.apellido_mat, password: data.contrasena, grupo:data.id_grupo, sexo: data.sexo});
+    })
 
   }
 
@@ -48,7 +50,7 @@ export class ModalumComponent implements OnInit {
     {
       console.log("actualizado");
       
-      this.crud.setAlumno(this.AltaAlumno.get('id').value,
+      this.crud.setAlumno(this.modAlumno.get('id').value,
       this.modAlumno.get('nombre').value,
       this.modAlumno.get('paterno').value,
       this.modAlumno.get('materno').value,

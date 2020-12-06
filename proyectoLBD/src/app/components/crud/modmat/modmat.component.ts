@@ -19,6 +19,9 @@ export class ModmatComponent implements OnInit {
   }
   buscar(id:string){
     this.materia = this.crud.getMateria(id);
+    this.materia.subscribe((data: any) =>{
+      this.modMateria.setValue({id: data.id, nombre: data.nombre, campo: data.campo, nivel: data.nivel});
+    })
 
   }
   ngOnInit(): void {
@@ -34,7 +37,7 @@ export class ModmatComponent implements OnInit {
   {
     if(this.modMateria.valid)
     {
-     this.crud.setMateria(this.AltaMateria.get('id').value,
+     this.crud.setMateria(this.modMateria.get('id').value,
       this.modMateria.get('nombre').value,
       this.modMateria.get('campo').value,
       this.modMateria.get('nivel').value).subscribe();

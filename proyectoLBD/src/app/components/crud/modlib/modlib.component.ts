@@ -26,7 +26,7 @@ export class ModlibComponent implements OnInit {
   buscar(id:string){
     this.libro= this.crud.getLibro(id);
     this.libro.subscribe((data: any) =>{
-      console.log(data);
+      this.modLibro.setValue({id: data.id, titulo: data['título'], year: data['año'], editorial: data.editorial, materia: data.id_materia, archivo: data.archivo});
     })
   }
   
@@ -46,7 +46,7 @@ export class ModlibComponent implements OnInit {
   {
     if(this.modLibro.valid)
     {
-      this.crud.setLibro(this.AltaLibro.get('id').value,
+      this.crud.setLibro(this.modLibro.get('id').value,
       this.modLibro.get('titulo').value,
       this.modLibro.get('year').value,
       this.modLibro.get('editorial').value,

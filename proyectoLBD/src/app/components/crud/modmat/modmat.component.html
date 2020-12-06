@@ -8,26 +8,26 @@
     </div>
     <div class="row justify-content-between">
       <div class="col-8">
-        <form [formGroup]="modMateria">
+        <form [formGroup]="modMateria" (ngSubmit)="onSubmit()">
 
             <div class="form-group">
                 <label for="InputID">ID</label>
-                <input type="text" class="form-control" id="InputID" readonly value="{{( materia | async)?.id}}">
+                <input type="text" class="form-control" id="InputID" formControlName="id" readonly value="{{( materia | async)?.id}}">
             </div>
         
             <div class="form-group">
                 <label for="NombreMateria">Nombre</label>
-                <input type="text" class="form-control" id="nombreMateria"  value="{{( materia | async)?.nombre}}">
+                <input type="text" class="form-control" id="nombreMateria" formControlName="nombre"  value="{{( materia | async)?.nombre}}">
             </div>
         
             <div class="form-group">
                 <label for="CampoMateria">Campo</label>
-                <input type="text" class="form-control" id="CampoMateria"  value="{{(materia | async)?.campo}}">
+                <input type="text" class="form-control" id="CampoMateria" formControlName="campo"  value="{{(materia | async)?.campo}}">
             </div>
         
             <div class="form-group">
                 <label for="GradoMateria">Grado de la materia</label>
-                <input id="GradoMateria" class="form-control" list="gradoMat"  value="{{(materia| async)?.nivel}}">
+                <input id="GradoMateria" class="form-control" list="gradoMat" formControlName="nivel"  value="{{(materia| async)?.nivel}}">
                 <datalist id="gradoMat">
                     <option value="1">
                     <option value="2">

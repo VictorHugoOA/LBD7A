@@ -9,30 +9,30 @@
     </div>
     <div class="row justify-content-between">
       <div class="col-8">
-        <form [formGroup]="modLibro">
+        <form [formGroup]="modLibro" (ngSubmit)="onSubmit()">
             <div class="form-group">
               <label for="InputID">Id del Libro</label>
-              <input type="text" class="form-control" id="LibroID" placeholder="Ingresa ID" readonly value="{{(libro| async)?.id}}">
+              <input type="text"class="form-control" formControlName="id" id="LibroID" placeholder="Ingresa ID" readonly >
             </div>
           
             <div class="form-group">
               <label for="InputTitle">Título</label>
-              <input type="text" class="form-control" id="InputTitle" value="{{(libro| async)['título']}}">
+              <input type="text" class="form-control" formControlName="titulo" id="InputTitle" >
             </div>
           
             <div class="form-group">
               <label for="InputYear">Año del libro</label>
-            <input type="text" class="form-control" id="InputYear" value="{{(libro| async)['año']}}">
+            <input type="text" class="form-control" formControlName="year" id="InputYear">
             </div>
           
             <div class="form-group">
               <label for="InputEditiorial">Editorial</label>
-              <input type="text" maxlength="10" class="form-control" id="InputEditiorial" value="{{(libro| async)['editorial']}}">
+              <input type="text" maxlength="10" formControlName="editorial" class="form-control" id="InputEditiorial">
             </div>
           
             <div class="form-group">
               <label for="InputIDMateria">ID de la materia</label>
-              <input class="form-control" id="InputIDMateria" list="materiasLibro" placeholder="Ingresa ID de la materia" value="{{(libro| async)['id_materia']}}">
+              <input class="form-control" id="InputIDMateria" formControlName="materia" list="materiasLibro" placeholder="Ingresa ID de la materia">
               <datalist id="materiasLibro">
                 <option *ngFor="let mat of materias" value="{{mat.id}}">{{mat.nombre}}</option>
               </datalist>  
@@ -40,7 +40,7 @@
 
             <div class="form-group">
               <label for="LibroArchivo">Subir archivo o link:</label>
-              <input type="text" name="LibroArchivo" class="form-control" id="LibroArchivo" formControlName="archivo"  value="{{(libro| async)['archivo']}}">
+              <input type="text" name="LibroArchivo" formControlName="archivo" class="form-control" id="LibroArchivo" formControlName="archivo" >
             </div>
           
             <button type="submit" class="btn btn-primary mb-2">Ingresar Datos</button>

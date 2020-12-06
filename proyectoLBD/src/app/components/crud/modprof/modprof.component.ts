@@ -18,6 +18,9 @@ export class ModprofComponent implements OnInit {
 
   buscar(id:string){
     this.profesor= this.crud.getProfesor(id);
+    this.profesor.subscribe((data: any) =>{
+      this.modProfesor.setValue({id: data.id, nombre: data.nombre, paterno: data.apellido_pat, materno: data.apellido_mat, telefono: data.telefono, correo: data.correo, sexo: data.sexo, password: data.contrasena});
+    })
 
 
   }
@@ -28,7 +31,7 @@ export class ModprofComponent implements OnInit {
       paterno: ['', Validators.required],
       materno: ['', Validators.required],
       telefono: ['', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(10), Validators.maxLength(10)]],
-      correo: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$")]],
+      correo: ['', [Validators.required, Validators.pattern("^[a-zA-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$")]],
       sexo: ['', Validators.required],
       password: ['', Validators.required]
     });
@@ -36,6 +39,7 @@ export class ModprofComponent implements OnInit {
 
   onSubmit()
   {
+    console.log(this.modProfesor);
     if(this.modProfesor.valid)
     {
       this.crud.setProfesor(this.modProfesor.get('id').value,

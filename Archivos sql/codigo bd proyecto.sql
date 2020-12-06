@@ -13,7 +13,6 @@ create table profesor(
     primary key(id)
 );
 
-
 create table grupo(
 	id varchar(10) not null,
     grado int not null,
@@ -92,7 +91,6 @@ create table libro (
     foreign key(id_materia) references materia(id)
 );
 
-
 create table tutoría(
 	id int not null auto_increment,
     id_profesor varchar(10),
@@ -104,7 +102,6 @@ create table tutoría(
     foreign key(id_profesor) references profesor(id),
     foreign key(id_alumno) references alumno(id)
 );
-
 
 create table tarea
 (
@@ -375,6 +372,39 @@ begin
         insert into clases_de (id_grupo, id_materia) values(idG, new.id);
     end loop clases;
 
+end//
+DELIMITER ;
+DELIMITER //
+create trigger tr_del_alumno before delete on alumno
+for each row
+begin
+	delete from realiza where id_alumno = old.id;
+    delete from tarea where id_alumno = old.id;
+    delete from MaterialTutoría where id_tutoría in (select id from tutoría where id_alumno = old.id);
+    delete from tutoría where id_alumno = old.id;
+end//
+DELIMITER ;
+
+DELIMITER //
+create trigger tr_up_materia before update on materia
+for each row
+begin
+	declare idG varchar(10);
+    declare done int default 0;
+    declare cursor_i cursor for select id from grupo where grado = new.nivel;
+    declare continue handler for not found set done = 1;
+    
+    delete from clases_de where id_materia = new.id;
+    
+    open cursor_i;
+    materias: loop
+		fetch cursor_i into idG;
+        if done then
+			leave materias;
+        end if;
+        insert into clases_de (id_grupo, id_materia) values(idG, new.id);
+    end loop materias;
+    
 end//
 DELIMITER ;
 

@@ -26,6 +26,9 @@ export class ModgruposComponent implements OnInit {
 
   buscar(id:string){
     this.grupo = this.crud.getGrupo(id);
+    this.grupo.subscribe((data: any) => {
+      this.modGrupo.setValue({id: data.id, clase: data.clase, grado: data.grado, profesor: data.id_profesor, ciclo_final: data.ciclo_final, ciclo_inicio: data.ciclo_inicio})
+    })
 
   }
   ngOnInit(): void {
@@ -40,6 +43,7 @@ export class ModgruposComponent implements OnInit {
   }
 
   onSubmit(){
+    
     if(this.modGrupo.valid)
     {
       
