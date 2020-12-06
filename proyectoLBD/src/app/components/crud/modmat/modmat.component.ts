@@ -46,4 +46,9 @@ export class ModmatComponent implements OnInit {
     }
   }
 
+  borrar()
+  {
+    this.crud.borrarMateria(this.modMateria.get('id').value).subscribe();
+  }
+
 }

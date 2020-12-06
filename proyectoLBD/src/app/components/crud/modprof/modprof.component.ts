@@ -56,5 +56,12 @@ export class ModprofComponent implements OnInit {
     }
   }
 
+   
+  borrar()
+  {
+    this.crud.borrarProfesor(this.modProfesor.get('id').value).subscribe();
+  }
+
+
 
 }

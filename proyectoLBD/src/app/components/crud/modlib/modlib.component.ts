@@ -57,4 +57,11 @@ export class ModlibComponent implements OnInit {
     }
   }
 
+  borrar()
+  {
+    this.crud.borrarLibro(this.modLibro.get('id').value).subscribe();
+  }
+
+
+
 }

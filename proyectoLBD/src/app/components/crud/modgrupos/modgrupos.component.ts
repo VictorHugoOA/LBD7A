@@ -58,4 +58,10 @@ export class ModgruposComponent implements OnInit {
      //poner navigate
     }
   }
+
+  borrar()
+  {
+    this.crud.borrarGrupo(this.modGrupo.get('id').value).subscribe();
+  }
+
 }

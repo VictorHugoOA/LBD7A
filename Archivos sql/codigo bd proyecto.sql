@@ -380,7 +380,7 @@ for each row
 begin
 	delete from realiza where id_alumno = old.id;
     delete from tarea where id_alumno = old.id;
-    delete from MaterialTutoría where id_tutoría in (select id from tutoría where id_alumno = old.id);
+    delete from MaterialTutoria where id_tutoria in (select id from tutoría where id_alumno = old.id);
     delete from tutoría where id_alumno = old.id;
 end//
 DELIMITER ;
@@ -405,6 +405,17 @@ begin
         insert into clases_de (id_grupo, id_materia) values(idG, new.id);
     end loop materias;
     
+end//
+DELIMITER ;
+
+DELIMITER //
+create trigger tr_del_materia before delete on materia
+for each row
+begin
+	delete from clases_de where id_materia = old.id;
+    delete from actividad where id_materia = old.id;
+    delete from Recurso where id_materia = old.id;
+    delete from libro where id_materia = old.id;
 end//
 DELIMITER ;
 

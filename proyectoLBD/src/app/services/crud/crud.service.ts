@@ -98,7 +98,7 @@ export class CrudService {
   }
   borrarAlumno(id: string)
   {
-    return this.http.get(`http://localhost:3000/borrarAlumnor/${id}`);
+    return this.http.get(`http://localhost:3000/borrarAlumno/${id}`);
   }
   borrarLibro(id: string)
   {

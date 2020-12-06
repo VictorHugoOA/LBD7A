@@ -62,5 +62,11 @@ export class ModalumComponent implements OnInit {
     }
   }
 
+  
+  borrar()
+  {
+    this.crud.borrarAlumno(this.modAlumno.get('id').value).subscribe();
+  }
+
 
 }
