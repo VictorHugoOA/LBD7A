@@ -900,7 +900,7 @@ function createRouter(db) {
   // Mostrar Profesores
   router.get('/Profesores', function (req, res) {
     db.query(
-      'Select * from profesor',
+      'Select * from profesores',
       (error, results) => {
         if (error) throw error;
         res.send(results);
