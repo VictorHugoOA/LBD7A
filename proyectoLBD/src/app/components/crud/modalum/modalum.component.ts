@@ -11,7 +11,7 @@ import { CrudService } from 'src/app/services/crud/crud.service';
 })
 export class ModalumComponent implements OnInit {
 
-  AltaAlumno: FormGroup;
+  modAlumno: FormGroup;
   grupos: any[] = [];
   alumno: Observable<any>;
 
@@ -31,7 +31,7 @@ export class ModalumComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.AltaAlumno = this.fb.group({
+    this.modAlumno = this.fb.group({
       id: ['', [Validators.required, Validators.pattern("a+[0-9]*$"), Validators.maxLength(10)]],
       nombre: ['', Validators.required],
       paterno: ['', Validators.required],
@@ -44,17 +44,17 @@ export class ModalumComponent implements OnInit {
 
   onSubmit()
   {
-    if(this.AltaAlumno.valid)
+    if(this.modAlumno.valid)
     {
       console.log("actualizado");
       //Poner sentencia
-     /* this.crud.insertarAlumno(this.AltaAlumno.get('id').value,
-      this.AltaAlumno.get('nombre').value,
-      this.AltaAlumno.get('paterno').value,
-      this.AltaAlumno.get('materno').value,
-      this.AltaAlumno.get('sexo').value,
-      this.AltaAlumno.get('password').value,
-      this.AltaAlumno.get('grupo').value).subscribe();*/
+      /*this.crud.setAlumno(this.AltaAlumno.get('id').value,
+      this.modAlumno.get('nombre').value,
+      this.modAlumno.get('paterno').value,
+      this.modAlumno.get('materno').value,
+      this.modAlumno.get('sexo').value,
+      this.modAlumno.get('password').value,
+      this.modAlumno.get('grupo').value).subscribe();*/
       this.router.navigate(['/admin']);
     }
   }

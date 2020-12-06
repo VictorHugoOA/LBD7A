@@ -10,7 +10,7 @@ import { CrudService } from 'src/app/services/crud/crud.service';
   styleUrls: ['./modlib.component.css']
 })
 export class ModlibComponent implements OnInit {
-  AltaLibro: FormGroup;
+  modLibro: FormGroup;
   materias: any[] = [];
   libro:Observable<any>
   constructor(private fb: FormBuilder, private crud: CrudService, private router: Router) { }

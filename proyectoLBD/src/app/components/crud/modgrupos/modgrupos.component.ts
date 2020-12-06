@@ -10,7 +10,7 @@ import { CrudService } from 'src/app/services/crud/crud.service';
   styleUrls: ['./modgrupos.component.css']
 })
 export class ModgruposComponent implements OnInit {
-  AltaGrupo: FormGroup;
+  modGrupo: FormGroup;
   grupo: Observable<any>;
   profesores: any[] = [];
   
@@ -28,7 +28,7 @@ export class ModgruposComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.AltaGrupo = this.fb.group({
+    this.modGrupo = this.fb.group({
       id: ['', Validators.required],
       grado: ['', Validators.required],
       clase: ['', Validators.required],
@@ -39,16 +39,16 @@ export class ModgruposComponent implements OnInit {
   }
 
   onSubmit(){
-    if(this.AltaGrupo.valid)
+    if(this.modGrupo.valid)
     {
       //cambiar sentencia por update
-      this.crud.insertarGrupo(
-        this.AltaGrupo.get('id').value, 
-        this.AltaGrupo.get('grado').value, 
-        this.AltaGrupo.get('clase').value, 
-        this.AltaGrupo.get('profesor').value, 
-        this.AltaGrupo.get('ciclo_inicio').value, 
-        this.AltaGrupo.get('ciclo_final').value).subscribe()
+      /*this.crud.setGrupo(
+        this.modGrupo.get('id').value, 
+        this.modGrupo.get('grado').value, 
+        this.modGrupo.get('clase').value, 
+        this.modGrupo.get('profesor').value, 
+        this.modGrupo.get('ciclo_inicio').value, 
+        this.modGrupo.get('ciclo_final').value).subscribe()*/
       this.router.navigate(['/login']);
     }
   }

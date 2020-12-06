@@ -12,7 +12,7 @@ export class ModmatComponent implements OnInit {
  
   materia: Observable<any>;
   profesores: any[] = [];
-  AltaMateria: FormGroup;
+  modMateria: FormGroup;
   constructor(private fb: FormBuilder, private crud: CrudService) {
 
 
@@ -22,7 +22,7 @@ export class ModmatComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.AltaMateria = this.fb.group({
+    this.modMateria = this.fb.group({
       id: ['', [Validators.required, Validators.pattern("m-+[0-9]*$"), Validators.maxLength(10)]],
       nombre: ['', Validators.required],
       campo: ['', Validators.required],
@@ -32,12 +32,14 @@ export class ModmatComponent implements OnInit {
 
   onSubmit()
   {
-    if(this.AltaMateria.valid)
+    if(this.modMateria.valid)
     {
-      this.crud.insertarMateria(this.AltaMateria.get('id').value,
-      this.AltaMateria.get('nombre').value,
-      this.AltaMateria.get('campo').value,
-      this.AltaMateria.get('nivel').value).subscribe();
+     /* this.crud.setMateria(this.AltaMateria.get('id').value,
+      this.modMateria.get('nombre').value,
+      this.modMateria.get('campo').value,
+      this.modMateria.get('nivel').value).subscribe();
+      poner navigate
+      */
     }
   }
 

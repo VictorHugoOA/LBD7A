@@ -11,7 +11,7 @@ import { CrudService } from 'src/app/services/crud/crud.service';
 })
 export class ModprofComponent implements OnInit {
 
-  AltaProfesor: FormGroup
+  modProfesor: FormGroup
   profesor: Observable<any>;
   constructor(private fb: FormBuilder, private crud: CrudService, private router: Router) { }
 
@@ -21,7 +21,7 @@ export class ModprofComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.AltaProfesor = this.fb.group({
+    this.modProfesor = this.fb.group({
       id: ['', [Validators.required, Validators.pattern("p+[0-9]*$"), Validators.maxLength(10)]],
       nombre: ['', Validators.required],
       paterno: ['', Validators.required],
@@ -35,18 +35,18 @@ export class ModprofComponent implements OnInit {
 
   onSubmit()
   {
-    if(this.AltaProfesor.valid)
+    if(this.modProfesor.valid)
     {
-      this.crud.insertarProfesor(this.AltaProfesor.get('id').value,
-      this.AltaProfesor.get('nombre').value,
-      this.AltaProfesor.get('paterno').value,
-      this.AltaProfesor.get('materno').value,
-      this.AltaProfesor.get('telefono').value,
-      this.AltaProfesor.get('correo').value,
-      this.AltaProfesor.get('sexo').value,
-      this.AltaProfesor.get('password').value).subscribe((data: any) =>{
+      /*this.crud.setProfesor(this.modProfesor.get('id').value,
+      this.modProfesor.get('nombre').value,
+      this.modProfesor.get('paterno').value,
+      this.modProfesor.get('materno').value,
+      this.modProfesor.get('telefono').value,
+      this.modProfesor.get('correo').value,
+      this.modProfesor.get('sexo').value,
+      this.modProfesor.get('password').value).subscribe((data: any) =>{
         this.router.navigate(['/router']);
-      });
+      });*/
     }
   }
 

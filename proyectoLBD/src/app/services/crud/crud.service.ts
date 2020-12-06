@@ -69,6 +69,21 @@ export class CrudService {
   AllAlumnos(){
     return this.http.get('http://localhost:3000/Alumnos');
   }
-  
-
+  //aqui redireccionar todo
+  setProfesor(id: string, nombre: string, paterno: string, materno: string, telefono: string, correo: string, sexo: string, contra: string)
+  {
+    return this.http.get(`http://localhost:3000/Profesores`);
+  }
+  setGrupo(id: string, grado: number, clase: string, profesor: string, cicloIn: number, cicloFin: number){
+    return this.http.get(`http://localhost:3000/Grupos`);
+  }
+  setMateria(id: string, nombre: string, campo: string, nivel: string){
+    return this.http.get(`http://localhost:3000/Materias`);
+  }
+  setLibro(){
+    return this.http.get(`http://localhost:3000/Libros`);
+  }
+  setAlumno(id: string, nombre: string, paterno: string, materno: string, sexo: string, contra: string, grupo: string){
+    return this.http.get('http://localhost:3000/Alumnos');
+  }
 }
