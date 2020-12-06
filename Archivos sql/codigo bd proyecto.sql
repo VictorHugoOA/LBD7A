@@ -104,14 +104,6 @@ create table tutoría(
     foreign key(id_alumno) references alumno(id)
 );
 
-create table imparte(
-	id_tutoría int not null,
-    id_profesor varchar(10),
-    primary key(id_tutoría, id_profesor),
-    foreign key(id_tutoría) references tutoría(id),
-    foreign key(id_profesor) references profesor(id)
-);
-
 
 create table tarea
 (
@@ -317,6 +309,47 @@ begin
 end//
 DELIMITER ;
 
+DELIMITER //
+create trigger tr_del_profesor before delete on profesor
+for each row
+begin
+    declare idRec int;
+    declare done int default 0;
+    declare cursor_i cursor for select id from Recurso where id_profesor = old.id;
+    declare continue handler for not found set done = 1;
+    open cursor_i;
+    recursos: loop
+		fetch cursor_i into idRec;
+        if done then
+			leave recursos;
+		end if;
+		delete from Recurso where id = idRec;
+	end loop recursos;
+    
+    update tutoría set id_profesor = null, respuesta = null where id_profesor = old.id;
+    update grupo set id_profesor = null where id_profesor = old.id;
+    
+end//
+DELIMITER ;
 
+DELIMITER //
+create trigger tr_up_grupo before update on grupo
+for each row
+begin
+	declare idMat varchar(10);
+    declare done int default 0;
+    declare cursor_i cursor for select id from materia where nivel = new.grado;
+    declare continue handler for not found set done = 1;
+    
+    open cursor_i;
+    materias: loop
+		fetch cursor_i into idMat;
+        if done then
+			leave materias;
+        end if;
+        insert into clases_de (id_grupo, id_materia) values(new.id, idMat);
+    end loop materias;
+end//
+DELIMITER ;
 /*Ejemplo para ejecutar el procedimiento para avances
 call avances("a000001", @out); select @out;*/

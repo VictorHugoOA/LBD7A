@@ -720,7 +720,7 @@ function createRouter(db) {
     })
   })
 
-  router.get('/todosGrupos', function(req, res){
+  router.get('/grupos', function(req, res){
     db.query('select * from grupo', [], 
     (error, results)=>{
       if(error) throw error;

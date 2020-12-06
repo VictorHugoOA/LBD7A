@@ -14,20 +14,6 @@ Values ("p000001", "Pancho", "Pantera", "Pistolas", "ElPantera@outlook.com", 449
 ("p000011", "Alejandro", "Cruz", "Vazquez", "alex.vazquez@gmail.com", 4653490240, "M","c000011"),
 ("p000012", "Guillermina", "Mendoza", "Castillo", "guillerminacastle@outlook.com", 4651234890, "F", "c000012");
 
-insert into grupo (id, grado, clase, id_profesor, ciclo_inicio, ciclo_final)
-values
-("g-001", 1, "A", "p000001", 2020, 2026),
-("g-002", 2, "A", "p000002", 2019, 2025),
-("g-003", 3, "A", "p000003", 2018, 2024),
-("g-004", 4, "A", "p000004", 2017, 2023),
-("g-005", 5, "A", "p000005", 2016, 2022),
-("g-006", 6, "A", "p000006", 2015, 2021),
-("g-007", 1, "B", "p000007", 2020, 2026),
-("g-008", 2, "B", "p000008", 2019, 2025),
-("g-009", 3, "B", "p000009", 2018, 2024),
-("g-010", 4, "B", "p000010", 2017, 2023),
-("g-011", 5, "B", "p000011", 2016, 2022),
-("g-012", 6, "B", "p000012", 2015, 2021);
 
 
 insert into materia (id, nombre, Campo, nivel) 
@@ -84,6 +70,21 @@ Values
 ("m-057", "Educación Física",  "Educación Física", 4),
 ("m-058", "Educación Física",  "Educación Física", 5),
 ("m-059", "Educación Física",  "Educación Física", 6);
+
+insert into grupo (id, grado, clase, id_profesor, ciclo_inicio, ciclo_final)
+values
+("g-001", 1, "A", "p000001", 2020, 2026),
+("g-002", 2, "A", "p000002", 2019, 2025),
+("g-003", 3, "A", "p000003", 2018, 2024),
+("g-004", 4, "A", "p000004", 2017, 2023),
+("g-005", 5, "A", "p000005", 2016, 2022),
+("g-006", 6, "A", "p000006", 2015, 2021),
+("g-007", 1, "B", "p000007", 2020, 2026),
+("g-008", 2, "B", "p000008", 2019, 2025),
+("g-009", 3, "B", "p000009", 2018, 2024),
+("g-010", 4, "B", "p000010", 2017, 2023),
+("g-011", 5, "B", "p000011", 2016, 2022),
+("g-012", 6, "B", "p000012", 2015, 2021);
 
 insert into libro (id, título, año, editorial, id_materia, archivo)
 Values ("l-001", "Español I", 2020, "SEP", "m-001", "https://libros.conaliteg.gob.mx/20/P1ESA.htm"),

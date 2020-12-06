@@ -7,16 +7,14 @@ import { ReactiveFormsModule, FormsModule, FormGroup, FormBuilder } from '@angul
 })
 export class CrudMateriaComponent implements OnInit {
 
-  AltaMateria: FormGroup
-    BajaMateria: FormGroup
-    MostrarMateria: FormGroup
-  
-  constructor() { 
+  AltaMateria: FormGroup;
+  constructor(private fb: FormBuilder) {
 
-    
+
   }
 
   ngOnInit(): void {
+    this.AltaMateria = this.fb.group({});
   }
 
 }
