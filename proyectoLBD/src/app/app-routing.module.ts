@@ -28,6 +28,15 @@ import { ResponderComponent } from './components/responder/responder.component';
 import { CrearArchivoTutoriaComponent } from './components/crear-archivo-tutoria/crear-archivo-tutoria.component';
 import { ArchivosTutoriaComponent } from './components/archivos-tutoria/archivos-tutoria.component';
 import { CrudComponent } from './components/crud/crud.component';
+import { ListamatComponent } from './components/crud/listamat/listamat.component';
+import { ListagruposComponent } from './components/crud/listagrupos/listagrupos.component';
+import { ListaprofsComponent } from './components/crud/listaprofs/listaprofs.component';
+import { ListaalumnosComponent } from './components/crud/listaalumnos/listaalumnos.component';
+import { ListalibComponent } from './components/crud/listalib/listalib.component';
+import { ModmatComponent } from './components/crud/modmat/modmat.component';
+import { ModgruposComponent } from './components/crud/modgrupos/modgrupos.component';
+import { ModprofComponent } from './components/crud/modprof/modprof.component';
+import { ModalumComponent } from './components/crud/modalum/modalum.component';
 
 
 
@@ -59,6 +68,16 @@ const routes: Routes = [
   { path: 'archivoTutoria/:id', component: CrearArchivoTutoriaComponent },
   { path: 'materialTutoria/:id', component: ArchivosTutoriaComponent },
   { path: 'admin', component: CrudComponent },
+  { path: 'listamat', component: ListamatComponent},
+  { path: 'listagrupos', component: ListagruposComponent},
+  { path: 'listaprofesor', component: ListaprofsComponent},
+  { path: 'listaalumnos', component: ListaalumnosComponent},
+  { path: 'listalibros', component: ListalibComponent},
+  { path: 'modmat', component: ModmatComponent},
+  { path: 'modgrupos', component: ModgruposComponent},
+  { path: 'modprofesor', component: ModprofComponent},
+  { path: 'modalumnos', component: ModalumComponent},
+  { path: 'modlibros', component: ModalumComponent},
   { path: '**', component: LoginComponent },
 ];
 

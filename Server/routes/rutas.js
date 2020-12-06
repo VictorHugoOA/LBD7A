@@ -20,6 +20,72 @@ const upload = multer({ storage: store }).single('file');
 
 function createRouter(db) {
   const router = express.Router();
+  //Profesores
+  router.get('/Profesores', function (req, res) {
+    db.query(
+      'Select * from profesores',
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);
+
+      }
+    );
+  });
+  //Alumnos
+  router.get('/Alumnos', function (req, res) {
+    db.query(
+      'Select * from alumnos',
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);
+
+      }
+    );
+  });
+  //Materias
+  router.get('/Materias', function (req, res) {
+    db.query(
+      'Select * from materia',
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);
+
+      }
+    );
+  });
+  //Grupos
+  router.get('/Grupos', function (req, res) {
+  db.query(
+    'Select * from grupos',
+    (error, results) => {
+      if (error) throw error;
+      res.send(results);
+
+      console.log(results);
+
+    }
+  );
+});
+  //Libros
+  router.get('/Libros', function (req, res) {
+    db.query(
+      'Select * from libro',
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);
+
+      }
+    );
+  });
+
   //info prof 1 en uso
   router.get('/Profesor/:id', function (req, res) {
     const id = req.params.id
@@ -65,7 +131,7 @@ function createRouter(db) {
       }
     );
   });
-  //curso por ALUMNO 4 (3 tablas) en uso
+  //curso por ALUMNO 4 (3 tablas) en uso 1
   router.get('/cursosAlumno/:id', function (req, res) {
     const id = req.params.id
     db.query(
@@ -96,7 +162,7 @@ function createRouter(db) {
       }
     );
   });
-  //Actividades entregadas por materia y alumno 6 cambiar
+  //Actividades entregadas por materia y alumno 6 en uso
   router.get('/AlumnoActividadesEntregadas/:idalum/:idmat', function (req, res) {
     const idalum = req.params.idalum
     const idmat = req.params.idmat
@@ -112,7 +178,7 @@ function createRouter(db) {
       }
     );
   });
-  //Actividades por materia 7 checar
+  //Actividades por materia 7 en uso
   router.get('/ActividadesMateria/:idmat', function (req, res) {
     const idmat = req.params.idmat
     db.query(
@@ -126,7 +192,7 @@ function createRouter(db) {
       }
     );
   });
-  //Actividades por grupo y materia 8 (3 tablas) en uso
+  //Actividades por grupo y materia 8 (3 tablas) en uso 2
   router.get('/ActividadesMateriaGrupo/:idgrup/:idmat', function (req, res) {
     const idgrup = req.params.idgrup
     const idmat = req.params.idmat
@@ -141,7 +207,7 @@ function createRouter(db) {
       }
     );
   });
-  //info de Actividad 9 checar
+  //info de Actividad 9 en uso
   router.get('/Actividad/:idact', function (req, res) {
     const idact = req.params.idact
     db.query(
@@ -184,7 +250,7 @@ function createRouter(db) {
       }
     );
   });
-  //Materias que el profesor imparte 12 (3 Tablas) en uso
+  //Materias que el profesor imparte 12 (3 Tablas) en uso 3
   router.get('/MateriasProfesor/:idprof', function (req, res) {
     const idprof = req.params.idprof
     db.query(
@@ -198,7 +264,7 @@ function createRouter(db) {
       }
     );
   });
-  //Obtener el profesor y grupo del alumno 13 (3 Tablas) en uso
+  //Obtener el profesor y grupo del alumno 13 (3 Tablas) en uso 4
   router.get('/AlumnoProfesor/:idalumno', function (req, res) {
     const idalumno = req.params.idalumno
     db.query(
@@ -287,7 +353,7 @@ function createRouter(db) {
       }
     );
   });
-  //Actividades dadas por el profesor aun abiertas 19(3 tablas) en uso
+  //Actividades dadas por el profesor aun abiertas 19(3 tablas) en uso 5
   router.get('/ProfesorActividadesAbiertas/:idprof', function (req, res) {
     const idprof = req.params.idprof
     db.query(
@@ -318,8 +384,7 @@ function createRouter(db) {
       }
     );
   })
-
-  //Obtener libros de las materias del alumno (4 Tablas) 21 en uso
+  //Obtener libros de las materias del alumno (4 Tablas) 21 en uso 6
   router.get('/LibrosAlumno/:id', function (req, res) {
     const alumno = req.params.id;
     db.query(
@@ -332,7 +397,7 @@ function createRouter(db) {
       });
 
   })
- //Obtener libros del profesor 22 en uso (3 tablas)
+ //Obtener libros del profesor 22 en uso (3 Tablas) 7
   router.get('/LibrosProfesor/:id', function (req, res) {
     const profesor = req.params.id;
     db.query(
@@ -525,7 +590,7 @@ function createRouter(db) {
       console.log(results);
     })
   });
-
+ //calificar en uso 34
   router.post('/calificar', function(req, res){
     const idAl = req.body.idAl;
     const idAct = req.body.idAct;
@@ -539,7 +604,7 @@ function createRouter(db) {
       console.log(results);
     })
   })
-  //Tutorías de los profesores(3 Tablas)
+  //Tutorias de los profes 35 (3 Tablas) 8
   router.get('/tutoriaProfe/:idProf', function(req, res){
     const idProf = req.params.idProf;
     db.query('select * from tutoría where id_alumno in (select alumno.id from alumno inner join grupo on alumno.id_grupo = grupo.id where grupo.id_profesor = ?) and tutoría.id_profesor is null;', 
@@ -574,8 +639,7 @@ function createRouter(db) {
       console.log(results);
     })
   })
-
-  //Tutorias respondidas del alumno (3 Tablas)
+//Tutorias respondiadas del alumno (3 tablas) 9
   router.get('/tutoriasRespondidas/:id', function(req, res){
     const idAl = req.params.id;
     db.query('select A.apellido_pat, A.nombre, A.apellido_mat, T.*, P.nombre as nomProf, P.apellido_pat as patProf, P.apellido_mat as matProf from tutoría T, profesor P, Alumno A where T.id_alumno = ? and T.id_alumno = A.id and P.id = T.id_profesor;',
@@ -586,8 +650,7 @@ function createRouter(db) {
       console.log(results);
     })
   });
-
-  //Tutorias respondidas del profe (3 Tablas)
+  //Tutorias respondidas del prof (3 tablas) 10
   router.get('/tutoriasRespondidasProf/:id', function(req, res){
     const idAl = req.params.id;
     db.query('select A.apellido_pat, A.nombre, A.apellido_mat, T.*, P.nombre as nomProf, P.apellido_pat as patProf, P.apellido_mat as matProf from tutoría T, profesor P, Alumno A where T.id_profesor = ? and T.id_alumno = A.id and P.id = T.id_profesor;',
@@ -598,7 +661,6 @@ function createRouter(db) {
       console.log(results);
     })
   });
-
 
   router.get('/tutoria/:id', function(req, res){
     const id = req.params.id;
@@ -652,15 +714,6 @@ function createRouter(db) {
     db.query('select * from MaterialTutoria where id_tutoria = ?;',
     [id],
     (error, results) =>{
-      if(error) throw error;
-      res.send(results);
-      console.log(results);
-    })
-  });
-
-  router.get('/todosProfesores', function(req, res)
-  {
-    db.query('select * from profesor', [], (error, results) => {
       if(error) throw error;
       res.send(results);
       console.log(results);
@@ -736,7 +789,6 @@ function createRouter(db) {
       console.log(results);
     })
   })
-
   //Las fuciones para guardar archivos y obtener archivos
   //Guardar archivos 
   router.post('/upload', function (req, res, next) {

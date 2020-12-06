@@ -50,6 +50,16 @@ import { CrudAlumnoComponent } from './components/crud/crud-alumno/crud-alumno.c
 import { CrudMateriaComponent } from './components/crud/crud-materia/crud-materia.component';
 import { CrudProfesorComponent } from './components/crud/crud-profesor/crud-profesor.component';
 import { CrudGrupoComponent } from './components/crud/crud-grupo/crud-grupo.component';
+import { ListaalumnosComponent } from './components/crud/listaalumnos/listaalumnos.component';
+import { ListagruposComponent } from './components/crud/listagrupos/listagrupos.component';
+import { ListaprofsComponent } from './components/crud/listaprofs/listaprofs.component';
+import { ListamatComponent } from './components/crud/listamat/listamat.component';
+import { ListalibComponent } from './components/crud/listalib/listalib.component';
+import { ModlibComponent } from './components/crud/modlib/modlib.component';
+import { ModmatComponent } from './components/crud/modmat/modmat.component';
+import { ModgruposComponent } from './components/crud/modgrupos/modgrupos.component';
+import { ModprofComponent } from './components/crud/modprof/modprof.component';
+import { ModalumComponent } from './components/crud/modalum/modalum.component';
 import { CrudTutoriaComponent } from './components/crud/crud-tutoria/crud-tutoria.component';
 import { CrudLibroComponent } from './components/crud/crud-libro/crud-libro.component';
 
@@ -100,6 +110,16 @@ import { CrudLibroComponent } from './components/crud/crud-libro/crud-libro.comp
     CrudMateriaComponent,
     CrudProfesorComponent,
     CrudGrupoComponent,
+    ListaalumnosComponent,
+    ListagruposComponent,
+    ListaprofsComponent,
+    ListamatComponent,
+    ListalibComponent,
+    ModlibComponent,
+    ModmatComponent,
+    ModgruposComponent,
+    ModprofComponent,
+    ModalumComponent,
     CrudTutoriaComponent,
     CrudLibroComponent
 

@@ -1,0 +1,49 @@
+<app-navbar></app-navbar>
+<div class="container-fluid" style="margin-top: 5px;">
+  <div class="row justify-content-between">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body  table-responsive">
+
+          <table class="table ">
+            <thead>
+              <tr>
+                <th scope="col">
+                  <h4 class="card-title"> Profesores</h4>
+                </th>
+              </tr>
+              <tr id="encabezado">
+                  <td>ID</td>
+                  <td>Nombre</td>
+                  <td>Apellido Paterno</td>
+                  <td>Apellido Materno</td>
+                  <td>Correo</td>
+                  <td>Teléfono</td>
+                  <td>Sexo</td>
+                  <td>ID grupo</td>
+                  <td>Grado</td>
+                  <td>Clase</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let profesor of profesores">
+
+                <td>{{profesor.id_profesor}}</td>
+                <td>{{profesor.nombre}}</td>
+                <td>{{profesor.apellido_pat}}</td>
+                <td>{{profesor.apellido_mat}}</td>
+                <td>{{profesor.correo}}</td>
+                <td>{{profesor.telefono}}</td>
+                <td>{{profesor.sexo}}</td>
+                <td>{{profesor.id}}</td>
+                <td>{{profesor.grado}}</td>
+                <td>{{profesor.clase}}</td>
+              </tr>
+        
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

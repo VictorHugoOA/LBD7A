@@ -35,6 +35,13 @@ export class CursosService {
     
   }
 
+  AllMaterias(){
+    return this.http.get(`http://localhost:3000/Materias`);
+  }
+  AllLibros(){
+    return this.http.get(`http://localhost:3000/Libros`);
+  }
+
 }
 
 export interface Curso{

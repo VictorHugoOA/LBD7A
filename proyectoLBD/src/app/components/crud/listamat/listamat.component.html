@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+<div class="container-fluid" style="margin-top: 5px;">
+  <div class="row justify-content-between">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body  table-responsive">
+
+          <table class="table ">
+            <thead>
+              <tr>
+                <th scope="col">
+                  <h4 class="card-title"> Materias</h4>
+                </th>
+              </tr>
+              <tr id="encabezado">
+                  <td>ID</td>
+                  <td>Nombre</td>
+                  <td>Campo</td>
+                  <td>Nivel</td>
+              
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let materia of materias">
+
+                <td>{{materia.id}}</td>
+                <td>{{materia.nombre}}</td>
+                <td>{{materia.campo}}</td>
+                <td>{{materia.nivel}}</td>
+              </tr>
+        
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
