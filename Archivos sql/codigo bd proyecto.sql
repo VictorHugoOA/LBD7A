@@ -317,8 +317,6 @@ begin
 end//
 DELIMITER ;
 
-delete from grupo where id = "g-1";
-select * from alumno;
 
 /*Ejemplo para ejecutar el procedimiento para avances
 call avances("a000001", @out); select @out;*/
