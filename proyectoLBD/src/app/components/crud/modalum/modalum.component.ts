@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { CrudService } from 'src/app/services/crud/crud.service';
 
@@ -57,8 +58,7 @@ export class ModalumComponent implements OnInit {
       this.modAlumno.get('sexo').value,
       this.modAlumno.get('password').value,
       this.modAlumno.get('grupo').value).subscribe();
-     // this.router.navigate(['/admin']);
-     //poner el navigate
+      this.router.navigateByUrl('/admin');
     }
   }
 
