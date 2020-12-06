@@ -85,7 +85,7 @@ export class CrudService {
   setMateria(id: string, nombre: string, campo: string, nivel: string){
     return this.http.get(`http://localhost:3000/Materias`);
   }
-  setLibro(){
+  setLibro(id: string, titulo: string, year: string, editorial: string, materia: string, archivo: string){
     return this.http.get(`http://localhost:3000/Libros`);
   }
   setAlumno(id: string, nombre: string, paterno: string, materno: string, sexo: string, contra: string, grupo: string){

@@ -12,7 +12,7 @@
         <form [formGroup]="modLibro">
             <div class="form-group">
               <label for="InputID">Id del Libro</label>
-              <input type="text" class="form-control" id="InputID" placeholder="Ingresa ID" readonly value="{{(libro| async)?.id}}">
+              <input type="text" class="form-control" id="LibroID" placeholder="Ingresa ID" readonly value="{{(libro| async)?.id}}">
             </div>
           
             <div class="form-group">
@@ -36,6 +36,11 @@
               <datalist id="materiasLibro">
                 <option *ngFor="let mat of materias" value="{{mat.id}}">{{mat.nombre}}</option>
               </datalist>  
+            </div>
+
+            <div class="form-group">
+              <label for="LibroArchivo">Subir archivo o link:</label>
+              <input type="text" name="LibroArchivo" class="form-control" id="LibroArchivo" formControlName="archivo"  value="{{(libro| async)['archivo']}}">
             </div>
           
             <button type="submit" class="btn btn-primary mb-2">Ingresar Datos</button>
