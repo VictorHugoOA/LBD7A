@@ -165,6 +165,8 @@ create view alumnos as select A.id, A.nombre, A.apellido_pat, A.apellido_mat, A.
 alumno A left join grupo G on A.id_grupo=G.id;
 create view profesores as select G.id_profesor,P.nombre, P.apellido_pat, P.apellido_mat, P.correo, P.telefono, P.sexo, G.id, G.grado, G.clase from 
 profesor P left join grupo G on P.id=G.id_profesor;
+create view grupos as select G.id_profesor,P.nombre, P.apellido_pat, P.apellido_mat, G.id, G.grado, G.clase from 
+profesor P left join grupo G on P.id=G.id_profesor;
 /*Creación del procedimiento para login_alumno*/
 DELIMITER //
 create procedure aulavirtualsep.login_alumno (in userid varchar(10), in pass varchar(15))

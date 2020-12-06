@@ -49,7 +49,7 @@ function createRouter(db) {
   //Materias
   router.get('/Materias', function (req, res) {
     db.query(
-      'Select * from alumno',
+      'Select * from materia',
       (error, results) => {
         if (error) throw error;
         res.send(results);
@@ -62,7 +62,7 @@ function createRouter(db) {
   //Grupos
   router.get('/Grupos', function (req, res) {
   db.query(
-    'Select * from grupo',
+    'Select * from grupos',
     (error, results) => {
       if (error) throw error;
       res.send(results);

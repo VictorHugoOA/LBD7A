@@ -54,6 +54,12 @@ import { ListaalumnosComponent } from './components/crud/listaalumnos/listaalumn
 import { ListagruposComponent } from './components/crud/listagrupos/listagrupos.component';
 import { ListaprofsComponent } from './components/crud/listaprofs/listaprofs.component';
 import { ListamatComponent } from './components/crud/listamat/listamat.component';
+import { ListalibComponent } from './components/crud/listalib/listalib.component';
+import { ModlibComponent } from './components/crud/modlib/modlib.component';
+import { ModmatComponent } from './components/crud/modmat/modmat.component';
+import { ModgruposComponent } from './components/crud/modgrupos/modgrupos.component';
+import { ModprofComponent } from './components/crud/modprof/modprof.component';
+import { ModalumComponent } from './components/crud/modalum/modalum.component';
 
 
 
@@ -105,7 +111,13 @@ import { ListamatComponent } from './components/crud/listamat/listamat.component
     ListaalumnosComponent,
     ListagruposComponent,
     ListaprofsComponent,
-    ListamatComponent
+    ListamatComponent,
+    ListalibComponent,
+    ModlibComponent,
+    ModmatComponent,
+    ModgruposComponent,
+    ModprofComponent,
+    ModalumComponent
 
   ],
   imports: [

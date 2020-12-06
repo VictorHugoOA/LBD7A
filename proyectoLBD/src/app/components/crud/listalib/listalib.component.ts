@@ -2,19 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { CursosService } from 'src/app/services/cursos/cursos.service';
 
 @Component({
-  selector: 'app-listamat',
-  templateUrl: './listamat.component.html',
-  styleUrls: ['./listamat.component.css']
+  selector: 'app-listalib',
+  templateUrl: './listalib.component.html',
+  styleUrls: ['./listalib.component.css']
 })
-export class ListamatComponent implements OnInit {
-  materias: any[]=[];
+export class ListalibComponent implements OnInit {
+
+  libros: any[]=[];
+
   constructor(private cursos: CursosService) { }
 
   ngOnInit(): void {
-    this.cursos.AllMaterias().subscribe((data:any[]) => {
+    this.cursos.AllLibros().subscribe((data:any[]) => {
       for(var i = 0; i < data.length; ++i)
       {
-        this.materias.push(data[i]);
+        this.libros.push(data[i]);
       }
     });
   }
