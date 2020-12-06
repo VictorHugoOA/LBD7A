@@ -1,23 +1,33 @@
 <form [formGroup]="AltaProfesor">
   <div class="form-group">
-    <label for="InputNombre">Nombre</label>
-    <input type="text" class="form-control" id="InputNombre" placeholder="Ingresa nombre">
+    <label for="NombreProfesor">Nombre</label>
+    <input type="text" class="form-control" id="NombreProfesor" placeholder="Ingresa nombre">
   </div>
 
   <div class="form-group">
-    <label for="InputApellidoPat">Apellido Paterno</label>
-    <input type="text" class="form-control" id="InputApellidoPat" placeholder="Ingresa apellido paterno">
+    <label for="ProfesorApellidoPat">Apellido Paterno</label>
+    <input type="text" class="form-control" id="ProfesorApellidoPat" placeholder="Ingresa apellido paterno">
   </div>
 
   <div class="form-group">
-    <label for="InputApellidoMat">Apellido Materno</label>
-    <input type="text" class="form-control" id="InputApellidoMat" placeholder="Ingresa apellido materno">
+    <label for="ProfesorApellidoMat">Apellido Materno</label>
+    <input type="text" class="form-control" id="ProfesorApellidoMat" placeholder="Ingresa apellido materno">
   </div>
 
   <div class="form-group">
-    <label for="InputSexo">Sexo</label>
-    <input class="form-control" list="sexo">
-    <datalist id="sexo">
+    <label for="TelefonoProfesor">Teléfono:</label>
+    <input type="text" maxlength="10" class="form-control" id="TelefonoProfesor" placeholder="Ingresa un número telefónico">
+  </div>
+
+  <div class="form-group">
+    <label for="CorreoProfesor">Correo electrónico:</label>
+    <input type="email" class="form-control" id="CorreoProfesor" placeholder="Ingresa un correo electrónico">
+  </div>
+
+  <div class="form-group">
+    <label for="SexoProfesor">Sexo</label>
+    <input class="form-control" id="SexoProfesor" list="SexoProfe">
+    <datalist id="SexoProfe">
       <option value="F">
       <option value="M">
     </datalist>
@@ -25,8 +35,8 @@
 
 
   <div class="form-group">
-    <label for="InputPassword">Contraseña</label>
-    <input type="password" class="form-control" id="InputPassword" placeholder="Ingresa Contraseña">
+    <label for="ContraProfesor">Contraseña</label>
+    <input type="password" class="form-control" id="ContraProfesor" placeholder="Ingresa Contraseña">
   </div>
 
   <button type="submit" class="btn btn-primary mb-2">Ingresar Datos</button>

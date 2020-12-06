@@ -35,7 +35,7 @@ export class CrudGrupoComponent implements OnInit {
   onSubmit(){
     if(this.AltaGrupo.valid)
     {
-      console.log(this.AltaGrupo);
+      this.crud.insertarGrupo(this.AltaGrupo.get('id').value, this.AltaGrupo.get('grado').value, this.AltaGrupo.get('clase').value, this.AltaGrupo.get('profesor').value).subscribe()
     }
   }
 
