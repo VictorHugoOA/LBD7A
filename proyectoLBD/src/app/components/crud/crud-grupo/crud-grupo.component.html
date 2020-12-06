@@ -22,6 +22,16 @@
             <option *ngFor="let profe of profesores" value="{{profe.id}}">
         </datalist>
     </div>
+    <div class="form-group">
+        <label for="CicloInGrupo">Ciclo inicio</label>
+        <input type="number" min="2000" max="3000" step="1" class="form-control" maxlength="1" id="CicloInGrupo" formControlName="ciclo_inicio" placeholder="Ingresa Ciclo inicio">
+    </div>
+
+    <div class="form-group">
+        <label for="CicloFinGrupo">Ciclo final</label>
+        <input type="number" min="2000" max="3000" step="1" class="form-control" maxlength="1" id="CicloFinGrupo" formControlName="ciclo_final" placeholder="Ingresa Ciclo final">
+    </div>
+
 
 
     <button type="submit" class="btn btn-primary mb-2" [disabled]="!AltaGrupo.valid">Ingresar Datos</button>

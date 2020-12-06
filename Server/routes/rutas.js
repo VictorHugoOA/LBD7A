@@ -667,19 +667,62 @@ function createRouter(db) {
     })
   })
 
+  router.get('/todosGrupos', function(req, res){
+    db.query('select * from grupo', [], 
+    (error, results)=>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+  })
+
   //Consultas para el CRUD
   //Altas
+  //Alta grupo
   router.post('/insertarGrupo', function(req, res){
     const id = req.body.id;
     const grado = req.body.grado;
     const clase = req.body.clase;
     const profesor = req.body.profesor;
-    db.query('insert into grupo (id, grado, clase, id_profesor) values(?,?,?,?);',
+    db.query('insert into grupo (id, grado, clase, id_profesor, ciclo_inicio, ciclo_final) values(?,?,?,?, ?, ?);',
     [id, grado, clase, profesor], (error, results) =>{
       if(error) throw error;
       res.send(results);
       console.log(results);
     })
+  });
+  //Alta profesor
+  router.post('/insertarProfe', function(req, res)
+  {
+    const id = req.body.id;
+    const nombre = req.body.nombre;
+    const paterno = req.body.paterno;
+    const materno = req.body.materno;
+    const telefono = req.body.telefono;
+    const correo = req.body.correo; 
+    const sexo = req.body.sexo;
+    const password = req.body.password;
+
+    db.query('insert into profesor (id, nombre, apellido_pat, apellido_mat, correo, teléfono, sexo, contrasena) values(?, ?, ?, ?, ?, ?, ?, ?);',
+    [id, nombre, paterno, materno, correo, telefono, sexo, password],
+    (error, results) =>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+
+  })
+  //Alta Alumno
+  router.post('/insertarAlumno', function(req, res){
+    const id = req.body.id;
+    const nombre = req.body.nombre;
+    const paterno = req.body.paterno;
+    const materno = req.body.materno;
+    const sexo = req.body.sexo;
+    const password = req.body.password;
+    const grupo = req.body.grupo;
+    db.query('insert into alumno (id, nombre, apellido_pat, apellido_mat, id_grupo. sexo, contrasena) values(?, ?, ?, ?, ?, ?, ?)',
+    [id, nombre, paterno, materno, grupo, sexo, password])
   })
 
   //Mostrar la lista de los alumnos que hacen uan actividad.
