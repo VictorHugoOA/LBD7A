@@ -1,1 +1,62 @@
-<p>modprof works!</p>
+<app-navbar></app-navbar>
+
+<div class="container-fluid" style="margin: 30px;">
+    <div class="row m-5">
+        <div class="col-4">
+            <label><h3>Buscar</h3></label>
+            <input #termino (keyup.enter)= "buscar(termino.value)" type="text"  class="form-control" placeholder="ID Profesor">
+        </div>
+    </div>
+    <div class="row justify-content-between">
+      <div class="col-8">
+        <form [formGroup]="AltaProfesor" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="IDProfe">ID:</label>
+              <input type="text" class="form-control" id="IDProfe" maxlength="10" placeholder="Ingresa ID" formControlName="id" readonly  value="{{(profesor| async)?.id}}">
+            </div>
+            
+            <div class="form-group">
+              <label for="NombreProfesor">Nombre</label>
+              <input type="text" class="form-control" id="NombreProfesor" placeholder="Ingresa nombre" formControlName="nombre" value="{{(profesor| async)?.nombre}}" >
+            </div>
+          
+            <div class="form-group">
+              <label for="ProfesorApellidoPat">Apellido Paterno</label>
+              <input type="text" class="form-control" id="ProfesorApellidoPat" placeholder="Ingresa apellido paterno" formControlName="paterno" value="{{(profesor| async)?.apellido_pat}}">
+            </div>
+          
+            <div class="form-group">
+              <label for="ProfesorApellidoMat">Apellido Materno</label>
+              <input type="text" class="form-control" id="ProfesorApellidoMat" placeholder="Ingresa apellido materno" formControlName="materno" value="{{(profesor| async)?.apellido_mat}}">
+            </div>
+          
+            <div class="form-group">
+              <label for="TelefonoProfesor">Teléfono:</label>
+              <input type="text" maxlength="10" class="form-control" id="TelefonoProfesor" placeholder="Ingresa un número telefónico" formControlName="telefono" value="{{(profesor| async)?.telefono}}">
+            </div>
+          
+            <div class="form-group">
+              <label for="CorreoProfesor">Correo electrónico:</label>
+              <input type="email" class="form-control" id="CorreoProfesor" placeholder="Ingresa un correo electrónico" formControlName="correo" value="{{(profesor| async)?.correo}}">
+            </div>
+          
+            <div class="form-group">
+              <label for="SexoProfesor">Sexo</label>
+              <input class="form-control" id="SexoProfesor" list="SexoProfe" formControlName="sexo" value="{{(profesor| async)?.sexo}}">
+              <datalist id="SexoProfe">
+                <option value="F">
+                <option value="M">
+              </datalist>
+            </div>
+          
+          
+            <div class="form-group">
+              <label for="ContraProfesor">Contraseña</label>
+              <input type="text" class="form-control" id="ContraProfesor" placeholder="Ingresa Contraseña" formControlName="password" value="{{(profesor| async)?.contrasena}}">
+            </div>
+          
+            <button type="submit" class="btn btn-primary mb-2">Ingresar Datos</button>
+          </form>
+      </div>
+    </div>
+  </div>

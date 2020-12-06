@@ -37,6 +37,7 @@ import { ModmatComponent } from './components/crud/modmat/modmat.component';
 import { ModgruposComponent } from './components/crud/modgrupos/modgrupos.component';
 import { ModprofComponent } from './components/crud/modprof/modprof.component';
 import { ModalumComponent } from './components/crud/modalum/modalum.component';
+import { ModlibComponent } from './components/crud/modlib/modlib.component';
 
 
 
@@ -77,7 +78,7 @@ const routes: Routes = [
   { path: 'modgrupos', component: ModgruposComponent},
   { path: 'modprofesor', component: ModprofComponent},
   { path: 'modalumnos', component: ModalumComponent},
-  { path: 'modlibros', component: ModalumComponent},
+  { path: 'modlibros', component: ModlibComponent},
   { path: '**', component: LoginComponent },
 ];
 

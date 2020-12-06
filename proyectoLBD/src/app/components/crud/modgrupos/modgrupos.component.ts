@@ -41,6 +41,7 @@ export class ModgruposComponent implements OnInit {
   onSubmit(){
     if(this.AltaGrupo.valid)
     {
+      //cambiar sentencia por update
       this.crud.insertarGrupo(
         this.AltaGrupo.get('id').value, 
         this.AltaGrupo.get('grado').value, 

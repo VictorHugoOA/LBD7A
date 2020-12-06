@@ -47,6 +47,7 @@ export class ModalumComponent implements OnInit {
     if(this.AltaAlumno.valid)
     {
       console.log("actualizado");
+      //Poner sentencia
      /* this.crud.insertarAlumno(this.AltaAlumno.get('id').value,
       this.AltaAlumno.get('nombre').value,
       this.AltaAlumno.get('paterno').value,

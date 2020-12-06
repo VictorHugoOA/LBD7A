@@ -12,22 +12,22 @@
 
             <div class="form-group">
                 <label for="InputID">ID</label>
-                <input type="text" class="form-control" id="InputID" placeholder="Ingresa ID">
+                <input type="text" class="form-control" id="InputID" readonly value="{{( materia | async)?.id}}">
             </div>
         
             <div class="form-group">
                 <label for="NombreMateria">Nombre</label>
-                <input type="text" class="form-control" id="nombreMateria" placeholder="Ingresa Grado">
+                <input type="text" class="form-control" id="nombreMateria"  value="{{( materia | async)?.nombre}}">
             </div>
         
             <div class="form-group">
                 <label for="CampoMateria">Campo</label>
-                <input type="text" class="form-control" id="CampoMateria" placeholder="Ingresa Clase">
+                <input type="text" class="form-control" id="CampoMateria"  value="{{(materia | async)?.campo}}">
             </div>
         
             <div class="form-group">
                 <label for="GradoMateria">Grado de la materia</label>
-                <input id="GradoMateria" class="form-control" list="gradoMat">
+                <input id="GradoMateria" class="form-control" list="gradoMat"  value="{{(materia| async)?.nivel}}">
                 <datalist id="gradoMat">
                     <option value="1">
                     <option value="2">

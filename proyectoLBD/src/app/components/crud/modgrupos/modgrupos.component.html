@@ -12,34 +12,34 @@
 
             <div class="form-group">
                 <label for="GrupoID">ID</label>
-                <input type="text" class="form-control" id="GrupoID" formControlName="id" placeholder="Ingresa ID" readonly>
+                <input type="text" class="form-control" id="GrupoID" formControlName="id"  value="{{(grupo| async)?.id}}" readonly>
             </div>
         
             <div class="form-group">
                 <label for="GradoGrupo">Grado</label>
-                <input type="number" min="1" max="6" step="1" class="form-control" maxlength="1" id="GradoGrupo" formControlName="grado" placeholder="Ingresa Grado">
+                <input type="number" min="1" max="6" step="1" class="form-control" maxlength="1" id="GradoGrupo" formControlName="grado"  value="{{(grupo| async)?.grado}}">
             </div>
         
             <div class="form-group">
                 <label for="ClaseGrupo">Clase</label>
-                <input type="text" maxlength="1" class="form-control" id="ClaseGrupo" formControlName="clase" placeholder="Ingresa Clase">
+                <input type="text" maxlength="1" class="form-control" id="ClaseGrupo" formControlName="clase"  value="{{(grupo| async)?.clase}}">
             </div>
         
             <div class="form-group" *ngIf="profesores.length > 0">
                 <label for="InputGrado">Profesor</label>
-                <input class="form-control" list="grado" formControlName="profesor">
+                <input class="form-control" list="grado" formControlName="profesor"  value="{{(grupo| async)?.id_profesor}}">
                 <datalist id="grado">
                     <option *ngFor="let profe of profesores" value="{{profe.id}}">
                 </datalist>
             </div>
             <div class="form-group">
                 <label for="CicloInGrupo">Ciclo inicio</label>
-                <input type="number" min="2000" max="3000" step="1" class="form-control" maxlength="1" id="CicloInGrupo" formControlName="ciclo_inicio" placeholder="Ingresa Ciclo inicio">
+                <input type="number" min="2000" max="3000" step="1" class="form-control" maxlength="1" id="CicloInGrupo" formControlName="ciclo_inicio"  value="{{(grupo| async)?.ciclo_inicio}}">
             </div>
         
             <div class="form-group">
                 <label for="CicloFinGrupo">Ciclo final</label>
-                <input type="number" min="2000" max="3000" step="1" class="form-control" maxlength="1" id="CicloFinGrupo" formControlName="ciclo_final" placeholder="Ingresa Ciclo final">
+                <input type="number" min="2000" max="3000" step="1" class="form-control" maxlength="1" id="CicloFinGrupo" formControlName="ciclo_final"  value="{{(grupo| async)?.ciclo_final}}">
             </div>
         
         
