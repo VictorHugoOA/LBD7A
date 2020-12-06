@@ -13,6 +13,7 @@ export class ModmatComponent implements OnInit {
   materia: Observable<any>;
   profesores: any[] = [];
   modMateria: FormGroup;
+  AltaMateria: FormGroup;
   constructor(private fb: FormBuilder, private crud: CrudService) {
 
 

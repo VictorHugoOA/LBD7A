@@ -13,6 +13,7 @@ export class ModprofComponent implements OnInit {
 
   modProfesor: FormGroup
   profesor: Observable<any>;
+  AltaProfesor: FormGroup;
   constructor(private fb: FormBuilder, private crud: CrudService, private router: Router) { }
 
   buscar(id:string){

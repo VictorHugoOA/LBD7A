@@ -14,6 +14,7 @@ export class ModgruposComponent implements OnInit {
   grupo: Observable<any>;
   profesores: any[] = [];
   
+  AltaGrupo: FormGroup;
   constructor(private crud: CrudService, private fb: FormBuilder, private router: Router) {
     this.crud.getProfesores().subscribe((data: any[]) =>{
       for(var i = 0; i < data.length; ++i)

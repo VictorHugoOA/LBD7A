@@ -13,11 +13,17 @@ export class ModlibComponent implements OnInit {
   modLibro: FormGroup;
   materias: any[] = [];
   libro:Observable<any>
-  constructor(private fb: FormBuilder, private crud: CrudService, private router: Router) { }
+
+  AltaLibro: FormGroup;
+
+  constructor(private fb: FormBuilder, private crud: CrudService, private router: Router) {
+  }
 
   buscar(id:string){
     this.libro= this.crud.getLibro(id);
-
+    this.libro.subscribe((data: any) =>{
+      console.log(data);
+    })
   }
   
   ngOnInit(): void {

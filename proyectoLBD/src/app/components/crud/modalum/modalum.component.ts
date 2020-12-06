@@ -14,6 +14,7 @@ export class ModalumComponent implements OnInit {
   modAlumno: FormGroup;
   grupos: any[] = [];
   alumno: Observable<any>;
+  AltaAlumno: FormGroup;
 
   constructor(private fb: FormBuilder, private crud: CrudService, private router: Router) {
     this.crud.getGrupos().subscribe((data: any[]) =>{
