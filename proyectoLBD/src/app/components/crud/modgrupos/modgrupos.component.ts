@@ -42,15 +42,16 @@ export class ModgruposComponent implements OnInit {
   onSubmit(){
     if(this.modGrupo.valid)
     {
-      //cambiar sentencia por update
-      /*this.crud.setGrupo(
+      
+      this.crud.setGrupo(
         this.modGrupo.get('id').value, 
         this.modGrupo.get('grado').value, 
         this.modGrupo.get('clase').value, 
         this.modGrupo.get('profesor').value, 
         this.modGrupo.get('ciclo_inicio').value, 
-        this.modGrupo.get('ciclo_final').value).subscribe()*/
-      this.router.navigate(['/login']);
+        this.modGrupo.get('ciclo_final').value).subscribe();
+     // this.router.navigate(['/login']);
+     //poner navigate
     }
   }
 }

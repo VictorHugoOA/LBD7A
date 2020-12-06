@@ -38,7 +38,7 @@ export class ModprofComponent implements OnInit {
   {
     if(this.modProfesor.valid)
     {
-      /*this.crud.setProfesor(this.modProfesor.get('id').value,
+      this.crud.setProfesor(this.modProfesor.get('id').value,
       this.modProfesor.get('nombre').value,
       this.modProfesor.get('paterno').value,
       this.modProfesor.get('materno').value,
@@ -46,8 +46,9 @@ export class ModprofComponent implements OnInit {
       this.modProfesor.get('correo').value,
       this.modProfesor.get('sexo').value,
       this.modProfesor.get('password').value).subscribe((data: any) =>{
-        this.router.navigate(['/router']);
-      });*/
+        //this.router.navigate(['/router']);
+      });
+          /*poner navigate*/
     }
   }
 

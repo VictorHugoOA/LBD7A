@@ -13,7 +13,6 @@ export class ModmatComponent implements OnInit {
   materia: Observable<any>;
   profesores: any[] = [];
   modMateria: FormGroup;
-  AltaMateria: FormGroup;
   constructor(private fb: FormBuilder, private crud: CrudService) {
 
 
@@ -35,12 +34,12 @@ export class ModmatComponent implements OnInit {
   {
     if(this.modMateria.valid)
     {
-     /* this.crud.setMateria(this.AltaMateria.get('id').value,
+     this.crud.setMateria(this.AltaMateria.get('id').value,
       this.modMateria.get('nombre').value,
       this.modMateria.get('campo').value,
       this.modMateria.get('nivel').value).subscribe();
-      poner navigate
-      */
+      /*poner navigate*/
+      
     }
   }
 

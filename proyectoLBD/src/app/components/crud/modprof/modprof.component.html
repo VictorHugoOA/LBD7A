@@ -9,7 +9,7 @@
     </div>
     <div class="row justify-content-between">
       <div class="col-8">
-        <form [formGroup]="AltaProfesor" (ngSubmit)="onSubmit()">
+        <form [formGroup]="modProfesor" (ngSubmit)="onSubmit()">
             <div class="form-group">
               <label for="IDProfe">ID:</label>
               <input type="text" class="form-control" id="IDProfe" maxlength="10" placeholder="Ingresa ID" formControlName="id" readonly  value="{{(profesor| async)?.id}}">

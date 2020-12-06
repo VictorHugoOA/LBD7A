@@ -14,8 +14,7 @@ export class ModalumComponent implements OnInit {
   modAlumno: FormGroup;
   grupos: any[] = [];
   alumno: Observable<any>;
-  AltaAlumno: FormGroup;
-
+ 
   constructor(private fb: FormBuilder, private crud: CrudService, private router: Router) {
     this.crud.getGrupos().subscribe((data: any[]) =>{
       for(var i = 0; i < data.length; ++i)
@@ -48,15 +47,16 @@ export class ModalumComponent implements OnInit {
     if(this.modAlumno.valid)
     {
       console.log("actualizado");
-      //Poner sentencia
-      /*this.crud.setAlumno(this.AltaAlumno.get('id').value,
+      
+      this.crud.setAlumno(this.AltaAlumno.get('id').value,
       this.modAlumno.get('nombre').value,
       this.modAlumno.get('paterno').value,
       this.modAlumno.get('materno').value,
       this.modAlumno.get('sexo').value,
       this.modAlumno.get('password').value,
-      this.modAlumno.get('grupo').value).subscribe();*/
-      this.router.navigate(['/admin']);
+      this.modAlumno.get('grupo').value).subscribe();
+     // this.router.navigate(['/admin']);
+     //poner el navigate
     }
   }
 
