@@ -709,7 +709,27 @@ function createRouter(db) {
     const password = req.body.password;
     const grupo = req.body.grupo;
     db.query('insert into alumno (id, nombre, apellido_pat, apellido_mat, id_grupo, sexo, contrasena) values(?, ?, ?, ?, ?, ?, ?)',
-    [id, nombre, paterno, materno, grupo, sexo, password])
+    [id, nombre, paterno, materno, grupo, sexo, password], (error, results)=>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+  })
+
+  //Alta Materia
+  router.post('/insertarMateria', function(req, res)
+  {
+    const id = req.body.id;
+    const nombre = req.body.nombre;
+    const campo = req.body.campo;
+    const nivel = req.body.nivel;
+    db.query('insert into materia (id, nombre, campo, nivel) values(?, ?, ?, ?)',
+    [id, nombre, campo, nivel],
+    (error, results)=>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
   })
   // Mostrar Profesores
   router.get('/Profesores', function (req, res) {

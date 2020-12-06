@@ -14,7 +14,7 @@ export class CrudAlumnoComponent implements OnInit {
   grupos: any[] = []
 
   constructor(private fb: FormBuilder, private crud: CrudService, private router: Router) {
-    this.crud.getGrupos().subscribe((data: any[]) =>{
+    this.crud.AllGrupos().subscribe((data: any[]) =>{
       for(var i = 0; i < data.length; ++i)
       {
         this.grupos.push(data[i]);

@@ -15,7 +15,7 @@ export class CrudGrupoComponent implements OnInit {
   profesores: any[] = [];
   
   constructor(private crud: CrudService, private fb: FormBuilder, private router: Router) {
-    this.crud.getProfesores().subscribe((data: any[]) =>{
+    this.crud.AllProfesores().subscribe((data: any[]) =>{
       for(var i = 0; i < data.length; ++i)
       {
         this.profesores.push(data[i]);
@@ -25,7 +25,7 @@ export class CrudGrupoComponent implements OnInit {
 
   ngOnInit(): void {
     this.AltaGrupo = this.fb.group({
-      id: ['', Validators.required],
+      id: ['', [Validators.required,  Validators.pattern("g-+[0-9]*$"), Validators.maxLength(10)]],
       grado: ['', Validators.required],
       clase: ['', Validators.required],
       profesor: ['', Validators.required],

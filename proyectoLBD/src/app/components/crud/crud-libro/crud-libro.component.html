@@ -21,7 +21,10 @@
   
     <div class="form-group">
       <label for="InputIDMateria">ID de la materia</label>
-      <input type="email" class="form-control" id="InputIDMateria" placeholder="Ingresa ID de la materia">
+      <input class="form-control" id="InputIDMateria" list="materiasLibro" placeholder="Ingresa ID de la materia">
+      <datalist id="materiasLibro">
+        <option *ngFor="let mat of materias" value="{{mat.id}}">{{mat.nombre}}</option>
+      </datalist>  
     </div>
   
     <button type="submit" class="btn btn-primary mb-2">Ingresar Datos</button>

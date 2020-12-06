@@ -341,6 +341,8 @@ begin
     declare cursor_i cursor for select id from materia where nivel = new.grado;
     declare continue handler for not found set done = 1;
     
+    delete from clases_de where id_grupo = new.id;
+    
     open cursor_i;
     materias: loop
 		fetch cursor_i into idMat;
@@ -349,7 +351,31 @@ begin
         end if;
         insert into clases_de (id_grupo, id_materia) values(new.id, idMat);
     end loop materias;
+    
 end//
 DELIMITER ;
+
+DELIMITER //
+create trigger tr_in_materia after insert on materia 
+for each row
+begin
+
+	declare idG varchar(10);
+    declare done int default 0;
+    declare cursor_i cursor for select id from grupo where grado = new.nivel;
+    declare continue handler for not found set done = 1;
+    
+    open cursor_i;
+    clases: loop
+		fetch cursor_i into idG; 
+		if done then
+			leave clases;
+		end if;
+        insert into clases_de (id_grupo, id_materia) values(idG, new.id);
+    end loop clases;
+
+end//
+DELIMITER ;
+
 /*Ejemplo para ejecutar el procedimiento para avances
 call avances("a000001", @out); select @out;*/

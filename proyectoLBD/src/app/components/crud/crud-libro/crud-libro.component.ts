@@ -10,6 +10,8 @@ import { GrupoComponent } from '../../grupo/grupo.component';
 export class CrudLibroComponent implements OnInit {
   AltaLibro: FormGroup
 
+  materias: any[] = []
+
   constructor() { }
 
   ngOnInit(): void {

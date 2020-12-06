@@ -10,7 +10,7 @@ export class CrudService {
   constructor(private http: HttpClient) {}
 
   getProfesores(){
-    return this.http.get('http://localhost:3000/todosProfesores');
+    return this.http.get('http://localhost:3000/Profesores');
   }
 
   insertarGrupo(id: string, grado: number, clase: string, profesor: string, cicloIn: number, cicloFin: number)
@@ -24,9 +24,14 @@ export class CrudService {
     return this.http.post('http://localhost:3000/insertarProfe', {id: id, nombre: nombre, paterno: paterno, materno: materno, telefono: telefono, correo: correo, sexo: sexo, password: contra});
   }
 
+  insertarMateria(id: string, nombre: string, campo: string, nivel: string)
+  {
+    return this.http.post('http://localhost:3000/insertarMateria', {id: id, nombre: nombre, campo: campo, nivel: nivel});
+  }
+
   getGrupos()
   {
-    return this.http.get('http://localhost:3000/todosGrupos');
+    return this.http.get('http://localhost:3000/Grupos');
   }
 
   insertarAlumno(id: string, nombre: string, paterno: string, materno: string, sexo: string, contra: string, grupo: string)
