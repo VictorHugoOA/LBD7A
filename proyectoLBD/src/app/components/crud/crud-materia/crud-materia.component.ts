@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CrudService } from 'src/app/services/crud/crud.service';
 @Component({
   selector: 'app-crud-materia',
@@ -9,7 +10,7 @@ import { CrudService } from 'src/app/services/crud/crud.service';
 export class CrudMateriaComponent implements OnInit {
 
   AltaMateria: FormGroup;
-  constructor(private fb: FormBuilder, private crud: CrudService) {
+  constructor(private fb: FormBuilder, private crud: CrudService, private router: Router) {
 
 
   }
@@ -31,6 +32,7 @@ export class CrudMateriaComponent implements OnInit {
       this.AltaMateria.get('nombre').value,
       this.AltaMateria.get('campo').value,
       this.AltaMateria.get('nivel').value).subscribe();
+      this.router.navigateByUrl('/login');
     }
   }
 

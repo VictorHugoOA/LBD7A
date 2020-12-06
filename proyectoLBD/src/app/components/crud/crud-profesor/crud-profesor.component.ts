@@ -42,7 +42,7 @@ export class CrudProfesorComponent implements OnInit {
       this.AltaProfesor.get('correo').value,
       this.AltaProfesor.get('sexo').value,
       this.AltaProfesor.get('password').value).subscribe((data: any) =>{
-        this.router.navigate(['/router']);
+        this.router.navigateByUrl('/login');
       });
     }
   }

@@ -29,6 +29,11 @@ export class CrudService {
     return this.http.post('http://localhost:3000/insertarMateria', {id: id, nombre: nombre, campo: campo, nivel: nivel});
   }
 
+  insertarLibro(id: string, titulo: string, year: string, editorial: string, materia: string, archivo: string)
+  {
+    return this.http.post('http://localhost:3000/insertarLibro', {id: id, titulo: titulo, year: year, editorial: editorial, materia: materia, archivo: archivo});
+  }
+
   getGrupos()
   {
     return this.http.get('http://localhost:3000/Grupos');

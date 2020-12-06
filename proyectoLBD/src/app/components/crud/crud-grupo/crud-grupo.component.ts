@@ -38,7 +38,7 @@ export class CrudGrupoComponent implements OnInit {
     if(this.AltaGrupo.valid)
     {
       this.crud.insertarGrupo(this.AltaGrupo.get('id').value, this.AltaGrupo.get('grado').value, this.AltaGrupo.get('clase').value, this.AltaGrupo.get('profesor').value, this.AltaGrupo.get('ciclo_inicio').value, this.AltaGrupo.get('ciclo_final').value).subscribe()
-      this.router.navigate(['/login']);
+      this.router.navigateByUrl('/login');
     }
   }
 

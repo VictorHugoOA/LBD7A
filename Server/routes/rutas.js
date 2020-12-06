@@ -690,7 +690,7 @@ function createRouter(db) {
     const sexo = req.body.sexo;
     const password = req.body.password;
 
-    db.query('insert into profesor (id, nombre, apellido_pat, apellido_mat, correo, teléfono, sexo, contrasena) values(?, ?, ?, ?, ?, ?, ?, ?);',
+    db.query('insert into profesor (id, nombre, apellido_pat, apellido_mat, correo, telefono, sexo, contrasena) values(?, ?, ?, ?, ?, ?, ?, ?);',
     [id, nombre, paterno, materno, correo, telefono, sexo, password],
     (error, results) =>{
       if(error) throw error;
@@ -731,6 +731,26 @@ function createRouter(db) {
       console.log(results);
     })
   })
+
+  //Alta libro
+  router.post('/insertarLibro', function(req, res)
+  {
+    const id = req.body.id;
+    const titulo = req.body.titulo;
+    const year = req.body.year;
+    const editorial = req.body.editorial;
+    const materia = req.body.materia;
+    const archivo = req.body.archivo;
+
+    db.query('insert into libro (id, año, archivo, editorial, título, id_materia) values(?,?,?,?,?,?)',
+    [id, year, archivo, editorial, titulo, materia], (error, results)=>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+
+  })
+
   // Mostrar Profesores
   router.get('/Profesores', function (req, res) {
     db.query(
