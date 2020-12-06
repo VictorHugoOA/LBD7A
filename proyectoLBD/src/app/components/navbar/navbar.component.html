@@ -33,6 +33,41 @@
                 <li class="nav-item"*ngIf="auth.userData.tipo =='Profesor'">
                     <a class="nav-link"  routerLink="/libro">Libros</a>
                 </li>
+                <li class="nav-item active"  *ngIf="auth.userData.tipo =='Administrador'">
+                    <a class="nav-link" href="/admin">Inicio</a> 
+                </li>
+        
+                <li class="nav-item active"  *ngIf="auth.userData.tipo =='Profesor'">
+                    <a class="nav-link" href="/listagrupos">Grupos</a> 
+                </li>
+                <li class="nav-item"*ngIf="auth.userData.tipo =='Profesor'">
+                    <a class="nav-link" routerLink="/tutoria">Profesores</a>
+                </li>
+                <li class="nav-item"*ngIf="auth.userData.tipo =='Profesor'">
+                    <a class="nav-link"  routerLink="/">Alumnos</a>
+                </li>
+                <li class="nav-item dropdown" *ngIf="auth.userData.tipo =='Administrador'">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Modificar
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/modmat">Materias</a> 
+                        <a class="dropdown-item" href="/modgrupos">Grupos</a>
+                        <a class="dropdown-item" href="/modalumnos">Alumnos</a>
+                        <a class="dropdown-item" href="/modprofesor">Profesores</a>
+                    </div>
+                  </li>
+                  <li class="nav-item dropdown" *ngIf="auth.userData.tipo =='Administrador'">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Ver
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="/listamat">Materias</a> 
+                      <a class="dropdown-item" href="/listagrupos">Grupos</a>
+                      <a class="dropdown-item" href="/listaalumnos">Alumnos</a>
+                      <a class="dropdown-item" href="/listaprofesor">Profesores</a>
+                    </div>
+                  </li>
         </ul>
         <div *ngIf="auth.userData.tipo == 'Estudiante'">
             <a routerLink="/perfil/{{(alumno | async)?.id}}/Estudiante">

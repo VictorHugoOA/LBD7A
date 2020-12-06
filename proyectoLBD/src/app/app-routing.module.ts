@@ -28,6 +28,10 @@ import { ResponderComponent } from './components/responder/responder.component';
 import { CrearArchivoTutoriaComponent } from './components/crear-archivo-tutoria/crear-archivo-tutoria.component';
 import { ArchivosTutoriaComponent } from './components/archivos-tutoria/archivos-tutoria.component';
 import { CrudComponent } from './components/crud/crud.component';
+import { ListamatComponent } from './components/crud/listamat/listamat.component';
+import { ListagruposComponent } from './components/crud/listagrupos/listagrupos.component';
+import { ListaprofsComponent } from './components/crud/listaprofs/listaprofs.component';
+import { ListaalumnosComponent } from './components/crud/listaalumnos/listaalumnos.component';
 
 
 
@@ -59,6 +63,10 @@ const routes: Routes = [
   { path: 'archivoTutoria/:id', component: CrearArchivoTutoriaComponent },
   { path: 'materialTutoria/:id', component: ArchivosTutoriaComponent },
   { path: 'admin', component: CrudComponent },
+  { path: 'listamat', component: ListamatComponent},
+  { path: 'listagrupos', component: ListagruposComponent},
+  { path: 'listaprofesor', component: ListaprofsComponent},
+  { path: 'listaalumnos', component: ListaalumnosComponent},
   { path: '**', component: LoginComponent },
 ];
 
