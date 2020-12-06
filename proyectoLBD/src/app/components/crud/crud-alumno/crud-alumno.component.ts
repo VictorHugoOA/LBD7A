@@ -46,7 +46,7 @@ export class CrudAlumnoComponent implements OnInit {
       this.AltaAlumno.get('password').value,
       this.AltaAlumno.get('grupo').value).subscribe();
       this.router.navigateByUrl('/login');
-    }
+      }
   }
 
 }
