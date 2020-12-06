@@ -240,6 +240,7 @@ begin
     /*Cerramos cursor*/
     close cursor_i;
 end//
+DELIMITER ;
 
 DELIMITER //
 create trigger tr_del_actividad before delete on actividad
@@ -249,6 +250,8 @@ begin
 	delete from realiza where id_actividad = old.id;
 end//
 DELIMITER ;
+
+
 
 
 /*Ejemplo para ejecutar el procedimiento para avances

@@ -652,6 +652,30 @@ function createRouter(db) {
       res.send(results);
       console.log(results);
     })
+  });
+
+  router.get('/todosProfesores', function(req, res)
+  {
+    db.query('select * from profesor', [], (error, results) => {
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
+  })
+
+  //Consultas para el CRUD
+  //Altas
+  router.post('/insertarGrupo', function(req, res){
+    const id = req.body.id;
+    const grado = req.body.grado;
+    const clase = req.body.clase;
+    const profesor = req.body.profesor;
+    db.query('insert into grupo (id, grado, clase, id_profesor) values(?,?,?,?);',
+    [id, grado, clase, profesor], (error, results) =>{
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
   })
   //Mostrar la lista de los alumnos que hacen uan actividad.
   router.get('/ListaAlumnosActividad/:id', function(req, res){

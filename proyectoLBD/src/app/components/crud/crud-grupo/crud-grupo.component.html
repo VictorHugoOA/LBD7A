@@ -1,74 +1,28 @@
-
-
-<form [formGroup]="AltaGrupo">
+<form [formGroup]="AltaGrupo" (ngSubmit)="onSubmit()">
 
     <div class="form-group">
-      <label for="InputID">ID</label>
-      <input type="text" class="form-control" id="InputID" placeholder="Ingresa ID">
+        <label for="GrupoID">ID</label>
+        <input type="text" class="form-control" id="GrupoID" formControlName="id" placeholder="Ingresa ID">
     </div>
-    
+
     <div class="form-group">
-        <label for="InputGrado">Grado</label>
-        <input type="text" class="form-control" id="InputGrado" placeholder="Ingresa Grado">
-      </div>
-
-      <div class="form-group">
-        <label for="InputClase">Clase</label>
-        <input type="text" class="form-control" id="InputClase" placeholder="Ingresa Clase">
-      </div>
-
-      <div class="form-group">
-        <label for="InputIDProf">ID Profesor</label>
-        <input type="text" class="form-control" id="InputSexo" placeholder="Ingresa ID de profesor">
-      </div>
-
-
-      
-
-      <button type="submit" class="btn btn-primary mb-2">Ingresar Datos</button>
-  </form>
-
-  <form [formGroup]="BajaGrupo">
-      <label for="DeleteID">Ingrese ID del profesor a eliminar</label>
-      <li  id="DeleteID"></li>
-      <button type="submit" class="btn btn-warning">Eliminar</button>
-  </form>
-
-  <form [formGroup]="MostrarGrupo">
-  <div class="container">
-    <div class="card">
-        <div class="card-header">
-            
-            <div class="card-body">
-              <label for="InputIDProf">Ingrese el ID del profesor</label>
-              <input type="text"id="InputIDProf" placeholder="Ingrese ID">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Grado</th>
-                            <th>Clase</th>
-                            <th>ID_Profesor</th>
-
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="text center">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            
-                            <td>   
-                                <button class="btn btn-warning">Editar</button>
-                                <button class="btn btn-warning" style="margin-left: 10px;">Eliminar</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <label for="GradoGrupo">Grado</label>
+        <input type="number" min="1" max="6" step="1" class="form-control" maxlength="1" id="GradoGrupo" formControlName="grado" placeholder="Ingresa Grado">
     </div>
-</div>
+
+    <div class="form-group">
+        <label for="ClaseGrupo">Clase</label>
+        <input type="text" maxlength="1" class="form-control" id="ClaseGrupo" formControlName="clase" placeholder="Ingresa Clase">
+    </div>
+
+    <div class="form-group" *ngIf="profesores.length > 0">
+        <label for="InputGrado">Profesor</label>
+        <input class="form-control" list="grado" formControlName="profesor">
+        <datalist id="grado">
+            <option *ngFor="let profe of profesores" value="{{profe.id}}">
+        </datalist>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary mb-2" [disabled]="!AltaGrupo.valid">Ingresar Datos</button>
 </form>

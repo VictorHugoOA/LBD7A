@@ -6,16 +6,27 @@
     </div>
 
     <div class="form-group">
-        <label for="InputGrado">Nombre</label>
-        <input type="text" class="form-control" id="InputGrado" placeholder="Ingresa Grado">
+        <label for="NombreMateria">Nombre</label>
+        <input type="text" class="form-control" id="nombreMateria" placeholder="Ingresa Grado">
     </div>
 
     <div class="form-group">
-        <label for="InputClase">Campo</label>
-        <input type="text" class="form-control" id="InputClase" placeholder="Ingresa Clase">
+        <label for="CampoMateria">Campo</label>
+        <input type="text" class="form-control" id="CampoMateria" placeholder="Ingresa Clase">
     </div>
 
-    
+    <div class="form-group">
+        <label for="GradoMateria">Grado de la materia</label>
+        <input id="GradoMateria" class="form-control" list="gradoMat">
+        <datalist id="gradoMat">
+            <option value="1">
+            <option value="2">
+            <option value="3">
+            <option value="4">
+            <option value="5">
+            <option value="6">
+        </datalist>
+    </div>
 
     <button type="submit" class="btn btn-primary mb-2">Ingresar Datos</button>
 </form>
