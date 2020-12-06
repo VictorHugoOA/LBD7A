@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+<div class="container-fluid" style="margin-top: 5px;">
+  <div class="row justify-content-between">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body  table-responsive">
+
+          <table class="table ">
+            <thead>
+              <tr>
+                <th scope="col">
+                  <h4 class="card-title">Libros</h4>
+                </th>
+              </tr>
+              <tr id="encabezado">
+                  <td>ID</td>
+                  <td>Titulo</td>
+                  <td>Año</td>
+                  <td>ID Materia</td>
+                  <td>Link</td>
+              
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let libro of libros">
+
+                <td>{{libro.id}}</td>
+                <td>{{libro['título']}}</td>
+                <td>{{libro['año']}}</td>
+                <td>{{libro.id_materia}}</td>
+                <td *ngIf="libro.archivo"><a [href]="libro.archivo" target="_blank" style="background-color: #942646;" class="btn btn-block btn-primary">Ir al libro</a></td>
+                <td *ngIf="libro.archivo==null">No hay</td>
+              
+              </tr>
+        
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

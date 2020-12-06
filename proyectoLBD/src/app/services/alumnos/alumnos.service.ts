@@ -44,6 +44,10 @@ export class AlumnosService {
     return this.http.post('http://localhost:3000/crearTutoria', {idAl: idAl, pregunta: pregunta});
   }
 
+  AllAlumnos(){
+    return this.http.get('http://localhost:3000/Alumnos');
+  }
+
   getTutoria(id: string)
   {
     return this.http.get(`http://localhost:3000/tutoria/${id}`).pipe(map((data: any[]) => {return data[0];}));
