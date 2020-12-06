@@ -286,6 +286,31 @@ Values
 ("a000059","Samir","Ayala","Saldivar","g-12","M","c000059"),
 ("a000060","Ibrahim","Garcia","Zavala","g-12","M","c000060");
 
+DELIMITER //
+create trigger tr_in_grupo after insert on grupo
+for each row
+begin
+
+    declare idMat varchar(10);
+	declare done int default 0;
+	declare cursor_i cursor for (select id from mat
+    eria where id in (select clases_de.id_materia from clases_de left join grupo on clases_de.id_grupo = grupo.id where grupo.grado = new.grado));
+    declare continue handler for not found set done = 1;
+    
+    open cursor_i;
+    materias: loop
+	fetch cursor_i into idMat;
+    if done then
+		leave materias;
+	end if;
+    insert into clases_de (id_grupo, id_materia) values(new.id, idMat);
+    end loop materias;
+    close cursor_i;
+
+end//
+DELIMITER ;
+
+
 /*
 insert into recurso (titulo, id_materia, id_profesor, archivo)
 Values ("titulo1","m-003","p000003", "F"),
