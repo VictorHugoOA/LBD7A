@@ -32,7 +32,7 @@ create table alumno(
     apellido_pat varchar(25) not null,
     apellido_mat varchar(25) not null,
     sexo char not null,
-    id_grupo varchar(10) not null,
+    id_grupo varchar(10),
     primary key(id),
 	contrasena varchar(15) not null,
     foreign key(id_grupo) references grupo(id)
@@ -277,6 +277,43 @@ begin
 
 end//
 DELIMITER ;
+
+DELIMITER //
+create trigger tr_del_grupo before delete on grupo
+for each row
+begin
+	declare idG varchar(10);
+    declare idM varchar(10);
+    declare idA varchar(10);
+    declare done int default 0;
+    declare cursor_i cursor for select id_grupo, id_materia from clases_de where id_grupo = old.id;
+    declare cursor_j cursor for select id from alumno where id_grupo = old.id;
+    declare continue handler for not found set done = 1;
+    
+    open cursor_i;
+    materias: loop
+		fetch cursor_i into idG, idM;
+		if done then
+			leave materias;
+		end if;
+		delete from clases_de where id_grupo = idG and id_materia = idM;
+    end loop materias;
+
+	set done = 0;
+	open cursor_j;
+    alumnos: loop
+		fetch cursor_j into idA;
+        if done then
+			leave alumnos;
+		end if;
+        update alumno set id_grupo = null where id = idA;
+	end loop alumnos;
+
+end//
+DELIMITER ;
+
+delete from grupo where id = "g-1";
+select * from alumno;
 
 /*Ejemplo para ejecutar el procedimiento para avances
 call avances("a000001", @out); select @out;*/
