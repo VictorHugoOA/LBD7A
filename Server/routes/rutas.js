@@ -749,6 +749,18 @@ function createRouter(db) {
       console.log(results);
     })
 
+  });
+
+  //Modificar o Update de las clases;
+  //Update Alumno
+  router.post('/modificarAlumno', function(req, res){
+    const id = req.body.id;
+    const nombre = req.body.nombre;
+    const paterno = req.body.paterno;
+    const materno = req.body.materno;
+    const sexo = req.body.sexo;
+    const password = req.body.password;
+    //db.query('');
   })
 
   // Mostrar Profesores
