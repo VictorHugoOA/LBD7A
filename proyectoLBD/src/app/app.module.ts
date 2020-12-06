@@ -51,6 +51,7 @@ import { CrudMateriaComponent } from './components/crud/crud-materia/crud-materi
 import { CrudProfesorComponent } from './components/crud/crud-profesor/crud-profesor.component';
 import { CrudGrupoComponent } from './components/crud/crud-grupo/crud-grupo.component';
 import { CrudTutoriaComponent } from './components/crud/crud-tutoria/crud-tutoria.component';
+import { CrudLibroComponent } from './components/crud/crud-libro/crud-libro.component';
 
 
 
@@ -99,7 +100,8 @@ import { CrudTutoriaComponent } from './components/crud/crud-tutoria/crud-tutori
     CrudMateriaComponent,
     CrudProfesorComponent,
     CrudGrupoComponent,
-    CrudTutoriaComponent
+    CrudTutoriaComponent,
+    CrudLibroComponent
 
   ],
   imports: [
