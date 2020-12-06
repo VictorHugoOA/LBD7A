@@ -30,7 +30,7 @@ export class CrudService {
 
   insertarAlumno(id: string, nombre: string, paterno: string, materno: string, sexo: string, contra: string, grupo: string)
   {
-    return this.http.post('', {});
+    return this.http.post('http://localhost:3000/insertarAlumno', {id: id, nombre: nombre, paterno: paterno, materno: materno, sexo: sexo, password: contra, grupo: grupo});
   }
 
 }

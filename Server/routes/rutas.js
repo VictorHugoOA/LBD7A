@@ -721,7 +721,7 @@ function createRouter(db) {
     const sexo = req.body.sexo;
     const password = req.body.password;
     const grupo = req.body.grupo;
-    db.query('insert into alumno (id, nombre, apellido_pat, apellido_mat, id_grupo. sexo, contrasena) values(?, ?, ?, ?, ?, ?, ?)',
+    db.query('insert into alumno (id, nombre, apellido_pat, apellido_mat, id_grupo, sexo, contrasena) values(?, ?, ?, ?, ?, ?, ?)',
     [id, nombre, paterno, materno, grupo, sexo, password])
   })
 
