@@ -29,7 +29,8 @@ values
 ("g-011", 5, "B", "p000011", 2016, 2022),
 ("g-012", 6, "B", "p000012", 2015, 2021);
 
-insert into materia (id, nombre, Campo) 
+
+insert into materia (id, nombre, Campo, nivel) 
 Values 
 ("m-001", "Español 1", "Lenguaje y Comunicación", 1),
 ("m-002", "Español 2","Lenguaje y Comunicación", 2),
