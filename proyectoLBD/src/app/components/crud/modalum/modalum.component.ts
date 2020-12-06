@@ -46,13 +46,14 @@ export class ModalumComponent implements OnInit {
   {
     if(this.AltaAlumno.valid)
     {
-      this.crud.insertarAlumno(this.AltaAlumno.get('id').value,
+      console.log("actualizado");
+     /* this.crud.insertarAlumno(this.AltaAlumno.get('id').value,
       this.AltaAlumno.get('nombre').value,
       this.AltaAlumno.get('paterno').value,
       this.AltaAlumno.get('materno').value,
       this.AltaAlumno.get('sexo').value,
       this.AltaAlumno.get('password').value,
-      this.AltaAlumno.get('grupo').value).subscribe();
+      this.AltaAlumno.get('grupo').value).subscribe();*/
       this.router.navigate(['/admin']);
     }
   }
