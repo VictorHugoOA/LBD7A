@@ -16,7 +16,7 @@ export class ModalumComponent implements OnInit {
   grupos: any[] = [];
   alumno: Observable<any>;
  
-  constructor(private fb: FormBuilder, private crud: CrudService, private router: Router) {
+  constructor(private fb: FormBuilder, private crud: CrudService, private router: Router, private toast: ToastrService) {
     this.crud.getGrupos().subscribe((data: any[]) =>{
       for(var i = 0; i < data.length; ++i)
       {
@@ -57,15 +57,22 @@ export class ModalumComponent implements OnInit {
       this.modAlumno.get('materno').value,
       this.modAlumno.get('sexo').value,
       this.modAlumno.get('password').value,
-      this.modAlumno.get('grupo').value).subscribe();
-      this.router.navigateByUrl('/admin');
+      this.modAlumno.get('grupo').value).subscribe((data: any) =>{
+        this.toast.success("Se ha modificado el alumno en la base de datos", "Modificar Alumno")
+        this.router.navigateByUrl('/admin');
+      });
+     // this.router.navigate(['/admin']);
+     //poner el navigate
     }
   }
 
   
   borrar()
   {
-    this.crud.borrarAlumno(this.modAlumno.get('id').value).subscribe();
+    this.crud.borrarAlumno(this.modAlumno.get('id').value).subscribe((data: any) =>{
+      this.toast.success("Se ha borrado el alumno de la base de datos", "Borrar Alumno");
+      this.router.navigateByUrl('/admin');
+    });
   }
 
 

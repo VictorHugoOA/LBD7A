@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CrudService } from 'src/app/services/crud/crud.service';
 
 
@@ -15,7 +16,7 @@ export class CrudLibroComponent implements OnInit {
 
   materias: any[] = []
 
-  constructor(private fb: FormBuilder, private crud: CrudService, private router: Router) {
+  constructor(private fb: FormBuilder, private crud: CrudService, private router: Router, private toast: ToastrService) {
     this.crud.AllMaterias().subscribe((data: any[]) => {
       for (var i = 0; i < data.length; ++i) {
         this.materias.push(data[i]);
@@ -44,7 +45,11 @@ export class CrudLibroComponent implements OnInit {
       this.AltaLibro.get('year').value,
       this.AltaLibro.get('editorial').value,
       this.AltaLibro.get('materia').value,
-      this.AltaLibro.get('archivo').value).subscribe();
+      this.AltaLibro.get('archivo').value).subscribe((data: any) =>{
+        this.toast.success("Se añadio el libro a la base de datos", "Alta Libro");
+      }, (error: any) =>{
+        this.toast.error("Ocurrió un error en el sistema. Lo más probable es que haya ingresado un id duplicado", "Error");
+      });
       this.router.navigateByUrl('/login');
     }
   }

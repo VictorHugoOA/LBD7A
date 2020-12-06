@@ -28,7 +28,7 @@ function createRouter(db) {
       'Select * from profesor where id = ?',
       id,
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -43,7 +43,7 @@ function createRouter(db) {
       'Select * from Materia where id = ?',
       id,
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -58,7 +58,7 @@ function createRouter(db) {
       'select * from grupoal where id=? ',
       id,
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -73,7 +73,7 @@ function createRouter(db) {
       'select * from Materia Mat left join clases_de Clas on Mat.id = Clas.id_materia where id_grupo =(select id_grupo from Alumno where id=?);',
       id,
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -89,7 +89,7 @@ function createRouter(db) {
       'select * from alumnosact where id_alumno = ? and id_materia =?',
       [idalum, idmat],
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -105,7 +105,7 @@ function createRouter(db) {
       'select * from actividad Act left join realiza Rea on Act.id=Rea.id_actividad where id_alumno = ? and Act.id_materia =? and Act.estado ="1"',
       [idalum, idmat],
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -120,7 +120,7 @@ function createRouter(db) {
       'select * from actividad Act where id_materia = ?',
       [idmat],
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -135,7 +135,7 @@ function createRouter(db) {
       'select * from actividad where id in(select id_actividad from AlumnosAct AA left join Alumno A on AA.id_alumno= A.id where A.id_grupo = ? and AA.id_materia=?)',
       [idgrup, idmat],
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -149,7 +149,7 @@ function createRouter(db) {
       'select * from actividad where id= ?',
       [idact],
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -163,7 +163,7 @@ function createRouter(db) {
       'select id,grado,clase from grupo where id_profesor= ?',
       [idprof],
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -178,7 +178,7 @@ function createRouter(db) {
       'select * from ListaAlumnos where id_profesor= ? ',
       [idprof, idgrup],
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -192,7 +192,7 @@ function createRouter(db) {
       'select * from materia where id in (select id_materia from clases_de C left join grupo G on C.id_grupo= G.id where G.id_profesor=?)',
       [idprof],
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -206,7 +206,7 @@ function createRouter(db) {
       'select profesor.*, grupo.* from alumno, grupo, profesor where alumno.id = ? and alumno.id_grupo = grupo.id and grupo.id_profesor = profesor.id',
       [idalumno],
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -221,7 +221,7 @@ function createRouter(db) {
       'call login_alumno(?, ?);',
       [idalumno, cont],
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -236,7 +236,7 @@ function createRouter(db) {
       'call login_profesor(?, ?);',
       [idprof, cont],
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -250,7 +250,7 @@ function createRouter(db) {
       'call avances(?);',
       [idalum],
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -264,7 +264,7 @@ function createRouter(db) {
       'select * from alumnosact where id_alumno = ? and estado=0 and estado_entrega=0',
       [idalum],
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -280,7 +280,7 @@ function createRouter(db) {
       'select * from alumnosact where id_alumno = ? and id_actividad =?',
       [idalum, idact],
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -295,7 +295,7 @@ function createRouter(db) {
       'select distinct titulo,id_actividad,fecha_limite from alumnosact where id_alumno in(select id from alumno where id_grupo =(select id from grupo where id_profesor=?)) and estado=0;',
       [idprof],
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -311,7 +311,7 @@ function createRouter(db) {
       'update realiza set fecha_entrega = ?, hora_entrega = ?, estado_entrega = 1 where id_alumno = ? and id_actividad = ?',
       [moment().format('YYYY-MM-DD'), moment().format('HH:mm:ss'), alumno, actividad],
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -326,7 +326,7 @@ function createRouter(db) {
       'select * from materia inner join libro on materia.id = libro.id_materia where materia.id in (select id_materia from clases_de inner join grupo on clases_de.id_grupo = grupo.id where grupo.id = (select id_grupo from alumno where id = ?));',
       [alumno],
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
         console.log(results);
       });
@@ -339,7 +339,7 @@ function createRouter(db) {
       'select * from libro where id_materia in (select clases_de.id_materia from grupo left join clases_de on grupo.id = clases_de.id_grupo where id_profesor = ?);',
       [profesor],
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
         console.log(results);
       });
@@ -352,7 +352,7 @@ function createRouter(db) {
       'select * from tarea where id_alumno = ? and id_actividad = ?',
       [alumno, actividad],
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -369,7 +369,7 @@ function createRouter(db) {
       'call actividad_template(?)',
       [mat],
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -391,7 +391,7 @@ function createRouter(db) {
       'call actividad_alumnos(?,?,?,?,?,?,?)',
       [id, titulo, fecha, desc, hora, retraso, profesor],
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -414,7 +414,7 @@ function createRouter(db) {
         'update actividad set titulo = ?, fecha_limite = ?, descripción = ?, hora_limite = ?, retraso = ?, estado = ? where id = ?',
         [titulo, fecha, desc, hora, retraso, estado, id],
         (error, results) => {
-          if (error) throw error;
+          if (error) {return res.status(501).json({error: err})}
           res.send(results);
   
           console.log(results);
@@ -428,7 +428,7 @@ function createRouter(db) {
     db.query('delete from actividad where id = ?',
      [id],
     (error, results) => {
-      if (error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -441,7 +441,7 @@ function createRouter(db) {
       'insert into Material(id_actividad, archivo) values(?, ?);',
       [act, archivo],
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -456,7 +456,7 @@ function createRouter(db) {
     db.query('select count(*) from realiza where id_actividad = 1 and estado_entrega != 0;',
     [id],
     (error, results) =>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -467,7 +467,7 @@ function createRouter(db) {
     db.query('select * from Material where id_actividad = ?',
     [id],
     (error, results) => {
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -479,7 +479,7 @@ function createRouter(db) {
       'select * from profesor where id in(select id_profesor from grupomat where id=?)',
       [idgrup],
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
 
@@ -494,7 +494,7 @@ function createRouter(db) {
     db.query('select * from recurso where id_materia = ? and id_profesor= ?',
     [idmat,idprof],
     (error, results) => {
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -505,7 +505,7 @@ function createRouter(db) {
     db.query('delete from recurso where id= ?',
     [id],
     (error, results) => {
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -519,7 +519,7 @@ function createRouter(db) {
     db.query('insert into Recurso (titulo, id_materia, id_profesor, archivo) values(?, ?, ?, ?);',
     [titulo, idMat, idProf, archivo],
     (error, results) =>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -533,7 +533,7 @@ function createRouter(db) {
     db.query('update realiza set calificacion = ?, comentario = ? where id_alumno = ? and id_actividad = ?',
     [cal, comentario, idAl, idAct],
     (error, results)=>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -544,7 +544,7 @@ function createRouter(db) {
     db.query('select * from tutoría where id_alumno in (select alumno.id from alumno inner join grupo on alumno.id_grupo = grupo.id where grupo.id_profesor = ?) and tutoría.id_profesor is null;', 
     [idProf],
     (error, results) =>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
 
       res.send(results);
       console.log(results);
@@ -557,7 +557,7 @@ function createRouter(db) {
     db.query('insert into tutoría(pregunta, id_alumno, fecha) values(?, ?, ?);',
     [pregunta, idAl, moment().format("YYYY-MM-DD")],
     (error, results) =>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -568,7 +568,7 @@ function createRouter(db) {
     db.query('select tutoría.*, alumno.nombre, alumno.apellido_pat, alumno.apellido_mat from tutoría left join alumno on tutoría.id_alumno = alumno.id where tutoría.id_alumno = ? and tutoría.id_profesor is null',
     [idAl],
     (error, results) =>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -579,7 +579,7 @@ function createRouter(db) {
     db.query('select A.apellido_pat, A.nombre, A.apellido_mat, T.*, P.nombre as nomProf, P.apellido_pat as patProf, P.apellido_mat as matProf from tutoría T, profesor P, Alumno A where T.id_alumno = ? and T.id_alumno = A.id and P.id = T.id_profesor;',
     [idAl],
     (error, results) =>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -590,7 +590,7 @@ function createRouter(db) {
     db.query('select A.apellido_pat, A.nombre, A.apellido_mat, T.*, P.nombre as nomProf, P.apellido_pat as patProf, P.apellido_mat as matProf from tutoría T, profesor P, Alumno A where T.id_profesor = ? and T.id_alumno = A.id and P.id = T.id_profesor;',
     [idAl],
     (error, results) =>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -601,7 +601,7 @@ function createRouter(db) {
     db.query('select tutoría.*, alumno.nombre, alumno.apellido_pat, alumno.apellido_mat from tutoría left join alumno on tutoría.id_alumno = alumno.id where tutoría.id = ?',
     [id],
     (error, results) =>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     });
@@ -613,7 +613,7 @@ function createRouter(db) {
     const idProf = req.body.idProf;
     db.query('update tutoría set id_profesor = ?, respuesta = ? where id= ?',
     [idProf, respuesta, id], (error, results) =>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
 
@@ -626,7 +626,7 @@ function createRouter(db) {
     db.query('insert into MaterialTutoria (id_tutoria, archivo) values(?,?);',
     [idTuto, archivo],
     (error, results)=>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -637,7 +637,7 @@ function createRouter(db) {
     db.query('delete from MaterialTutoria where archivo = ?',
     [archivo],
     (error, results)=>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -648,7 +648,7 @@ function createRouter(db) {
     db.query('select * from MaterialTutoria where id_tutoria = ?;',
     [id],
     (error, results) =>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -657,7 +657,7 @@ function createRouter(db) {
   router.get('/grupos', function(req, res){
     db.query('select * from grupo', [], 
     (error, results)=>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -673,7 +673,7 @@ function createRouter(db) {
     const profesor = req.body.profesor;
     db.query('insert into grupo (id, grado, clase, id_profesor, ciclo_inicio, ciclo_final) values(?,?,?,?, ?, ?);',
     [id, grado, clase, profesor], (error, results) =>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -693,7 +693,7 @@ function createRouter(db) {
     db.query('insert into profesor (id, nombre, apellido_pat, apellido_mat, correo, telefono, sexo, contrasena) values(?, ?, ?, ?, ?, ?, ?, ?);',
     [id, nombre, paterno, materno, correo, telefono, sexo, password],
     (error, results) =>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -710,7 +710,7 @@ function createRouter(db) {
     const grupo = req.body.grupo;
     db.query('insert into alumno (id, nombre, apellido_pat, apellido_mat, id_grupo, sexo, contrasena) values(?, ?, ?, ?, ?, ?, ?)',
     [id, nombre, paterno, materno, grupo, sexo, password], (error, results)=>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -726,7 +726,7 @@ function createRouter(db) {
     db.query('insert into materia (id, nombre, campo, nivel) values(?, ?, ?, ?)',
     [id, nombre, campo, nivel],
     (error, results)=>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -744,7 +744,7 @@ function createRouter(db) {
 
     db.query('insert into libro (id, año, archivo, editorial, título, id_materia) values(?,?,?,?,?,?)',
     [id, year, archivo, editorial, titulo, materia], (error, results)=>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -764,7 +764,7 @@ function createRouter(db) {
     db.query('update alumno set nombre = ?, apellido_pat = ?, apellido_mat = ?, sexo = ?, contrasena = ?, id_grupo = ? where id = ?', 
     [nombre, paterno, materno, sexo, password, grupo, id],
     (error, results) =>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     });
@@ -783,7 +783,7 @@ function createRouter(db) {
     db.query('update profesor set nombre = ?, apellido_pat = ?, apellido_mat = ?, correo = ?, telefono = ?, sexo = ?, contrasena = ? where id = ?',
     [nombre, paterno, materno, correo, telefono, sexo, password, id],
     (error, results) =>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -798,7 +798,7 @@ function createRouter(db) {
     db.query('update materia set nivel = ?, nombre = ?, campo = ? where id = ?',
     [nivel, nombre, campo, id],
     (error, results) =>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -815,7 +815,7 @@ function createRouter(db) {
     db.query('update grupo set grado = ?, clase = ?, ciclo_inicio = ?, ciclo_final = ?,  id_profesor = ? where id = ?',
     [grado, clase, cicloIn, cicloFin, profesor, id],
     (error, results) =>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -832,7 +832,7 @@ function createRouter(db) {
     db.query('update libro set título = ?, año = ?, editorial = ?, id_materia = ?, archivo = ? where id = ?',
     [titulo, year, editorial, materia, archivo, id],
     (error, results)=>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -847,7 +847,7 @@ function createRouter(db) {
     db.query('delete from profesor where id = ?',
     [id],
     (error, results) =>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -858,7 +858,7 @@ function createRouter(db) {
     db.query('delete from materia where id = ?',
     [id],
     (error, results) =>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -869,7 +869,7 @@ function createRouter(db) {
     db.query('delete from grupo where id = ?',
     [id],
     (error, results) =>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -880,7 +880,7 @@ function createRouter(db) {
     db.query('delete from alumno where id = ?',
     [id],
     (error, results) =>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -891,7 +891,7 @@ function createRouter(db) {
     db.query('delete from libro where id = ?',
     [id],
     (error, results) =>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -902,7 +902,7 @@ function createRouter(db) {
     db.query(
       'Select * from profesores',
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -915,7 +915,7 @@ function createRouter(db) {
     db.query(
       'Select * from alumnos',
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -928,7 +928,7 @@ function createRouter(db) {
     db.query(
       'Select * from materia',
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -941,7 +941,7 @@ function createRouter(db) {
   db.query(
     'Select * from grupos',
     (error, results) => {
-      if (error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
 
       console.log(results);
@@ -954,7 +954,7 @@ function createRouter(db) {
     db.query(
       'Select * from libro',
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -969,7 +969,7 @@ function createRouter(db) {
       'Select * from libro where id = ?',
       id,
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -984,7 +984,7 @@ function createRouter(db) {
       'Select * from grupo where id = ?',
       id,
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -999,7 +999,7 @@ function createRouter(db) {
     'Select * from alumno where id = ?',
     id,
     (error, results) => {
-      if (error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
 
       console.log(results);
@@ -1014,7 +1014,7 @@ function createRouter(db) {
     db.query('select * from alumnosact left join alumno on alumnosact.id_alumno = alumno.id where id_actividad = ?;',
     [id],
     (error, results) =>{
-      if(error) throw error;
+      if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
@@ -1040,7 +1040,7 @@ function createRouter(db) {
       'insert into tarea (id_alumno, id_actividad, archivo) values (?, ?, ?);',
       [alumno, actividad, ar],
       (error, results) => {
-        if (error) throw error;
+        if (error) {return res.status(501).json({error: err})}
         res.send(results);
 
         console.log(results);
@@ -1065,7 +1065,7 @@ function createRouter(db) {
         'delete from tarea where archivo = ?',
         [req.params.file],
         (error, results) => {
-          if (error) throw error;
+          if (error) {return res.status(501).json({error: err})}
           res.send(results);
 
           console.log(results);

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CrudService } from 'src/app/services/crud/crud.service';
 @Component({
   selector: 'app-crud-materia',
@@ -10,7 +11,7 @@ import { CrudService } from 'src/app/services/crud/crud.service';
 export class CrudMateriaComponent implements OnInit {
 
   AltaMateria: FormGroup;
-  constructor(private fb: FormBuilder, private crud: CrudService, private router: Router) {
+  constructor(private fb: FormBuilder, private crud: CrudService, private router: Router, private toast: ToastrService) {
 
 
   }
@@ -31,7 +32,11 @@ export class CrudMateriaComponent implements OnInit {
       this.crud.insertarMateria(this.AltaMateria.get('id').value,
       this.AltaMateria.get('nombre').value,
       this.AltaMateria.get('campo').value,
-      this.AltaMateria.get('nivel').value).subscribe();
+      this.AltaMateria.get('nivel').value).subscribe((data: any) =>{
+        this.toast.success("Se ha añadido la materia a la base de datos", "Alta Materia");
+      }, (error: any) =>{
+        this.toast.error("Ocurrió un error en el sistema. Lo más probable es que haya ingresado un id duplicado", "Error");
+      });
       this.router.navigateByUrl('/login');
     }
   }

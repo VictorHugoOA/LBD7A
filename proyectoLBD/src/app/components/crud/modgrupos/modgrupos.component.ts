@@ -1,6 +1,8 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs/internal/Observable';
 import { CrudService } from 'src/app/services/crud/crud.service';
 
@@ -15,7 +17,7 @@ export class ModgruposComponent implements OnInit {
   profesores: any[] = [];
   
   AltaGrupo: FormGroup;
-  constructor(private crud: CrudService, private fb: FormBuilder, private router: Router) {
+  constructor(private crud: CrudService, private fb: FormBuilder, private router: Router, private toast: ToastrService) {
     this.crud.getProfesores().subscribe((data: any[]) =>{
       for(var i = 0; i < data.length; ++i)
       {
@@ -53,7 +55,10 @@ export class ModgruposComponent implements OnInit {
         this.modGrupo.get('clase').value, 
         this.modGrupo.get('profesor').value, 
         this.modGrupo.get('ciclo_inicio').value, 
-        this.modGrupo.get('ciclo_final').value).subscribe();
+        this.modGrupo.get('ciclo_final').value).subscribe((data: any) =>{
+          this.toast.success("Se ha modificado el grupo en la base de datos", "Modificar Grupo");
+          this.router.navigateByUrl('/admin');
+        });
      // this.router.navigate(['/login']);
      //poner navigate
     }
@@ -61,7 +66,10 @@ export class ModgruposComponent implements OnInit {
 
   borrar()
   {
-    this.crud.borrarGrupo(this.modGrupo.get('id').value).subscribe();
+    this.crud.borrarGrupo(this.modGrupo.get('id').value).subscribe((data: any) =>{
+      this.toast.success("Se ha borrado el grupo de al base de datos", "Borrar grupo")
+      this.router.navigateByUrl('/admin');
+    });
   }
 
 }

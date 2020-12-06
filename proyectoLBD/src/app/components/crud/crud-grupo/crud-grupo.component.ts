@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CrudService } from 'src/app/services/crud/crud.service';
 import { CrudComponent } from '../crud.component';
 
@@ -14,7 +15,7 @@ export class CrudGrupoComponent implements OnInit {
   
   profesores: any[] = [];
   
-  constructor(private crud: CrudService, private fb: FormBuilder, private router: Router) {
+  constructor(private crud: CrudService, private fb: FormBuilder, private router: Router, private toast: ToastrService) {
     this.crud.AllProfesores().subscribe((data: any[]) =>{
       for(var i = 0; i < data.length; ++i)
       {
@@ -37,7 +38,16 @@ export class CrudGrupoComponent implements OnInit {
   onSubmit(){
     if(this.AltaGrupo.valid)
     {
-      this.crud.insertarGrupo(this.AltaGrupo.get('id').value, this.AltaGrupo.get('grado').value, this.AltaGrupo.get('clase').value, this.AltaGrupo.get('profesor').value, this.AltaGrupo.get('ciclo_inicio').value, this.AltaGrupo.get('ciclo_final').value).subscribe()
+      this.crud.insertarGrupo(this.AltaGrupo.get('id').value,
+      this.AltaGrupo.get('grado').value,
+      this.AltaGrupo.get('clase').value,
+      this.AltaGrupo.get('profesor').value,
+      this.AltaGrupo.get('ciclo_inicio').value,
+      this.AltaGrupo.get('ciclo_final').value).subscribe((data: any) =>{
+        this.toast.success("El grupo se añadi a la base de datos", "Alta Grupo");
+      }, (error: any) =>{
+        this.toast.error("Ocurrió un error en el sistema. Lo más probable es que haya ingresado un id duplicado", "Error");
+      })
       this.router.navigateByUrl('/login');
     }
   }

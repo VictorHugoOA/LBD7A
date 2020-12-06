@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { CrudService } from 'src/app/services/crud/crud.service';
 
@@ -13,7 +15,7 @@ export class ModmatComponent implements OnInit {
   materia: Observable<any>;
   profesores: any[] = [];
   modMateria: FormGroup;
-  constructor(private fb: FormBuilder, private crud: CrudService) {
+  constructor(private fb: FormBuilder, private crud: CrudService, private toast: ToastrService, private router: Router) {
 
 
   }
@@ -40,7 +42,10 @@ export class ModmatComponent implements OnInit {
      this.crud.setMateria(this.modMateria.get('id').value,
       this.modMateria.get('nombre').value,
       this.modMateria.get('campo').value,
-      this.modMateria.get('nivel').value).subscribe();
+      this.modMateria.get('nivel').value).subscribe((data: any) =>{
+        this.toast.success("Se han modificado la materia de la base de datos", "Modificar Materia");
+        this.router.navigateByUrl('/admin');
+      });
       /*poner navigate*/
       
     }
@@ -48,7 +53,10 @@ export class ModmatComponent implements OnInit {
 
   borrar()
   {
-    this.crud.borrarMateria(this.modMateria.get('id').value).subscribe();
+    this.crud.borrarMateria(this.modMateria.get('id').value).subscribe((data: any) =>{
+      this.toast.success("Se ha borrado la materia de la base de datos", "Borrar Materia");
+      this.router.navigateByUrl('/admin');
+    });
   }
 
 }

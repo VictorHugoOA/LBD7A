@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { CrudService } from 'src/app/services/crud/crud.service';
 
@@ -15,7 +16,7 @@ export class ModlibComponent implements OnInit {
   libro:Observable<any>
 
 
-  constructor(private fb: FormBuilder, private crud: CrudService, private router: Router) {
+  constructor(private fb: FormBuilder, private crud: CrudService, private router: Router, private toast: ToastrService) {
     this.crud.AllMaterias().subscribe((data: any[]) => {
       for (var i = 0; i < data.length; ++i) {
         this.materias.push(data[i]);
@@ -51,7 +52,10 @@ export class ModlibComponent implements OnInit {
       this.modLibro.get('year').value,
       this.modLibro.get('editorial').value,
       this.modLibro.get('materia').value,
-      this.modLibro.get('archivo').value).subscribe();
+      this.modLibro.get('archivo').value).subscribe((data: any) =>{
+        this.toast.success("Se ha modificado el libro en la base de datos", "Modificar Libro")
+        this.router.navigateByUrl('/admin');
+      });
       //this.router.navigateByUrl('/login');
       //poner navigate
     }
@@ -59,7 +63,11 @@ export class ModlibComponent implements OnInit {
 
   borrar()
   {
-    this.crud.borrarLibro(this.modLibro.get('id').value).subscribe();
+    this.crud.borrarLibro(this.modLibro.get('id').value).subscribe((data: any) =>
+    {
+      this.toast.success("Se ha modificado el libro en la base de datos", "Borrar Libro")
+      this.router.navigateByUrl('/admin');
+    });
   }
 
 

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CrudService } from 'src/app/services/crud/crud.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class CrudProfesorComponent implements OnInit {
 
   AltaProfesor: FormGroup
 
-  constructor(private fb: FormBuilder, private crud: CrudService, private router: Router) { }
+  constructor(private fb: FormBuilder, private crud: CrudService, private router: Router, private toast: ToastrService) { }
 
   ngOnInit(): void {
     this.AltaProfesor = this.fb.group({
@@ -42,7 +43,10 @@ export class CrudProfesorComponent implements OnInit {
       this.AltaProfesor.get('correo').value,
       this.AltaProfesor.get('sexo').value,
       this.AltaProfesor.get('password').value).subscribe((data: any) =>{
+        this.toast.success("Se han ingresado los datos de alumno con éxito", "Alta Alumno");
         this.router.navigateByUrl('/login');
+      }, (error: any) =>{
+        this.toast.error("Ocurrió un error en el sistema. Lo más probable es que haya ingresado un id duplicado", "Error");
       });
     }
   }

@@ -385,6 +385,8 @@ begin
 end//
 DELIMITER ;
 
+select * from alumno;
+
 DELIMITER //
 create trigger tr_up_materia before update on materia
 for each row

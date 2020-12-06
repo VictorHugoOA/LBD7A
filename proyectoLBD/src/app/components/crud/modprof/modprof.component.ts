@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { CrudService } from 'src/app/services/crud/crud.service';
 
@@ -14,7 +15,7 @@ export class ModprofComponent implements OnInit {
   modProfesor: FormGroup
   profesor: Observable<any>;
   AltaProfesor: FormGroup;
-  constructor(private fb: FormBuilder, private crud: CrudService, private router: Router) { }
+  constructor(private fb: FormBuilder, private crud: CrudService, private router: Router, private toast: ToastrService) { }
 
   buscar(id:string){
     this.profesor= this.crud.getProfesor(id);
@@ -50,6 +51,8 @@ export class ModprofComponent implements OnInit {
       this.modProfesor.get('correo').value,
       this.modProfesor.get('sexo').value,
       this.modProfesor.get('password').value).subscribe((data: any) =>{
+        this.toast.success("Se ha modificado el profesor de la base de datos", "Modificar Profesor");
+        this.router.navigateByUrl('/admin');
         //this.router.navigate(['/router']);
       });
           /*poner navigate*/
@@ -59,7 +62,10 @@ export class ModprofComponent implements OnInit {
    
   borrar()
   {
-    this.crud.borrarProfesor(this.modProfesor.get('id').value).subscribe();
+    this.crud.borrarProfesor(this.modProfesor.get('id').value).subscribe((data: any) =>{
+      this.toast.success("Se ha borrado el profesor de la bse de datos", "Borrar Profesor");
+      this.router.navigateByUrl('/admin');
+    });
   }
 
 
