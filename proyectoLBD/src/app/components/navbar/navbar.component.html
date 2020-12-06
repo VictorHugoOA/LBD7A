@@ -37,15 +37,6 @@
                     <a class="nav-link" href="/admin">Inicio</a> 
                 </li>
         
-                <li class="nav-item active"  *ngIf="auth.userData.tipo =='Profesor'">
-                    <a class="nav-link" href="/listagrupos">Grupos</a> 
-                </li>
-                <li class="nav-item"*ngIf="auth.userData.tipo =='Profesor'">
-                    <a class="nav-link" routerLink="/tutoria">Profesores</a>
-                </li>
-                <li class="nav-item"*ngIf="auth.userData.tipo =='Profesor'">
-                    <a class="nav-link"  routerLink="/">Alumnos</a>
-                </li>
                 <li class="nav-item dropdown" *ngIf="auth.userData.tipo =='Administrador'">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Modificar
@@ -79,6 +70,9 @@
             <a routerLink="/perfil/{{(profesor | async)?.id}}/Profesor">
               <span
                 class="navbar-text mr-4">{{(profesor | async)?.nombre + " " + ((profesor | async))?.apellido_pat + " " + ((profesor | async))?.apellido_mat}}</span></a>
+                <a (click)="logOut()"><span class="navbar-text"><i class="fas fa-sign-out-alt"></i></span></a>
+          </div>
+        <div *ngIf="auth.userData.tipo =='Administrador'">
                 <a (click)="logOut()"><span class="navbar-text"><i class="fas fa-sign-out-alt"></i></span></a>
           </div>
     </div>
