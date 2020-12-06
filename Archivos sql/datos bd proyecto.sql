@@ -31,48 +31,58 @@ values
 
 insert into materia (id, nombre, Campo) 
 Values 
-("m-001", "Español 1", "Lenguaje y Comunicación"),
-("m-002", "Español 2","Lenguaje y Comunicación"),
-("m-003", "Español 3","Lenguaje y Comunicación"),
-("m-004", "Español 4","Lenguaje y Comunicación"),
-("m-005", "Español 5","Lenguaje y Comunicación"),
-("m-006", "Español 6","Lenguaje y Comunicación"),
-("m-013", "Inglés 1",  "Lenguaje y Comunicación"),
-("m-014", "Inglés 2",  "Lenguaje y Comunicación"),
-("m-015", "Inglés 3",  "Lenguaje y Comunicación"),
-("m-016", "Inglés 4",  "Lenguaje y Comunicación"),
-("m-017", "Inglés 5", "Lenguaje y Comunicación"),
-("m-018", "Inglés 6", "Lenguaje y Comunicación"),
-("m-019", "Matemáticas 1",  "Pensamiento Matemático"),
-("m-020", "Matemáticas 2", "Pensamiento Matemático"),
-("m-021", "Matemáticas 3", "Pensamiento Matemático"),
-("m-022", "Matemáticas 4", "Pensamiento Matemático"),
-("m-023", "Matemáticas 5",  "Pensamiento Matemático"),
-("m-024", "Matemáticas 6",  "Pensamiento Matemático"),
-("m-025", "Conocimiento del Medio 1", "Exploración y Comprensión del Mundo Natural y Social"),
-("m-026", "Conocimiento del Medio 2",  "Exploración y Comprensión del Mundo Natural y Social"),
-("m-027", "Ciencias Naturales 1", "Exploración y Comprensión del Mundo Natural y Social"),
-("m-028", "Ciencias Naturales 2", "Exploración y Comprensión del Mundo Natural y Social"),
-("m-029", "Ciencias Naturales 3",  "Exploración y Comprensión del Mundo Natural y Social"),
-("m-030", "Ciencias Naturales 4",  "Exploración y Comprensión del Mundo Natural y Social"),
-("m-032", "Historias, Paisajes y Convivencia en mi Localidad",  "Exploración y Comprensión del Mundo Natural y Social"),
-("m-033", "Historia 1",  "Exploración y Comprensión del Mundo Natural y Social"),
-("m-034", "Historia 2",  "Exploración y Comprensión del Mundo Natural y Social"),
-("m-035", "Historia 3",  "Exploración y Comprensión del Mundo Natural y Social"),
-("m-036", "Geografía 1",  "Exploración y Comprensión del Mundo Natural y Social"),
-("m-037", "Geografía 2",  "Exploración y Comprensión del Mundo Natural y Social"),
-("m-038", "Geografía 3", "Exploración y Comprensión del Mundo Natural y Social"),
-("m-039", "Formación Cívica y Ética 1", "Exploración y Comprensión del Mundo Natural"),
-("m-040", "Formación Cívica y Ética 2",  "Exploración y Comprensión del Mundo Natural"),
-("m-041", "Formación Cívica y Ética 3", "Exploración y Comprensión del Mundo Natural"),
-("m-042", "Artes 1",  "Artes"),
-("m-043", "Artes 2",  "Artes"),
-("m-044", "Artes 3",  "Artes"),
-("m-045", "Artes 4", "Artes"),
-("m-046", "Artes 5",  "Artes"),
-("m-047", "Artes 6",  "Artes"),
-("m-048", "Educación Socioemocional", "Educación Socioemocional"),
-("m-054", "Educación Física",  "Educación Física");
+("m-001", "Español 1", "Lenguaje y Comunicación", 1),
+("m-002", "Español 2","Lenguaje y Comunicación", 2),
+("m-003", "Español 3","Lenguaje y Comunicación", 3),
+("m-004", "Español 4","Lenguaje y Comunicación", 4),
+("m-005", "Español 5","Lenguaje y Comunicación", 5),
+("m-006", "Español 6","Lenguaje y Comunicación", 6),
+("m-013", "Inglés 1",  "Lenguaje y Comunicación", 1),
+("m-014", "Inglés 2",  "Lenguaje y Comunicación", 2),
+("m-015", "Inglés 3",  "Lenguaje y Comunicación", 3),
+("m-016", "Inglés 4",  "Lenguaje y Comunicación", 4),
+("m-017", "Inglés 5", "Lenguaje y Comunicación", 5),
+("m-018", "Inglés 6", "Lenguaje y Comunicación", 6),
+("m-019", "Matemáticas 1",  "Pensamiento Matemático", 1),
+("m-020", "Matemáticas 2", "Pensamiento Matemático", 2),
+("m-021", "Matemáticas 3", "Pensamiento Matemático", 3),
+("m-022", "Matemáticas 4", "Pensamiento Matemático", 4),
+("m-023", "Matemáticas 5",  "Pensamiento Matemático", 5),
+("m-024", "Matemáticas 6",  "Pensamiento Matemático", 6),
+("m-025", "Conocimiento del Medio 1", "Exploración y Comprensión del Mundo Natural y Social", 1),
+("m-026", "Conocimiento del Medio 2",  "Exploración y Comprensión del Mundo Natural y Social", 2),
+("m-027", "Ciencias Naturales 1", "Exploración y Comprensión del Mundo Natural y Social", 3),
+("m-028", "Ciencias Naturales 2", "Exploración y Comprensión del Mundo Natural y Social", 4),
+("m-029", "Ciencias Naturales 3",  "Exploración y Comprensión del Mundo Natural y Social", 5),
+("m-030", "Ciencias Naturales 4",  "Exploración y Comprensión del Mundo Natural y Social", 6),
+("m-032", "Historias, Paisajes y Convivencia en mi Localidad",  "Exploración y Comprensión del Mundo Natural y Social", 3),
+("m-033", "Historia 1",  "Exploración y Comprensión del Mundo Natural y Social", 4),
+("m-034", "Historia 2",  "Exploración y Comprensión del Mundo Natural y Social", 5),
+("m-035", "Historia 3",  "Exploración y Comprensión del Mundo Natural y Social", 6),
+("m-036", "Geografía 1",  "Exploración y Comprensión del Mundo Natural y Social", 4),
+("m-037", "Geografía 2",  "Exploración y Comprensión del Mundo Natural y Social", 5),
+("m-038", "Geografía 3", "Exploración y Comprensión del Mundo Natural y Social", 6),
+("m-039", "Formación Cívica y Ética 1", "Exploración y Comprensión del Mundo Natural", 3),
+("m-040", "Formación Cívica y Ética 2",  "Exploración y Comprensión del Mundo Natural",4),
+("m-041", "Formación Cívica y Ética 3", "Exploración y Comprensión del Mundo Natural", 5),
+("m-042", "Artes 1",  "Artes", 1),
+("m-043", "Artes 2",  "Artes", 2),
+("m-044", "Artes 3",  "Artes", 3),
+("m-045", "Artes 4", "Artes", 4),
+("m-046", "Artes 5",  "Artes", 5),
+("m-047", "Artes 6",  "Artes", 6),
+("m-048", "Educación Socioemocional", "Educación Socioemocional", 1),
+("m-049", "Educación Socioemocional", "Educación Socioemocional", 2),
+("m-050", "Educación Socioemocional", "Educación Socioemocional", 3),
+("m-051", "Educación Socioemocional", "Educación Socioemocional", 4),
+("m-052", "Educación Socioemocional", "Educación Socioemocional", 5),
+("m-053", "Educación Socioemocional", "Educación Socioemocional", 6),
+("m-054", "Educación Física",  "Educación Física", 1),
+("m-055", "Educación Física",  "Educación Física", 2),
+("m-056", "Educación Física",  "Educación Física", 3),
+("m-057", "Educación Física",  "Educación Física", 4),
+("m-058", "Educación Física",  "Educación Física", 5),
+("m-059", "Educación Física",  "Educación Física", 6);
 
 insert into clases_de(id_grupo, id_materia)
 values ("g-001", "m-001"),
@@ -286,29 +296,6 @@ Values
 ("a000059","Samir","Ayala","Saldivar","g-012","M","c000059"),
 ("a000060","Ibrahim","Garcia","Zavala","g-012","M","c000060");
 
-DELIMITER //
-create trigger tr_in_grupo after insert on grupo
-for each row
-begin
-
-    declare idMat varchar(10);
-	declare done int default 0;
-	declare cursor_i cursor for (select id from mat
-    eria where id in (select clases_de.id_materia from clases_de left join grupo on clases_de.id_grupo = grupo.id where grupo.grado = new.grado));
-    declare continue handler for not found set done = 1;
-    
-    open cursor_i;
-    materias: loop
-	fetch cursor_i into idMat;
-    if done then
-		leave materias;
-	end if;
-    insert into clases_de (id_grupo, id_materia) values(new.id, idMat);
-    end loop materias;
-    close cursor_i;
-
-end//
-DELIMITER ;
 
 /*
 insert into recurso (titulo, id_materia, id_profesor, archivo)

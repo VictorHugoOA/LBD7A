@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth/auth.service'
 
@@ -11,11 +12,16 @@ import { AuthService } from '../../services/auth/auth.service'
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
-  constructor(private fb: FormBuilder, private auth: AuthService) {
+  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {
     if(this.auth.userData)
     {
-      this.auth.userData = null;
-      sessionStorage.removeItem("user");
+      if(this.auth.userData.tipo == "Administrador")
+      {
+        this.router.navigate(['/admin']);
+      }else{
+        this.auth.userData = null;
+        sessionStorage.removeItem("user");
+      }
     }
   }
 

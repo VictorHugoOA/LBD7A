@@ -19,6 +19,8 @@ create table grupo(
     grado int not null,
     clase char not null,
     id_profesor varchar(10),
+    ciclo_inicio int not null,
+    ciclo_final int not null,
     primary key(id),
     foreign key(id_profesor) references profesor(id)
     
@@ -40,6 +42,7 @@ create table materia(
 	id varchar(10) not null,
     nombre varchar(50) not null,
     campo varchar(100) not null,
+    nivel int not null,
     primary key(id)
 );
 
@@ -252,12 +255,33 @@ create trigger tr_del_actividad before delete on actividad
 for each row
 begin
 	delete from Material where id_actividad = old.id;
+	delete from tarea where id_actividad = old.id;
 	delete from realiza where id_actividad = old.id;
 end//
 DELIMITER ;
 
+DELIMITER //
+create trigger tr_in_grupo after insert on grupo
+for each row
+begin
 
+    declare idMat varchar(10);
+	declare done int default 0;
+	declare cursor_i cursor for (select id from materia where nivel = new.grado);
+    declare continue handler for not found set done = 1;
+    
+    open cursor_i;
+    materias: loop
+	fetch cursor_i into idMat;
+    if done then
+		leave materias;
+	end if;
+    insert into clases_de (id_grupo, id_materia) values(new.id, idMat);
+    end loop materias;
+    close cursor_i;
 
+end//
+DELIMITER ;
 
 /*Ejemplo para ejecutar el procedimiento para avances
 call avances("a000001", @out); select @out;*/

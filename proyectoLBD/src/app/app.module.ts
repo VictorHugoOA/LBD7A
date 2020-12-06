@@ -60,6 +60,8 @@ import { ModmatComponent } from './components/crud/modmat/modmat.component';
 import { ModgruposComponent } from './components/crud/modgrupos/modgrupos.component';
 import { ModprofComponent } from './components/crud/modprof/modprof.component';
 import { ModalumComponent } from './components/crud/modalum/modalum.component';
+import { CrudTutoriaComponent } from './components/crud/crud-tutoria/crud-tutoria.component';
+import { CrudLibroComponent } from './components/crud/crud-libro/crud-libro.component';
 
 
 
@@ -117,7 +119,9 @@ import { ModalumComponent } from './components/crud/modalum/modalum.component';
     ModmatComponent,
     ModgruposComponent,
     ModprofComponent,
-    ModalumComponent
+    ModalumComponent,
+    CrudTutoriaComponent,
+    CrudLibroComponent
 
   ],
   imports: [
