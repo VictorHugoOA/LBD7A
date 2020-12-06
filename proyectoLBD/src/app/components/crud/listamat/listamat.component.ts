@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CrudService } from 'src/app/services/crud/crud.service';
 import { CursosService } from 'src/app/services/cursos/cursos.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { CursosService } from 'src/app/services/cursos/cursos.service';
 })
 export class ListamatComponent implements OnInit {
   materias: any[]=[];
-  constructor(private cursos: CursosService) { }
+  constructor(private cursos: CrudService) { }
 
   ngOnInit(): void {
     this.cursos.AllMaterias().subscribe((data:any[]) => {

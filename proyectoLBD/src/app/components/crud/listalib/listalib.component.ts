@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CursosService } from 'src/app/services/cursos/cursos.service';
+import { CrudService } from 'src/app/services/crud/crud.service';
+
 
 @Component({
   selector: 'app-listalib',
@@ -10,7 +11,7 @@ export class ListalibComponent implements OnInit {
 
   libros: any[]=[];
 
-  constructor(private cursos: CursosService) { }
+  constructor(private cursos: CrudService) { }
 
   ngOnInit(): void {
     this.cursos.AllLibros().subscribe((data:any[]) => {

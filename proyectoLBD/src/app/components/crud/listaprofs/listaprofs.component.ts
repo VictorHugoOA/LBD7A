@@ -1,6 +1,6 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { ProfesorService } from 'src/app/services/profesor/profesor.service';
+import { CrudService } from 'src/app/services/crud/crud.service';
 
 @Component({
   selector: 'app-listaprofs',
@@ -9,7 +9,7 @@ import { ProfesorService } from 'src/app/services/profesor/profesor.service';
 })
 export class ListaprofsComponent implements OnInit {
   profesores: any[]=[];
-  constructor(private prof:ProfesorService) { }
+  constructor(private prof: CrudService) { }
 
   ngOnInit(): void {
     this.prof.AllProfesores().subscribe((data:any[]) => {

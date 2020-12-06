@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlumnosService } from 'src/app/services/alumnos/alumnos.service';
+import { CrudService } from 'src/app/services/crud/crud.service';
 
 @Component({
   selector: 'app-listaalumnos',
@@ -8,7 +8,7 @@ import { AlumnosService } from 'src/app/services/alumnos/alumnos.service';
 })
 export class ListaalumnosComponent implements OnInit {
   alumnos: any[]=[];
-  constructor(private alum: AlumnosService) { }
+  constructor(private alum: CrudService) { }
 
   ngOnInit(): void {
     this.alum.AllAlumnos().subscribe((data:any[]) => {

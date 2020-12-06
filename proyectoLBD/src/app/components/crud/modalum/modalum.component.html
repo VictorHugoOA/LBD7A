@@ -1,1 +1,61 @@
-<p>modalum works!</p>
+<app-navbar></app-navbar>
+
+<div class="container-fluid" style="margin-top: 5px;">
+    <div class="row m-5">
+        <div class="col-4">
+            <!--(keyup)= "buscar(termino.value)"-->
+            <label><h3>Buscar</h3></label>
+            <input #termino (keyup)= "buscar(termino.value)" type="text"  class="form-control" placeholder="ID Alumno">
+        </div>
+    </div>
+    <div class="row justify-content-between">
+      <div class="col-8">
+        <form [formGroup]="AltaAlumno" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="IDAlumno">ID</label>
+              <input type="text" class="form-control" id="IDAlumno" placeholder="{{(alumno| async)?.id}}" maxlength="10" formControlName="id" readonly>
+            </div>
+            <div class="form-group">
+              <label for="NombreAlumno">Nombre</label>
+              <input type="text" class="form-control" id="NombreAlumno" value="{{(alumno| async)?.nombre}}" formControlName="nombre">
+            </div>
+          
+            <div class="form-group">
+              <label for="ApellidoPatAlumno">Apellido Paterno</label>
+              <input type="text" class="form-control" id="ApellidoPatAlumno" value="{{(alumno| async)?.apellido_pat}}" formControlName="paterno">
+            </div>
+          
+            <div class="form-group">
+              <label for="ApellidoMatAlumno">Apellido Materno</label>
+              <input type="text" class="form-control" id="ApellidoMatAlumno"  value="{{(alumno| async)?.apellido_mat}}"  formControlName="materno">
+            </div>
+          
+            <div class="form-group">
+              <label for="SexoAlumno">Sexo</label>
+              <input id="SexoAlumno" class="form-control" list="sexo" formControlName="sexo">
+              <datalist id="sexo">
+                <option selected value="{{(alumno| async)?.sexo}}">
+                <option value="F">
+                <option value="M">
+              </datalist>
+            </div>
+          
+            <div class="form-group">
+              <label for="ContraAlumno">Contraseña</label>
+              <input type="text" class="form-control" id="ContraAlumno" value="{{(alumno| async)?.contrasena}}" formControlName="password">
+            </div>
+          
+            <div class="form-group">
+              <label for="GrupoAlumno">Grupo</label>
+              <input id="GrupoAlumno" class="form-control" list="grupo" formControlName="grupo" >
+              <datalist id="grupo">
+                <option selected value="{{(alumno| async)?.id_grupo}}"></option>
+                <option *ngFor="let grupo of grupos" value="{{grupo.id}}">{{grupo.grado}} - {{grupo.clase}}</option>
+              </datalist>
+            </div>
+          
+            <button type="submit" class="btn btn-primary mb-2">Ingresar Datos</button>
+          </form>
+      </div>
+    </div>
+  </div>

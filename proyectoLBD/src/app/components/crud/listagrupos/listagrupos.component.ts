@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfesorService } from 'src/app/services/profesor/profesor.service';
+import { CrudService } from 'src/app/services/crud/crud.service';
 
 @Component({
   selector: 'app-listagrupos',
@@ -8,7 +8,7 @@ import { ProfesorService } from 'src/app/services/profesor/profesor.service';
 })
 export class ListagruposComponent implements OnInit {
   grupos:any[]=[];
-  constructor(private prof:ProfesorService) { }
+  constructor(private prof: CrudService) { }
 
   ngOnInit(): void {
     this.prof.AllGrupos().subscribe((data:any[]) => {

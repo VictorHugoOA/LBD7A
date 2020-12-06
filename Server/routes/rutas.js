@@ -20,71 +20,6 @@ const upload = multer({ storage: store }).single('file');
 
 function createRouter(db) {
   const router = express.Router();
-  //Profesores
-  router.get('/Profesores', function (req, res) {
-    db.query(
-      'Select * from profesores',
-      (error, results) => {
-        if (error) throw error;
-        res.send(results);
-
-        console.log(results);
-
-      }
-    );
-  });
-  //Alumnos
-  router.get('/Alumnos', function (req, res) {
-    db.query(
-      'Select * from alumnos',
-      (error, results) => {
-        if (error) throw error;
-        res.send(results);
-
-        console.log(results);
-
-      }
-    );
-  });
-  //Materias
-  router.get('/Materias', function (req, res) {
-    db.query(
-      'Select * from materia',
-      (error, results) => {
-        if (error) throw error;
-        res.send(results);
-
-        console.log(results);
-
-      }
-    );
-  });
-  //Grupos
-  router.get('/Grupos', function (req, res) {
-  db.query(
-    'Select * from grupos',
-    (error, results) => {
-      if (error) throw error;
-      res.send(results);
-
-      console.log(results);
-
-    }
-  );
-});
-  //Libros
-  router.get('/Libros', function (req, res) {
-    db.query(
-      'Select * from libro',
-      (error, results) => {
-        if (error) throw error;
-        res.send(results);
-
-        console.log(results);
-
-      }
-    );
-  });
 
   //info prof 1 en uso
   router.get('/Profesor/:id', function (req, res) {
@@ -526,7 +461,6 @@ function createRouter(db) {
       console.log(results);
     })
   })
-
   //Obtener material por actividad 30 en uso
   router.get('/obtenerMateriales/:id', function(req, res){
     const id = req.params.id;
@@ -639,7 +573,7 @@ function createRouter(db) {
       console.log(results);
     })
   })
-//Tutorias respondiadas del alumno (3 tablas) 9
+  //Tutorias respondiadas del alumno (3 tablas) 9
   router.get('/tutoriasRespondidas/:id', function(req, res){
     const idAl = req.params.id;
     db.query('select A.apellido_pat, A.nombre, A.apellido_mat, T.*, P.nombre as nomProf, P.apellido_pat as patProf, P.apellido_mat as matProf from tutoría T, profesor P, Alumno A where T.id_alumno = ? and T.id_alumno = A.id and P.id = T.id_profesor;',
@@ -777,6 +711,116 @@ function createRouter(db) {
     db.query('insert into alumno (id, nombre, apellido_pat, apellido_mat, id_grupo, sexo, contrasena) values(?, ?, ?, ?, ?, ?, ?)',
     [id, nombre, paterno, materno, grupo, sexo, password])
   })
+  // Mostrar Profesores
+  router.get('/Profesores', function (req, res) {
+    db.query(
+      'Select * from profesores',
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);
+
+      }
+    );
+  });
+  //Mostrar Alumnos
+  router.get('/Alumnos', function (req, res) {
+    db.query(
+      'Select * from alumnos',
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);
+
+      }
+    );
+  });
+  //Mostrar Materias
+  router.get('/Materias', function (req, res) {
+    db.query(
+      'Select * from materia',
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);
+
+      }
+    );
+  });
+  //Mostrar Grupos
+  router.get('/Grupos', function (req, res) {
+  db.query(
+    'Select * from grupos',
+    (error, results) => {
+      if (error) throw error;
+      res.send(results);
+
+      console.log(results);
+
+    }
+  );
+});
+  //Mostrar Libros
+  router.get('/Libros', function (req, res) {
+    db.query(
+      'Select * from libro',
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);
+
+      }
+    );
+  });
+  //Obtener libro
+  router.get('/Libro/:id', function (req, res) {
+    const id = req.params.id
+    db.query(
+      'Select * from libro where id = ?',
+      id,
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);
+
+      }
+    );
+  });
+  //Obtener grupo
+  router.get('/Grupo/:id', function (req, res) {
+    const id = req.params.id
+    db.query(
+      'Select * from grupo where id = ?',
+      id,
+      (error, results) => {
+        if (error) throw error;
+        res.send(results);
+
+        console.log(results);
+
+      }
+    );
+  });
+  //Obtener Alumno
+  router.get('/Alumno2/:id', function (req, res) {
+  const id = req.params.id
+  db.query(
+    'Select * from alumno where id = ?',
+    id,
+    (error, results) => {
+      if (error) throw error;
+      res.send(results);
+
+      console.log(results);
+
+    }
+  );
+});
 
   //Mostrar la lista de los alumnos que hacen uan actividad.
   router.get('/ListaAlumnosActividad/:id', function(req, res){
