@@ -656,6 +656,15 @@ function createRouter(db) {
       res.send(results);
       console.log(results);
     })
+  });
+
+  router.get('/todosProfesores', function(req, res)
+  {
+    db.query('select * from profesor', [], (error, results) => {
+      if(error) throw error;
+      res.send(results);
+      console.log(results);
+    })
   })
 
   //Mostrar la lista de los alumnos que hacen uan actividad.
