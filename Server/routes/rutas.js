@@ -692,14 +692,6 @@ function createRouter(db) {
     const sexo = req.body.sexo;
     const password = req.body.password;
    
-    console.log(id);
-    console.log(nombre);
-    console.log(paterno);
-    console.log(materno);
-    console.log(telefono);
-    console.log(correo);
-    console.log(sexo);
-    console.log(password);
    
     db.query('insert into profesor (id, nombre, apellido_pat, apellido_mat, correo, telefono, sexo,contrasena) Values(?, ?, ?, ?, ?, ?, ?, ?)',
     [id, nombre, paterno, materno, correo, telefono, sexo, password],
@@ -707,7 +699,6 @@ function createRouter(db) {
       if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
-      console.log("entre aqui");
     });
 
   })

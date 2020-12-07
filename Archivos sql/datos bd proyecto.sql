@@ -86,7 +86,6 @@ values
 ("g-011", 5, "B", "p000011", 2016, 2022),
 ("g-012", 6, "B", "p000012", 2015, 2021);
 
-insert into grupo (id, grado, clase, id_profesor, ciclo_inicio, ciclo_final) values("g-013", 6, "B", "p000012", 2015, 2021);
 insert into libro (id, título, año, editorial, id_materia, archivo)
 Values ("l-001", "Español I", 2020, "SEP", "m-001", "https://libros.conaliteg.gob.mx/20/P1ESA.htm"),
 ("l-002", "Español II", 2020, "SEP","m-002", "https://libros.conaliteg.gob.mx/20/P2ESA.htm"),
@@ -193,10 +192,4 @@ Values
 ("a000059","Samir","Ayala","Saldivar","g-012","M","c000059"),
 ("a000060","Ibrahim","Garcia","Zavala","g-012","M","c000060");
 
-
-/*
-insert into recurso (titulo, id_materia, id_profesor, archivo)
-Values ("titulo1","m-003","p000003", "F"),
- ("titulo2","m-001","p000001", "F")
-;*/
 

@@ -49,8 +49,6 @@ export class CrudProfesorComponent implements OnInit {
       }, (error: any) =>{
         this.toast.error("Ocurrió un error en el sistema. Lo más probable es que haya ingresado un id duplicado", "Error");
       });
-    }else{
-      console.log("holis");
     }
   }
 
