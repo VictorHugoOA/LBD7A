@@ -11,7 +11,7 @@ export class ListagruposComponent implements OnInit {
   constructor(private prof: CrudService) { }
 
   ngOnInit(): void {
-    this.prof.AllGrupos().subscribe((data:any[]) => {
+    this.prof.getGrupos().subscribe((data:any[]) => {
       for(var i = 0; i < data.length; ++i)
       {
         this.grupos.push(data[i]);

@@ -156,9 +156,10 @@ clases_de C left join grupo G on C.id_grupo=G.id;
 
 create view alumnos as select A.id, A.nombre, A.apellido_pat, A.apellido_mat, A.sexo, A.id_grupo, G.grado, G.clase from
 alumno A left join grupo G on A.id_grupo=G.id;
-create view profesores as select G.id_profesor,P.nombre, P.apellido_pat, P.apellido_mat, P.correo, P.telefono, P.sexo, G.id, G.grado, G.clase from 
+create view profesores as select P.id as id_profesor,P.nombre, P.apellido_pat, P.apellido_mat, P.correo, P.telefono, P.sexo, G.id, G.grado, G.clase from 
 profesor P left join grupo G on P.id=G.id_profesor;
-create view grupos as select G.id_profesor,P.nombre, P.apellido_pat, P.apellido_mat, G.id, G.grado, G.clase from 
+create view grupos as select P.id as id_profesor , G.ciclo_inicio, G.ciclo_final
+,P.nombre, P.apellido_pat, P.apellido_mat, G.id, G.grado, G.clase from 
 profesor P left join grupo G on P.id=G.id_profesor;
 /*Creación del procedimiento para login_alumno*/
 DELIMITER //

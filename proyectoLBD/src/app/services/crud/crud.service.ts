@@ -10,10 +10,10 @@ export class CrudService {
   constructor(private http: HttpClient) {}
 
   getProfesores(){
-    return this.http.get('http://localhost:3000/Profesores');
+    return this.http.get('http://localhost:3000/Profesores2');
   }
 
-  insertarGrupo(id: string, grado: number, clase: string, profesor: string, cicloIn: number, cicloFin: number)
+  insertarGrupo(id: string, grado: number, clase: string, profesor: string, cicloIn: string, cicloFin: string)
   {
     return this.http.post('http://localhost:3000/insertarGrupo', {id: id, grado: grado, clase: clase, profesor: profesor, ciclo_inicio: cicloIn, cicloFin: cicloFin});
   }
@@ -36,7 +36,7 @@ export class CrudService {
 
   getGrupos()
   {
-    return this.http.get('http://localhost:3000/Grupos');
+    return this.http.get('http://localhost:3000/Grupos2');
   }
 
   insertarAlumno(id: string, nombre: string, paterno: string, materno: string, sexo: string, contra: string, grupo: string)

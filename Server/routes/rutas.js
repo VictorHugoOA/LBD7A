@@ -655,7 +655,7 @@ function createRouter(db) {
   })
 
   router.get('/grupos', function(req, res){
-    db.query('select * from grupo', [], 
+    db.query('select * from grupos', [], 
     (error, results)=>{
       if (error) {return res.status(501).json({error: err})}
       res.send(results);
@@ -671,13 +671,15 @@ function createRouter(db) {
     const grado = req.body.grado;
     const clase = req.body.clase;
     const profesor = req.body.profesor;
-    db.query('insert into grupo (id, grado, clase, id_profesor, ciclo_inicio, ciclo_final) values(?,?,?,?, ?, ?);',
-    [id, grado, clase, profesor], (error, results) =>{
+    const cicloIn = req.body.cicloIn;
+    const cicloFin = req.body.cicloFin;
+    db.query('insert into grupo (id, grado, clase, id_profesor, ciclo_inicio, ciclo_final) values(?,?,?,?,?,?)',
+    [id, grado, clase, profesor,cicloIn,cicloFin], (error, results) =>{
       if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
     })
-  });
+  }); 
   //Alta profesor
   router.post('/insertarProfe', function(req, res)
   {
@@ -690,7 +692,7 @@ function createRouter(db) {
     const sexo = req.body.sexo;
     const password = req.body.password;
 
-    db.query('insert into profesor (id, nombre, apellido_pat, apellido_mat, correo, telefono, sexo, contrasena) values(?, ?, ?, ?, ?, ?, ?, ?);',
+    db.query('insert into profesor (id, nombre, apellido_pat, apellido_mat, correo, telefono, sexo, contrasena) values(?, ?, ?, ?, ?, ?, ?, ?)',
     [id, nombre, paterno, materno, correo, telefono, sexo, password],
     (error, results) =>{
       if (error) {return res.status(501).json({error: err})}
@@ -708,8 +710,8 @@ function createRouter(db) {
     const sexo = req.body.sexo;
     const password = req.body.password;
     const grupo = req.body.grupo;
-    db.query('insert into alumno (id, nombre, apellido_pat, apellido_mat, id_grupo, sexo, contrasena) values(?, ?, ?, ?, ?, ?, ?)',
-    [id, nombre, paterno, materno, grupo, sexo, password], (error, results)=>{
+    db.query('insert into alumno (id, nombre, apellido_pat, apellido_mat, sexo, id_grupo, contrasena) values(?, ?, ?, ?, ?, ?, ?)',
+    [id, nombre, paterno, materno, sexo, grupo, password], (error, results)=>{
       if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
@@ -769,7 +771,6 @@ function createRouter(db) {
       console.log(results);
     });
   })
-
   //Update profesor
   router.post('/modificarProfesor', function(req, res){
     const id = req.body.id;
@@ -788,7 +789,6 @@ function createRouter(db) {
       console.log(results);
     })
   })
-
   //Update materias
   router.post('/modificarMateria', function(req, res){
     const id = req.body.id;
@@ -803,7 +803,6 @@ function createRouter(db) {
       console.log(results);
     })
   })
-
   //Update Grupo
   router.post('/modificarGrupo', function(req, res){
     const id = req.body.id;
@@ -820,7 +819,6 @@ function createRouter(db) {
       console.log(results);
     })
   });
-
   //Update libro
   router.post('/modificarLibro', function(req, res){
     const id = req.body.id;
@@ -910,6 +908,18 @@ function createRouter(db) {
       }
     );
   });
+  router.get('/Profesores2', function (req, res) {
+    db.query(
+      'Select * from profesor',
+      (error, results) => {
+        if (error) {return res.status(501).json({error: err})}
+        res.send(results);
+
+        console.log(results);
+
+      }
+    );
+  });
   //Mostrar Alumnos
   router.get('/Alumnos', function (req, res) {
     db.query(
@@ -940,6 +950,18 @@ function createRouter(db) {
   router.get('/Grupos', function (req, res) {
   db.query(
     'Select * from grupos',
+    (error, results) => {
+      if (error) {return res.status(501).json({error: err})}
+      res.send(results);
+
+      console.log(results);
+
+    }
+  );
+});
+  router.get('/Grupos2', function (req, res) {
+  db.query(
+    'Select * from grupo',
     (error, results) => {
       if (error) {return res.status(501).json({error: err})}
       res.send(results);

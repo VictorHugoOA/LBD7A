@@ -16,7 +16,7 @@ export class CrudGrupoComponent implements OnInit {
   profesores: any[] = [];
   
   constructor(private crud: CrudService, private fb: FormBuilder, private router: Router, private toast: ToastrService) {
-    this.crud.AllProfesores().subscribe((data: any[]) =>{
+    this.crud.getProfesores().subscribe((data: any[]) =>{
       for(var i = 0; i < data.length; ++i)
       {
         this.profesores.push(data[i]);
@@ -44,7 +44,7 @@ export class CrudGrupoComponent implements OnInit {
       this.AltaGrupo.get('profesor').value,
       this.AltaGrupo.get('ciclo_inicio').value,
       this.AltaGrupo.get('ciclo_final').value).subscribe((data: any) =>{
-        this.toast.success("El grupo se añadi a la base de datos", "Alta Grupo");
+        this.toast.success("El grupo se añadio a la base de datos", "Alta Grupo");
       }, (error: any) =>{
         this.toast.error("Ocurrió un error en el sistema. Lo más probable es que haya ingresado un id duplicado", "Error");
       })

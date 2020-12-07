@@ -46,7 +46,7 @@ export class CrudAlumnoComponent implements OnInit {
       this.AltaAlumno.get('sexo').value,
       this.AltaAlumno.get('password').value,
       this.AltaAlumno.get('grupo').value).subscribe((data: any) =>{
-        this.toast.success("El alumno se añadio a la bas de datos", "Alta Alumno");
+        this.toast.success("El alumno se añadio a la base de datos", "Alta Alumno");
       }, (error: any) =>{
         this.toast.error("Ocurrió un error en el sistema. Lo más probable es que haya ingresado un id duplicado", "Error");
       });
