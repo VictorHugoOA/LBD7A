@@ -673,7 +673,7 @@ function createRouter(db) {
     const profesor = req.body.profesor;
     const cicloIn = req.body.cicloIn;
     const cicloFin = req.body.cicloFin;
-    db.query('insert into grupo (id, grado, clase, id_profesor, ciclo_inicio, ciclo_final) values(?,?,?,?,?,?)',
+    db.query('insert into grupo (id, grado, clase, id_profesor, ciclo_inicio, ciclo_final) values(?, ?, ?, ?, ?, ?)',
     [id, grado, clase, profesor,cicloIn,cicloFin], (error, results) =>{
       if (error) {return res.status(501).json({error: err})}
       res.send(results);
@@ -681,7 +681,7 @@ function createRouter(db) {
     })
   }); 
   //Alta profesor
-  router.post('/insertarProfe', function(req, res)
+  router.post('/insertarProfesor', function(req, res)
   {
     const id = req.body.id;
     const nombre = req.body.nombre;
@@ -691,14 +691,24 @@ function createRouter(db) {
     const correo = req.body.correo; 
     const sexo = req.body.sexo;
     const password = req.body.password;
-
-    db.query('insert into profesor (id, nombre, apellido_pat, apellido_mat, correo, telefono, sexo, contrasena) values(?, ?, ?, ?, ?, ?, ?, ?)',
+   
+    console.log(id);
+    console.log(nombre);
+    console.log(paterno);
+    console.log(materno);
+    console.log(telefono);
+    console.log(correo);
+    console.log(sexo);
+    console.log(password);
+   
+    db.query('insert into profesor (id, nombre, apellido_pat, apellido_mat, correo, telefono, sexo,contrasena) Values(?, ?, ?, ?, ?, ?, ?, ?)',
     [id, nombre, paterno, materno, correo, telefono, sexo, password],
     (error, results) =>{
       if (error) {return res.status(501).json({error: err})}
       res.send(results);
       console.log(results);
-    })
+      console.log("entre aqui");
+    });
 
   })
   //Alta Alumno

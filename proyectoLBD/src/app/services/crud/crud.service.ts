@@ -15,13 +15,13 @@ export class CrudService {
 
   insertarGrupo(id: string, grado: number, clase: string, profesor: string, cicloIn: string, cicloFin: string)
   {
-    return this.http.post('http://localhost:3000/insertarGrupo', {id: id, grado: grado, clase: clase, profesor: profesor, ciclo_inicio: cicloIn, cicloFin: cicloFin});
+    return this.http.post('http://localhost:3000/insertarGrupo', {id: id, grado: grado, clase: clase, profesor: profesor, cicloIn: cicloIn, cicloFin: cicloFin});
   }
 
 
-  insertarProfesor(id: string, nombre: string, paterno: string, materno: string, telefono: string, correo: string, sexo: string, contra: string)
+  insertarProfe(id: string, nombre: string, paterno: string, materno: string, telefono: string, correo: string, sexo: string, contra: string)
   {
-    return this.http.post('http://localhost:3000/insertarProfe', {id: id, nombre: nombre, paterno: paterno, materno: materno, telefono: telefono, correo: correo, sexo: sexo, password: contra});
+    return this.http.post('http://localhost:3000/insertarProfesor', {id: id, nombre: nombre, paterno: paterno, materno: materno, telefono: telefono, correo: correo, sexo: sexo, password: contra});
   }
 
   insertarMateria(id: string, nombre: string, campo: string, nivel: string)

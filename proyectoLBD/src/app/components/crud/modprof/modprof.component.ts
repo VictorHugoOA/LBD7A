@@ -53,7 +53,6 @@ export class ModprofComponent implements OnInit {
       this.modProfesor.get('password').value).subscribe((data: any) =>{
         this.toast.success("Se ha modificado el profesor de la base de datos", "Modificar Profesor");
         this.router.navigateByUrl('/admin');
-        //this.router.navigate(['/router']);
       });
           /*poner navigate*/
     }
